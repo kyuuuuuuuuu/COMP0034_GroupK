@@ -33,7 +33,7 @@ USE sakila;
 SELECT COUNT(actor_id) as Actor_name_Will from actor
 WHERE first_name = 'Will' or first_name = 'William';
 
-/*Query 2 */
+/*Query 2*/
 SELECT actor.first_name, actor.last_name from actor, film_actor, film
 WHERE actor.actor_id = film_actor.actor_id
   AND film_actor.film_id = film.film_id
