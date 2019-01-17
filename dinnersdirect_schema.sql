@@ -53,7 +53,7 @@ PRIMARY KEY(item_id)
 CREATE TABLE order_detail (
 order_id int(10),
 item_id int(10),
-quantities int(2),
+quantity int(2),
 dietary_option varchar(255),
 delivery_date date,
 sub_total double(10,2),
