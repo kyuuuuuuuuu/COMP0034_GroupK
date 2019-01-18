@@ -26,7 +26,7 @@ email_address varchar(100) NOT NULL,
 first_name varchar (100) NOT NULL,
 last_name varchar(100) NOT NULL,
 phone_number int(20),
-admin_id int (10),
+admin_id int(10),
 PRIMARY KEY(student_id),
 FOREIGN KEY(admin_id) REFERENCES school_administrator(admin_id)
 );
@@ -66,5 +66,4 @@ admin_id int(10),
 PRIMARY KEY(order_id),
 FOREIGN KEY(student_id) REFERENCES student(student_id),
 FOREIGN KEY(parent_id) REFERENCES parent(parent_id),
-FOREIGN KEY(admin_id) REFERENCES school_administrator(admin_id)
-);
+FOREIGN KEY(admin_id) REFERENCES school_administrator(admin_id));
