@@ -1,3 +1,7 @@
+/*Drop a database if you have already created one with the same name
+DROP DATABASE IF EXISTS dinnersdirect;
+ */
+
 CREATE DATABASE IF NOT EXISTS dinnersdirect;
 
 USE dinnersdirect;
