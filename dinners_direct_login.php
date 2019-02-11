@@ -1,11 +1,15 @@
 <?php require_once ('dinners_direct_header.php');?>
 
+    <div class="card-header text-center">
+        <h1>Welcome to DinnersDirect</h1>
+    </div>
     <div class="container">
-        <br><hr>
-        <h3 class="headstyle"><b>Welcome to DinnersDirect!</b></h3><hr>
-        <main>
-
-            <h6 style="text-align:center">Not a member? Sign up <a href="DinnersDirect_SignUp.html">here</a>.</h6><br>
+        <div class="text-center">
+            <h2>
+                Please log in to see your account details and order.<br> Haven't got an account yet? Sign up
+                <a href="dinners_direct_signup.php">here.</a>
+            </h2>
+        </div>
             <form>
                 <div class="row">
                     <div class="col-md-3"></div>
@@ -24,7 +28,7 @@
                     </div>
                     <div class="col-md-3"></div>
                 </div><br>
-                <h6 style="text-align:center"> <a href="DinnersDirect_ForgotPassword.html">Forgot your password?</a></h6><br>
+                <h6 style="text-align:center"> <a href="#">Forgot your password?</a></h6><br>
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-5">
