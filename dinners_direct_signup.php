@@ -12,7 +12,7 @@
                 <a href="dinners_direct_login.php">here.</a>
             </h2>
         </div>
-
+        <!--Sign up form-->
         <div class="col-lg-12 align-content-lg-center">
             <form method="post" action="">
                 <h6>Fields with * are required.</h6>
