@@ -10,55 +10,61 @@ function test_input($user_input) {
     $user_input = htmlspecialchars($user_input);
     return $user_input;
 };
-
+$checked = 0;
 //Validation of user input :)
 if($_SERVER["REQUEST_METHOD"] == "POST") {
+    $checked = 0;
     if(empty($_POST["email"])) {
         $email_empty = "Email is required";
     } else{
         $email = test_input($_POST["email"]);
+        $checked++;
     };
 
     if(empty($_POST["last_name"])) {
         $lname_empty = "Last Name is required";
-    } else{
+    } elseif(!preg_match("/^[a-zA-Z ]*$/",$lname)) {
+        $lname_empty = "Only letters and white space allowed";
+    } else {
         $lname = test_input($_POST["last_name"]);
-        if (!preg_match("/^[a-zA-Z ]*$/",$lname)) {
-            $lname_empty = "Only letters and white space allowed";
-        };
+        $checked++;
     };
 
     if(empty($_POST["first_name"])) {
         $fname_empty = "First name is required";
-    } else{
+    } elseif(!preg_match("/^[a-zA-Z ]*$/",$fname)) {
+        $fname_empty = "Only letters and white space allowed";
+    } else {
         $fname = test_input($_POST["first_name"]);
-        if (!preg_match("/^[a-zA-Z ]*$/",$fname)) {
-            $fname_empty = "Only letters and white space allowed";
-        };
+        $checked++;
     };
 
     if(empty($_POST["pw"])) {
         $pw_empty = "Password is required";
     } else{
         $pw = test_input($_POST["pw"]);
+        $checked++;
     };
 
     if(empty($_POST["pw2"] && $_POST["pw2"] == $_POST["pw"])) {
         $pw2_empty = "Password confirmation need to be exactly the same as your Password";
     } else{
         $pw2 = test_input($_POST["pw2"]);
+        $checked++;
     };
 
     if(empty($_POST["school"])) {
         $school_empty = "School is required";
     } else{
         $school = test_input($_POST["school"]);
+        $checked++;
     };
 
     if(empty($_POST["acc_type"])) {
         $accType_empty = "<br>Account type is required";
     } else{
         $accType = test_input($_POST["acc_type"]);
+        $checked++;
     };
 };
 

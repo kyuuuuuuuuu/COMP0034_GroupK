@@ -7,15 +7,18 @@
     </div>
     <div class="container">
         <div class="text-center">
-            <br><h2>
+            <h2>
                 Let's set up your account. Already have one? Log in
-                <a href="dinners_direct_login.php">here.</a><br>
+                <a href="dinners_direct_login.php">here.</a>
             </h2>
         </div>
         <!--Sign up form-->
         <div class="col-lg-12 align-content-lg-center">
-            <form method="post" action="">
-                <h6 class="text-center">Fields with * are required.</h6><br>
+            <form method="post" action="
+            <?php if($checked == 7) {
+                header('Location: dinners_direct_myAccount.php')
+            }?>">
+                <h6>Fields with * are required.</h6>
                 <!--Check box to indicate type of account-->
                 <label>Account type* </label>
                 <div class="form-check form-check-inline">
@@ -80,7 +83,7 @@
     </div>
 
 <?php
-//echo $email . "<br>" . $fname . "<br>" .$lname . "<br>" . $pw . "<br>" . $pw2 . $school;
+echo $email . "<br>" . $fname . "<br>" .$lname . "<br>" . $pw . "<br>" . $pw2 . $school . $checked;
 ?>
 
 <?php require_once ('dinners_direct_footer.php');?>
