@@ -16,7 +16,7 @@
         <div class="col-lg-12 align-content-lg-center">
             <form method="post" action="
             <?php if($checked == 7) {
-                header('Location: dinners_direct_myAccount.php')
+                header('Location: dinners_direct_myAccount.php');
             }?>">
                 <h6>Fields with * are required.</h6>
                 <!--Check box to indicate type of account-->

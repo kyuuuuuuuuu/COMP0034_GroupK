@@ -1,6 +1,6 @@
 <?php
 //Define variables to collect from form. Initial value is blank.
-$email = $fname = $lname = $pw =$pw2 =$phone = $school = $accType = "";
+$email = $fname = $lname = $pw = $pw2 =$phone = $school = $accType = "";
 $email_empty = $fname_empty = $lname_empty = $pw_empty = $pw2_empty = $school_empty = $accType_empty = "";
 
 //Create a function to test user input, encode special HTMl characters, remove unnecessary space, tab, backsplashes etc.
@@ -46,7 +46,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $checked++;
     };
 
-    if(empty($_POST["pw2"] && $_POST["pw2"] == $_POST["pw"])) {
+    if(empty($_POST["pw2"])) {
+        $pw2_empty = "Password confirmation is required";
+    } elseif ($_POST["pw2"] == $pw){
         $pw2_empty = "Password confirmation need to be exactly the same as your Password";
     } else{
         $pw2 = test_input($_POST["pw2"]);

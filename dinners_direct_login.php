@@ -38,7 +38,7 @@
                     </div>
                     <div class="form-group col-md-3"></div>
                 </div><br>
-                <h6 style="text-align:center"> <a href="DinnersDirect_ForgotPassword.php">Forgot your password?</a></h6><br>
+                <h6 style="text-align:center"> <a href="#">Forgot your password?</a></h6><br>
                 <div class="form-row">
                     <div class="form-group col-md-3"></div>
                     <div class="form-group col-md-6">
