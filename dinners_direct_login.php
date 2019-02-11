@@ -2,6 +2,8 @@
 
 <?php require ('functions.php')?>
 
+<script type="text/javascript" src="js/emptyfield.js"></script>
+
     <div class="card-header text-center">
         <h1>Welcome to DinnersDirect</h1>
     </div>
@@ -16,14 +18,14 @@
 
     <div class="col-lg-12 align-content-lg-center">
 
-        <form method="post" action="">
+        <form method="post" action="" onsubmit="return validate();">
             <h6 class="text-center">Fields with * are required.</h6><br>
 
                 <div class="form-row">
                     <div class="form-group col-md-3"></div>
                     <div class="form-group col-md-6">
                      <label> Email Address*</label>
-                        <input name="email" type="email" class="form-control" placeholder="Enter your email" value="<?php echo $email;?>">
+                        <input id="email_user" name="email" type="email" class="form-control" placeholder="Enter your email" value="<?php echo $email;?>">
                         <span class="text-danger"><?php echo $email_empty;?></span>
                     </div>
                     <div class="form-group col-md-3"></div>
@@ -33,7 +35,7 @@
                     <div class="form-group col-md-3"></div>
                     <div class="form-group col-md-6">
                         <label>Password*</label>
-                        <input name="pw" type="password" class="form-control" placeholder="Password" value="<?php echo $pw;?>">
+                        <input id="password_user" name="pw" type="password" class="form-control" placeholder="Password" value="<?php echo $pw;?>">
                         <span class="text-danger"><?php echo $pw_empty;?></span>
                     </div>
                     <div class="form-group col-md-3"></div>
@@ -47,7 +49,9 @@
                     <div class="form-group col-md-3"></div>
                 </div><br>
             </form>
+
     </div>
     </div>
 
+    <p id="error_para"></p>
 <?php require_once ('dinners_direct_footer.php');?>
