@@ -7,15 +7,15 @@
     </div>
     <div class="container">
         <div class="text-center">
-            <h2>
+            <br><h2>
                 Let's set up your account. Already have one? Log in
-                <a href="dinners_direct_login.php">here.</a>
+                <a href="dinners_direct_login.php">here.</a><br><br>
             </h2>
         </div>
 
         <div class="col-lg-12 align-content-lg-center">
             <form method="post" action="">
-                <h6>Fields with * are required.</h6>
+                <h6 class="text-center">Fields with * are required.</h6><br>
                 <!--Check box to indicate type of account-->
                 <label>Account type* </label>
                 <div class="form-check form-check-inline">
