@@ -9,7 +9,7 @@
         <div class="text-center">
             <br><h2>
                 Let's set up your account. Already have one? Log in
-                <a href="dinners_direct_login.php">here.</a><br><br>
+                <a href="dinners_direct_login.php">here.</a><br>
             </h2>
         </div>
         <!--Sign up form-->

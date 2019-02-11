@@ -10,7 +10,7 @@
         <div class="text-center">
          <br><h2>
                 Not a member? Sign up
-                <a href="dinners_direct_signup.php">here.</a><br><br>
+                <a href="dinners_direct_signup.php">here.</a><br>
             </h2>
         </div>
 
