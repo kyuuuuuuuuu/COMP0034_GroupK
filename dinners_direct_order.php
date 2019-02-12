@@ -20,8 +20,8 @@
         <h3>Main</h3>
             <div>
                 <img src="img/pasta.jpg" alt="Pasta" width="200" onclick="alert('Choose quantity')"/>
-                <br>Pasta<br>
-                <b>2.50</b>/unit<br>
+                <br>Bolognese Pasta (100g)<br>
+                <b>£2.50</b>/unit<br>
 <!--                *CHANGE* CHOOSE THE QUANTITY WHEN CLICKED-->
                 Choose the quantity: <input type="number" name="pastaQuantity" min="1" max="5">
                 <button class="btn-secondary" type="submit">OK</button>
@@ -31,8 +31,8 @@
 
             <div>
                 <img src="img/pizza.jpg" alt="Pizza" width="200"/>
-                <br>Pizza<br>
-                <b>2.70/unit</b><br>
+                <br>Pizza (3 slices/100g)<br>
+                <b>£2.70</b>/unit<br>
 <!--                CHANGE* CHOOSE THE QUANTITY WHEN CLICKED-->
                 Choose the quantity: <input type="number" name="pizzaQuantity" min="1" max="5">
                 <button class="btn-secondary" type="submit">OK</button>
@@ -42,8 +42,8 @@
 
             <div>
                 <img src="img/lasagna.jpg" alt="lasagna" width="200"/>
-                <br>Lasagna<br>
-                <b>2.50/unit</b><br>
+                <br>Lasagna (100g)<br>
+                <b>£2.50</b>/unit<br>
 <!--                CHANGE* CHOOSE THE QUANTITY WHEN CLICKED-->
                 Choose the quantity: <input type="number" name="lasagnaQuantity" min="1" max="5">
                 <button class="btn-secondary" type="submit">OK</button>
@@ -53,10 +53,73 @@
 
         <div class="col-md-4 text-center">
             <h3>Desserts</h3>
+            <div>
+                <img src="img/fruit.jpg" alt="Pasta" width="200" onclick="alert('Choose quantity')"/>
+                <br>Fruit Snack(80g)<br>
+                <b>£0.80</b>/unit<br>
+<!--                *CHANGE* CHOOSE THE QUANTITY WHEN CLICKED-->
+                Choose the quantity: <input type="number" name="fruitQuantity" min="1" max="5">
+                <button class="btn-secondary" type="submit">OK</button>
+                <!--                put final one later??-->
+            </div>
+            <br>
+
+            <div>
+                <img src="img/chocolate.jpg" alt="Chocolate" width="200"/>
+                <br>Cadbury Milk Chocolate bar (200g)<br>
+                <b>£2.00</b>/unit<br>
+<!--                CHANGE* CHOOSE THE QUANTITY WHEN CLICKED-->
+                Choose the quantity: <input type="number" name="chocQuantity" min="1" max="5">
+<!--                put final one later??-->
+                <button class="btn-secondary" type="submit">OK</button>
+            </div>
+            <br>
+
+            <div>
+                <img src="img/cupcake.jpg" alt="Cupcake" height="200"/>
+<!--                check if (height) works-->
+                <br>Cupcake (1)<br>
+                <b>£0.70</b>/unit<br>
+<!--                CHANGE* CHOOSE THE QUANTITY WHEN CLICKED-->
+                Choose the quantity: <input type="number" name="cupQuantity" min="1" max="5">
+                <button class="btn-secondary" type="submit">OK</button>
+<!--                put final one later??-->
+            </div>
         </div>
 
         <div class="col-md-4 text-center">
             <h3>Drink</h3>
+            <div>
+                <img src="img/water.jpg" alt="Water" width="200" onclick="alert('Choose quantity')"/>
+                <br>Water(100ml)<br>
+                <b>£0.70</b>/unit<br>
+<!--                *CHANGE* CHOOSE THE QUANTITY WHEN CLICKED-->
+                Choose the quantity: <input type="number" name="waterQuantity" min="1" max="5">
+                <button class="btn-secondary" type="submit">OK</button>
+<!--                put final one later??-->
+            </div>
+            <br>
+
+            <div>
+                <img src="img/Apple%20juice.jpeg" alt="Apple juice" width="200"/>
+                <br>Innocent Apple juice(100ml)<br>
+                <b>£1.20</b>/unit<br>
+<!--                CHANGE* CHOOSE THE QUANTITY WHEN CLICKED-->
+                Choose the quantity: <input type="number" name="juiceQuantity" min="1" max="5">
+                <button class="btn-secondary" type="submit">OK</button>
+<!--                put final one later??-->
+            </div>
+            <br>
+
+            <div>
+                <img src="img/coke.jpg" alt="coke" width="200"/>
+                <br>Coke(100ml)<br>
+                <b>£1.00</b>/unit<br>
+<!--                CHANGE* CHOOSE THE QUANTITY WHEN CLICKED-->
+                Choose the quantity: <input type="number" name="cokeQuantity" min="1" max="5">
+                <button class="btn-secondary" type="submit">OK</button>
+<!--                put final one later??-->
+            </div>
         </div>
         </div>
         <br><br>
