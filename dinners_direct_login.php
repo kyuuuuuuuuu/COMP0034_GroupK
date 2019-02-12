@@ -25,6 +25,7 @@
                         <label> Email Address*</label>
                         <input id="email_user" name="email" type="email" class="form-control" placeholder="Enter your email" value="">
                     </div>
+                    <p id="error_para_email"></p>
                 </div><br>
 
                 <div class="form-row">
@@ -32,6 +33,7 @@
                         <label>Password*</label>
                         <input id="password_user" name="pw" type="password" class="form-control" placeholder="Password" value="">
                     </div>
+                    <p id="error_para_pw"></p>
                 </div><br>
 
                 <h6 style="text-align:center"> <a href="#">Forgot your password?</a></h6><br>
@@ -47,5 +49,5 @@
     </div>
     </div>
 
-    <p id="error_para"></p>
+
 <?php require_once ('dinners_direct_footer.php');?>
