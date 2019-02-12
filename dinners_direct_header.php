@@ -11,6 +11,7 @@
     <script src="js/slideShow.js" defer></script>
 
     <script src="js/emptyfield.js" defer></script>
+    <script src="js/emptyfield_signup.js" defer></script>
 
 </head>
 <body>
