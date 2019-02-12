@@ -1,25 +1,39 @@
 function validate() {
-    var error1 = "";
-    var error2="";
+    var email_error = "";
+    var pw_error = "";
+    var check = 0;
 
     var email = document.getElementById("email_user");
-    if (email.value == "") {
-    error1 = "Please enter a valid email address. ";
-    document.getElementById("error_para1").innerHTML = error1;
-    return false;
+    var pw = document.getElementById("password_user");
+    if (email.value == "" || email.value.indexOf("@") == -1) {
+
+        //Email is blank then add error message to variable email_error but doesn't send it to the HTML
+        email_error = "Please enter a valid email address. ";
+    } else {
+
+        //if Email is filled then add 1 to the check >> check = 1
+        check++;
     }
 
-    var password = document.getElementById("password_user");
-    if (password.value == "")
-    {
-        error2 = "Please enter your password. "
-        document.getElementById("error_para2").innerHTML = error2;
-    return false;
+
+    if (pw.value == "") {
+        //Password is blank then add error message to variable pw_error
+        pw_error = "Please enter a valid password"
+    } else {
+        //else check is increase by 1
+        check++;
     }
 
-else
-    {
+//check the value of check.
+    if (check < 2) {
+        //if check is less than 2, either 1 or 0 then send the error message to HTML
+        //this work even if 1 is filled as the 1 of the variable sent to HTML is blank >> no message show.
+        document.getElementById("error_para_email").innerHTML = email_error;
+        document.getElementById("error_para_pw").innerHTML = pw_error;
+        //and also return false
+        return false;
+    } else {
+        //if check is 2 >>> both are filled >>> else statement execute >> return true
         return true;
     }
-
 }

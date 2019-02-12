@@ -21,19 +21,23 @@
             <h6 class="text-center">Fields with * are required.</h6><br>
 
                 <div class="form-row">
+                    <div class="form-group col-md-3"></div>
                     <div class="form-group col-md-6">
                         <label> Email Address*</label>
                         <input id="email_user" name="email" type="email" class="form-control" placeholder="Enter your email" value="">
+                        <p class="text-danger" id="error_para_email"></p>
                     </div>
-                    <p id="error_para_email"></p>
+                    <div class="form-group col-md-3"></div>
                 </div><br>
 
                 <div class="form-row">
+                    <div class="form-group col-md-3"></div>
                     <div class="form-group col-md-6">
                         <label>Password*</label>
                         <input id="password_user" name="pw" type="password" class="form-control" placeholder="Password" value="">
+                        <p class="text-danger" id="error_para_pw"></p>
                     </div>
-                    <p id="error_para_pw"></p>
+                    <div class="form-group col-md-3"></div>
                 </div><br>
 
                 <h6 style="text-align:center"> <a href="#">Forgot your password?</a></h6><br>
