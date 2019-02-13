@@ -1,7 +1,5 @@
 <?php require_once ('dinners_direct_header.php');?>
 
-<?php require ('functions.php')?>
-
 <div class="card-header text-center">
     <h1>Welcome to DinnersDirect</h1>
 </div>
