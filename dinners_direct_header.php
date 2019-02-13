@@ -9,9 +9,8 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/dinnersDirect.css">
     <script src="js/slideShow.js" defer></script>
-
     <script src="js/emptyfield.js" defer></script>
-    <script src="js/emptyfield_signup.js" defer></script>
+    <script src="js/validation.js" defer></script>
 
 </head>
 <body>
