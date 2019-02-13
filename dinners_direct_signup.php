@@ -60,7 +60,7 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>Phone Number</label>
-                    <input id="phone_UK" type="number" class="form-control" placeholder="Phone number">
+                    <input id="phone_UK" name="phone_UK" type="number" class="form-control" placeholder="Phone number">
                     <p class="text-danger" id="phone_UK_error"></p>
                 </div>
                 <div class="form-group col-md-6">

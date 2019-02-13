@@ -2,4 +2,10 @@
 </body>
 </html>
 
-<?php dataDisconnect($db);?>
+<?php
+
+if ($db) {
+    dataDisconnect($db);
+}
+
+?>

@@ -15,3 +15,5 @@ function dataDisconnect($connection) {
 }
 
 $db = dataConnect();
+
+?>
