@@ -14,15 +14,18 @@
 
 </head>
 <body>
+<!--<h4>DinnersDirect</h4>-->
 <div class="navbar navbar-light bg-light">
     <!-- Logo image attached to Nav Bar -->
-    <img src="img/DinnersDirectLogo.jpeg" alt="DinnersDirect Logo" height="60" width="58"/>
-
-    <a href="index.php" class="a">Home</a>
-    <a href="dinners_direct_order.php" class="a">Order</a>
-    <a href="dinners_direct_login.php" class="a">Login</a>
-    <a href="dinners_direct_signup.php" class="a">Sign Up</a>
-    <a href="dinners_direct_myAccount.php" class="a">My Account</a>
+    <a href="index.php" class="a">
+        <img src="img/logo.jpg" alt="DinnersDirect Logo" height="60" />
+    </a>
+<!--    <a href="index.php" class="a">HOME</a>-->
+    <a href="dinners_direct_order.php" class="a">ORDER</a>
+    <a href="dinners_direct_login.php" class="a">LOGIN</a>
+    <a href="dinners_direct_signup.php" class="a">SIGN UP</a>
+    <a href="dinners_direct_myAccount.php" class="a">MY ACCOUNT</a>
+    <a href="dinners_direct_basket.php" class="a">BASKET</a>
     <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

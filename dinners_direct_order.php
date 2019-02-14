@@ -1,21 +1,18 @@
-<!--MAKE BOX AROUND EACH ITEM-->
-<!--MENU TO APPEAR AFTER CHOOSING DATE-->
-<!--*CHANGE* CHOOSE THE QUANTITY WHEN CLICKED-->
-<!--null 0 if quantity is not chosen-->
-
 <?php require_once ('dinners_direct_header.php');?>
-
 
     <div class="card-header text-center">
         <h1>Place your order</h1>
     </div>
 
     <div class="container">
-        <h3>Choose date</h3>
-        <input type="date" id="orderDate" name="orderDate_">
+        <div class="text-center">
+            <h2>Choose date</h2>
+            <input type="date" name="orderDate_"><br><br>
+            <button class="btn-secondary rounded btn-lg" type="submit">OK</button>
+        </div>
+
         <br><br>
-        <hr>
-        <br>
+        <hr><br>
         <p>Click items to choose quantity</p>
         <div class="row">
         <div class="col-md-4 text-center">
@@ -28,7 +25,7 @@
                 <b>£3.50</b>/unit<br>
 <!--               *CHANGE* CHOOSE THE QUANTITY WHEN CLICKED-->
                 Choose the quantity: <input type="number" name="burgerQuantity" min="1" max="5">
-                <button class="btn-secondary" type="submit">OK</button>
+                <button class="btn-secondary rounded" type="submit">OK</button>
 <!--                put final one later??-->
 <!--                </fieldset>-->
 
@@ -41,18 +38,18 @@
                 <b>£2.70</b>/unit<br>
 <!--                CHANGE* CHOOSE THE QUANTITY WHEN CLICKED-->
                 Choose the quantity: <input type="number" name="kolenoQuantity" min="1" max="5">
-                <button class="btn-secondary" type="submit">OK</button>
+                <button class="btn-secondary rounded" type="submit">OK</button>
 <!--                put final one later??-->
             </div>
             <br>
 
             <div class="border">
-                <img src="img/lamp.jpeg" width="200"/>
-                <br>Lamp (100g)<br>
+                <img src="img/lamb.jpeg" width="200"/>
+                <br>Lamb (100g)<br>
                 <b>£2.50</b>/unit<br>
 <!--                CHANGE* CHOOSE THE QUANTITY WHEN CLICKED-->
                 Choose the quantity: <input type="number" name="lampQuantity" min="1" max="5">
-                <button class="btn-secondary" type="submit">OK</button>
+                <button class="btn-secondary rounded" type="submit">OK</button>
 <!--                put final one later??-->
             </div>
         </div>
@@ -65,7 +62,7 @@
                 <b>£0.80</b>/unit<br>
 <!--                *CHANGE* CHOOSE THE QUANTITY WHEN CLICKED-->
                 Choose the quantity: <input type="number" name="fruitQuantity" min="1" max="5">
-                <button class="btn-secondary" type="submit">OK</button>
+                <button class="btn-secondary rounded" type="submit">OK</button>
                 <!--                put final one later??-->
             </div>
             <br>
@@ -77,7 +74,7 @@
 <!--                CHANGE* CHOOSE THE QUANTITY WHEN CLICKED-->
                 Choose the quantity: <input type="number" name="rvQuantity" min="1" max="5">
 <!--                put final one later??-->
-                <button class="btn-secondary" type="submit">OK</button>
+                <button class="btn-secondary rounded" type="submit">OK</button>
             </div>
             <br>
 
@@ -88,7 +85,7 @@
                 <b>£2.00</b>/slice<br>
 <!--                CHANGE* CHOOSE THE QUANTITY WHEN CLICKED-->
                 Choose the quantity: <input type="number" name="cupQuantity" min="1" max="5">
-                <button class="btn-secondary" type="submit">OK</button>
+                <button class="btn-secondary rounded" type="submit">OK</button>
 <!--                put final one later??-->
             </div>
         </div>
@@ -101,7 +98,7 @@
                 <b>£0.70</b>/unit<br>
 <!--                *CHANGE* CHOOSE THE QUANTITY WHEN CLICKED-->
                 Choose the quantity: <input type="number" name="waterQuantity" min="1" max="5">
-                <button class="btn-secondary" type="submit">OK</button>
+                <button class="btn-secondary rounded" type="submit">OK</button>
 <!--                put final one later??-->
             </div>
             <br>
@@ -112,7 +109,7 @@
                 <b>£1.20</b>/unit<br>
 <!--                CHANGE* CHOOSE THE QUANTITY WHEN CLICKED-->
                 Choose the quantity: <input type="number" name="juiceQuantity" min="1" max="5">
-                <button class="btn-secondary" type="submit">OK</button>
+                <button class="btn-secondary rounded" type="submit">OK</button>
 <!--                put final one later??-->
             </div>
             <br>
@@ -123,13 +120,13 @@
                 <b>£1.00</b>/unit<br>
 <!--                CHANGE* CHOOSE THE QUANTITY WHEN CLICKED-->
                 Choose the quantity: <input type="number" name="cokeQuantity" min="1" max="5">
-                <button class="btn-secondary" type="submit">OK</button>
+                <button class="btn-secondary rounded" type="submit">OK</button>
 <!--                put final one later??-->
             </div>
         </div>
         </div>
         <br><br>
-        <button class="btn-block btn-lg btn-secondary" type="submit">Add to basket</button><br><br>
+        <button class="btn-block btn-lg btn-secondary rounded" type="submit">Add to basket</button><br><br>
     </div>
 
 <?php require_once ('dinners_direct_footer.php');?>

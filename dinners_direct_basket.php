@@ -1,8 +1,12 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: YeoJin
- * Date: 2019-02-12
- * Time: 15:47
- */
+<?php require_once ('dinners_direct_header.php');?>
+
+<?php require ('functions.php')?>
+
+
+<div class="card-header text-center">
+    <h1>View ordered items</h1>
+</div>
+
+
+<?php require_once ('dinners_direct_footer.php');?>
 
