@@ -114,7 +114,8 @@ li a {
 }
 
 .hello{
-    background-color: lightblue;
+    border: 5px solid dimgrey;
+    border-radius: 5px;
 }
 
 /*.btn-yeojin {*/
