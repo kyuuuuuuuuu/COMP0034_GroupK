@@ -10,69 +10,158 @@
             <a href="dinners_direct_login.php">here.</a>
         </h2>
     </div>
+
+    <div class="btn-group btn-group container-fluid align-items-center" role="group" aria-label="...">
+        <button type="button" class="btn btn-primary" onclick="selectForm(0)">Student</button>
+        <button type="button" class="btn btn-primary" onclick="selectForm(1)">Administrator</button>
+        <button type="button" class="btn btn-primary" onclick="selectForm(2)">Parent</button>
+    </div>
+
     <!--Sign up form-->
     <div class="col-lg-12 align-content-lg-center">
-        <form method="post" action="dinners_direct_myAccount.php" onsubmit="return validation();">
+
+        <form style="display: none" name="registerForm" method="post" action="dinners_direct_myAccount.php" onsubmit="return validate('Student');">
             <h6>Fields with * are required.</h6>
-            <!--Check box to indicate type of account-->
-            <label>Account type* </label>
-            <div class="form-check form-check-inline">
-                <input  name="acc_type" class="form-check-input" type="radio" value="School admin" required>
-                <label class="form-check-label">School admin</label>
-                <input  name="acc_type" class="form-check-input" type="radio" value="Student" required>
-                <label class="form-check-label">Student</label>
-                <input  name="acc_type" class="form-check-input" type="radio" value="Parent" required>
-                <label class="form-check-label">Parent</label>
-                <p class="text-danger" id="paraerror_accounttype"></p>
-            </div>
-
-
             <!--Sign up information required from user -->
             <div class="form-group">
                 <label>Email address*</label>
-                <input id="email_of_user" name="email" type="email" class="form-control" placeholder="Enter your email">
-                <p class="text-danger" id="email_of_user_error"></p>
+                <input id="emailStudent" name="email" type="email" class="form-control" placeholder="Enter your email">
+                <p class="text-danger" id="emailStudent_error"></p>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>Password*</label>
-                    <input id="password_of_user" name="pw" type="password" class="form-control" placeholder="Password">
-                    <p class="text-danger" id="password_of_user_error"></p>
+                    <input id="passwordStudent" name="pw" type="password" class="form-control" placeholder="Password">
+                    <p class="text-danger" id="passwordStudent_error"></p>
                 </div>
                 <div class="form-group col-md-6">
                     <label>Password confirmation*</label>
-                    <input id="password_of_user2" name="pw2" type="password" class="form-control" placeholder="Password confirmation">
-                    <p class="text-danger" id="password_of_user2_error"></p>
+                    <input id="password2Student" name="pw2" type="password" class="form-control" placeholder="Password confirmation">
+                    <p class="text-danger" id="password2Student_error"></p>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>First name*</label>
-                    <input id="userfirst_name" name="first_name" type="text" class="form-control" placeholder="First name">
-                    <p class="text-danger" id="userfirst_name_error"></p>
+                    <input id="firstNameStudent" name="first_name" type="text" class="form-control" placeholder="First name">
+                    <p class="text-danger" id="firstNameStudent_error"></p>
                 </div>
                 <div class="form-group col-md-6">
                     <label>Last name*</label>
-                    <input id="userlast_name" name="last_name" type="text" class="form-control" placeholder="Last name">
-                    <p class="text-danger" id="userlast_name_error"></p>
+                    <input id="lastNameStudent" name="last_name" type="text" class="form-control" placeholder="Last name">
+                    <p class="text-danger" id="lastNameStudent_error"></p>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>Phone Number</label>
-                    <input id="phone_UK" name="phone_UK" type="number" class="form-control" placeholder="Phone number">
-                    <p class="text-danger" id="phone_UK_error"></p>
+                    <input id="phoneStudent" name="phone_UK" type="number" class="form-control" placeholder="Phone number">
+                    <p class="text-danger" id="phoneStudent_error"></p>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Admin's Email*</label>
+                    <input id="referenceStudent" name="email" type="email" class="form-control" placeholder="Enter your admin's email">
+                    <p class="text-danger" id="referenceStudent_error"></p>
+                </div>
+            </div>
+            <button class="btn btn-block btn-outline-primary" type="submit">Sign Up</button>
+        </form>
+
+        <form style="display: none" name="registerForm" method="post" action="dinners_direct_myAccount.php" onsubmit="return validate('Admin');">
+            <h6>Fields with * are required.</h6>
+            <!--Sign up information required from user -->
+            <div class="form-group">
+                <label>Admin Email address*</label>
+                <input id="emailAdmin" name="email" type="email" class="form-control" placeholder="Enter your email">
+                <p class="text-danger" id="emailAdmin_error"></p>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Password*</label>
+                    <input id="passwordAdmin" name="pw" type="password" class="form-control" placeholder="Password">
+                    <p class="text-danger" id="passwordAdmin_error"></p>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Password confirmation*</label>
+                    <input id="password2Admin" name="pw2" type="password" class="form-control" placeholder="Password confirmation">
+                    <p class="text-danger" id="password2Admin_error"></p>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>First name*</label>
+                    <input id="firstNameAdmin" name="first_name" type="text" class="form-control" placeholder="First name">
+                    <p class="text-danger" id="firstNameAdmin_error"></p>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Last name*</label>
+                    <input id="lastNameAdmin" name="last_name" type="text" class="form-control" placeholder="Last name">
+                    <p class="text-danger" id="lastNameAdmin_error"></p>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Phone Number</label>
+                    <input id="phoneAdmin" name="phone_UK" type="number" class="form-control" placeholder="Phone number">
+                    <p class="text-danger" id="phoneAdmin_error"></p>
                 </div>
                 <div class="form-group col-md-6">
                     <label>School*</label>
-                    <select id="school_name" name="school" class="form-control">
+                    <select id="referenceAdmin" name="school" class="form-control">
                         <option>UCL</option>
                         <option>LSE</option>
                         <option>King's</option>
                         <option>City</option>
                         <option>QMUL</option>
                     </select>
-                    <p class="text-danger" id="school_name_error"></p>
+                    <p class="text-danger" id="referenceAdmin_error"></p>
+                </div>
+            </div>
+            <button class="btn btn-block btn-outline-primary" type="submit">Sign Up</button>
+        </form>
+
+        <form style="display: none" name="registerForm" method="post" action="dinners_direct_myAccount.php" onsubmit="return validate('Parent');">
+            <h6>Fields with * are required.</h6>
+            <!--Sign up information required from user -->
+            <div class="form-group">
+                <label>Email address*</label>
+                <input id="emailParent" name="email" type="email" class="form-control" placeholder="Enter your email">
+                <p class="text-danger" id="emailParent_error"></p>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Password*</label>
+                    <input id="passwordParent" name="pw" type="password" class="form-control" placeholder="Password">
+                    <p class="text-danger" id="passwordParent_error"></p>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Password confirmation*</label>
+                    <input id="password2Parent" name="pw2" type="password" class="form-control" placeholder="Password confirmation">
+                    <p class="text-danger" id="password2Parent_error"></p>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>First name*</label>
+                    <input id="firstNameParent" name="first_name" type="text" class="form-control" placeholder="First name">
+                    <p class="text-danger" id="firstNameParent_error"></p>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Last name*</label>
+                    <input id="lastNameParent" name="last_name" type="text" class="form-control" placeholder="Last name">
+                    <p class="text-danger" id="lastNameParent_error"></p>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Phone Number</label>
+                    <input id="phoneParent" name="phone_UK" type="number" class="form-control" placeholder="Phone number">
+                    <p class="text-danger" id="phoneParent_error"></p>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Your children's email*</label>
+                    <input id="referenceParent" name="email" type="email" class="form-control" placeholder="Enter your children's email">
+                    <p class="text-danger" id="referenceParent_error"></p>
                 </div>
             </div>
             <button class="btn btn-block btn-outline-primary" type="submit">Sign Up</button>

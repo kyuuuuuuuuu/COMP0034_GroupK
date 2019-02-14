@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/dinnersDirect.css">
     <script src="js/slideShow.js" defer></script>
     <script src="js/emptyfield.js" defer></script>
-    <script src="js/validation.js" defer></script>
+    <script src="js/form.js" defer></script>
 
 </head>
 <body>
