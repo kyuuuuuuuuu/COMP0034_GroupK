@@ -34,32 +34,32 @@
         <span class="dot" onclick="currentSlide(3)"></span>
     </div>
 
-    <div class="container">
-        <br><hr>
-        <main>
-            <h2 class="text-center"><b>What's New?</b></h2> <br>
-            <div class="row">
-                <div class="col-md-4">
-                    <img alt="Pasta" class="menuimage" height="300" src="img/pasta.jpg" width="355"/>
-                    <h4 class="text center">Pasta</h4>
-                    <p class="text-left">This is Pasta.</p>
-                    <button class="btn btn-block btn-secondary" type="Submit"><i class="fa fa-thumbs-up"> Order Here </i></button><br>
-                </div>
-                <div class="col-md-4">
-                    <img alt="Pizza" class="menuimage" height="300" src="img/pizza.jpg" width="355"/>
-                    <h4 class="text center">Pizza</h4>
-                    <p class="text-left">This is Pizza.</p>
-                    <button class="btn btn-block btn-secondary" type="Submit"><i class="fa fa-thumbs-up"> Order Here </i></button><br>
-                </div>
-                <div class="col-md-4">
-                    <img alt="lasagna" class="menuimage" height="300" src="img/lasagna.jpg" width="355"/>
-                    <h4 class="text center">Lasagna</h4>
-                    <p class="text-left">This is Lasagna.</p>
-                    <button class="btn btn-block btn-secondary" type="Submit"><i class="fa fa-thumbs-up"> Order Here </i></button><br>
-                </div>
-            </div>
-        </main>
-    </div>
+<!--    <div class="container">-->
+<!--        <br><hr>-->
+<!--        <main>-->
+<!--            <h2 class="text-center"><b>What's New?</b></h2> <br>-->
+<!--            <div class="row">-->
+<!--                <div class="col-md-4">-->
+<!--                    <img alt="Pasta" class="menuimage" height="300" src="img/pasta.jpg" width="355"/>-->
+<!--                    <h4 class="text center">Pasta</h4>-->
+<!--                    <p class="text-left">This is Pasta.</p>-->
+<!--                    <button class="btn btn-block btn-secondary" type="Submit"><i class="fa fa-thumbs-up"> Order Here </i></button><br>-->
+<!--                </div>-->
+<!--                <div class="col-md-4">-->
+<!--                    <img alt="Pizza" class="menuimage" height="300" src="img/pizza.jpg" width="355"/>-->
+<!--                    <h4 class="text center">Pizza</h4>-->
+<!--                    <p class="text-left">This is Pizza.</p>-->
+<!--                    <button class="btn btn-block btn-secondary" type="Submit"><i class="fa fa-thumbs-up"> Order Here </i></button><br>-->
+<!--                </div>-->
+<!--                <div class="col-md-4">-->
+<!--                    <img alt="lasagna" class="menuimage" height="300" src="img/lasagna.jpg" width="355"/>-->
+<!--                    <h4 class="text center">Lasagna</h4>-->
+<!--                    <p class="text-left">This is Lasagna.</p>-->
+<!--                    <button class="btn btn-block btn-secondary" type="Submit"><i class="fa fa-thumbs-up"> Order Here </i></button><br>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </main>-->
+<!--    </div>-->
 
 
 <?php require_once ('dinners_direct_footer.php');?>
