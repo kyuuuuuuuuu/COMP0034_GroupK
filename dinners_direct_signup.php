@@ -60,11 +60,11 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label>Admin's Email*</label>
-                    <input id="referenceStudent" name="email" type="email" class="form-control" placeholder="Enter your admin's email">
+                    <input id="referenceStudent" name="reference" type="email" class="form-control" placeholder="Enter your admin's email">
                     <p class="text-danger" id="referenceStudent_error"></p>
                 </div>
             </div>
-            <button class="btn btn-block btn-outline-primary" type="submit">Sign Up</button>
+            <button class="btn btn-block btn-outline-primary" name="submit" value="student" type="submit">Sign Up</button>
         </form>
 
         <form style="display: none" name="registerForm" method="post" action="dinners_direct_myAccount.php" onsubmit="return validate('Admin');">
@@ -107,7 +107,7 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label>School*</label>
-                    <select id="referenceAdmin" name="school" class="form-control">
+                    <select id="referenceAdmin" name="reference" class="form-control">
                         <option>UCL</option>
                         <option>LSE</option>
                         <option>King's</option>
@@ -117,7 +117,7 @@
                     <p class="text-danger" id="referenceAdmin_error"></p>
                 </div>
             </div>
-            <button class="btn btn-block btn-outline-primary" type="submit">Sign Up</button>
+            <button class="btn btn-block btn-outline-primary" name="submit" value="administrator" type="submit">Sign Up</button>
         </form>
 
         <form style="display: none" name="registerForm" method="post" action="dinners_direct_myAccount.php" onsubmit="return validate('Parent');">
@@ -160,11 +160,11 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label>Your children's email*</label>
-                    <input id="referenceParent" name="email" type="email" class="form-control" placeholder="Enter your children's email">
+                    <input id="referenceParent" name="reference" type="email" class="form-control" placeholder="Enter your children's email">
                     <p class="text-danger" id="referenceParent_error"></p>
                 </div>
             </div>
-            <button class="btn btn-block btn-outline-primary" type="submit">Sign Up</button>
+            <button class="btn btn-block btn-outline-primary" name="submit" value="parent" type="submit">Sign Up</button>
         </form>
     </div>
 </div>

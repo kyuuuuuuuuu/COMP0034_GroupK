@@ -63,10 +63,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $checked++;
     };
 
-    if(empty($_POST["acc_type"])) {
-        $accType_empty = "<br>Account type is required";
+    if(empty($_POST["reference"])) {
+        $reference_empty = "<br>Enter your reference";
     } else{
-        $accType = test_input($_POST["acc_type"]);
+        $reference = test_input($_POST["reference"]);
         $checked++;
     };
 
@@ -76,16 +76,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($checked = 7) {
         echo "You have registered successfully <br>";
+        $accType = $_POST["submit"];
         echo $email . " is your email<br>" .
             $fname . " is your first name<br>" .$lname . " is your last name<br>" .
             $pw . " is your password<br>" . $pw2 . " is your password confirmation<br>" .
-            $school . " is your school<br>" .  $phone . " is your phone number<br>";
+            $school . " is your school<br>" .  $phone . " is your phone number<br>" .
+            $accType . " is your account type<br>";
         if (mysqli_connect_errno())
         {
             echo "Failed to connect to MySQL: " . mysqli_connect_error();
         } else {
             echo "Dinnersdirect data base is successfully connected";
-            $query = "INSERT INTO student (first_name, last_name, email_address, phone_number, password) "
+            $query = "INSERT INTO $accType (first_name, last_name, email_address, phone_number, password) "
                 ."VALUES ('$fname', '$lname', '$email', '$phone', '$pw')";
         }
         if (mysqli_query($db, $query)) {
