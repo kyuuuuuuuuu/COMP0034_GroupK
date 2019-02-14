@@ -22,7 +22,7 @@
         <div id="section_"><br>
             <div class="text-center">
                 <h2> STEP 2: Choose items</h2>
-                <p>Click items to choose quantity</p><br>
+                <h4 style="color: darkred">Click items for more information and to choose quantity</h4><br>
             </div>
         <div class="row">
         <div class="col-md-4 text-center">
@@ -30,13 +30,13 @@
             <div>
 <!--                PUT STYLE UNDER CSS -->
 <!--                TRIGGER THE MODAL WHEN CLICK THE IMAGE-->
-                <img src="img/burger.jpeg" style=" border:10px solid cornflowerblue; border-radius: 50%" width="250" data-toggle="modal" data-target="#myModal"/>
+                <img src="img/burger.jpeg" style=" border:10px solid cornflowerblue; border-radius: 50%" width="250" data-toggle="modal" data-target="#firstModal"/>
                 <br>
-                <a data-toggle="modal" data-target="#myModal">Beef burger with chips</a>
+                <a data-toggle="modal" data-target="#firstModal">Beef burger with chips</a>
                 <br><br>
 
 <!--                Modal -->
-                <div id="myModal" class="modal fade" role="dialog">
+                <div id="firstModal" class="modal fade" role="dialog">
                     <div class="modal-dialog">
 <!--                        modal-sm-->
                         <!-- Modal content-->
@@ -84,7 +84,7 @@
         <div class="col-md-4 text-center">
             <h3>DESSERTS</h3>
             <div>
-                <img src="img/fruit.jpg" style=" border:10px solid darkslateblue; border-radius: 50%" width="250"  onclick="alert('Choose quantity')"/>
+                <img src="img/fruit.jpg" style=" border:10px solid darkslateblue; border-radius: 50%" width="250"/>
                 <br>Fruit Snack(80g)<br>
                 <b>£1.80</b>/unit<br>
 <!--                *CHANGE* CHOOSE THE QUANTITY WHEN CLICKED-->
@@ -120,7 +120,7 @@
         <div class="col-md-4 text-center">
             <h3>DRINK</h3>
             <div>
-                <img src="img/water.jpg" style=" border:10px solid slategrey; border-radius: 50%" width="250" onclick="alert('Choose quantity')"/>
+                <img src="img/water.jpg" style=" border:10px solid slategrey; border-radius: 50%" width="250"/>
                 <br>Water(100ml)<br>
                 <b>£0.70</b>/unit<br>
 <!--                *CHANGE* CHOOSE THE QUANTITY WHEN CLICKED-->
@@ -153,7 +153,26 @@
         </div>
         </div>
         <br><br>
-        <button class="btn-block btn-lg btn-secondary rounded" type="submit">Add to basket</button><br><br>
+        <button class="btn-block btn-lg btn-secondary rounded" type="submit" data-toggle="modal" data-target="#secondModal">Add to basket</button><br><br>
+            <!--                Modal -->
+            <div id="secondModal" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-sm">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Success!</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Order on (date) has successfully added to basket!</p>
+                        </div>
+                        <div class="modal-footer" action="">
+                            <button type="button" class="btn-primary rounded" data-dismiss="modal">Order More</button>
+                            <button type="button" class="btn-secondary rounded" data-dismiss="modal">View Basket</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 <!--    </div>-->
 <!--        </div>-->
 </div>
