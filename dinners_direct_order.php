@@ -167,8 +167,11 @@
                             <p>Order on (date) has successfully added to basket!</p>
                         </div>
                         <div class="modal-footer" action="">
-                            <button type="button" class="btn-primary rounded" data-dismiss="modal">Order More</button>
-                            <button type="button" class="btn-secondary rounded" data-dismiss="modal">View Basket</button>
+                            <button type="submit" class="btn btn-primary rounded" data-dismiss="modal" id="refresh">Order More</button>
+                            <button type="submit" class="btn btn-secondary rounded" data-dismiss="modal" id="toBasket">View Basket</button>
+<!--                            href="dinners_direct_order.php"-->
+<!--                            href="dinners_direct_basket.php"-->
+
                         </div>
                     </div>
                 </div>
