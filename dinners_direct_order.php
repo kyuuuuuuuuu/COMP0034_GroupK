@@ -4,16 +4,26 @@
         <h1>Place your order</h1>
     </div>
 
-    <div class="container">
+<!--    <div class="container">-->
         <div class="text-center">
-            <h2>Choose date</h2>
-            <input type="date" name="orderDate_"><br><br>
-            <button class="btn-secondary rounded btn-lg" type="submit">OK</button>
+            <br><br>
+            <h2>STEP 1: Choose date</h2><br>
+            <input type="date" name="orderDate_" required><br><br>
+            <a href="#section_">
+                <button class="btn-secondary rounded btn-lg" type="submit">OK</button></a>
+            </a>
+<!--            validate date-->
+<!--            today - two months from today-->
+            <br><br>
         </div>
 
-        <br><br>
-        <hr><br>
-        <p>Click items to choose quantity</p>
+        <div class="container">
+        <hr>
+        <div id="section_"><br>
+            <div class="text-center">
+                <h2> STEP 2: Choose items</h2>
+                <p>Click items to choose quantity</p><br><br>
+            </div>
         <div class="row">
         <div class="col-md-4 text-center">
         <h3>Main</h3>
@@ -128,5 +138,6 @@
         <br><br>
         <button class="btn-block btn-lg btn-secondary rounded" type="submit">Add to basket</button><br><br>
     </div>
+</div>
 
 <?php require_once ('dinners_direct_footer.php');?>
