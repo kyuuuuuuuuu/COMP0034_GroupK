@@ -8,9 +8,11 @@
     <title>DinnersDirect</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/dinnersDirect.css">
+<!--    <link rel="stylesheet" href="css/testingYJ.css">-->
     <script src="js/slideShow.js" defer></script>
     <script src="js/emptyfield.js" defer></script>
     <script src="js/form.js" defer></script>
+    <script src="js/order_date.js" defer></script>
     <script src="js/order_aftersubmit.js" defer></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
