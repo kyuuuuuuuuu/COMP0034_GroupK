@@ -5,10 +5,10 @@
 </div>
 <div class="container">
     <div class="text-center">
-        <h2>
+        <h4>
             Let's set up your account. Already have one? Log in
             <a href="dinners_direct_login.php">here.</a>
-        </h2>
+        </h4>
     </div>
 
     <div class="btn-group btn-group container-fluid align-items-center" role="group" aria-label="...">

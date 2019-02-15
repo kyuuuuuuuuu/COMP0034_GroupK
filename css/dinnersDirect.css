@@ -113,6 +113,10 @@ li a {
     background-color: #717171;
 }
 
+.hello{
+    border: 5px solid dimgrey;
+    border-radius: 5px;
+}
 
 /*.bg-myaccount {
     background: url("img/cake.jpeg");

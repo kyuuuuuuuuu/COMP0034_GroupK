@@ -9,10 +9,10 @@
 
     <div class="container">
         <div class="text-center">
-         <br><h2>
+         <br><h4>
                 Not a member? Sign up
                 <a href="dinners_direct_signup.php">here.</a><br>
-            </h2>
+            </h4>
         </div>
 
     <div class="col-lg-12 align-content-lg-center">
