@@ -64,7 +64,7 @@
                     <p class="text-danger" id="referenceStudent_error"></p>
                 </div>
             </div>
-            <button class="btn btn-block btn-outline-primary" name="submit" value="student" type="submit">Sign Up</button>
+            <button class="btn btn-block btn-primary" name="submit" value="student" type="submit">Sign Up</button>
         </form>
 
         <form style="display: none" name="registerForm" method="post" action="dinners_direct_myAccount.php" onsubmit="return validate('Admin');">
@@ -117,7 +117,7 @@
                     <p class="text-danger" id="referenceAdmin_error"></p>
                 </div>
             </div>
-            <button class="btn btn-block btn-outline-primary" name="submit" value="administrator" type="submit">Sign Up</button>
+            <button class="btn btn-block btn-primary" name="submit" value="administrator" type="submit">Sign Up</button>
         </form>
 
         <form style="display: none" name="registerForm" method="post" action="dinners_direct_myAccount.php" onsubmit="return validate('Parent');">
@@ -164,7 +164,7 @@
                     <p class="text-danger" id="referenceParent_error"></p>
                 </div>
             </div>
-            <button class="btn btn-block btn-outline-primary" name="submit" value="parent" type="submit">Sign Up</button>
+            <button class="btn btn-block btn-primary" name="submit" value="parent" type="submit">Sign Up</button>
         </form>
     </div>
 </div>
