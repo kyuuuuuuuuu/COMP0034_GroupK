@@ -5,6 +5,8 @@ function validate() {
 
     var email = document.getElementById("email_user");
     var pw = document.getElementById("password_user");
+
+
     if (email.value == "" || email.value.indexOf("@") == -1) {
 
         //Email is blank then add error message to variable email_error but doesn't send it to the HTML

@@ -113,10 +113,31 @@ li a {
     background-color: #717171;
 }
 
-.hello{
-    border: 5px solid dimgrey;
-    border-radius: 5px;
+
+/*Style under dinners_direct_order.php*/
+#redcolour {
+    color: darkred; !important;
 }
+
+.orderOutline1 {
+    border:10px solid cornflowerblue;
+    border-radius: 50%;
+}
+
+.orderOutline2 {
+    border:10px solid darkslateblue;
+    border-radius: 50%;
+}
+
+.orderOutline3 {
+    border:10px solid slategrey;
+    border-radius: 50%;
+}
+
+/*.hello{*/
+    /*border: 5px solid dimgrey;*/
+    /*border-radius: 5px;*/
+/*}*/
 
 /*.bg-myaccount {
     background: url("img/cake.jpeg");
