@@ -4,7 +4,7 @@
 
 
 <header class="card-header text-center">
-    <h1>Welcome to your student account!</h1>
+    <h1>Welcome to your Parent account!</h1>
 </header>
 
 
@@ -15,13 +15,13 @@
         <div class="col-md-4">
 
             <img class="img-profile rounded-circle" src="img/kien.jpg" style="width:200px;height:200px;"><br>
-           <h2 class="text-left">Trung Kien Nguyen </h2>
-<!--            <div class="name"><small>Trung Kien Nguyen</small></div><br><br>-->
+            <h2 class="text-left">Trung Kiên NGuyễn's Mẹ </h2>
+            <!--            <div class="name"><small>Trung Kien Nguyen</small></div><br><br>-->
         </div>
-    <div class="col-md-7">
-        <br><br>
-        <h3 >Xin Chao Kien. From your account dashboard, you can view your recent orders, edit your password and account details. </h3>
-    </div>
+        <div class="col-md-7">
+            <br><br>
+            <h3 >Xin Chao Kiên's Mẹ. From your account dashboard, you can view your child's recent orders, edit your password and account details. </h3>
+        </div>
     </div>
 
 
