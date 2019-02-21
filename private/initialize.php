@@ -15,7 +15,8 @@ $doc_root = substr($_SERVER['SCRIPT_NAME'],0, $public_end);
 define("WWW_ROOT", $doc_root);
 //echo "<br>echo not cecho";
 //echo "<br>WWW ROOT here: " . WWW_ROOT;
-require_once('functions.php');
+
+include ('functions.php');
 
 
 

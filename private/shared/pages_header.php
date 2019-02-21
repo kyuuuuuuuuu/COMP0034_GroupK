@@ -1,7 +1,7 @@
 
 
 <?php require_once('data_base_connection.php'); ?>
-<?php //require_once('../initialize.php'); ?>
+<?php include('../initialize.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
