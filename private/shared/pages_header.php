@@ -1,5 +1,7 @@
-<?php require_once('data_base_connection.php'); ?>
 
+
+<?php require_once('data_base_connection.php'); ?>
+<?php //require_once('../initialize.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +31,7 @@
         <img src="../../public/img/logo.jpg" alt="DinnersDirect Logo" height="60" />
     </a>
 <!--    <a href="index.php" class="a">HOME</a>-->
-    <a href="../../public/pages/order.php" class="a">ORDER</a>
+    <a href="../../public/pages/order.php">ORDER</a>
     <a href="../../public/pages/login.php" class="a">LOGIN</a>
     <a href="../../public/pages/signup.php" class="a">SIGN UP</a>
     <a href="../../public/pages/myaccount.php" class="a">MY ACCOUNT</a>
