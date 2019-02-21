@@ -1,0 +1,168 @@
+header{
+    background-color: beige;
+    font-size: 15px;
+    font-family: helvetica;
+}
+
+.logoformat{
+    height: auto;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.menuimage{
+    max-width:90%;
+    margin:auto;
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-top-right-radius: calc(0.25rem - 1px);
+}
+
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+}
+
+li {
+    align: center;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    font-size:20px;
+}
+
+/* Slideshow container */
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+    display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+    background-color: #717171;
+}
+
+
+/*Style under order.php*/
+#redcolour {
+    color: darkred; !important;
+}
+
+.orderOutline1 {
+    border:10px solid cornflowerblue;
+    border-radius: 50%;
+}
+
+.orderOutline2 {
+    border:10px solid darkslateblue;
+    border-radius: 50%;
+}
+
+.orderOutline3 {
+    border:10px solid slategrey;
+    border-radius: 50%;
+}
+
+
+/*.hello{*/
+    /*border: 5px solid dimgrey;*/
+    /*border-radius: 5px;*/
+/*}*/
+
+/*.bg-myaccount {
+    background: url("img/cake.jpeg");
+    background-size: cover;
+    background-position: center;
+}
+
+/*.btn-yeojin {*/
+    /*color: #fff;*/
+    /*background-color: #0f6674;*/
+    /*border-color: #0f6674;*/
+/*}*/
+
+/*.input-group-addon {*/
+    /*padding: .375rem .75rem;*/
+    /*margin-bottom: 0;*/
+    /*font-size: 1rem;*/
+    /*font-weight: 400;*/
+    /*line-height: 1.5;*/
+    /*color: #495057;*/
+    /*text-align: center;*/
+    /*background-color: #e9ecef;*/
+    /*border: 1px solid #ced4da;*/
+/*}*/
+
+/*!*.input-group-addon{color:#3c763d;background-color:#dff0d8;border-color:#3c763d}*!*/
+/*.glyphicon-calendar:before{content:"\e109"}*/
