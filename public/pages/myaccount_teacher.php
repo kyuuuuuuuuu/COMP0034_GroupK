@@ -1,7 +1,5 @@
 <?php require_once('../../private/shared/pages_header.php');?>
 
-<?php require('../../private/functions.php') ?>
-
 
 <header class="card-header text-center">
     <h1>Welcome to your Teacher's Account!</h1>
@@ -31,17 +29,105 @@
         <div class="col-lg-4">
 
             <div class="nav list-group text-center text-uppercase">
-                <a class="nav-link list-group-item" href="#">Profile</a>
-                <a class="nav-link list-group-item" href="myaccount_teacher_approvestudents.php">Approve Students</a>
-                <a class="nav-link list-group-item" href="myaccount_teacher_studentrecords.php">View Students' Records</a>
-                <a class="nav-link list-group-item" href="myaccount_editaccount.php">Edit Account</a>
-                <a class="nav-link list-group-item" href="index.php">Logout</a>
+                <a class="nav-link list-group-item" onclick="selectTeacherTab(0)">Profile</a>
+                <a class="nav-link list-group-item" onclick="selectTeacherTab(1)">Approve Students</a>
+                <a class="nav-link list-group-item" onclick="selectTeacherTab(2)">View Students' Records</a>
+                <a class="nav-link list-group-item" onclick="selectTeacherTab(3)">Edit Account</a>
+                <a class="nav-link list-group-item" href="#">Logout</a>
             </div>
 
         </div>
         <hr class="sidebar-divider d-none d-md-block">
         <div class="col-lg-8">
-            <div class="tab-content">
+            <div name="abc" style="display: none" class="tab-content">
+                <h1>Profile</h1>
+
+            </div>
+            <div name="abc" style="display: none" class="tab-content">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">No.</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Email Address</th>
+                        <th scope="col">Approve Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Trung Kien</td>
+                        <td>Nguyen</td>
+                        <td>zcectkn@ucl.ac.uk</td>
+                        <td><button class="btn btn-primary btn-block" type="submit">Approve</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Yeo Jin</td>
+                        <td>Lee</td>
+                        <td>zcecyjl@ucl.ac.uk</td>
+                        <td><button class="btn btn-primary btn-block" type="submit">Approve</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Koon Yew</td>
+                        <td>Ling</td>
+                        <td>zceckyl@ucl.ac.uk</td>
+                        <td><button class="btn btn-primary btn-block" type="submit">Approve</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div name="abc" style="display: none" class="tab-content">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">No.</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Email Address</th>
+                        <th scope="col">Order ID</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Trung Kien</td>
+                        <td>Nguyen</td>
+                        <td>zcectkn@ucl.ac.uk</td>
+                        <td>a123c</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Yeo Jin</td>
+                        <td>Lee</td>
+                        <td>zcecyjl@ucl.ac.uk</td>
+                        <td>b234d</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Koon Yew</td>
+                        <td>Ling</td>
+                        <td>zceckyl@ucl.ac.uk</td>
+                        <td>c345e</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div name="abc" style="display: none" class="tab-content">
+                <label>Email Address:</label>
+                <input type="email" class="form-control" placeholder="Enter your email"><br>
+                <label>Current Password:</label>
+                <input type="password" class="form-control" placeholder="Enter your current password"><br>
+                <label>New Password:</label>
+                <input type="password" class="form-control" placeholder="Enter your new password">
+                <br>
+
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+
 
             </div>
         </div>
@@ -93,5 +179,6 @@
 <!--    </div>-->
 <!--</div>-->
 <!--</nav>-->
+
 <?php require_once('../../private/shared/pages_footer.php');?>
 

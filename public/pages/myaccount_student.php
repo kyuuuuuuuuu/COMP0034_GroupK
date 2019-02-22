@@ -1,8 +1,5 @@
 <?php require_once('../../private/shared/pages_header.php');?>
 
-<?php require('../../private/functions.php') ?>
-
-
 <header class="card-header text-center">
     <h1>Welcome to your student account!</h1>
 </header>
@@ -31,17 +28,38 @@
         <div class="col-lg-4">
 
             <div class="nav list-group text-center text-uppercase">
-                <a class="nav-link list-group-item" href="#v-pills-home">Profile</a>
-                <a class="nav-link list-group-item" href="#v-pills-profile">View Orders</a>
-                <a class="nav-link list-group-item" href="myaccount_editaccount.php">Edit Account</a>
-                <a class="nav-link list-group-item" href="index.php">Logout</a>
+                <a class="nav-link list-group-item" onclick="selectStudentTab(0)">Profile</a>
+                <a class="nav-link list-group-item" onclick="selectStudentTab(1)">View Orders</a>
+                <a class="nav-link list-group-item" onclick="selectStudentTab(2)">Edit Account</a>
+                <a class="nav-link list-group-item" href="#">Logout</a>
             </div>
 
         </div>
         <hr class="sidebar-divider d-none d-md-block">
         <div class="col-lg-8">
             <div class="tab-content">
+                <div name="abcd" style="display: none" class="tab-content">
+                    <h1>Profile</h1>
 
+                </div>
+                <div name="abcd" style="display: none" class="tab-content">
+                    <h1>View Order</h1>
+
+                </div>
+                <div name="abcd" style="display: none" class="tab-content">
+                    <label>Email Address:</label>
+                    <input type="email" class="form-control" placeholder="Enter your email"><br>
+                    <label>Current Password:</label>
+                    <input type="password" class="form-control" placeholder="Enter your current password"><br>
+                    <label>New Password:</label>
+                    <input type="password" class="form-control" placeholder="Enter your new password">
+
+                    <br>
+
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+
+
+                </div>
             </div>
         </div>
     </div>

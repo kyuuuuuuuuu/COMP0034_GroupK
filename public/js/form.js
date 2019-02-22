@@ -1,7 +1,43 @@
+function selectTeacherTab(index) {
+    var teachertab = document.getElementsByName("abc");
+
+    for (let i = 0 ; i < teachertab.length; i++) {
+        if (i === index) {
+            teachertab[i].style.display = "";
+        } else {
+            teachertab[i].style.display = "none";
+        }
+    }
+}
+
+function selectStudentTab(index) {
+    var studenttab = document.getElementsByName("abcd");
+
+    for (let i = 0 ; i < studenttab.length; i++) {
+        if (i === index) {
+            studenttab[i].style.display = "";
+        } else {
+            studenttab[i].style.display = "none";
+        }
+    }
+}
+
+function selectParentTab(index) {
+    var parenttab = document.getElementsByName("abcde");
+
+    for (let i = 0 ; i < parenttab.length; i++) {
+        if (i === index) {
+            parenttab[i].style.display = "";
+        } else {
+            parenttab[i].style.display = "none";
+        }
+    }
+}
+
 function selectForm(index) {
     var forms = document.getElementsByName("registerForm");
 
-    for (var i = 0; i <= 2; i++) {
+    for (let i = 0; i <= 2; i++) {
         if (i === index) {
             forms[i].style.display = "";
         } else {
@@ -112,3 +148,4 @@ function validate(type) {
 
     return verification;
 }
+
