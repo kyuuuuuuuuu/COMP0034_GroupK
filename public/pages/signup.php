@@ -16,7 +16,8 @@
         <button type="button" class="btn btn-primary" onclick="selectForm(1)">Administrator</button>
         <button type="button" class="btn btn-primary" onclick="selectForm(2)">Parent</button>
     </div>
-
+<?php session_start();
+echo $_SESSION['id'] ?? '';?>
     <!--Sign up form-->
     <div class="col-lg-12 align-content-lg-center">
 

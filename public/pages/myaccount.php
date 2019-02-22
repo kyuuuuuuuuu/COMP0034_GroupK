@@ -8,6 +8,12 @@
 
 
 <?php
+echo "hello";
+session_start();
+$_SESSION['id'] = "sent";
+echo "session started";
+header('Location: signup.php');
+
 $checked = 0;
 //Validation of user input :)
 if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -90,6 +96,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             $query = "INSERT INTO $accType (first_name, last_name, email_address, phone_number, password) "
                 ."VALUES ('$fname', '$lname', '$email', '$phone', '$pw')";
         }
+
+
         if (mysqli_query($db, $query)) {
             echo "<br>Data is saved succesfully";
         } else {
