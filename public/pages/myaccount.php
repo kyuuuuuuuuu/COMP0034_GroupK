@@ -1,19 +1,11 @@
 <?php require_once('../../private/shared/pages_header.php');?>
 
-<?php require('../../private/functions.php') ?>
-
 <div class="card-header text-center">
     <h1>Welcome to My Account</h1>
 </div>
 
 
 <?php
-echo "hello";
-session_start();
-$_SESSION['id'] = "sent";
-echo "session started";
-header('Location: signup.php');
-
 $checked = 0;
 //Validation of user input :)
 if($_SERVER["REQUEST_METHOD"] == "POST") {

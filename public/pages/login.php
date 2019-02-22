@@ -1,7 +1,5 @@
 <?php require_once('../../private/shared/pages_header.php');?>
 
-<?php require('../../private/functions.php') ?>
-
 
     <div class="card-header text-center">
         <h1>Welcome to DinnersDirect</h1>
