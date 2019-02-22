@@ -1,4 +1,5 @@
-<?php require_once('../../private/shared/pages_header.php');?>
+<?php session_start();
+require_once('../../private/shared/pages_header.php');?>
 
 <div class="card-header text-center">
     <h1>Welcome to My Account</h1>
@@ -7,6 +8,7 @@
 
 <?php
 $checked = 0;
+
 //Validation of user input :)
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     $checked = 0;
@@ -14,6 +16,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $email_empty = "Email is required";
     } else{
         $email = test_input($_POST["email"]);
+        if (check_email($db, $email)) {
+            echo $email . " is existed, please choose another one.<br>";
+            $_SESSION['error'] = "<br>" . $email . " is existed, please choose another one.<br>";
+            header('location: signup.php');
+            exit();
+        }
         $checked++;
     };
 

@@ -1,4 +1,5 @@
-<?php require_once('../../private/shared/pages_header.php');?>
+<?php session_start();
+require_once('../../private/shared/pages_header.php');?>
 
 <div class="card-header text-center">
     <h1>Welcome to DinnersDirect</h1>
@@ -9,6 +10,14 @@
             Let's set up your account. Already have one? Log in
             <a href="login.php">here.</a>
         </h4>
+        <h5 class="text-danger">
+            <strong>
+                <?php if(isset($_SESSION['error'])) {
+                    echo $_SESSION['error'];
+                    unset($_SESSION['error']);
+                }?>
+            </strong>
+        </h5>
     </div>
 
     <div class="btn-group btn-group container-fluid align-items-center" role="group" aria-label="...">
@@ -16,8 +25,8 @@
         <button type="button" class="btn btn-primary" onclick="selectForm(1)">Administrator</button>
         <button type="button" class="btn btn-primary" onclick="selectForm(2)">Parent</button>
     </div>
-<?php session_start();
-echo $_SESSION['id'] ?? '';?>
+
+
     <!--Sign up form-->
     <div class="col-lg-12 align-content-lg-center">
 

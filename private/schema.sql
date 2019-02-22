@@ -23,7 +23,7 @@ CREATE TABLE administrator (
                              email_address varchar(100) NOT NULL,
                              first_name varchar (100) NOT NULL,
                              last_name varchar(100) NOT NULL,
-                             phone_number int(20),
+                             phone_number varchar(20),
                              password varchar(25) NOT NULL,
                              last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                              PRIMARY KEY (admin_id)
@@ -34,7 +34,7 @@ CREATE TABLE student (
                        email_address varchar(100) NOT NULL,
                        first_name varchar (100) NOT NULL,
                        last_name varchar(100) NOT NULL,
-                       phone_number int(20),
+                       phone_number varchar(20),
                        password varchar(25) NOT NULL,
                        status smallint default 0,
                        last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -46,7 +46,7 @@ CREATE TABLE parent (
                       email_address varchar(100) NOT NULL,
                       first_name varchar (100) NOT NULL,
                       last_name varchar(100) NOT NULL,
-                      phone_number int(20),
+                      phone_number varchar(20),
                       password varchar(25) NOT NULL,
                       status smallint default 0,
                       last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -111,3 +111,7 @@ CREATE TABLE order_detail (
   FOREIGN KEY(student_id) REFERENCES student(student_id),
   FOREIGN KEY(parent_id) REFERENCES parent(parent_id),
   FOREIGN KEY(admin_id) REFERENCES school_administrator(admin_id));*/
+DROP USER IF EXISTS 'dinnersdirect'@'localhost';
+CREATE USER 'dinnersdirect'@'localhost' IDENTIFIED BY 'groupk';
+GRANT USAGE ON *.* TO 'dinnersdirect'@'localhost' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
+GRANT ALL PRIVILEGES ON `dinnersdirect`.* TO 'dinnersdirect'@'localhost';

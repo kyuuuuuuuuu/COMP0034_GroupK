@@ -28,5 +28,62 @@ function url_for($script_path) {
     }
     return WWW_ROOT . $script_path;
 }
+
+
+
+function check_email_student ($db,$user_input) {
+    $existence = false;
+    $table_student_query = "SELECT * FROM student";
+    $result_student_table = mysqli_query($db, $table_student_query);
+
+    while (!$existence && $result = mysqli_fetch_assoc($result_student_table)) {
+        if ($user_input == $result['email_address']) {
+            $existence = true;
+            echo $user_input . " is found in student table<br>";
+        }
+    }
+    return $existence;
+}
+
+function check_email_parent ($db,$user_input) {
+    $existence = false;
+    $table_parent_query = "SELECT * FROM parent";
+    $result_parent_table = mysqli_query($db, $table_parent_query);
+
+    while (!$existence && $result = mysqli_fetch_assoc($result_parent_table)) {
+        if ($user_input == $result['email_address']) {
+            $existence = true;
+            echo $user_input . " is found in parent table<br>";
+        }
+    }
+    return $existence;
+}
+
+function check_email_admin ($db,$user_input) {
+    $existence = false;
+    $table_admin_query = "SELECT * FROM administrator";
+    $result_admin_table = mysqli_query($db, $table_admin_query);
+
+    while (!$existence && $result = mysqli_fetch_assoc($result_admin_table)) {
+        if ($user_input == $result['email_address']) {
+            $existence = true;
+            echo $user_input . " is found in admin table<br>";
+        }
+    }
+    return $existence;
+}
+function check_email($db, $user_input) {
+    $existence = false;
+    if (!$existence) {
+        $existence = check_email_student($db,$user_input);
+    }
+    if (!$existence) {
+        $existence = check_email_admin($db,$user_input);
+    }
+    if (!$existence) {
+        $existence = check_email_parent($db,$user_input);
+    }
+    return $existence;
+}
 ?>
 
