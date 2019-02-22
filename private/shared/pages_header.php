@@ -27,15 +27,15 @@
 <!--<h4>DinnersDirect</h4>-->
 <div class="navbar navbar-light bg-light">
     <!-- Logo image attached to Nav Bar -->
-    <a href="../../public/pages/index.php" class="a">
+    <a href="<?php echo url_for('/pages/index.php'); ?>" class="a">
         <img src="../../public/img/logo.jpg" alt="DinnersDirect Logo" height="60" />
     </a>
 <!--    <a href="index.php" class="a">HOME</a>-->
-    <a href="../../public/pages/order.php">ORDER</a>
-    <a href="../../public/pages/login.php" class="a">LOGIN</a>
-    <a href="../../public/pages/signup.php" class="a">SIGN UP</a>
-    <a href="../../public/pages/myaccount.php" class="a">MY ACCOUNT</a>
-    <a href="../../public/pages/basket.php" class="a">BASKET</a>
+    <a href="<?php echo url_for('/pages/order.php'); ?>">ORDER</a>
+    <a href="<?php echo url_for('/pages/login.php'); ?>" class="a">LOGIN</a>
+    <a href="<?php echo url_for('/pages/signup.php'); ?>" class="a">SIGN UP</a>
+    <a href="<?php echo url_for('/pages/myaccount.php'); ?>" class="a">MY ACCOUNT</a>
+    <a href="<?php echo url_for('/pages/basket.php'); ?>" class="a">BASKET</a>
     <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

@@ -24,7 +24,7 @@
         <div class="col-md-4" align="center">
         <h3>MAIN</h3>
             <div>
-                <img src="../img/burger.jpeg" style="border:10px solid cornflowerblue; border-radius: 50%" width="250" data-toggle="modal" data-target="#Modal1"/>
+                <img src="../img/burger.jpeg" class="orderOutline1" width="250" data-toggle="modal" data-target="#Modal1"/>
                 <?php
                 $title="Beef burger with chips";
                 $price=3.50;
