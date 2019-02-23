@@ -24,12 +24,25 @@
         <div class="col-md-4" align="center">
         <h3>MAIN</h3>
             <div>
-                <img src="../img/burger.jpeg" alt="Burger Image" class="orderOutline1" width="250" data-toggle="modal" data-target="#Modal1"/>
+                <img src="../img/burger.jpeg" alt="Burger Image" class="orderOutline1" width="250" data-toggle="modal" data-target="#Modal0"/>
                 <?php
                 $title="Beef burger with chips";
                 $price=3.50;
                 $des="This is a description of Burger.";
                 $foodID="burgerQuantity";
+                $modal_id = 0;
+                include("modal.php"); ?>
+            </div>
+            <br>
+
+
+            <div>
+                <img src="../img/koleno.jpeg" alt="Koleno Image" class="orderOutline1" width="250" data-toggle="modal" data-target="#Modal1"/>
+                <?php
+                $title="Koleno";
+                $price=2.70;
+                $des="This is a description of Koleno.";
+                $foodID="kolenoQuantity";
                 $modal_id = 1;
                 include("modal.php"); ?>
             </div>
@@ -37,26 +50,13 @@
 
 
             <div>
-                <img src="../img/koleno.jpeg" alt="Koleno Image" class="orderOutline1" width="250" data-toggle="modal" data-target="#Modal2"/>
-                <?php
-                $title="Koleno";
-                $price=2.70;
-                $des="This is a description of Koleno.";
-                $foodID="kolenoQuantity";
-                $modal_id = 2;
-                include("modal.php"); ?>
-            </div>
-            <br>
-
-
-            <div>
-                <img src="../img/lamb.jpeg" alt="Lamb Image" class="orderOutline1" width="250" data-toggle="modal" data-target="#Modal3"/>
+                <img src="../img/lamb.jpeg" alt="Lamb Image" class="orderOutline1" width="250" data-toggle="modal" data-target="#Modal2"/>
                 <?php
                 $title="Lamb";
                 $price=2.50;
                 $des="This is a description of Lamb.";
                 $foodID="lambQuantity";
-                $modal_id = 3;
+                $modal_id = 2;
                 include("modal.php"); ?>
             </div>
         </div>
@@ -66,12 +66,25 @@
         <div class="col-md-4" align="center">
             <h3>DESSERTS</h3>
             <div>
-                <img src="../img/fruit.jpg" alt="Fruit Snack Image" class="orderOutline1" width="250" data-toggle="modal" data-target="#Modal4"/>
+                <img src="../img/fruit.jpg" alt="Fruit Snack Image" class="orderOutline1" width="250" data-toggle="modal" data-target="#Modal3"/>
                 <?php
                 $title="Fruit Snack (80g)";
                 $price=1.80;
                 $des="This is a description of Fruit Snack.";
                 $foodID="fruitQuantity";
+                $modal_id = 3;
+                include("modal.php"); ?>
+            </div>
+            <br>
+
+
+            <div>
+                <img src="../img/rvCake.jpeg" alt="rvCake Image" class="orderOutline1" width="250" data-toggle="modal" data-target="#Modal4"/>
+                <?php
+                $title="Red velvet Cake";
+                $price=2.00;
+                $des="This is a description of rvCake.";
+                $foodID="rvQuantity";
                 $modal_id = 4;
                 include("modal.php"); ?>
             </div>
@@ -79,26 +92,13 @@
 
 
             <div>
-                <img src="../img/rvCake.jpeg" alt="rvCake Image" class="orderOutline1" width="250" data-toggle="modal" data-target="#Modal5"/>
-                <?php
-                $title="Red velvet Cake";
-                $price=2.00;
-                $des="This is a description of rvCake.";
-                $foodID="rvQuantity";
-                $modal_id = 5;
-                include("modal.php"); ?>
-            </div>
-            <br>
-
-
-            <div>
-                <img src="../img/cake.jpeg" alt="Cake Image" class="orderOutline1" width="250" data-toggle="modal" data-target="#Modal6"/>
+                <img src="../img/cake.jpeg" alt="Cake Image" class="orderOutline1" width="250" data-toggle="modal" data-target="#Modal5"/>
                 <?php
                 $title="Strawberry cake";
                 $price=2.00;
                 $des="This is a description of Cake.";
                 $foodID="cakeQuantity";
-                $modal_id = 6;
+                $modal_id = 5;
                 include("modal.php"); ?>
             </div>
         </div>
@@ -108,11 +108,23 @@
         <div class="col-md-4" align="center">
             <h3>DRINK</h3>
             <div>
-                <img src="../img/water.jpg" alt="Water Image" class="orderOutline1" width="250" data-toggle="modal" data-target="#Modal7"/>
+                <img src="../img/water.jpg" alt="Water Image" class="orderOutline1" width="250" data-toggle="modal" data-target="#Modal6"/>
                 <?php
                 $title="Water (100ml)";
                 $price=0.70;
                 $des="This is a description of Water.";
+                $modal_id = 6;
+                include("modal.php"); ?>
+            </div>
+            <br>
+
+
+            <div>
+                <img src="../img/AppleJuice.jpg" alt="Apple Juice Image" class="orderOutline1" width="250" data-toggle="modal" data-target="#Modal7"/>
+                <?php
+                $title="Innocent Apple juice (100ml)";
+                $price=1.20;
+                $des="This is a description of Apple Juice.";
                 $modal_id = 7;
                 include("modal.php"); ?>
             </div>
@@ -120,24 +132,12 @@
 
 
             <div>
-                <img src="../img/AppleJuice.jpg" alt="Apple Juice Image" class="orderOutline1" width="250" data-toggle="modal" data-target="#Modal8"/>
-                <?php
-                $title="Innocent Apple juice (100ml)";
-                $price=1.20;
-                $des="This is a description of Apple Juice.";
-                $modal_id = 8;
-                include("modal.php"); ?>
-            </div>
-            <br>
-
-
-            <div>
-                <img src="../img/coke.jpg" alt="Coke Image" class="orderOutline1" width="250" data-toggle="modal" data-target="#Modal9"/>
+                <img src="../img/coke.jpg" alt="Coke Image" class="orderOutline1" width="250" data-toggle="modal" data-target="#Modal8"/>
                 <?php
                 $title="Coke (330ml)";
                 $price=1.20;
                 $des="This is a description of Coke.";
-                $modal_id = 9;
+                $modal_id = 8;
                 include("modal.php"); ?>
             </div>
             <br>

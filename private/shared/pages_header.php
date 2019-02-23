@@ -14,9 +14,7 @@
     <script src="../../public/js/slideShow.js" defer></script>
     <script src="../../public/js/emptyfield.js" defer></script>
     <script src="../../public/js/form.js" defer></script>
-    <script src="../../public/js/order_date.js" defer></script>
-    <script src="../../public/js/order_quantity.js" defer></script>
-    <script src="../../public/js/order_aftersubmit.js" defer></script>
+    <script src="../../public/js/order.js" defer></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
