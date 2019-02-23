@@ -114,7 +114,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             $data_student = get_data($db,$reference,'student','email_address');
 
             if ($data_parent == 'Not Found' || $data_student == 'Not Found') {
-                echo "<br>Error occurs, Data not found!! <br>";
+                echo "<br>Error occurs, Data not found!! <strong>You need to import schema.sql and data.sql to your database!!!</strong><br>";
                 exit;
             }
             $id_s = $data_student['student_id'];
@@ -131,7 +131,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             $data_student = get_data($db,$email,'student','email_address');
 
             if ($data_admin == 'Not Found' || $data_student == 'Not Found') {
-                echo "<br>Error occurs, Data not found!! <br>";
+                echo "<br>Error occurs, Data not found!! <strong>You need to import schema.sql and data.sql to your database!!!</strong><br>";
                 exit;
             }
             $id_s = $data_student['student_id'];
@@ -149,7 +149,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             $data_school = get_data($db,$reference,'school','school_name');
 
             if ($data_admin == 'Not Found' || $data_school == 'Not Found') {
-                echo "<br>Error occurs, Data not found!! <br>";
+                echo "<br>Error occurs, Data not found!! <strong>You need to import schema.sql and data.sql to your database!!!</strong><br>";
                 exit;
             }
             $id_s = $data_school['school_id'];
