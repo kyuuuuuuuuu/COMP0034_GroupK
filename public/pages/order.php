@@ -9,12 +9,12 @@
             <form action="" method="get" onsubmit="">
                 <h2>STEP 1: Choose date</h2><br>
                 <input type="date" id="thisdate" required><br><br>
-                    <button class="btn-secondary rounded btn-lg" onclick="window.location.href='#step2'" type="submit">OK</button></a>
+                    <button class="btn-secondary rounded btn-lg" onclick="datevalidation();" type="button">OK</button></a>
             </form>
             <br><br><hr><br>
         </div>
-<br>
 
+<div id="menuitem" style="display: none" >
         <div>
             <div id="step2">
                 <h2> STEP 2: Choose items</h2>
@@ -175,5 +175,6 @@
                 <br><br><br><br><br>
             </div>
         </div>
+    </div>
     </div>
 <?php require_once('../../private/shared/pages_footer.php');?>

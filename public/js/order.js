@@ -76,3 +76,27 @@ console.log(quantity_id);
 let quantity = document.getElementById(quantity_id).value;
 console.log(quantity);
 }
+
+
+function datevalidation() {
+let checked = false;
+    var date_input = document.getElementById('thisdate').value;
+    // console.log(date_input);
+    // console.log(Date.parse(date_input));
+
+
+    if (Date.parse(date_input)) {
+        checked = true;
+    }else {
+        alert("You need to input the date between " + today + " and " + maxDate);
+        //checked =false;
+    }
+
+
+    if (checked) {
+        var orderdate = document.getElementById("menuitem");
+        orderdate.style.display = "";
+    }
+// console.log(checked);
+    return checked;
+}
