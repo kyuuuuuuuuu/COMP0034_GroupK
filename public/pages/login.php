@@ -1,4 +1,5 @@
-<?php require_once('../../private/shared/pages_header.php');?>
+<?php session_start();
+require_once('../../private/shared/pages_header.php');?>
 
 
     <div class="card-header text-center">
@@ -11,11 +12,19 @@
                 Not a member? Sign up
                 <a href="signup.php">here.</a><br>
             </h4>
+            <h5 class="text-danger">
+                <strong>
+                    <?php if(isset($_SESSION['error'])) {
+                        echo $_SESSION['error'];
+                        unset($_SESSION['error']);
+                    }?>
+                </strong>
+            </h5>
         </div>
 
     <div class="col-lg-12 align-content-lg-center">
 
-        <form method="post" action="" onsubmit="return validate();">
+        <form method="post" action="after_login.php" onsubmit="return validate();">
             <h6 class="text-center">Fields with * are required.</h6><br>
 
                 <div class="form-row">
