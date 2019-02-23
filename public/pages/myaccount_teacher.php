@@ -40,7 +40,7 @@
         <hr class="sidebar-divider d-none d-md-block">
         <div class="col-lg-8">
             <div name="abc" style="display: none" class="tab-content">
-                <h1>Profile</h1>
+                <h1>Teacher Profile</h1>
 
             </div>
             <div name="abc" style="display: none" class="tab-content">

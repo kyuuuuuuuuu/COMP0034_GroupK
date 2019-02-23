@@ -73,7 +73,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $reference = test_input($_POST["reference"]);
         if (!check_email_admin($db, $reference)) {
             //echo $email . " is not a valid admin's email, please choose another one.<br>";
-            $_SESSION['error'] = "<br>" . $email . " is not a valid admin's email, please choose another one.<br>";
+            $_SESSION['error'] = "<br>" . $reference . " is not a valid admin's email, please choose another one.<br>";
             redirect_to(url_for('pages/signup.php'));
         }
     }elseif ($accType == 'parent') {

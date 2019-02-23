@@ -122,14 +122,6 @@ function validate(type) {
         //console.log(values[fields[i]]);
         //console.log(document.getElementById(fields[i]).value);
     }
-    //console.log(values[fields[3]]);
-    //console.log(values[fields[4]]);
-    // if (values[fields[4]] !== "" && values[fields[4]] !== values[fields[3]]) {
-    //     let error_field = fields[4] + "_error";
-    //     console.log(error_field);
-    //     document.getElementById(error_field).innerHTML = "Password confirmation need to be exactly same as Password";
-    //     verification = false;
-    // }
 
     for (var j = 0; j < fields.length; j++) {
         var validators = schema[schema_fields[j]];
@@ -147,6 +139,16 @@ function validate(type) {
             }
         }
     }
+    //console.log(fields[3]);
+    //console.log(values[fields[3]]);
+    //console.log(values[fields[4]]);
+    if (values[fields[4]] !== "" && values[fields[4]] !== values[fields[3]]) {
+        let error_field = fields[4] + "_error";
+        //console.log(error_field);
+        document.getElementById(error_field).innerHTML = "Password confirmation need to be exactly same as Password";
+        verification = false;
+    }
+
 
 
     return verification;

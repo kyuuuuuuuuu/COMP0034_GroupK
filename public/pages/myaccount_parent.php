@@ -41,7 +41,7 @@
         <div class="col-lg-8">
             <div class="tab-content">
                 <div name="abcde" style="display: none" class="tab-content">
-                    <h1>Profile</h1>
+                    <h1>Parent Profile</h1>
 
                 </div>
                 <div name="abcde" style="display: none" class="tab-content">

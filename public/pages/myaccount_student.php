@@ -39,7 +39,7 @@
         <div class="col-lg-8">
             <div class="tab-content">
                 <div name="abcd" style="display: none" class="tab-content">
-                    <h1>Profile</h1>
+                    <h1>Student Profile</h1>
 
                 </div>
                 <div name="abcd" style="display: none" class="tab-content">
