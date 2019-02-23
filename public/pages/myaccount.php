@@ -120,7 +120,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             $id_s = $data_student['student_id'];
             $id_p = $data_parent['parent_id'];
             $query_id_link = "INSERT INTO student_parent (student_id, parent_id) VALUES ('$id_s', '$id_p')";
-            echo $query_id_link;
+            //echo $query_id_link;
             submit_query($db, $query_id_link);
         }elseif ($accType == 'student') {
             echo "Dinnersdirect data base is successfully connected";
@@ -137,7 +137,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             $id_s = $data_student['student_id'];
             $id_a = $data_admin['admin_id'];
             $query_id_link = "INSERT INTO admin_student (student_id, admin_id) VALUES ('$id_s', '$id_a')";
-            echo $query_id_link;
+            //echo $query_id_link;
             submit_query($db, $query_id_link);
 
         }elseif ($accType == 'administrator') {
@@ -155,7 +155,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             $id_s = $data_school['school_id'];
             $id_a = $data_admin['admin_id'];
             $query_id_link = "INSERT INTO school_admin (admin_id, school_id) VALUES ('$id_a', '$id_s')";
-            echo $query_id_link;
+            //echo $query_id_link;
             submit_query($db, $query_id_link);
         }else {
             echo "unknown";
