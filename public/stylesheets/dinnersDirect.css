@@ -115,42 +115,54 @@ li a {
 
 
 /*Style under order.php*/
+
+
+#step1, #step2, #step3, .col-md-4 {
+    text-align: center;
+}
+
 #redcolour {
-    color: darkred; !important;
+    color: darkred;
 }
 
 .orderOutline1 {
     border:10px solid cornflowerblue;
     border-radius: 50%;
+    width: 250px;
 }
 
 .orderOutline2 {
     border:10px solid darkslateblue;
     border-radius: 50%;
+    width: 250px;
 }
 
 .orderOutline3 {
     border:10px solid slategrey;
     border-radius: 50%;
+    width: 250px;
 }
 
 
-/*.hello{*/
-    /*border: 5px solid dimgrey;*/
-    /*border-radius: 5px;*/
-/*}*/
-
-/*.bg-myaccount {
-    background: url("img/cake.jpeg");
-    background-size: cover;
-    background-position: center;
+#orderTable {
+    width:100%;
 }
 
-/*.btn-yeojin {*/
-    /*color: #fff;*/
-    /*background-color: #0f6674;*/
-    /*border-color: #0f6674;*/
-/*}*/
+#orderHeading {
+
+}
+
+#toPayment {
+    float:right;
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+    padding: 0.5rem 1rem;
+    font-size: 1.75rem;
+    line-height: 1.5;
+    border-radius: 0.3rem;
+}
+
 
 /*.input-group-addon {*/
     /*padding: .375rem .75rem;*/

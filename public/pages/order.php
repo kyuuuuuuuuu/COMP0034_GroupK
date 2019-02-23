@@ -4,7 +4,7 @@
         <h1>Place your order</h1>
     </div>
     <div class="container">
-        <div id="step1" align="center">
+        <div id="step1">
             <br><br>
             <form action="" method="get" onsubmit="">
                 <h2>STEP 1: Choose date</h2><br>
@@ -15,16 +15,16 @@
         </div>
 
 
-        <div id="step2">
-            <div align="center">
+        <div>
+            <div id="step2">
                 <h2> STEP 2: Choose items</h2>
-                <h4 style="color: darkred">Click items for more information and to choose quantity</h4><br>
+                <h4 id="redcolour">Click items for more information and to choose quantity</h4><br>
             </div>
         <div class="row">
-        <div class="col-md-4" align="center">
+        <div class="col-md-4">
         <h3>MAIN</h3>
             <div>
-                <img src="../img/burger.jpeg" alt="Burger Image" class="orderOutline1" width="250" data-toggle="modal" data-target="#Modal0"/>
+                <img src="../img/burger.jpeg" alt="Burger Image" class="orderOutline1" data-toggle="modal" data-target="#Modal0"/>
                 <?php
                 $title="Beef burger with chips";
                 $price=3.50;
@@ -37,7 +37,7 @@
 
 
             <div>
-                <img src="../img/koleno.jpeg" alt="Koleno Image" class="orderOutline1" width="250" data-toggle="modal" data-target="#Modal1"/>
+                <img src="../img/koleno.jpeg" alt="Koleno Image" class="orderOutline1" data-toggle="modal" data-target="#Modal1"/>
                 <?php
                 $title="Koleno";
                 $price=2.70;
@@ -50,7 +50,7 @@
 
 
             <div>
-                <img src="../img/lamb.jpeg" alt="Lamb Image" class="orderOutline1" width="250" data-toggle="modal" data-target="#Modal2"/>
+                <img src="../img/lamb.jpeg" alt="Lamb Image" class="orderOutline1" data-toggle="modal" data-target="#Modal2"/>
                 <?php
                 $title="Lamb";
                 $price=2.50;
@@ -63,10 +63,10 @@
 
 
 
-        <div class="col-md-4" align="center">
+        <div class="col-md-4">
             <h3>DESSERTS</h3>
             <div>
-                <img src="../img/fruit.jpg" alt="Fruit Snack Image" class="orderOutline1" width="250" data-toggle="modal" data-target="#Modal3"/>
+                <img src="../img/fruit.jpg" alt="Fruit Snack Image" class="orderOutline2" data-toggle="modal" data-target="#Modal3"/>
                 <?php
                 $title="Fruit Snack (80g)";
                 $price=1.80;
@@ -79,7 +79,7 @@
 
 
             <div>
-                <img src="../img/rvCake.jpeg" alt="rvCake Image" class="orderOutline1" width="250" data-toggle="modal" data-target="#Modal4"/>
+                <img src="../img/rvCake.jpeg" alt="rvCake Image" class="orderOutline2" data-toggle="modal" data-target="#Modal4"/>
                 <?php
                 $title="Red velvet Cake";
                 $price=2.00;
@@ -92,7 +92,7 @@
 
 
             <div>
-                <img src="../img/cake.jpeg" alt="Cake Image" class="orderOutline1" width="250" data-toggle="modal" data-target="#Modal5"/>
+                <img src="../img/cake.jpeg" alt="Cake Image" class="orderOutline2" data-toggle="modal" data-target="#Modal5"/>
                 <?php
                 $title="Strawberry cake";
                 $price=2.00;
@@ -105,10 +105,10 @@
 
 
 
-        <div class="col-md-4" align="center">
+        <div class="col-md-4">
             <h3>DRINK</h3>
             <div>
-                <img src="../img/water.jpg" alt="Water Image" class="orderOutline1" width="250" data-toggle="modal" data-target="#Modal6"/>
+                <img src="../img/water.jpg" alt="Water Image" class="orderOutline3" data-toggle="modal" data-target="#Modal6"/>
                 <?php
                 $title="Water (100ml)";
                 $price=0.70;
@@ -120,7 +120,7 @@
 
 
             <div>
-                <img src="../img/AppleJuice.jpg" alt="Apple Juice Image" class="orderOutline1" width="250" data-toggle="modal" data-target="#Modal7"/>
+                <img src="../img/AppleJuice.jpeg" alt="Apple Juice Image" class="orderOutline3" data-toggle="modal" data-target="#Modal7"/>
                 <?php
                 $title="Innocent Apple juice (100ml)";
                 $price=1.20;
@@ -132,7 +132,7 @@
 
 
             <div>
-                <img src="../img/coke.jpg" alt="Coke Image" class="orderOutline1" width="250" data-toggle="modal" data-target="#Modal8"/>
+                <img src="../img/coke.jpg" alt="Coke Image" class="orderOutline3" data-toggle="modal" data-target="#Modal8"/>
                 <?php
                 $title="Coke (330ml)";
                 $price=1.20;
@@ -144,64 +144,36 @@
         </div>
         </div>
 
-
-
-
-<!--        <form action="" method="get">-->
-<!--            <button class="btn-block btn-lg btn-secondary rounded" type="submit" data-toggle="modal" data-target="#secondModal">Add to basket</button>-->
-            <!--                Modal -->
-<!--            <div id="secondModal" class="modal fade" role="dialog">-->
-<!--                <div class="modal-dialog modal-sm">-->
-                    <!-- Modal content-->
-<!--                    <div class="modal-content">-->
-<!--                        <div class="modal-header">-->
-<!--                            <h4 class="modal-title">Success!</h4>-->
-<!--                            <button type="button" class="close" data-dismiss="modal">&times;</button>-->
-<!--                        </div>-->
-<!--                        <div class="modal-body">-->
-<!--                            <p>Order on (date) has successfully added to basket!</p>-->
-<!--                        </div>-->
-<!--                        <div class="modal-footer">-->
-<!--                            <button type="submit" class="btn btn-primary rounded" data-dismiss="modal" id="refresh">Order More</button>-->
-<!--                            <button type="submit" class="btn btn-secondary rounded" data-dismiss="modal" id="toBasket">View Basket</button>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </form>-->
-<!--</div>-->
             <br><br><hr><br>
+
         </div>
 
 
-        <div id="step3" align="center">
-            <div align="center">
+        <div>
+            <div id="step3">
                 <form action="" method="get" onsubmit="">
-                    <!--                FORM REQUIRED???-->
                     <h2>STEP 3: View Basket</h2><br><br>
 
-                    <table style="width:100%">
+                    <table id="orderTable">
                         <tr style="font-size:2.5rem; background-color: lightgrey">
                             <th style="padding: 15px; text-align: center">DATE</th>
                             <th style="padding: 15px; text-align: center">ITEMS</th>
                             <th style="padding: 15px; text-align: center">QUANTITY</th>
                         </tr>
-                        <tr style="font-size:2.0rem; text-align: center">
-                            <td style="padding: 15px; border-bottom: 1px solid darkgrey">aaa</td>
-                            <td style="padding: 15px; border-bottom: 1px solid darkgrey">bbb</td>
-                            <td style="padding: 15px; border-bottom: 1px solid darkgrey">ccc</td>
+                        <tr style="font-size:2.0rem; text-align: center ; border-bottom: 1px solid darkgrey">
+                            <td style="padding: 15px">aaa</td>
+                            <td style="padding: 15px">bbb</td>
+                            <td style="padding: 15px">ccc</td>
                         </tr>
                     </table>
                 </form>
                 <br><br><br>
             </div>
 
-            <div align="right">
-                <button type="submit" class="btn-secondary rounded btn-lg">Proceed payment</button>
+            <div>
+                <button id="toPayment" type="submit">Proceed payment</button>
                 <br><br><br><br><br>
             </div>
-
         </div>
-
     </div>
 <?php require_once('../../private/shared/pages_footer.php');?>
