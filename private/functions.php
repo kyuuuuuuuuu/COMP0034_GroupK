@@ -72,6 +72,7 @@ function check_email_admin ($db,$user_input) {
     }
     return $existence;
 }
+
 function check_email($db, $user_input) {
     $existence = false;
     if (!$existence) {
@@ -84,6 +85,11 @@ function check_email($db, $user_input) {
         $existence = check_email_parent($db,$user_input);
     }
     return $existence;
+}
+
+function redirect_to($url) {
+    header('Location: ' . $url);
+    exit;
 }
 ?>
 

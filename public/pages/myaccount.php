@@ -19,8 +19,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         if (check_email($db, $email)) {
             echo $email . " is existed, please choose another one.<br>";
             $_SESSION['error'] = "<br>" . $email . " is existed, please choose another one.<br>";
-            header('location: signup.php');
-            exit();
+            redirect_to(url_for('pages/signup.php'));
         }
         $checked++;
     };
