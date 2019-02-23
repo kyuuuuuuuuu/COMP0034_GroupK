@@ -106,7 +106,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         {
             echo "Failed to connect to MySQL: " . mysqli_connect_error();
         } elseif ($accType == 'parent') {
-            echo "parent";
+            echo "Dinnersdirect data base is successfully connected";
+            $query = "INSERT INTO $accType (first_name, last_name, email_address, phone_number, password) "
+                ."VALUES ('$fname', '$lname', '$email', '$phone', '$pw')";
+            submit_query($db, $query);
+            $data_parent = get_data($db,$email,'parent','email_address');
+            $data_student = get_data($db,$reference,'student','email_address');
+
+            if ($data_parent == 'Not Found' || $data_student == 'Not Found') {
+                echo "<br>Error occurs, Data not found!! <br>";
+                exit;
+            }
+            $id_s = $data_student['student_id'];
+            $id_p = $data_parent['parent_id'];
+            $query_id_link = "INSERT INTO student_parent (student_id, parent_id) VALUES ('$id_s', '$id_p')";
+            echo $query_id_link;
+            submit_query($db, $query_id_link);
         }elseif ($accType == 'student') {
             echo "Dinnersdirect data base is successfully connected";
             $query = "INSERT INTO $accType (first_name, last_name, email_address, phone_number, password) "
@@ -126,8 +141,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             submit_query($db, $query_id_link);
 
         }elseif ($accType == 'administrator') {
-            echo "amind";
+            echo "Dinnersdirect data base is successfully connected";
+            $query = "INSERT INTO $accType (first_name, last_name, email_address, phone_number, password) "
+                ."VALUES ('$fname', '$lname', '$email', '$phone', '$pw')";
+            submit_query($db, $query);
+            $data_admin = get_data($db,$email,'administrator','email_address');
+            $data_school = get_data($db,$reference,'school','school_name');
 
+            if ($data_admin == 'Not Found' || $data_school == 'Not Found') {
+                echo "<br>Error occurs, Data not found!! <br>";
+                exit;
+            }
+            $id_s = $data_school['school_id'];
+            $id_a = $data_admin['admin_id'];
+            $query_id_link = "INSERT INTO school_admin (admin_id, school_id) VALUES ('$id_a', '$id_s')";
+            echo $query_id_link;
+            submit_query($db, $query_id_link);
         }else {
             echo "unknown";
 

@@ -120,7 +120,7 @@ require_once('../../private/shared/pages_header.php');?>
                     <select id="referenceAdmin" name="reference" class="form-control">
                         <option>UCL</option>
                         <option>LSE</option>
-                        <option>King's</option>
+                        <option>King</option>
                         <option>City</option>
                         <option>QMUL</option>
                     </select>
