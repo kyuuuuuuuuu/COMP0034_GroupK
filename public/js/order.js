@@ -67,4 +67,12 @@ document.getElementById("thisdate").setAttribute("max", maxDate);
 
 function addProduct(modalId) {
 console.log("clicked" + modalId);
+let name = document.getElementsByName("item")[modalId].getAttribute("value");
+let price = document.getElementsByName("price")[modalId].getAttribute("value");
+console.log(name);
+console.log(price);
+let quantity_id = "quantity_" + modalId;
+console.log(quantity_id);
+let quantity = document.getElementById(quantity_id).value;
+console.log(quantity);
 }
