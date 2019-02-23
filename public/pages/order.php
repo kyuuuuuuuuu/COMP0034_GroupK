@@ -30,30 +30,33 @@
                 $price=3.50;
                 $des="This is a description of this item.";
                 $foodID="burgerQuantity";
+                $modal_id = 1;
                 include("modal.php"); ?>
             </div>
             <br>
 
 
             <div>
-                <img src="../img/koleno.jpeg" style=" border:10px solid cornflowerblue; border-radius: 50%" width="250" data-toggle="modal" data-target="#Modal1"/>
+                <img src="../img/koleno.jpeg" style=" border:10px solid cornflowerblue; border-radius: 50%" width="250" data-toggle="modal" data-target="#Modal2"/>
                 <?php
                 $title="Koleno";
                 $price=2.70;
                 $des="This is a description of this item.";
                 $foodID="kolenoQuantity";
+                $modal_id = 2;
                 include("modal.php"); ?>
             </div>
             <br>
 
 
             <div>
-                <img src="../img/lamb.jpeg" style=" border:10px solid cornflowerblue; border-radius: 50%" width="250" data-toggle="modal" data-target="#Modal1"/>
+                <img src="../img/lamb.jpeg" style=" border:10px solid cornflowerblue; border-radius: 50%" width="250" data-toggle="modal" data-target="#Modal3"/>
                 <?php
                 $title="Lamb";
                 $price=2.50;
                 $des="This is a description of this item.";
                 $foodID="lambQuantity";
+                $modal_id = 3;
                 include("modal.php"); ?>
             </div>
         </div>
@@ -63,36 +66,39 @@
         <div class="col-md-4" align="center">
             <h3>DESSERTS</h3>
             <div>
-                <img src="../img/fruit.jpg" style="border:10px solid darkslateblue; border-radius: 50%" width="250" data-toggle="modal" data-target="#Modal1"/>
+                <img src="../img/fruit.jpg" style="border:10px solid darkslateblue; border-radius: 50%" width="250" data-toggle="modal" data-target="#Modal4"/>
                 <?php
                 $title="Fruit Snack (80g)";
                 $price=1.80;
                 $des="This is a description of this item.";
                 $foodID="fruitQuantity";
+                $modal_id = 4;
                 include("modal.php"); ?>
             </div>
             <br>
 
 
             <div>
-                <img src="../img/rvCake.jpeg" style="border:10px solid darkslateblue; border-radius: 50%" width="250" data-toggle="modal" data-target="#Modal1"/>
+                <img src="../img/rvCake.jpeg" style="border:10px solid darkslateblue; border-radius: 50%" width="250" data-toggle="modal" data-target="#Modal5"/>
                 <?php
                 $title="Red velvet Cake";
                 $price=2.00;
                 $des="This is a description of this item.";
                 $foodID="rvQuantity";
+                $modal_id = 5;
                 include("modal.php"); ?>
             </div>
             <br>
 
 
             <div>
-                <img src="../img/cake.jpeg" style="border:10px solid darkslateblue; border-radius: 50%" width="250" data-toggle="modal" data-target="#Modal1"/>
+                <img src="../img/cake.jpeg" style="border:10px solid darkslateblue; border-radius: 50%" width="250" data-toggle="modal" data-target="#Modal6"/>
                 <?php
                 $title="Strawberry cake";
                 $price=2.00;
                 $des="This is a description of this item.";
                 $foodID="cakeQuantity";
+                $modal_id = 6;
                 include("modal.php"); ?>
             </div>
         </div>
@@ -102,33 +108,36 @@
         <div class="col-md-4" align="center">
             <h3>DRINK</h3>
             <div>
-                <img src="../img/water.jpg" style="border:10px solid slategrey; border-radius: 50%" width="250" data-toggle="modal" data-target="#Modal1"/>
+                <img src="../img/water.jpg" style="border:10px solid slategrey; border-radius: 50%" width="250" data-toggle="modal" data-target="#Modal7"/>
                 <?php
                 $title="Water (100ml)";
                 $price=0.70;
                 $des="This is a description of this item.";
+                $modal_id = 7;
                 include("modal.php"); ?>
             </div>
             <br>
 
 
             <div>
-                <img src="public/img/Apple%20juice.jpeg" style="border:10px solid slategrey; border-radius: 50%" width="250" data-toggle="modal" data-target="#Modal1"/>
+                <img src="public/img/Apple%20juice.jpeg" style="border:10px solid slategrey; border-radius: 50%" width="250" data-toggle="modal" data-target="#Modal8"/>
                 <?php
                 $title="Innocent Apple juice (100ml)";
                 $price=1.20;
                 $des="This is a description of this item.";
+                $modal_id = 8;
                 include("modal.php"); ?>
             </div>
             <br>
 
 
             <div>
-                <img src="../img/coke.jpg" style="border:10px solid slategrey; border-radius: 50%" width="250" data-toggle="modal" data-target="#Modal1"/>
+                <img src="../img/coke.jpg" style="border:10px solid slategrey; border-radius: 50%" width="250" data-toggle="modal" data-target="#Modal9"/>
                 <?php
                 $title="Coke (330ml)";
                 $price=1.20;
                 $des="This is a description of this item.";
+                $modal_id = 9;
                 include("modal.php"); ?>
             </div>
             <br>

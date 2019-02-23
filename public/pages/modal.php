@@ -2,7 +2,7 @@
 <a data-toggle="modal" data-target="#Modal1"><?php echo $title;?></a>
 <br><br>
 <!--                Modal -->
-<div id="Modal1" class="modal fade" role="dialog">
+<div id="Modal<?php echo $modal_id;?>" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
