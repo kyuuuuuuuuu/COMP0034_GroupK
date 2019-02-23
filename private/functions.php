@@ -91,5 +91,27 @@ function redirect_to($url) {
     header('Location: ' . $url);
     exit;
 }
+
+function submit_query($db, $query) {
+    if (mysqli_query($db, $query)) {
+        echo "<br>Data is saved succesfully";
+    } else {
+        echo"<br>Error occurs in saving process!";
+    }
+}
+
+function get_data($db, $user_input, $table_name, $field_name) {
+    $query = "SELECT * FROM " . $table_name;
+    $table_data = mysqli_query($db, $query);
+    $data = "Not Found";
+
+    while ($row = mysqli_fetch_assoc($table_data)) {
+        if ($user_input == $row[$field_name]) {
+            $data = $row;
+        }
+    }
+
+    return $data;
+}
 ?>
 

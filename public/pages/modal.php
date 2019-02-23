@@ -1,8 +1,9 @@
+<!--Kien Version-->
 <br>
 <a data-toggle="modal" data-target="#Modal1"><?php echo $title;?></a>
 <br><br>
 <!--                Modal -->
-<div id="Modal1" class="modal fade" role="dialog">
+<div id="Modal<?php echo $modal_id;?>" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
@@ -11,18 +12,44 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <b>Price: £<?php echo $price;?></b>/unit<br>
-                <b>Description: </b><?php echo $des;?><br>
+                <b name="price" value="<?php echo $price;?>">Price: £<?php echo $price;?></b>/unit<br>
+                <b name="item" value="<?php echo $title;?>">Description: </b><?php echo $des;?><br>
             </div>
             <form method="post" action="">
                 <div class="modal-footer" >
-                    <h4>Quantity: <input type="number" id="<?php echo $foodID;?>" min="1" max="5" required></h4>
-                    <button type="submit" class="btn-secondary rounded" >Add</button>
+                    <h4>Quantity: <input type="number" id="quantity_<?php echo $modal_id;?>" min="1" max="5" required></h4>
+                    <button type="button" class="btn-secondary rounded" onclick="addProduct(<?php echo $modal_id;?>)" data-dismiss="modal">Add</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+<!--<br>-->
+<!--<a data-toggle="modal" data-target="#Modal1">--><?php //echo $title;?><!--</a>-->
+<!--<br><br>-->
+<!--                Modal -->
+<!--<div id="Modal--><?php //echo $modal_id;?><!--" class="modal fade" role="dialog">-->
+<!--    <div class="modal-dialog">-->
+<!--         Modal content-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h4 class="modal-title">--><?php //echo $title;?><!--</h4>-->
+<!--                <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <b>Price: £--><?php //echo $price;?><!--</b>/unit<br>-->
+<!--                <b>Description: </b>--><?php //echo $des;?><!--<br>-->
+<!--            </div>-->
+<!--            <form method="post" action="">-->
+<!--                <div class="modal-footer" >-->
+<!--                    <h4>Quantity: <input type="number" id="--><?php //echo $foodID;?><!--" min="1" max="5" required></h4>-->
+<!--                    <button type="submit" class="btn-secondary rounded" >Add</button>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 
 <!--OLD VERSION-->
