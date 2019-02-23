@@ -11,7 +11,10 @@ $checked = 0;
 
 //Validation of user input :)
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-    $checked = 0;
+    $checked = 0;  //Set a variable to check how many input are validated
+    $accType = $_POST["submit"]; //Store the user chosen account type in a variable
+
+    //Validate email address
     if(empty($_POST["email"])) {
         $email_empty = "Email is required";
     } else{
@@ -24,6 +27,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $checked++;
     };
 
+    //validate User input for Last Name
     if(empty($_POST["last_name"])) {
         $lname_empty = "Last Name is required";
     } elseif(!preg_match("/^[a-zA-Z ]*$/",$lname)) {
@@ -33,6 +37,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $checked++;
     };
 
+    //validate User input for First Name
     if(empty($_POST["first_name"])) {
         $fname_empty = "First name is required";
     } elseif(!preg_match("/^[a-zA-Z ]*$/",$fname)) {
@@ -42,6 +47,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $checked++;
     };
 
+    //validate User input for password
     if(empty($_POST["pw"])) {
         $pw_empty = "Password is required";
     } else{
@@ -61,16 +67,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $checked++;
     };
 
-    if(empty($_POST["school"])) {
-        $school_empty = "School is required";
-    } else{
-        $school = test_input($_POST["school"]);
-        $checked++;
-    };
-
     if(empty($_POST["reference"])) {
         $reference_empty = "<br>Enter your reference";
-    } else{
+    } elseif ($accType == 'student') {
+        $reference = test_input($_POST["reference"]);
+        if (!check_email_admin($db, $reference)) {
+            //echo $email . " is not a valid admin's email, please choose another one.<br>";
+            $_SESSION['error'] = "<br>" . $email . " is not a valid admin's email, please choose another one.<br>";
+            redirect_to(url_for('pages/signup.php'));
+        }
+    }elseif ($accType == 'parent') {
+        $reference = test_input($_POST["reference"]);
+        if (!check_email_student($db, $reference)) {
+            //echo $email . " is not a valid admin's email, please choose another one.<br>";
+            $_SESSION['error'] = "<br>" . $reference . " is not a valid student's email, please choose another one.<br>";
+            redirect_to(url_for('pages/signup.php'));
+        }
+    }else{
         $reference = test_input($_POST["reference"]);
         $checked++;
     };
@@ -79,29 +92,48 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $phone = test_input($_POST["phone_UK"]);
     }
 
-    if ($checked = 7) {
+    if ($checked = 6) {
         echo "You have registered successfully <br>";
-        $accType = $_POST["submit"];
+
+
         echo $email . " is your email<br>" .
             $fname . " is your first name<br>" .$lname . " is your last name<br>" .
             $pw . " is your password<br>" . $pw2 . " is your password confirmation<br>" .
             $school . " is your school<br>" .  $phone . " is your phone number<br>" .
             $accType . " is your account type<br>";
+
         if (mysqli_connect_errno())
         {
             echo "Failed to connect to MySQL: " . mysqli_connect_error();
-        } else {
+        } elseif ($accType == 'parent') {
+            echo "parent";
+        }elseif ($accType == 'student') {
             echo "Dinnersdirect data base is successfully connected";
             $query = "INSERT INTO $accType (first_name, last_name, email_address, phone_number, password) "
                 ."VALUES ('$fname', '$lname', '$email', '$phone', '$pw')";
+            submit_query($db, $query);
+            $data_admin = get_data($db,$reference,'administrator','email_address');
+            $data_student = get_data($db,$email,'student','email_address');
+
+            if ($data_admin == 'Not Found' || $data_student == 'Not Found') {
+                echo "<br>Error occurs, Data not found!! <br>";
+                exit;
+            }
+            $id_s = $data_student['student_id'];
+            $id_a = $data_admin['admin_id'];
+            $query_id_link = "INSERT INTO admin_student (student_id, admin_id) VALUES ('$id_s', '$id_a')";
+            echo $query_id_link;
+            submit_query($db, $query_id_link);
+
+        }elseif ($accType == 'administrator') {
+            echo "amind";
+
+        }else {
+            echo "unknown";
+
         }
 
 
-        if (mysqli_query($db, $query)) {
-            echo "<br>Data is saved succesfully";
-        } else {
-            echo"<br>Error occurs in saving process!";
-        }
     }
 };
 
