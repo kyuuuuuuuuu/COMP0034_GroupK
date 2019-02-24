@@ -29,12 +29,65 @@ function url_for($script_path) {
     return WWW_ROOT . $script_path;
 }
 
+function redirect_to($url) {
+    header('Location: ' . $url);
+    exit;
+}
 
+function submit_query($db, $query) { //Still need to deal with error!!!
+    //submit a SQL query to the database
+    if (mysqli_query($db, $query)) {
+        echo "<br>Data is saved succesfully";
+    } else {
+        echo"<br>Error occurs in saving process!";
+    }
+}
+
+function get_all($db, $table_name) { //get all data from a table
+    $query = "SELECT * FROM " . $table_name;
+    $data = mysqli_query($db, $query);
+    return $data;
+}
+
+function get_data($db, $user_input, $table_name, $field_name) {
+    //Get all data from the database given the table name and column name
+    //db is database connection
+    $user_input = test_input($user_input);
+    $table_data = get_all($db,$table_name);
+    $data = "Not Found";
+
+    while ($row = mysqli_fetch_assoc($table_data)) {
+        if ($user_input == $row[$field_name]) {
+            $data = $row;
+            break;
+        }
+    }
+
+    return $data;
+}
+
+function to_myAccount ($accType) {
+    //Get a parameter of 'account type' - 'table name'
+    //redirect user to the corresponding myAccount page.
+    switch ($accType) {
+        case "administrator":
+            redirect_to(url_for('/pages/myaccount_teacher.php'));
+            break;
+        case "student":
+            redirect_to(url_for('/pages/myaccount_student.php'));
+            break;
+        case "parent":
+            redirect_to(url_for('/pages/myaccount_parent.php'));
+            break;
+        default:
+            break;
+    }
+}
 
 function check_email_student ($db,$user_input) {
     $existence = false;
-    $table_student_query = "SELECT * FROM student";
-    $result_student_table = mysqli_query($db, $table_student_query);
+    //$table_student_query = "SELECT * FROM student";
+    $result_student_table = get_all($db, 'student');
 
     while (!$existence && $result = mysqli_fetch_assoc($result_student_table)) {
         if ($user_input == $result['email_address']) {
@@ -47,8 +100,8 @@ function check_email_student ($db,$user_input) {
 
 function check_email_parent ($db,$user_input) {
     $existence = false;
-    $table_parent_query = "SELECT * FROM parent";
-    $result_parent_table = mysqli_query($db, $table_parent_query);
+    //$table_parent_query = "SELECT * FROM parent";
+    $result_parent_table = get_all($db, 'parent');
 
     while (!$existence && $result = mysqli_fetch_assoc($result_parent_table)) {
         if ($user_input == $result['email_address']) {
@@ -61,8 +114,8 @@ function check_email_parent ($db,$user_input) {
 
 function check_email_admin ($db,$user_input) {
     $existence = false;
-    $table_admin_query = "SELECT * FROM administrator";
-    $result_admin_table = mysqli_query($db, $table_admin_query);
+//    $table_admin_query = "SELECT * FROM administrator";
+    $result_admin_table = get_all($db, 'administrator');
 
     while (!$existence && $result = mysqli_fetch_assoc($result_admin_table)) {
         if ($user_input == $result['email_address']) {
@@ -87,53 +140,16 @@ function check_email($db, $user_input) {
     return $existence;
 }
 
-function redirect_to($url) {
-    header('Location: ' . $url);
-    exit;
-}
-
-function submit_query($db, $query) {
-    //submit a SQL query to the database
-    if (mysqli_query($db, $query)) {
-        echo "<br>Data is saved succesfully";
-    } else {
-        echo"<br>Error occurs in saving process!";
-    }
-}
-
-function get_data($db, $user_input, $table_name, $field_name) {
-    //Get all data from the database given the table name and column name
-    //db is database connection
+function get_pair_id ($db, $user_input, $table_name, $input_field, $result_field) {
     $user_input = test_input($user_input);
-    $query = "SELECT * FROM " . $table_name;
-    $table_data = mysqli_query($db, $query);
-    $data = "Not Found";
-
-    while ($row = mysqli_fetch_assoc($table_data)) {
-        if ($user_input == $row[$field_name]) {
-            $data = $row;
+    $data = get_all($db,$table_name);
+    $id_set = array();
+    while ($result = mysqli_fetch_assoc($data)){
+        if ($user_input == $result[$input_field]) {
+            array_push($id_set,$result[$result_field]);
         }
     }
-
-    return $data;
-}
-
-function to_myAccount ($accType) {
-    //Get a parameter of 'account type' - 'table name'
-    //redirect user to the corresponding myAccount page.
-    switch ($accType) {
-        case "administrator":
-            redirect_to(url_for('/pages/myaccount_teacher.php'));
-            break;
-        case "student":
-            redirect_to(url_for('/pages/myaccount_student.php'));
-            break;
-        case "parent":
-            redirect_to(url_for('/pages/myaccount_parent.php'));
-            break;
-        default:
-            break;
-    }
+    return $id_set;
 }
 ?>
 

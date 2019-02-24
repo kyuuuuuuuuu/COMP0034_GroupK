@@ -18,11 +18,16 @@ if (password_verify('Default123', $saved_pw)) {
 }else {
     echo "incorrect password";
 }
+$admin_id = 2;
+$table_name = 'admin_student';
+$input_field = 'admin_id';
+$result_field = 'student_id';
 
+//$result = check_email_student($db, 'student@ucl.ac.uk');
+//echo $result;
+$setOfId = get_pair_id($db,$admin_id,$table_name,$input_field,$result_field);
+print_r($setOfId);
 
-session_unset();
-session_destroy();
-session_start();
 
 ?>
 

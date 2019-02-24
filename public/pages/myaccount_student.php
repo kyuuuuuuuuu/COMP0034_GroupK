@@ -41,7 +41,7 @@ if (isset($_SESSION['credential'])) {
                 <a class="nav-link list-group-item" onclick="selectStudentTab(0)">Profile</a>
                 <a class="nav-link list-group-item" onclick="selectStudentTab(1)">View Orders</a>
                 <a class="nav-link list-group-item" onclick="selectStudentTab(2)">Edit Account</a>
-                <a class="nav-link list-group-item" href="#">Logout</a>
+                <a class="nav-link list-group-item" href="log_out.php">Logout</a>
             </div>
 
         </div>
