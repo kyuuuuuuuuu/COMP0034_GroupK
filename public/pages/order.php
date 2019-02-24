@@ -12,7 +12,7 @@ if (isset($_SESSION['credential'])) {
 ?>
 
     <div class="card-header text-center">
-        <h1><?php echo $welcome_message;?></h1>
+        <h1><?php echo $welcome_message;?></h1><br>
     </div>
     <div class="container">
         <div id="step1">
