@@ -12,12 +12,12 @@ function test_input($user_input) {
 };
 
 function error_404() {
-    header($_SERVER["$SERVER_PROTOCOL"] . " 404 Not Found!!!");
+    header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found!!!");
     exit();
 }
 
 function error_500() {
-    header($_SERVER["$SERVER_PROTOCOL"] . " 500 Internal Error!!!");
+    header($_SERVER["SERVER_PROTOCOL"] . " 500 Internal Error!!!");
     exit();
 }
 
@@ -93,6 +93,7 @@ function redirect_to($url) {
 }
 
 function submit_query($db, $query) {
+    //submit a SQL query to the database
     if (mysqli_query($db, $query)) {
         echo "<br>Data is saved succesfully";
     } else {
@@ -101,6 +102,9 @@ function submit_query($db, $query) {
 }
 
 function get_data($db, $user_input, $table_name, $field_name) {
+    //Get all data from the database given the table name and column name
+    //db is database connection
+    $user_input = test_input($user_input);
     $query = "SELECT * FROM " . $table_name;
     $table_data = mysqli_query($db, $query);
     $data = "Not Found";
@@ -115,6 +119,8 @@ function get_data($db, $user_input, $table_name, $field_name) {
 }
 
 function to_myAccount ($accType) {
+    //Get a parameter of 'account type' - 'table name'
+    //redirect user to the corresponding myAccount page.
     switch ($accType) {
         case "administrator":
             redirect_to(url_for('/pages/myaccount_teacher.php'));
