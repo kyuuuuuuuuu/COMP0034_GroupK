@@ -9,14 +9,20 @@
 //    echo "Key=" . $x . ", Value=" . $x_value;
 //    echo "<br>";
 //}
-$hash = password_hash('trungKien123', PASSWORD_BCRYPT);
-echo $hash . '<br><br>';
+$data = get_data($db,'admin@ucl.ac.uk','administrator', 'email_address');
+$saved_pw = $data['password'];
+echo $saved_pw . '<br><br>';
 
-echo password_verify('trungKien123', $hash);
+if (password_verify('Default123', $saved_pw)) {
+    echo "correct password";
+}else {
+    echo "incorrect password";
+}
 
-session_unset();
-session_destroy();
-session_start();
+//
+//session_unset();
+//session_destroy();
+//session_start();
 
 ?>
 

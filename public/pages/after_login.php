@@ -26,7 +26,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!is_null($table_name)) {
         echo $table_name . " is the table name<br>";
         $data = get_data($db,$login_email,$table_name,"email_address");
-        if ($login_password == $data["password"]) {
+        if (password_verify($login_password,$data['password'])) {
             echo "log in successful!<br>";
             $_SESSION['credential'] = $login_email;
             $_SESSION['accType'] = $table_name;

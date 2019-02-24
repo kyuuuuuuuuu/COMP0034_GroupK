@@ -47,7 +47,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     if(empty($_POST["pw"])) {
         $pw_empty = "Password is required";
     } else{
-        $pw = test_input($_POST["pw"]);
+        $user_pw = test_input($_POST["pw"]);
         $checked++;
     };
 
@@ -90,13 +90,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($checked = 6) {
         echo "You have registered successfully <br>";
+        $pw = password_hash($user_pw, PASSWORD_BCRYPT);
 
 
         echo $email . " is your email<br>" .
             $fname . " is your first name<br>" .$lname . " is your last name<br>" .
-            $pw . " is your password<br>" . $pw2 . " is your password confirmation<br>" .
+            $user_pw . " is your password<br>" . $pw2 . " is your password confirmation<br>" .
             $school . " is your school<br>" .  $phone . " is your phone number<br>" .
-            $accType . " is your account type<br>";
+            $accType . " is your account type<br>" . $pw . " is the encrypted password<br>";
 
         if (mysqli_connect_errno())
         {
