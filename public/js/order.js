@@ -65,18 +65,62 @@ document.getElementById("thisdate").setAttribute("max", maxDate);
 //     location.href = 'basket.php';
 // };
 
+var basket = [];
+
 function addProduct(modalId) {
-console.log("clicked" + modalId);
-let name = document.getElementsByName("item")[modalId].getAttribute("value");
-let price = document.getElementsByName("price")[modalId].getAttribute("value");
-console.log(name);
-console.log(price);
-let quantity_id = "quantity_" + modalId;
-console.log(quantity_id);
-let quantity = document.getElementById(quantity_id).value;
-console.log(quantity);
+    console.log("clicked" + modalId);
+    let name = document.getElementsByName("item")[modalId].getAttribute("value");
+    let price = document.getElementsByName("price")[modalId].getAttribute("value");
+    console.log(name);
+    console.log(price);
+    let quantity_id = "quantity_" + modalId;
+    console.log(quantity_id);
+    let quantity = document.getElementById(quantity_id).value;
+    console.log(quantity);
+
+
+    var newItem = {
+        item_name: null,
+        item_price: 0.00,
+        item_quantity: 0,
+    };
+
+    newItem.item_name = name;
+    newItem.item_quantity = quantity;
+    newItem.item_price = price;
+
+    var html = "<table class='table table-striped text-center'>";
+    html += "<td class='font-weight-bolder'>Item Name</td>";
+    html += "<td class='font-weight-bolder'>Quantity </td>";
+    html += "<td class='font-weight-bolder'>Item Price</td>";
+    html += "<td class='font-weight-bolder'>Total Price</td>";
+    html += "<td class='font-weight-bolder'>Action</td>";
+
+    basket.push(newItem);
+
+    for (var i = 0; i < basket.length; i++) {
+        html += "<tr>";
+        html += "<td>" + basket[i].item_name + "</td>";
+        html += "<td>" + basket[i].item_quantity + "</td>";
+        html += "<td>" + basket[i].item_price + "</td>";
+        html += "<td>" + parseFloat(basket[i].item_price) * parseInt(basket[i].item_quantity) + "</td>";
+        html += "<td><button type='submit' onClick='deleteItem(\"" + basket[i].item_name + "\", this);'/>Delete Item</button></td>";
+        html += "</tr>";
+    }
+    html += "</table>";
+    document.getElementById("demo").innerHTML = html;
+
 }
 
+function deleteItem(item_name, e) {
+    e.parentNode.parentNode.parentNode.removeChild(e.parentNode.parentNode);
+    for (var i = 0; i < basket.length; i++) {
+        if (basket[i].item_name == item_name) {
+            // DO NOT CHANGE THE 1 HERE
+            basket.splice(i, 1);
+        }
+    }
+}
 
 function datevalidation() {
 let checked = false;

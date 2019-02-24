@@ -159,24 +159,25 @@ if (isset($_SESSION['credential'])) {
 
         </div>
 
-
         <div>
             <div id="step3">
                 <form action="" method="get" onsubmit="">
                     <h2>STEP 3: View Basket</h2><br><br>
 
-                    <table id="orderTable">
-                        <tr style="font-size:2.5rem; background-color: lightgrey">
-                            <th style="padding: 15px; text-align: center">DATE</th>
-                            <th style="padding: 15px; text-align: center">ITEMS</th>
-                            <th style="padding: 15px; text-align: center">QUANTITY</th>
-                        </tr>
-                        <tr style="font-size:2.0rem; text-align: center ; border-bottom: 1px solid darkgrey">
-                            <td style="padding: 15px">aaa</td>
-                            <td style="padding: 15px">bbb</td>
-                            <td style="padding: 15px">ccc</td>
-                        </tr>
-                    </table>
+                    <p id="demo"></p>
+
+<!--                    <table id="orderTable">-->
+<!--                        <tr style="font-size:2.5rem; background-color: lightgrey">-->
+<!--                            <th style="padding: 15px; text-align: center">DATE</th>-->
+<!--                            <th style="padding: 15px; text-align: center">ITEMS</th>-->
+<!--                            <th style="padding: 15px; text-align: center">QUANTITY</th>-->
+<!--                        </tr>-->
+<!--                        <tr style="font-size:2.0rem; text-align: center ; border-bottom: 1px solid darkgrey">-->
+<!--                            <td style="padding: 15px">aaa</td>-->
+<!--                            <td style="padding: 15px">bbb</td>-->
+<!--                            <td style="padding: 15px">ccc</td>-->
+<!--                        </tr>-->
+<!--                    </table>-->
                 </form>
                 <br><br><br>
             </div>
