@@ -22,7 +22,11 @@ define("WWW_ROOT", $doc_root);
 //echo "<br>echo not cecho";
 //echo "<br>WWW ROOT here: " . WWW_ROOT;
 
-include ('functions.php');
+require ('functions.php');
+
+require ('password.php')
+
+
 
 
 

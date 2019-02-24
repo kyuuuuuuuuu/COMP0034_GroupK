@@ -96,6 +96,7 @@ let checked = false;
     if (checked) {
         var orderdate = document.getElementById("menuitem");
         orderdate.style.display = "";
+        location.href='#step2';
     }
 // console.log(checked);
     return checked;

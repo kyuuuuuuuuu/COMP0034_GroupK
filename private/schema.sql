@@ -24,7 +24,7 @@ CREATE TABLE administrator (
                              first_name varchar (100) NOT NULL,
                              last_name varchar(100) NOT NULL,
                              phone_number varchar(20),
-                             password varchar(25) NOT NULL,
+                             password varchar(255) NOT NULL,
                              last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                              PRIMARY KEY (admin_id)
                            )ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -35,7 +35,7 @@ CREATE TABLE student (
                        first_name varchar (100) NOT NULL,
                        last_name varchar(100) NOT NULL,
                        phone_number varchar(20),
-                       password varchar(25) NOT NULL,
+                       password varchar(255) NOT NULL,
                        status smallint default 0,
                        last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                        PRIMARY KEY(student_id)
@@ -47,7 +47,7 @@ CREATE TABLE parent (
                       first_name varchar (100) NOT NULL,
                       last_name varchar(100) NOT NULL,
                       phone_number varchar(20),
-                      password varchar(25) NOT NULL,
+                      password varchar(255) NOT NULL,
                       status smallint default 0,
                       last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                       PRIMARY KEY(parent_id)
