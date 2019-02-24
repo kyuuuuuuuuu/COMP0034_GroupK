@@ -1,5 +1,4 @@
-<?php session_start();
-include($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
+<?php include($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
 <?php require_once('../../private/shared/pages_header.php');?>
 
@@ -31,18 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "log in successful!<br>";
             $_SESSION['credential'] = $login_email;
             $_SESSION['accType'] = $table_name;
-            switch ($table_name) {
-                case "administrator":
-                    redirect_to(url_for('/pages/myaccount_teacher.php'));
-                    break;
-                case "student":
-                    redirect_to(url_for('/pages/myaccount_student.php'));
-                    break;
-                case "parent":
-                    redirect_to(url_for('/pages/myaccount_parent.php'));
-                    break;
-            }
-
+            to_myAccount($table_name);
         }else {
             $_SESSION['error'] = "Your Password is wrong";
             redirect_to(url_for('/pages/login.php'));

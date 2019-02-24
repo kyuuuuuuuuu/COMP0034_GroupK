@@ -1,4 +1,16 @@
-<?php
+<?php session_start();
+
+$last_active = $_SERVER['REQUEST_TIME'];
+$timeout_duration = 3600;
+if (isset($_SESSION['LAST_ACTIVITY']) &&
+    ($last_active - $_SESSION['LAST_ACTIVITY']) > $timeout_duration) {
+    session_unset();
+    session_destroy();
+    session_start();
+}
+
+$_SESSION['LAST_ACTIVITY'] = $last_active;
+
 
 ob_start(); //output buffering turned on
 

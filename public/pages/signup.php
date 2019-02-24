@@ -1,5 +1,4 @@
-<?php session_start();
-include($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
+<?php include($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
 <?php require_once('../../private/shared/pages_header.php');?>
 
@@ -32,7 +31,7 @@ include($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); 
     <!--Sign up form-->
     <div class="col-lg-12 align-content-lg-center">
 
-        <form style="display: none" name="registerForm" method="post" action="myaccount.php" onsubmit="return validate('Student');">
+        <form style="display: none" name="registerForm" method="post" action="after_signup.php" onsubmit="return validate('Student');">
             <h6>Fields with * are required.</h6>
             <!--Sign up information required from user -->
             <div class="form-group">
@@ -79,7 +78,7 @@ include($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); 
             <button class="btn btn-block btn-primary" name="submit" value="student" type="submit">Sign Up</button>
         </form>
 
-        <form style="display: none" name="registerForm" method="post" action="myaccount.php" onsubmit="return validate('Admin');">
+        <form style="display: none" name="registerForm" method="post" action="after_signup.php" onsubmit="return validate('Admin');">
             <h6>Fields with * are required.</h6>
             <!--Sign up information required from user -->
             <div class="form-group">
@@ -132,7 +131,7 @@ include($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); 
             <button class="btn btn-block btn-primary" name="submit" value="administrator" type="submit">Sign Up</button>
         </form>
 
-        <form style="display: none" name="registerForm" method="post" action="myaccount.php" onsubmit="return validate('Parent');">
+        <form style="display: none" name="registerForm" method="post" action="after_signup.php" onsubmit="return validate('Parent');">
             <h6>Fields with * are required.</h6>
             <!--Sign up information required from user -->
             <div class="form-group">

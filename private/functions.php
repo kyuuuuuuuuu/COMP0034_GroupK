@@ -114,6 +114,20 @@ function get_data($db, $user_input, $table_name, $field_name) {
     return $data;
 }
 
-
+function to_myAccount ($accType) {
+    switch ($accType) {
+        case "administrator":
+            redirect_to(url_for('/pages/myaccount_teacher.php'));
+            break;
+        case "student":
+            redirect_to(url_for('/pages/myaccount_student.php'));
+            break;
+        case "parent":
+            redirect_to(url_for('/pages/myaccount_parent.php'));
+            break;
+        default:
+            break;
+    }
+}
 ?>
 
