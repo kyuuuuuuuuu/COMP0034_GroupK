@@ -89,6 +89,7 @@ let checked = false;
         checked = true;
     }else {
         alert("You need to input the date between " + today + " and " + maxDate);
+        //checked=false;
     }
 
 

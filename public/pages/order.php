@@ -13,7 +13,7 @@
             </form>
             <br><br><hr><br>
         </div>
-<br>
+
 <div id="menuitem" style="display: none" >
         <div>
             <div id="step2">
