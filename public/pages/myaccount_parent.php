@@ -6,8 +6,16 @@
 }else {
     //$data = array("email_address"=>"default@email.com", "first_name"=>"default_fn", "last_name"=>"default_ln");
     redirect_to(url_for('/pages/myaccount.php'));
-
 }
+
+$children_id = get_pair_id($db,$data['parent_id'],'student_parent','parent_id','student_id');
+
+for ($i = 0; $i < sizeof($children_id); $i++) {
+    $children_data[$i] = get_data($db, $children_id[$i], 'student', 'student_id');
+}
+
+$number_of_children = sizeof($children_id);
+
 require_once('../../private/shared/pages_header.php');
 
 ?>
@@ -45,7 +53,7 @@ require_once('../../private/shared/pages_header.php');
                 <a class="nav-link list-group-item" onclick="selectParentTab(0)">Profile</a>
                 <a class="nav-link list-group-item" onclick="selectParentTab(1)">View Orders</a>
                 <a class="nav-link list-group-item" onclick="selectParentTab(2)">Edit Account</a>
-                <a class="nav-link list-group-item" href="index.php">Logout</a>
+                <a class="nav-link list-group-item" href="log_out.php">Logout</a>
             </div>
 
         </div>
@@ -54,6 +62,21 @@ require_once('../../private/shared/pages_header.php');
             <div class="tab-content">
                 <div name="abcde" style="display: none" class="tab-content">
                     <h1>Parent Profile</h1>
+                    <p>
+                        You have
+                        <?php
+                        if ($number_of_children > 1) {
+                            echo $number_of_children . " children";
+                        }else {
+                            echo $number_of_children . " child";
+                        };
+                        ?>
+                        <br>
+                        <?php
+                        for ($i = 0; $i < $number_of_children; $i++) {
+                            echo $children_data[$i]['first_name'] . " " . $children_data[$i]['last_name'];
+                        }?>
+                    </p>
 
                 </div>
                 <div name="abcde" style="display: none" class="tab-content">
