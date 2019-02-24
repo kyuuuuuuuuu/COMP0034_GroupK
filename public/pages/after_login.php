@@ -1,5 +1,7 @@
 <?php session_start();
-require_once('../../private/shared/pages_header.php');?>
+include($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
+
+<?php require_once('../../private/shared/pages_header.php');?>
 
 <?php
 
@@ -9,6 +11,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $login_email = test_input($_POST['email']);
     $login_password = test_input($_POST['pw']);
     $table_name = NULL;
+
 
     if (!check_email($db,$login_email)) {
         $_SESSION['error'] = "Email does not exist";
@@ -26,10 +29,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $data = get_data($db,$login_email,$table_name,"email_address");
         if ($login_password == $data["password"]) {
             echo "log in successful!<br>";
-            foreach($data as $x => $x_value) {
-                echo "Key=" . $x . ", Value=" . $x_value;
-                echo "<br>";
+            $_SESSION['credential'] = $login_email;
+            $_SESSION['accType'] = $table_name;
+            switch ($table_name) {
+                case "administrator":
+                    redirect_to(url_for('/pages/myaccount_teacher.php'));
+                    break;
+                case "student":
+                    redirect_to(url_for('/pages/myaccount_student.php'));
+                    break;
+                case "parent":
+                    redirect_to(url_for('/pages/myaccount_parent.php'));
+                    break;
             }
+
         }else {
             $_SESSION['error'] = "Your Password is wrong";
             redirect_to(url_for('/pages/login.php'));

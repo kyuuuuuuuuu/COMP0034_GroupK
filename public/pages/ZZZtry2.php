@@ -1,5 +1,7 @@
-<?php require_once("pages_header.php"); ?>
+<?php session_start();
+include($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
+<?php require_once('../../private/shared/pages_header.php');?>
 <?php
 $des ="burger";
 $p = 3.5;

@@ -1,5 +1,14 @@
-<?php require_once('../../private/shared/pages_header.php');?>
+<?php session_start();
+include($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
+<?php require_once('../../private/shared/pages_header.php');
+if (isset($_SESSION['credential'])) {
+    $user_email = $_SESSION['credential'];
+    $data = get_data($db,$user_email,"administrator","email_address");
+}else {
+    $data = array("email_address"=>"default@email.com", "first_name"=>"default_fn", "last_name"=>"default_ln");
+}
+?>
 
 <header class="card-header text-center">
     <h1>Welcome to your Teacher's Account!</h1>
@@ -13,12 +22,12 @@
         <div class="col-md-4">
 
             <img class="img-profile rounded-circle" src="../img/kien.jpg" style="width:200px;height:200px;"><br>
-            <h2 class="text-left">Trung Kiên Nguyễn's giáo viên </h2>
+            <h2 class="text-left"><?php echo $data['first_name'] . " " . $data['last_name'];?> </h2>
             <!--            <div class="name"><small>Trung Kien Nguyen</small></div><br><br>-->
         </div>
         <div class="col-md-7">
             <br><br>
-            <h3 >Xin Chao Kiên's giáo viên. From your account dashboard, you can view your student's details, approve students, edit your password and account details. </h3>
+            <h3 >Xin Chao <?php echo $data['first_name'];?>. From your account dashboard, you can view your student's details, approve students, edit your password and account details. </h3>
         </div>
     </div>
 

@@ -1,7 +1,7 @@
 
 
 <?php require_once('data_base_connection.php'); ?>
-<?php include($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
