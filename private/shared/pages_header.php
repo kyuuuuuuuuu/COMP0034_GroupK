@@ -1,22 +1,18 @@
-
-
-<?php require_once('data_base_connection.php'); ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>DinnersDirect</title>
-    <link rel="stylesheet" href="../../public/stylesheets/bootstrap.css">
-    <link rel="stylesheet" href="../../public/stylesheets/dinnersDirect.css">
+    <link rel="stylesheet" href="<?php echo url_for('/stylesheets/dinnersDirect.css');?>">
 <!--    <link rel="stylesheet" href="css/testingYJ.css">-->
-    <script src="../../public/js/slideShow.js" defer></script>
-    <script src="../../public/js/emptyfield.js" defer></script>
-    <script src="../../public/js/form.js" defer></script>
-    <script src="../../public/js/order.js" defer></script>
+    <script src="<?php echo url_for('/js/slideShow.js');?>" defer></script>
+    <script src="<?php echo url_for('js/emptyfield.js');?>" defer></script>
+    <script src="<?php echo url_for('js/form.js');?>" defer></script>
+    <script src="<?php echo url_for('js/order.js');?>" defer></script>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="<?php echo url_for('/stylesheets/bootstrap.css');?>">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 

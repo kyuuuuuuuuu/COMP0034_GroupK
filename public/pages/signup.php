@@ -11,14 +11,14 @@
             Let's set up your account. Already have one? Log in
             <a href="login.php">here.</a>
         </h4>
-        <h5 class="text-danger">
+        <h3 class="text-danger">
             <strong>
                 <?php if(isset($_SESSION['error'])) {
                     echo $_SESSION['error'];
                     unset($_SESSION['error']);
                 }?>
             </strong>
-        </h5>
+        </h3>
     </div>
 
     <div class="btn-group btn-group container-fluid align-items-center" role="group" aria-label="...">

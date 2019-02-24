@@ -36,7 +36,9 @@ define("WWW_ROOT", $doc_root);
 
 require ('functions.php');
 
-require ('password.php')
+require ('password.php');
+
+require ('data_base_connection.php');
 
 
 
