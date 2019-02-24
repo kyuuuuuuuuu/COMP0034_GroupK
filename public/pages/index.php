@@ -6,19 +6,19 @@
     <!-- Slide Show code -->
     <div class="slideshow-container">
 
-        <div class="mySlides">
+        <div class="hideByDefault">
             <div class="numbertext">1 / 3</div>
             <img alt="slide show 1" height="400" src="../img/slideshow1.jpeg" style="width:100%">
             <div class="text">This is slide show 1</div>
         </div>
 
-        <div class="mySlides">
+        <div class="hideByDefault">
             <div class="numbertext">2 / 3</div>
             <img alt="slide show 2" height="400" src="../img/slideshow2.jpeg" style="width:100%">
             <div class="text">This is slide show 2</div>
         </div>
 
-        <div class="mySlides">
+        <div class="hideByDefault">
             <div class="numbertext">3 / 3</div>
             <img alt="slide show 3" height="400" src="../img/slideshow3.jpeg" style="width:100%">
             <div class="text">This is slide show 3</div>

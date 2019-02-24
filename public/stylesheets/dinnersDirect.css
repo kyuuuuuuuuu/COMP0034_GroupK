@@ -46,7 +46,7 @@ li a {
 }
 
 /* Hide the images by default */
-.mySlides {
+.hideByDefault {
     display: none;
 }
 
