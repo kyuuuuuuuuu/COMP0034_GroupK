@@ -165,15 +165,9 @@ if (isset($_SESSION['credential'])) {
                     <h2>STEP 3: View Basket</h2><br><br>
 
                     <p id="shopping_basket"></p><br>
-                    <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-2 text-right">
-                            <h6>The Grand Total is: £  </h6>
-                        </div>
-                        <div class="col-md-1 text-left">
-                            <p id="grandtotal"></p>
-                        </div>
-                        <div class="col-md-3"></div>
+
+                    <p id="grandtotal"></p>
+
                     </div>
 
 
