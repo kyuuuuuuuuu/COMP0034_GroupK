@@ -67,6 +67,11 @@ document.getElementById("thisdate").setAttribute("max", maxDate);
 
 var basket = [];
 
+// // function convertToInt (string) {
+// //     let integer = parseInt(string);
+// //     return integer;
+// }
+
 function addProduct(modalId) {
     console.log("clicked" + modalId);
     let name = document.getElementsByName("item")[modalId].getAttribute("value");
@@ -96,7 +101,33 @@ function addProduct(modalId) {
     html += "<td class='font-weight-bolder'>Total Price</td>";
     html += "<td class='font-weight-bolder'>Action</td>";
 
-    basket.push(newItem);
+    // basket.push(newItem);
+    if (basket === undefined || basket.length === 0) {
+        console.log ("first item");
+        basket.push(newItem);
+    }else {
+        console.log(basket.length);
+        let new_or_not = false;
+        for (let i = 0; i < basket.length; i++) {
+            if (basket[i].item_name === newItem.item_name) {
+                console.log ("repeated item");
+                new_or_not = true;
+                let temporary_Q = parseInt(basket[i].item_quantity);
+                console.log("prev Q = " + temporary_Q);
+                temporary_Q += parseInt(newItem.item_quantity);// need to be int. a string now
+                basket[i].item_quantity = temporary_Q;
+                break;
+            }
+
+
+        }
+        if (!new_or_not) {
+            console.log("new item");
+        basket.push(newItem);
+    }
+    }
+
+
 
     for (var i = 0; i < basket.length; i++) {
         html += "<tr>";
@@ -110,6 +141,29 @@ function addProduct(modalId) {
     html += "</table>";
     document.getElementById("shopping_basket").innerHTML = html;
 
+    // for (var i = 0; i < basket.length; i++) {
+    //     if (basket[i].item_name == item_name) {
+    //         var basketItem = null;
+    //         for (var k = 0; k < basket.length; k++) {
+    //             if (basket[k].item_name == basket[i].item_name) {
+    //                 basketItem = basket[k];
+    //                 basket[k].item_quantity++;
+    //                 break;
+    //             }
+    //         }
+    //         if (basketItem == null) {
+    //
+    //             var basketItem = {
+    //                 item: basket[i],
+    //                 item_quantity: basket[i].item_quantity,
+    //             };
+    //             basket.push(basketItem);
+    //         }
+    //     }
+    // }
+
+
+       renderbasket();
 }
 
 function renderbasket(){
@@ -119,11 +173,13 @@ function renderbasket(){
     ele.innerHTML = '';
 
     html += "<table class='table table-striped text-center'>";
-    html += "<td class='font-weight-bolder'>Item Name</td>";
+    html += "<tr><td class='font-weight-bolder'>Item Name</td>";
     html += "<td class='font-weight-bolder'>Quantity</td>";
     html += "<td class='font-weight-bolder'>Item Price</td>";
     html += "<td class='font-weight-bolder'>Total Price</td>";
-    html += "<td class='font-weight-bolder'>Action</td>";
+    html += "<td class='font-weight-bolder'>Action</td></tr>";
+
+    var GrandTotal = 0;
 
     for (var i = 0; i < basket.length; i++) {
         html += "<tr>";
@@ -133,7 +189,10 @@ function renderbasket(){
         html += "<td>" + parseFloat(basket[i].item_price) * parseInt(basket[i].item_quantity) + "</td>";
         html += "<td><button type='submit' onClick='deductQuantity(\"" + basket[i].item_name + "\", this);'/>Deduct Quantity</button> &nbsp<button type='submit' onClick='addQuantity(\"" + basket[i].item_name + "\", this);'/>Add Quantity</button> &nbsp<button type='submit' onClick='deleteItem(\"" + basket[i].item_name + "\", this);'/>Delete Item</button></td>";
         html += "</tr>";
+
+        GrandTotal += parseFloat(basket[i].item_price) * parseInt(basket[i].item_quantity);
     }
+    document.getElementById('grandtotal').innerHTML = GrandTotal;
     html += "</table>";
     ele.innerHTML = html;
 }

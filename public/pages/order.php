@@ -164,7 +164,19 @@ if (isset($_SESSION['credential'])) {
                 <form action="" method="get" onsubmit="">
                     <h2>STEP 3: View Basket</h2><br><br>
 
-                    <p id="shopping_basket"></p>
+                    <p id="shopping_basket"></p><br>
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-2 text-right">
+                            <h6>The Grand Total is: £  </h6>
+                        </div>
+                        <div class="col-md-1 text-left">
+                            <p id="grandtotal"></p>
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+
+
 
 <!--                    <table id="orderTable">-->
 <!--                        <tr style="font-size:2.5rem; background-color: lightgrey">-->
