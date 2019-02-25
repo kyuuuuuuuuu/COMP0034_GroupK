@@ -192,7 +192,7 @@ function renderbasket(){
 
         GrandTotal += parseFloat(basket[i].item_price) * parseInt(basket[i].item_quantity);
     }
-    document.getElementById('grandtotal').innerHTML = GrandTotal;
+    document.getElementById('grandtotal').innerHTML = "The Grand Total is: £ "+ GrandTotal;
     html += "</table>";
     ele.innerHTML = html;
 }
