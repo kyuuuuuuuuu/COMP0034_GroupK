@@ -21,7 +21,7 @@
                     <select name="quantity">
                         <?php
                         for ($x = 1; $x < 6; $x++) {
-                            echo "<option value=''" . $x . "'>&nbsp&nbsp " . $x . "&nbsp&nbsp</option>";
+                            echo "<option value='" . $x . "'>&nbsp&nbsp " . $x . "&nbsp&nbsp</option>";
                         }
                         ?>
                     </select>
