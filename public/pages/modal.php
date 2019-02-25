@@ -17,7 +17,17 @@
             </div>
             <form method="post" action="">
                 <div class="modal-footer" >
-                    <h4>Quantity: <input type="number" id="quantity_<?php echo $modal_id;?>" min="1" max="5" required></h4>
+                    <h4>Quantity: </h4>
+                    <select name="quantity">
+                        <?php
+                        for ($x = 1; $x < 6; $x++) {
+                            echo "<option value=''" . $x . "'>&nbsp&nbsp " . $x . "&nbsp&nbsp</option>";
+                        }
+                        ?>
+                    </select>
+
+                    <!-- <h4>Quantity: <input type="number" name="quantity" id="quantity_<?php echo $modal_id;?>" min="1" max="5" required></h4>-->
+                    <!-- <button type="button" class="btn-secondary rounded" onclick="quantityValidation(<?php echo $modal_id;?>)" data-dismiss="modal">Add</button>-->
                     <button type="button" class="btn-secondary rounded" onclick="addProduct(<?php echo $modal_id;?>)" data-dismiss="modal">Add</button>
                 </div>
             </form>

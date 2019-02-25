@@ -22,6 +22,8 @@ $admin_id = 2;
 $table_name = 'admin_student';
 $input_field = 'admin_id';
 $result_field = 'student_id';
+$x = 1;
+echo "<option value=\'" . $x . "\'>&nbsp&nbsp " . $x . "&nbsp&nbsp</option>";
 
 //$result = check_email_student($db, 'student@ucl.ac.uk');
 //echo $result;
