@@ -35,7 +35,7 @@ if (isset($_SESSION['credential'])) {
         <div class="col-md-4">
         <h3>MAIN</h3>
             <div>
-                <img src="../img/burger.jpeg" alt="Burger Image" class="orderOutline1" data-toggle="modal" data-target="#Modal0"/>
+                <img name="item_image" src="../img/burger.jpeg" alt="Burger Image" class="orderOutline1" data-toggle="modal" data-target="#Modal0"/>
                 <?php
                 $title="Beef burger with chips";
                 $price=3.50;
@@ -48,7 +48,7 @@ if (isset($_SESSION['credential'])) {
 
 
             <div>
-                <img src="../img/koleno.jpeg" alt="Koleno Image" class="orderOutline1" data-toggle="modal" data-target="#Modal1"/>
+                <img name="item_image" src="../img/koleno.jpeg" alt="Koleno Image" class="orderOutline1" data-toggle="modal" data-target="#Modal1"/>
                 <?php
                 $title="Koleno";
                 $price=2.70;
@@ -61,7 +61,7 @@ if (isset($_SESSION['credential'])) {
 
 
             <div>
-                <img src="../img/lamb.jpeg" alt="Lamb Image" class="orderOutline1" data-toggle="modal" data-target="#Modal2"/>
+                <img name="item_image" src="../img/lamb.jpeg" alt="Lamb Image" class="orderOutline1" data-toggle="modal" data-target="#Modal2"/>
                 <?php
                 $title="Lamb";
                 $price=2.50;
@@ -77,7 +77,7 @@ if (isset($_SESSION['credential'])) {
         <div class="col-md-4">
             <h3>DESSERTS</h3>
             <div>
-                <img src="../img/fruit.jpg" alt="Fruit Snack Image" class="orderOutline2" data-toggle="modal" data-target="#Modal3"/>
+                <img name="item_image" src="../img/fruit.jpg" alt="Fruit Snack Image" class="orderOutline2" data-toggle="modal" data-target="#Modal3"/>
                 <?php
                 $title="Fruit Snack (80g)";
                 $price=1.80;
@@ -90,7 +90,7 @@ if (isset($_SESSION['credential'])) {
 
 
             <div>
-                <img src="../img/rvCake.jpeg" alt="rvCake Image" class="orderOutline2" data-toggle="modal" data-target="#Modal4"/>
+                <img name="item_image" src="../img/rvCake.jpeg" alt="rvCake Image" class="orderOutline2" data-toggle="modal" data-target="#Modal4"/>
                 <?php
                 $title="Red velvet Cake";
                 $price=2.00;
@@ -103,7 +103,7 @@ if (isset($_SESSION['credential'])) {
 
 
             <div>
-                <img src="../img/cake.jpeg" alt="Cake Image" class="orderOutline2" data-toggle="modal" data-target="#Modal5"/>
+                <img name="item_image" src="../img/cake.jpeg" alt="Cake Image" class="orderOutline2" data-toggle="modal" data-target="#Modal5"/>
                 <?php
                 $title="Strawberry cake";
                 $price=2.00;
@@ -119,7 +119,7 @@ if (isset($_SESSION['credential'])) {
         <div class="col-md-4">
             <h3>DRINK</h3>
             <div>
-                <img src="../img/water.jpg" alt="Water Image" class="orderOutline3" data-toggle="modal" data-target="#Modal6"/>
+                <img name="item_image" src="../img/water.jpg" alt="Water Image" class="orderOutline3" data-toggle="modal" data-target="#Modal6"/>
                 <?php
                 $title="Water (100ml)";
                 $price=0.70;
@@ -131,7 +131,7 @@ if (isset($_SESSION['credential'])) {
 
 
             <div>
-                <img src="../img/AppleJuice.jpeg" alt="Apple Juice Image" class="orderOutline3" data-toggle="modal" data-target="#Modal7"/>
+                <img name="item_image" src="../img/AppleJuice.jpeg" alt="Apple Juice Image" class="orderOutline3" data-toggle="modal" data-target="#Modal7"/>
                 <?php
                 $title="Innocent Apple juice (100ml)";
                 $price=1.20;
@@ -143,7 +143,7 @@ if (isset($_SESSION['credential'])) {
 
 
             <div>
-                <img src="../img/coke.jpg" alt="Coke Image" class="orderOutline3" data-toggle="modal" data-target="#Modal8"/>
+                <img name="item_image" src="../img/coke.jpg" alt="Coke Image" class="orderOutline3" data-toggle="modal" data-target="#Modal8"/>
                 <?php
                 $title="Coke (330ml)";
                 $price=1.20;
