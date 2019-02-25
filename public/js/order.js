@@ -217,6 +217,7 @@ function deleteItem(item_name, e) {
             basket.splice(i, 1);
         }
     }
+    renderbasket();
 }
 
 function deductQuantity(item_name) {
@@ -229,7 +230,7 @@ function deductQuantity(item_name) {
             basket.splice(i, 1);
         }
     }
-    renderbasket()
+    renderbasket();
 }
 
 function addQuantity(item_name) {
@@ -238,7 +239,7 @@ function addQuantity(item_name) {
             basket[i].item_quantity++;
         }
     }
-    renderbasket()
+    renderbasket();
 }
 
 

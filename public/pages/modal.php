@@ -66,7 +66,7 @@
 <!--                Modal -->
 <!--<div id="Modal1" class="modal fade" role="dialog">-->
 <!--    <div class="modal-dialog">-->
-        <!-- Modal content-->
+<!-- Modal content-->
 <!--        <div class="modal-content">-->
 <!--            <div class="modal-header">-->
 <!--                <h4 class="modal-title">Beef burger with chips,</h4>-->
