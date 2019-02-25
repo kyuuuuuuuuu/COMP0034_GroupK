@@ -74,6 +74,8 @@ var basket = [];
 
 function addProduct(modalId) {
     console.log("clicked" + modalId);
+    let image_src = document.getElementsByName("item_image")[modalId].src;
+
     let name = document.getElementsByName("item")[modalId].getAttribute("value");
     let price = document.getElementsByName("price")[modalId].getAttribute("value");
     console.log(name);
@@ -82,19 +84,25 @@ function addProduct(modalId) {
     console.log(quantity_id);
     let quantity = document.getElementById(quantity_id).value;
     console.log(quantity);
-
-
+    let image = "<img src='" + image_src + "' style='width:100px; height:100px; border-radius: 50%'>";
+    console.log(image);
+    // console.log("");
     var newItem = {
+        item_image: null,
         item_name: null,
         item_price: 0.00,
         item_quantity: 0,
     };
 
+
+
+    newItem.item_image = image;
     newItem.item_name = name;
     newItem.item_quantity = quantity;
     newItem.item_price = price;
 
     var html = "<table class='table table-striped text-center'>";
+    html += "<td class='font-weight-bolder'>Item Image</td>";
     html += "<td class='font-weight-bolder'>Item Name</td>";
     html += "<td class='font-weight-bolder'>Quantity </td>";
     html += "<td class='font-weight-bolder'>Item Price</td>";
@@ -130,11 +138,14 @@ function addProduct(modalId) {
 
 
     for (var i = 0; i < basket.length; i++) {
+        let total = parseFloat(basket[i].item_price) * parseInt(basket[i].item_quantity);
+        console.log("<td>" + basket[i].item_image + "  " + basket[i].item_name + "</td>");
         html += "<tr>";
+        html += "<td>" + basket[i].item_image + "</td>";
         html += "<td>" + basket[i].item_name + "</td>";
         html += "<td>" + basket[i].item_quantity + "</td>";
         html += "<td>" + basket[i].item_price + "</td>";
-        html += "<td>" + parseFloat(basket[i].item_price) * parseInt(basket[i].item_quantity) + "</td>";
+        html += "<td>" + total.toFixed(2) + "</td>";
         html += "<td><button type='submit' onClick='deductQuantity(\"" + basket[i].item_name + "\", this);'/>Deduct Quantity</button> &nbsp<button type='submit' onClick='addQuantity(\"" + basket[i].item_name + "\", this);'/>Add Quantity</button> &nbsp<button type='submit' onClick='deleteItem(\"" + basket[i].item_name + "\", this);'/>Delete Item</button></td>";
         html += "</tr>";
     }
@@ -173,7 +184,8 @@ function renderbasket(){
     ele.innerHTML = '';
 
     html += "<table class='table table-striped text-center'>";
-    html += "<tr><td class='font-weight-bolder'>Item Name</td>";
+    html += "<tr><td class='font-weight-bolder'>Item Image</td>";
+    html += "<td class='font-weight-bolder'>Item Name</td>";
     html += "<td class='font-weight-bolder'>Quantity</td>";
     html += "<td class='font-weight-bolder'>Item Price</td>";
     html += "<td class='font-weight-bolder'>Total Price</td>";
@@ -182,17 +194,20 @@ function renderbasket(){
     var GrandTotal = 0;
 
     for (var i = 0; i < basket.length; i++) {
+        let total = parseFloat(basket[i].item_price) * parseInt(basket[i].item_quantity);
         html += "<tr>";
+
+        html += "<td>" + basket[i].item_image + "</td>";
         html += "<td>" + basket[i].item_name + "</td>";
         html += "<td>" + basket[i].item_quantity + "</td>";
         html += "<td>" + basket[i].item_price + "</td>";
-        html += "<td>" + parseFloat(basket[i].item_price) * parseInt(basket[i].item_quantity) + "</td>";
+        html += "<td>" + total.toFixed(2) + "</td>";
         html += "<td><button type='submit' onClick='deductQuantity(\"" + basket[i].item_name + "\", this);'/>Deduct Quantity</button> &nbsp<button type='submit' onClick='addQuantity(\"" + basket[i].item_name + "\", this);'/>Add Quantity</button> &nbsp<button type='submit' onClick='deleteItem(\"" + basket[i].item_name + "\", this);'/>Delete Item</button></td>";
         html += "</tr>";
 
         GrandTotal += parseFloat(basket[i].item_price) * parseInt(basket[i].item_quantity);
     }
-    document.getElementById('grandtotal').innerHTML = "The Grand Total is: £ "+ GrandTotal;
+    document.getElementById('grandtotal').innerHTML = "The Grand Total is: £ "+ GrandTotal.toFixed(2);
     html += "</table>";
     ele.innerHTML = html;
 }
