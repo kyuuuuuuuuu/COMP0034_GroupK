@@ -104,7 +104,7 @@ function addProduct(modalId) {
         html += "<td>" + basket[i].item_quantity + "</td>";
         html += "<td>" + basket[i].item_price + "</td>";
         html += "<td>" + parseFloat(basket[i].item_price) * parseInt(basket[i].item_quantity) + "</td>";
-        html += "<td><button type='submit' onClick='subtractQuantity(\"" + basket[i].item_name + "\", this);'/>Subtract Quantity</button> &nbsp<button type='submit' onClick='addQuantity(\"" + basket[i].item_name + "\", this);'/>Add Quantity</button> &nbsp<button type='submit' onClick='deleteItem(\"" + basket[i].item_name + "\", this);'/>Delete Item</button></td>";
+        html += "<td><button type='submit' onClick='deductQuantity(\"" + basket[i].item_name + "\", this);'/>Deduct Quantity</button> &nbsp<button type='submit' onClick='addQuantity(\"" + basket[i].item_name + "\", this);'/>Add Quantity</button> &nbsp<button type='submit' onClick='deleteItem(\"" + basket[i].item_name + "\", this);'/>Delete Item</button></td>";
         html += "</tr>";
     }
     html += "</table>";
@@ -131,7 +131,7 @@ function renderbasket(){
         html += "<td>" + basket[i].item_quantity + "</td>";
         html += "<td>" + basket[i].item_price + "</td>";
         html += "<td>" + parseFloat(basket[i].item_price) * parseInt(basket[i].item_quantity) + "</td>";
-        html += "<td><button type='submit' onClick='deductQuantity(\"" + basket[i].item_name + "\", this);'/>Subtract Quantity</button> &nbsp<button type='submit' onClick='addQuantity(\"" + basket[i].item_name + "\", this);'/>Add Quantity</button> &nbsp<button type='submit' onClick='deleteItem(\"" + basket[i].item_name + "\", this);'/>Delete Item</button></td>";
+        html += "<td><button type='submit' onClick='deductQuantity(\"" + basket[i].item_name + "\", this);'/>Deduct Quantity</button> &nbsp<button type='submit' onClick='addQuantity(\"" + basket[i].item_name + "\", this);'/>Add Quantity</button> &nbsp<button type='submit' onClick='deleteItem(\"" + basket[i].item_name + "\", this);'/>Delete Item</button></td>";
         html += "</tr>";
     }
     html += "</table>";
