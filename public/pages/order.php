@@ -164,7 +164,7 @@ if (isset($_SESSION['credential'])) {
                 <form action="" method="get" onsubmit="">
                     <h2>STEP 3: View Basket</h2><br><br>
 
-                    <p id="demo"></p>
+                    <p id="shopping_basket"></p>
 
 <!--                    <table id="orderTable">-->
 <!--                        <tr style="font-size:2.5rem; background-color: lightgrey">-->
