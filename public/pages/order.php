@@ -14,7 +14,7 @@ if (isset($_SESSION['credential'])) {
     <div class="card-header text-center">
         <h1><?php echo $welcome_message;?></h1>
     </div>
-    <div class="container">
+    <div class="container-fluid">
         <div id="step1">
             <br><br>
             <form action="" method="get" onsubmit="">
@@ -168,7 +168,6 @@ if (isset($_SESSION['credential'])) {
                     <p id="shopping_basket"></p><br>
 
                     <p id="grandtotal"></p>
-
                     </div>
 
 
@@ -190,7 +189,7 @@ if (isset($_SESSION['credential'])) {
 
 
             <div>
-                <button id="toPayment" type="submit">Proceed payment</button>
+                <a href="order_summary.php"><button id="toPayment" type="submit">Proceed payment</button></a>
                 <br><br><br><br><br>
             </div>
         </form>

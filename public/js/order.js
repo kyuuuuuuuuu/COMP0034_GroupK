@@ -205,10 +205,12 @@ function renderbasket(){
 
         GrandTotal += parseFloat(basket[i].item_price) * parseInt(basket[i].item_quantity);
     }
+    sessionStorage.setItem("GrandTotalA", GrandTotal);
     document.getElementById('grandtotal').innerHTML = "The Grand Total is: £ "+ GrandTotal.toFixed(2);
     html += "</table>";
     console.log(html);
     ele.innerHTML = html;
+
 }
 
 function deleteItem(item_name, e) {
@@ -267,6 +269,26 @@ let checked = false;
 // console.log(checked);
     return checked;
 }
+
+
+
+
+
+
+
+function myFunction() {
+    // alert("Page is loaded");
+    let grandStored = sessionStorage.getItem("GrandTotalA");
+    // sessionStorage.setItem("my", "food");
+    document.getElementById("subtotal").innerHTML = grandStored ;
+
+    let tax = 1.125*grandStored;
+    document.getElementById("tax").innerHTML = tax ;
+
+    let total = parseFloat(grandStored) + parseFloat(tax) + 1;
+    document.getElementById("ordertotal").innerHTML = total ;
+}
+
 
 
 // 2019/02/25 yj's code
