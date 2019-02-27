@@ -31,9 +31,9 @@
 //print_r($setOfId);
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "post method";
-    if (isset($_POST['name1'])) {
+    if (isset($_POST['cake'])) {
         echo "isset";
-        echo $_POST['name1'];
+        echo $_POST['cake'];
     }
 }
 
@@ -51,7 +51,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         </tr>
         <tr>
             <td><img src='http://localhost:8888/COMP0034_GroupK/public/img/rvCake.jpeg' style='width:100px; height:100px; border-radius: 50%'></td>
-            <td name="name1" value="RvCake">Red velvet Cake</td>
+            <td><input name="cake" type="text" value="Red velvet Cake" style="display: none">Red velvet Cake</td>
             <td name="quantity">2</td>
             <td>2</td>
             <td>4.00</td>
