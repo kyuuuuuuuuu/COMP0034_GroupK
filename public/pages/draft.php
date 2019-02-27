@@ -30,9 +30,9 @@
 //$setOfId = get_pair_id($db,$admin_id,$table_name,$input_field,$result_field);
 //print_r($setOfId);
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-    echo "post method";
+    echo "post method<br>";
     if (isset($_POST['cake'])) {
-        echo "isset";
+        echo "isset<br>";
         echo $_POST['cake'];
     }
 }
