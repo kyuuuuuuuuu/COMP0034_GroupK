@@ -2,6 +2,7 @@
 //Define variables to collect from form. Initial value is blank.
 $email = $fname = $lname = $user_pw = $pw2 =$phone = $school = $accType = $reference = "";
 $email_empty = $fname_empty = $lname_empty = $pw_empty = $pw2_empty = $school_empty = $accType_empty = $reference_empty = "";
+//$br = "<br>";
 
 //Create a function to test user input, encode special HTMl characters, remove unnecessary space, tab, backsplashes etc.
 function test_input($user_input) {
@@ -38,13 +39,15 @@ function submit_query($db, $query) { //Still need to deal with error!!!
     //submit a SQL query to the database
     if (mysqli_query($db, $query)) {
         echo "<br>Data is saved succesfully";
+        return true;
     } else {
         echo"<br>Error occurs in saving process!";
+        return false;
     }
 }
 
 function get_all($db, $table_name) { //get all data from a table
-    $query = "SELECT * FROM " . $table_name;
+    $query = "SELECT * FROM $table_name";
     $data = mysqli_query($db, $query);
     return $data;
 }
@@ -53,15 +56,34 @@ function get_data($db, $user_input, $table_name, $field_name) {
     //Get all data from the database given the table name and column name
     //db is database connection
     $user_input = test_input($user_input);
-    $table_data = get_all($db,$table_name);
-    $data = "Not Found";
-
-    while ($row = mysqli_fetch_assoc($table_data)) {
-        if ($user_input == $row[$field_name]) {
-            $data = $row;
-            break;
-        }
+    $query = "SELECT * FROM $table_name WHERE $field_name = '$user_input'";
+    $result = mysqli_query($db, $query);
+    //echo $data;
+    if (mysqli_num_rows($result) == 1) {
+        echo "1 result" . "<br>";
+        $data = mysqli_fetch_assoc($result);
+        print_r($data);
     }
+    elseif (mysqli_num_rows($result) > 1){
+        echo "more than 1 result" . "<br>";
+        $data = array();
+        while($row = mysqli_fetch_assoc($result)) {
+            //print_r($row);
+            array_push($data,$row);
+        }
+        echo "<br>";
+        print_r($data);
+    } else {
+        echo "0 results" . "<br>";
+        $data = false;
+    }
+
+//    while ($row = mysqli_fetch_assoc($table_data)) {
+//        if ($user_input == $row[$field_name]) {
+//            $data = $row;
+//            break;
+//        }
+//    }
 
     return $data;
 }
@@ -150,6 +172,32 @@ function get_pair_id ($db, $user_input, $table_name, $input_field, $result_field
         }
     }
     return $id_set;
+}
+
+function get_from_3_tables ($db, $user_input, $table_name, $input_field, $table_name2, $field_id1, $table_name3, $field_id2) {
+    $query = "SELECT * FROM $table_name JOIN $table_name2 USING ($field_id1) JOIN $table_name3 USING ($field_id2) " .
+        "WHERE $table_name.$input_field = '$user_input'";
+    echo $query . "<br>";
+    $result = mysqli_query($db, $query);
+    if (mysqli_num_rows($result) == 1) {
+        echo "1 result" . "<br>";
+        $data = mysqli_fetch_assoc($result);
+        print_r($data);
+    }
+    elseif (mysqli_num_rows($result) > 1){
+        echo "more than 1 result" . "<br>";
+        $data = array();
+        while($row = mysqli_fetch_assoc($result)) {
+            //print_r($row);
+            array_push($data,$row);
+        }
+        echo "<br>";
+        print_r($data);
+    } else {
+        echo "0 results" . "<br>";
+        $data = false;
+    }
+    return $data;
 }
 ?>
 

@@ -31,5 +31,48 @@
 //print_r($setOfId);
 
 
+function get_data1($db, $user_input, $table_name, $field_name) {
+    $br = "<br>";
+    //Get all data from the database given the table name and column name
+    //db is database connection
+    $user_input = test_input($user_input);
+    $query = "SELECT * FROM $table_name JOIN admin_student USING (admin_id) JOIN student USING (student_id) JOIN student_parent USING (student_id) JOIN parent USING (parent_id) WHERE administrator.$field_name = '$user_input'";
+    echo $query . $br;
+    //$table_data = get_all($db,$table_name);
+    $result = mysqli_query($db, $query);
+    //echo $data;
+    if (mysqli_num_rows($result) == 1) {
+        echo "1 result" . $br;
+        $data = mysqli_fetch_assoc($result);
+        print_r($data);
+        }
+    elseif (mysqli_num_rows($result) > 1){
+        echo "more than 1 result" .$br;
+        $data = array();
+        while($row = mysqli_fetch_assoc($result)) {
+            //print_r($row);
+            array_push($data,$row);
+        }
+        echo $br;
+        print_r($data);
+    } else {
+        echo "0 results" . $br;
+        $data = false;
+    }
+
+//    while ($row = mysqli_fetch_assoc($table_data)) {
+//        if ($user_input == $row[$field_name]) {
+//            $data = $row;
+//            break;
+//        }
+//    }
+
+    return $data;
+}
+
+//get_data1($db, 'admin@lse.ac.uk', 'administrator', 'email_address');
+
+get_from_3_tables($db, 'admin@ucl.ac.uk', 'administrator', 'email_address', 'school_admin', 'admin_id', 'school', 'school_id');
+
 ?>
 <?php require_once('../../private/shared/pages_footer.php');?>
