@@ -160,8 +160,9 @@ if (isset($_SESSION['credential'])) {
         </div>
 
         <div>
+            <form action="after_order.php" method="post" onsubmit="">
             <div id="step3">
-                <form action="" method="get" onsubmit="">
+
                     <h2>STEP 3: View Basket</h2><br><br>
 
                     <p id="shopping_basket"></p><br>
@@ -184,14 +185,16 @@ if (isset($_SESSION['credential'])) {
 <!--                            <td style="padding: 15px">ccc</td>-->
 <!--                        </tr>-->
 <!--                    </table>-->
-                </form>
+
                 <br><br><br>
-            </div>
+
 
             <div>
                 <button id="toPayment" type="submit">Proceed payment</button>
                 <br><br><br><br><br>
             </div>
+        </form>
+        </div>
         </div>
     </div>
     </div>

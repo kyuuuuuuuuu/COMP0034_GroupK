@@ -207,6 +207,7 @@ function renderbasket(){
     }
     document.getElementById('grandtotal').innerHTML = "The Grand Total is: £ "+ GrandTotal.toFixed(2);
     html += "</table>";
+    console.log(html);
     ele.innerHTML = html;
 }
 
