@@ -10,9 +10,10 @@
 //    $welcome_message = "Before placing an order, Please log in <a href=\"login.php\">here.</a>";
 //}
 ?>
-    <!DOCTYPE html>
-    <html>
-<body onload="myFunction()">
+
+<body onload="orderSummary()">
+
+<!--<script>orderSummary();</script>-->
 
     <div class="card-header text-center" >
         <h1>Order Summary</h1>
@@ -23,17 +24,16 @@
         <br>
         Review your order and select "Place order" button at the end of the page.
         <br><hr>
-        <b><h5>Order Id: </h5></b>
+<!--        <b><h5>Order Id: </h5></b>-->
 
-        <br>
+<!--        <br>-->
         <b>Delivery Details: </b>
         <br><br><br><br><br>
 
         <h4>Items: </h4><hr>
         <br>
-        <p id="testing"></p>
-        put items here.
-
+        <p id="summaryTable"></p>
+<!--        <p id="shopping_basket"></p>-->
         <hr>
 
         <div class="row">
@@ -44,17 +44,13 @@
                 <!--                <tr>Shipping:</tr>-->
                 <!--                <tr>Order Total:</tr>-->
                 <!--            </table>-->
-                Order Subtotal: £
-                <p id="subtotal"></p><br>
-                Tax: £<br>
-                <p id="tax"></p><br>
+                Order Subtotal: £<label id="subTotal"></label><br>
+                Tax: £<label id="tax"></label><br>
                 Shipping: £1.00<br><br>
-                <b>Order Total: </b>£
-                <p id="ordertotal"></p>
+                <b>Order Total: </b>£<label id="orderTotal"></label>
                 <br><br>
             </div>
         </div>
-
 
 
         <div>
@@ -64,5 +60,4 @@
 
     </div>
 </body>
-</html>
 <?php require_once('../../private/shared/pages_footer.php');?>

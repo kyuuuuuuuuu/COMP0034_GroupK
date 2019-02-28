@@ -160,7 +160,7 @@ if (isset($_SESSION['credential'])) {
         </div>
 
         <div>
-            <form action="after_order.php" method="post" onsubmit="">
+            <form action="order_summary.php" method="post" onsubmit="">
             <div id="step3">
 
                     <h2>STEP 3: View Basket</h2><br><br>
@@ -189,7 +189,7 @@ if (isset($_SESSION['credential'])) {
 
 
             <div>
-                <a href="order_summary.php"><button id="toPayment" type="submit">Proceed payment</button></a>
+                <button id="toPayment" type="submit">Proceed payment</button>
                 <br><br><br><br><br>
             </div>
         </form>

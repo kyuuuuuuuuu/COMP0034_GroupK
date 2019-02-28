@@ -190,6 +190,7 @@ function renderbasket(){
     html += "<td class='font-weight-bolder'>Action</td></tr>";
 
     var GrandTotal = 0;
+    var name_session = [];
 
     for (var i = 0; i < basket.length; i++) {
         let total = parseFloat(basket[i].item_price) * parseInt(basket[i].item_quantity);
@@ -202,9 +203,15 @@ function renderbasket(){
         html += "<td>" + total.toFixed(2) + "</td>";
         html += "<td><button type='submit' onClick='deductQuantity(\"" + basket[i].item_name + "\", this);'/>Deduct Quantity</button> &nbsp<button type='submit' onClick='addQuantity(\"" + basket[i].item_name + "\", this);'/>Add Quantity</button> &nbsp<button type='submit' onClick='deleteItem(\"" + basket[i].item_name + "\", this);'/>Delete Item</button></td>";
         html += "</tr>";
+        name_session[i] = basket[i].item_name;
+        let itemName = "itemName" + i;
 
+        sessionStorage.setItem(itemName, basket[i].item_name);
         GrandTotal += parseFloat(basket[i].item_price) * parseInt(basket[i].item_quantity);
     }
+
+    // sessionStorage.setItem("itemName", name_session);
+    sessionStorage.setItem("table", html);
     sessionStorage.setItem("GrandTotalA", GrandTotal);
     document.getElementById('grandtotal').innerHTML = "The Grand Total is: £ "+ GrandTotal.toFixed(2);
     html += "</table>";
@@ -272,22 +279,42 @@ let checked = false;
 
 
 
+function saveBasket () {
+
+}
 
 
 
-
-function myFunction() {
+function orderSummary() {
     // alert("Page is loaded");
+
+    var yjNoob = sessionStorage.getItem("itemName1");
+    console.log(yjNoob);
+
     let grandStored = sessionStorage.getItem("GrandTotalA");
     // sessionStorage.setItem("my", "food");
-    document.getElementById("subtotal").innerHTML = grandStored ;
+    document.getElementById("subTotal").innerHTML = grandStored ;
 
-    let tax = 1.125*grandStored;
-    document.getElementById("tax").innerHTML = tax ;
+    let tax = 0.125*grandStored;
+    document.getElementById("tax").innerHTML = tax.toFixed(2) ;
 
     let total = parseFloat(grandStored) + parseFloat(tax) + 1;
-    document.getElementById("ordertotal").innerHTML = total ;
+    document.getElementById("orderTotal").innerHTML = total.toFixed(2) ;
+
+
+    // document.getElementById("summaryTable").innerHTML = yeojin;
+    // console.log(sessionStorage.getItem("itemImage"));
+    let summaryTable = sessionStorage.getItem("table");
+    // summaryTable.deleteCell(-1);
+    document.getElementById("summaryTable").innerHTML = summaryTable;
+
 }
+//
+// function deleteRow(btn) {
+//     var row = btn.parentNode.parentNode;
+//     row.parentNode.removeChild(row);
+// }
+
 
 
 
