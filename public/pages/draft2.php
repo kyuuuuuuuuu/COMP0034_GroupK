@@ -71,8 +71,13 @@ function get_data1($db, $user_input, $table_name, $field_name) {
 }
 
 //get_data1($db, 'admin@lse.ac.uk', 'administrator', 'email_address');
+$user_input = 'admin@lse.ac.uk';
+$input_field = 'email_address';
 
-get_from_3_tables($db, 'admin@ucl.ac.uk', 'administrator', 'email_address', 'school_admin', 'admin_id', 'school', 'school_id');
+get_admin ($db, $user_input, $input_field);
 
+get_student ($db, $user_input, $input_field);
+
+get_parent ($db, $user_input, $input_field);
 ?>
 <?php require_once('../../private/shared/pages_footer.php');?>

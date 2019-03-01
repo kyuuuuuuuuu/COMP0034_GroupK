@@ -8,16 +8,21 @@
     redirect_to(url_for('/pages/myaccount.php'));
 }
 
-$children_id = get_pair_id($db,$data['parent_id'],'student_parent','parent_id','student_id');
+$result = get_parent_student ($db, $user_email, 'email_address');
+//print_r($result);
 
-for ($i = 0; $i < sizeof($children_id); $i++) {
-    $children_data[$i] = get_data($db, $children_id[$i], 'student', 'student_id');
+if (count($result) === 1) {
+    echo "count is 1<br>";
+    $number_of_children = 1;
+}elseif (count($result) > 1) {
+    echo "more than 1<br>" . count($result) . "<br>";
+    $number_of_children = count($result);
+}else {
+    echo "empty result";
 }
 
-$number_of_children = sizeof($children_id);
 
 require_once('../../private/shared/pages_header.php');
-
 ?>
 
 
@@ -67,15 +72,19 @@ require_once('../../private/shared/pages_header.php');
                         <?php
                         if ($number_of_children > 1) {
                             echo $number_of_children . " children";
+
                         }else {
                             echo $number_of_children . " child";
                         };
                         ?>
                         <br>
+                        Children name:
                         <?php
                         for ($i = 0; $i < $number_of_children; $i++) {
-                            echo $children_data[$i]['first_name'] . " " . $children_data[$i]['last_name'];
-                        }?>
+                            echo $result[$i]['first_name'] . " " . $result[$i]['last_name'];
+
+                        }
+                        ?>
                     </p>
 
                 </div>

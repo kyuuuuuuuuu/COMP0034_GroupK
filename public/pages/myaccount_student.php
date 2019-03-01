@@ -8,6 +8,10 @@ if (isset($_SESSION['credential'])) {
 //    $data = array("email_address"=>"default@email.com", "first_name"=>"default_fn", "last_name"=>"default_ln");
     redirect_to(url_for('/pages/myaccount.php'));
 }
+$result1 = get_student_admin ($db, $user_email, 'email_address');
+print_r($result1);
+$result2 = get_student_parent ($db, $user_email, 'email_address');
+print_r($result2);
 ?>
 
 <header class="card-header text-center">

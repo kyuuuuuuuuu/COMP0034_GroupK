@@ -8,6 +8,18 @@ if (isset($_SESSION['credential'])) {
 //    $data = array("email_address"=>"default@email.com", "first_name"=>"default_fn", "last_name"=>"default_ln");
     redirect_to(url_for('/pages/myaccount.php'));
 }
+$result1 = get_admin_school ($db, $user_email, 'email_address');
+print_r($result1);
+$result2 = get_admin_student ($db, $user_email, 'email_address');
+print_r($result2);
+
+if (count($result2) == count($result2, COUNT_RECURSIVE)) {
+    echo "not multi<br>";
+}else {
+    echo "multi<br>";
+    echo count($result2) . "<br>";
+    echo count($result2, COUNT_RECURSIVE);
+}
 ?>
 
 <header class="card-header text-center">
