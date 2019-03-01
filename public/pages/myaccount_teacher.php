@@ -8,18 +8,21 @@ if (isset($_SESSION['credential'])) {
 //    $data = array("email_address"=>"default@email.com", "first_name"=>"default_fn", "last_name"=>"default_ln");
     redirect_to(url_for('/pages/myaccount.php'));
 }
-$result1 = get_admin_school ($db, $user_email, 'email_address');
-print_r($result1);
-$result2 = get_admin_student ($db, $user_email, 'email_address');
-print_r($result2);
+$result = get_admin ($db, $user_email, 'email_address');
+//print_r($result);
 
-if (count($result2) == count($result2, COUNT_RECURSIVE)) {
-    echo "not multi<br>";
-}else {
-    echo "multi<br>";
-    echo count($result2) . "<br>";
-    echo count($result2, COUNT_RECURSIVE);
+$student_a = [];
+$school_a = [];
+$parent_a = [];
+for ($i = 0; $i < count($result); $i++) {
+    $student_a[$i] = get_data($db, $result[$i]['student_id'], 'student', 'student_id');
+    $school_a[$i] = get_data($db, $result[$i]['school_id'], 'school', 'school_id');
 }
+
+//print_r($student_a);
+//echo "<br>";
+//print_r($school_a);
+//echo "<br>";
 ?>
 
 <header class="card-header text-center">
@@ -60,8 +63,29 @@ if (count($result2) == count($result2, COUNT_RECURSIVE)) {
         </div>
         <hr class="sidebar-divider d-none d-md-block">
         <div class="col-lg-8">
+            <h3 class="text-danger">
+                <strong>
+                    <?php if(isset($_SESSION['message'])) {
+                        echo $_SESSION['message'];
+                        unset($_SESSION['message']);
+                    }?>
+                </strong>
+            </h3>
             <div name="abc" style="display: none" class="tab-content">
                 <h1>Teacher Profile</h1>
+                <p>
+                    School: <?php echo $school_a[0]['school_name'];?><br>
+                    Address: <?php echo $school_a[0]['school_address'];?><br><br>
+                    <?php
+                    for ($i = 0; $i < count($result); $i++) {?>
+                        Student: <?php echo $student_a[$i]['first_name'] . " " . $student_a[$i]['last_name'];?><br>
+                        Status: <?php if($student_a[$i]['status'] == 0) {
+                            echo "Not verified";
+                        }else {
+                            echo "Verified";
+                        }?><br>
+                    <?php } ?>
+                </p>
 
             </div>
             <div name="abc" style="display: none" class="tab-content">
@@ -76,27 +100,20 @@ if (count($result2) == count($result2, COUNT_RECURSIVE)) {
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Trung Kien</td>
-                        <td>Nguyen</td>
-                        <td>zcectkn@ucl.ac.uk</td>
-                        <td><button class="btn btn-primary btn-block" type="submit">Approve</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Yeo Jin</td>
-                        <td>Lee</td>
-                        <td>zcecyjl@ucl.ac.uk</td>
-                        <td><button class="btn btn-primary btn-block" type="submit">Approve</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Koon Yew</td>
-                        <td>Ling</td>
-                        <td>zceckyl@ucl.ac.uk</td>
-                        <td><button class="btn btn-primary btn-block" type="submit">Approve</button></td>
-                    </tr>
+                    <?php $k = 0;
+                    for ($j = 0; $j < count($result); $j++) {
+                        if($student_a[$j]['status'] == 0) {
+                            $k++?>
+                        <tr>
+                            <form method="post" action="verify_student.php">
+                                <th scope="row"><?php echo $k;?></th>
+                                <td><?php echo $student_a[$j]['first_name'];?></td>
+                                <td><?php echo $student_a[$j]['last_name'];?></td>
+                                <td><?php echo $student_a[$j]['email_address'];?></td>
+                                <td><button class="btn btn-primary btn-block" name="submit" type="submit" value="<?php echo $student_a[$j]['student_id']?>">Approve</button></td>
+                            </form>
+                        </tr>
+                    <?php }}?>
                     </tbody>
                 </table>
 
@@ -138,18 +155,18 @@ if (count($result2) == count($result2, COUNT_RECURSIVE)) {
                 </table>
 
             </div>
+
             <div name="abc" style="display: none" class="tab-content">
-                <label>Email Address:</label>
-                <input type="email" class="form-control" placeholder="Enter your email"><br>
-                <label>Current Password:</label>
-                <input type="password" class="form-control" placeholder="Enter your current password"><br>
-                <label>New Password:</label>
-                <input type="password" class="form-control" placeholder="Enter your new password">
-                <br>
-
-                <button type="submit" class="btn btn-primary btn-block">Submit</button>
-
-
+                <form name="change_password_form" method="post" action="change_password.php" onsubmit="return true;">
+                    <label>Email Address:</label>
+                    <input name="user_email" type="email" class="form-control" placeholder="Enter your email"><br>
+                    <label>Current Password:</label>
+                    <input name="old_password" type="password" class="form-control" placeholder="Enter your current password"><br>
+                    <label>New Password:</label>
+                    <input name="new_password" type="password" class="form-control" placeholder="Enter your new password">
+                    <br>
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                </form>
             </div>
         </div>
     </div>

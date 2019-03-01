@@ -8,10 +8,30 @@ if (isset($_SESSION['credential'])) {
 //    $data = array("email_address"=>"default@email.com", "first_name"=>"default_fn", "last_name"=>"default_ln");
     redirect_to(url_for('/pages/myaccount.php'));
 }
-$result1 = get_student_admin ($db, $user_email, 'email_address');
-print_r($result1);
-$result2 = get_student_parent ($db, $user_email, 'email_address');
-print_r($result2);
+
+$result = get_student ($db, $user_email, 'email_address');
+//print_r($result);
+
+if (count($result) === 1) {
+//    echo "count is 1<br>";
+    $number_of_children = 1;
+}elseif (count($result) > 1) {
+//    echo "more than 1<br>" . count($result) . "<br>";
+    $number_of_children = count($result);
+}else {
+    echo "empty result";
+}
+$admin_s = [];
+$school_s = [];
+for ($i = 0; $i < count($result); $i++) {
+    $admin_s[$i] = get_data($db, $result[$i]['admin_id'], 'administrator', 'admin_id');
+    $school_s[$i] = get_data($db, $result[$i]['school_id'], 'school', 'school_id');
+}
+
+//print_r($admin_s);
+//echo "<br>";
+//print_r($school_s);
+//echo "<br>";
 ?>
 
 <header class="card-header text-center">
@@ -54,25 +74,39 @@ print_r($result2);
             <div class="tab-content">
                 <div name="abcd" style="display: none" class="tab-content">
                     <h1>Student Profile</h1>
+                    <p>
+                        <?php
+                        for ($i = 0; $i < $number_of_children; $i++) {?>
+                            Teacher: <?php echo $admin_s[$i]['first_name'] . " " . $admin_s[$i]['last_name'];?><br>
+                            School: <?php echo $school_s[$i]['school_name'];?><br>
+                            Address: <?php echo $school_s[$i]['school_address'];?><br>
+                        <?php } ?>
+                    </p>
 
                 </div>
                 <div name="abcd" style="display: none" class="tab-content">
                     <h1>View Order</h1>
 
                 </div>
+                <h3 class="text-danger">
+                    <strong>
+                        <?php if(isset($_SESSION['error'])) {
+                            echo $_SESSION['error'];
+                            unset($_SESSION['error']);
+                        }?>
+                    </strong>
+                </h3>
                 <div name="abcd" style="display: none" class="tab-content">
-                    <label>Email Address:</label>
-                    <input type="email" class="form-control" placeholder="Enter your email"><br>
-                    <label>Current Password:</label>
-                    <input type="password" class="form-control" placeholder="Enter your current password"><br>
-                    <label>New Password:</label>
-                    <input type="password" class="form-control" placeholder="Enter your new password">
-
-                    <br>
-
-                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
-
-
+                    <form name="change_password_form" method="post" action="change_password.php" onsubmit="return true;">
+                        <label>Email Address:</label>
+                        <input name="user_email" type="email" class="form-control" placeholder="Enter your email"><br>
+                        <label>Current Password:</label>
+                        <input name="old_password" type="password" class="form-control" placeholder="Enter your current password"><br>
+                        <label>New Password:</label>
+                        <input name="new_password" type="password" class="form-control" placeholder="Enter your new password">
+                        <br>
+                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>

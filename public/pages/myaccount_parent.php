@@ -8,20 +8,31 @@
     redirect_to(url_for('/pages/myaccount.php'));
 }
 
-$result = get_parent_student ($db, $user_email, 'email_address');
+$result = get_parent ($db, $user_email, 'email_address');
 //print_r($result);
 
 if (count($result) === 1) {
-    echo "count is 1<br>";
+//    echo "count is 1<br>";
     $number_of_children = 1;
 }elseif (count($result) > 1) {
-    echo "more than 1<br>" . count($result) . "<br>";
+//    echo "more than 1<br>" . count($result) . "<br>";
     $number_of_children = count($result);
 }else {
     echo "empty result";
 }
+$admin_p = [];
+$school_p = [];
+$children_p = [];
+for ($i = 0; $i < count($result); $i++) {
+    $admin_p[$i] = get_data($db, $result[$i]['admin_id'], 'administrator', 'admin_id');
+    $school_p[$i] = get_data($db, $result[$i]['school_id'], 'school', 'school_id');
+    $children_p[$i] = get_data($db, $result[$i]['student_id'], 'student', 'student_id');
+}
 
-
+//print_r($admin_s);
+echo "<br>";
+//print_r($school_s);
+echo "<br>";
 require_once('../../private/shared/pages_header.php');
 ?>
 
@@ -78,13 +89,13 @@ require_once('../../private/shared/pages_header.php');
                         };
                         ?>
                         <br>
-                        Children name:
                         <?php
-                        for ($i = 0; $i < $number_of_children; $i++) {
-                            echo $result[$i]['first_name'] . " " . $result[$i]['last_name'];
-
-                        }
-                        ?>
+                        for ($i = 0; $i < $number_of_children; $i++) {?>
+                            Name: <?php echo $children_p[$i]['first_name'] . " " . $children_p[$i]['last_name'];?><br>
+                            Teacher: <?php echo $admin_p[$i]['first_name'] . " " . $admin_p[$i]['last_name'];?><br>
+                            School: <?php echo $school_p[$i]['school_name'];?><br>
+                            Address: <?php echo $school_p[$i]['school_address'];?><br>
+                        <?php } ?>
                     </p>
 
                 </div>
@@ -92,18 +103,25 @@ require_once('../../private/shared/pages_header.php');
                     <h1>View Order</h1>
 
                 </div>
+                <h3 class="text-danger">
+                    <strong>
+                        <?php if(isset($_SESSION['error'])) {
+                            echo $_SESSION['error'];
+                            unset($_SESSION['error']);
+                        }?>
+                    </strong>
+                </h3>
                 <div name="abcde" style="display: none" class="tab-content">
-                    <label>Email Address:</label>
-                    <input type="email" class="form-control" placeholder="Enter your email"><br>
-                    <label>Current Password:</label>
-                    <input type="password" class="form-control" placeholder="Enter your current password"><br>
-                    <label>New Password:</label>
-                    <input type="password" class="form-control" placeholder="Enter your new password">
-                    <br>
-
-                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
-
-
+                    <form name="change_password_form" method="post" action="change_password.php" onsubmit="return true;">
+                        <label>Email Address:</label>
+                        <input name="user_email" type="email" class="form-control" placeholder="Enter your email"><br>
+                        <label>Current Password:</label>
+                        <input name="old_password" type="password" class="form-control" placeholder="Enter your current password"><br>
+                        <label>New Password:</label>
+                        <input name="new_password" type="password" class="form-control" placeholder="Enter your new password">
+                        <br>
+                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                    </form>
                 </div>
 
             </div>
