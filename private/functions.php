@@ -232,90 +232,90 @@ function get_parent_student ($db, $user_input, $input_field) {
 function get_parent ($db, $user_input, $input_field) {
     $query = "SELECT * FROM parent JOIN student_parent USING (parent_id) JOIN admin_student USING (student_id) JOIN school_admin USING (admin_id) " .
         "WHERE parent.$input_field = '$user_input'";
-    echo $query . "<br>";
+//    echo $query . "<br>";
     $result = mysqli_query($db, $query);
     if (mysqli_num_rows($result) == 1) {
         $data = array();
-        echo "1 result" . "<br>";
+//        echo "1 result" . "<br>";
         $row = mysqli_fetch_assoc($result);
         array_push($data,$row);
-        print_r($data);
-        echo "<br>";
+//        print_r($data);
+//        echo "<br>";
     }
     elseif (mysqli_num_rows($result) > 1){
-        echo "more than 1 result" . "<br>";
+//        echo "more than 1 result" . "<br>";
         $data = array();
         while($row = mysqli_fetch_assoc($result)) {
             //print_r($row);
             array_push($data,$row);
         }
-        print_r($data);
-        echo "<br>";
+//        print_r($data);
+//        echo "<br>";
     } else {
         //echo "0 results" . "<br>";
         $data = false;
     }
-    echo "<br>";
+//    echo "<br>";
     return $data;
 }
 
 function get_student ($db, $user_input, $input_field) {
-    $query = "SELECT * FROM student JOIN student_parent USING (student_id) JOIN admin_student USING (student_id) JOIN school_admin USING (admin_id) " .
+    $query = "SELECT * FROM student JOIN admin_student USING (student_id) JOIN school_admin USING (admin_id) " .
         "WHERE student.$input_field = '$user_input'";
-    echo $query . "<br>";
+//    echo $query . "<br>";
     $result = mysqli_query($db, $query);
     if (mysqli_num_rows($result) == 1) {
         $data = array();
-        echo "1 result" . "<br>";
+//        echo "1 result" . "<br>";
         $row = mysqli_fetch_assoc($result);
         array_push($data,$row);
-        print_r($data);
-        echo "<br>";
+//        print_r($data);
+//        echo "<br>";
     }
     elseif (mysqli_num_rows($result) > 1){
-        echo "more than 1 result" . "<br>";
+//        echo "more than 1 result" . "<br>";
         $data = array();
         while($row = mysqli_fetch_assoc($result)) {
-            print_r($row);
+//            print_r($row);
             array_push($data,$row);
         }
-        print_r($data);
-        echo "<br>";
+//        print_r($data);
+//        echo "<br>";
     } else {
-        echo "0 results" . "<br>";
+//        echo "0 results" . "<br>";
         $data = false;
     }
-    echo "<br>";
+//    echo "<br>";
     return $data;
 }
 
 function get_admin ($db, $user_input, $input_field) {
     $query = "SELECT * FROM administrator JOIN admin_student USING (admin_id) JOIN school_admin USING (admin_id) " .
         "WHERE administrator.$input_field = '$user_input'";
-    echo $query . "<br>";
+//    echo $query . "<br>";
     $result = mysqli_query($db, $query);
     if (mysqli_num_rows($result) == 1) {
         $data = array();
-        echo "1 result" . "<br>";
+//        echo "1 result" . "<br>";
         $row = mysqli_fetch_assoc($result);
         array_push($data,$row);
-        print_r($data);
-        echo "<br>";
+//        print_r($data);
+//        echo "<br>";
     }
     elseif (mysqli_num_rows($result) > 1){
-        echo "more than 1 result" . "<br>";
+//        echo "more than 1 result" . "<br>";
         $data = array();
         while($row = mysqli_fetch_assoc($result)) {
             //print_r($row);
             array_push($data,$row);
         }
-        print_r($data);
+//        print_r($data);
         echo "<br>";
     } else {
-        echo "0 results" . "<br>";
+//        echo "0 results" . "<br>";
         $data = false;
     }
-    echo "<br>";
+//    echo "<br>";
     return $data;
 }
 
