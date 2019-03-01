@@ -183,7 +183,7 @@ if (isset($_SESSION['credential'])) {
 //            }
 //            ?>
 
-            <form action="order_summary.php" method="post" onsubmit="">
+<!--            <form action="" method="post" onsubmit="getdata()">-->
             <div id="step3">
 
                     <h2>STEP 3: View Basket</h2><br><br>
@@ -211,10 +211,10 @@ if (isset($_SESSION['credential'])) {
 
 
             <div>
-                <button id="toPayment" type="submit">Proceed payment</button>
+                <button action="order_summary.php" onclick="getdata()" id="toPayment">Proceed payment</button>
                 <br><br><br><br><br>
             </div>
-        </form>
+<!--        </form>-->
         </div>
         </div>
     </div>

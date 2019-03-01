@@ -1,14 +1,30 @@
 <?php include($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
 <?php require_once('../../private/shared/pages_header.php');
-//if (isset($_SESSION['credential'])) {
-//    $user_email = $_SESSION['credential'];
-//    $accType = $_SESSION['accType'];
-//    $data = get_data($db, $user_email, $accType,"email_address");
-//    $welcome_message = "Welcome " . $data['first_name'] . " " . $data['last_name'] ."<br>Place your order";
-//}else {
-//    $welcome_message = "Before placing an order, Please log in <a href=\"login.php\">here.</a>";
-//}
+if (isset($_SESSION['credential'])) {
+    $user_email = $_SESSION['credential'];
+    $accType = $_SESSION['accType'];
+    $data = get_data($db, $user_email, $accType,"email_address");
+    $welcome_message = "Welcome " . $data['first_name'] . " " . $data['last_name'] ."<br>Place your order";
+}else {
+    $welcome_message = "Before placing an order, Please log in <a href=\"login.php\">here.</a>";
+}
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+    echo "method is post<br>";
+    //print_r($data);
+
+    //print_r($_POST);
+//    echo "item name is  " . $_POST['itemname'] . "quantity is " . $_POST['itemquantity'];
+    for ($i = 0; $i < $_POST['basket_length']; $i++) {
+        echo "item name is  " . $_POST['item_name_' . $i];
+        echo "<br>";
+        echo "quantity is " . $_POST['item_quantity_' . $i];
+        echo "<br>";
+        echo "price is" . $_POST['item_price_' . $i];
+        echo "<br>";
+    }
+}
+
 ?>
 
 <body onload="orderSummary()">

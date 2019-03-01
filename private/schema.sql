@@ -85,17 +85,16 @@ CREATE TABLE student_parent (
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE order_detail (
-  order_id int(10) UNSIGNED NOT NULL,
-  delivery_date date NOT NULL,
-  quantity int(2) UNSIGNED NOT NULL,
+  order_id int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  delivery_date date,
   total_price double(10,2) UNSIGNED NOT NULL,
-  order_date datetime NOT NULL,
+  order_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP  ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY(order_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE item (
-  item_id int(10) UNSIGNED NOT NULL,
+  item_id int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   item_image blob,
   item_name varchar(100) NOT NULL,
   price_per_unit double(10,2) UNSIGNED NOT NULL,
@@ -106,6 +105,7 @@ CREATE TABLE item (
 CREATE TABLE order_detail_item (
   order_id int(10) UNSIGNED NOT NULL,
   item_id int(10) UNSIGNED NOT NULL,
+  quantity int(2) UNSIGNED NOT NULL,
   last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP  ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY(order_id, item_id),
   FOREIGN KEY(order_id) REFERENCES order_detail(order_id) ON DELETE RESTRICT ON UPDATE CASCADE,

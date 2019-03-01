@@ -72,20 +72,20 @@ var basket = [];
 
 
 function addProduct(modalId) {
-    console.log("clicked" + modalId);
+    // console.log("clicked" + modalId);
     let image_src = document.getElementsByName("item_image")[modalId].src;
 
     let name = document.getElementsByName("item")[modalId].getAttribute("value");
     let price = document.getElementsByName("price")[modalId].getAttribute("value");
-    console.log(name);
-    console.log(price);
+    // console.log(name);
+    // console.log(price);
     // let quantity_id = "quantity_" + modalId;
     // console.log(quantity_id);
     // let quantity = document.getElementById(quantity_id).value;
     let quantity = document.getElementsByName("quantity")[modalId].value;
-    console.log(quantity);
+    // console.log(quantity);
     let image = "<img src='" + image_src + "' style='width:100px; height:100px; border-radius: 50%'>";
-    console.log(image);
+    // console.log(image);
     // console.log("");
     var newItem = {
         item_image: null,
@@ -111,17 +111,17 @@ function addProduct(modalId) {
 
     // basket.push(newItem);
     if (basket === undefined || basket.length === 0) {
-        console.log ("first item");
+        // console.log ("first item");
         basket.push(newItem);
     }else {
-        console.log(basket.length);
+        // console.log(basket.length);
         let new_or_not = false;
         for (let i = 0; i < basket.length; i++) {
             if (basket[i].item_name === newItem.item_name) {
-                console.log ("repeated item");
+                // console.log ("repeated item");
                 new_or_not = true;
                 let temporary_Q = parseInt(basket[i].item_quantity);
-                console.log("prev Q = " + temporary_Q);
+                // console.log("prev Q = " + temporary_Q);
                 temporary_Q += parseInt(newItem.item_quantity);// need to be int. a string now
                 basket[i].item_quantity = temporary_Q;
                 break;
@@ -130,7 +130,7 @@ function addProduct(modalId) {
 
         }
         if (!new_or_not) {
-            console.log("new item");
+            // console.log("new item");
         basket.push(newItem);
     }
     }
@@ -139,7 +139,7 @@ function addProduct(modalId) {
 
     for (var i = 0; i < basket.length; i++) {
         let total = parseFloat(basket[i].item_price) * parseInt(basket[i].item_quantity);
-        console.log("<td>" + basket[i].item_image + "  " + basket[i].item_name + "</td>");
+        // console.log("<td>" + basket[i].item_image + "  " + basket[i].item_name + "</td>");
         html += "<tr>";
         html += "<td>" + basket[i].item_image + "</td>";
         html += "<td>" + basket[i].item_name + "</td>";
@@ -215,7 +215,7 @@ function renderbasket(){
     sessionStorage.setItem("GrandTotalA", GrandTotal);
     document.getElementById('grandtotal').innerHTML = "The Grand Total is: £ "+ GrandTotal.toFixed(2);
     html += "</table>";
-    console.log(html);
+    // console.log(html);
     ele.innerHTML = html;
 
 }
@@ -307,6 +307,39 @@ function orderSummary() {
     let summaryTable = sessionStorage.getItem("table");
     // summaryTable.deleteCell(-1);
     document.getElementById("summaryTable").innerHTML = summaryTable;
+
+}
+
+function getdata() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "order_summary.php", true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    console.log(JSON.stringify(basket));
+    var vars = "itemname=" + "Apple Juice" + "&itemquantity=" + "2";
+    console.log(vars);
+
+    var stringify = "";
+    let and = "&";
+    stringify += "basket_length=" + basket.length;
+
+    // var data = JSON.parse(stringify);
+    console.log(basket);
+    for (let i = 0; i < basket.length; i++) {
+
+        stringify += and + "item_name_" + i + "=" + basket[i].item_name;
+        stringify += and + "item_quantity_" + i + "=" + basket[i].item_quantity;
+        stringify += and + "item_price_" + i + "=" + basket[i].item_price;
+    }
+    console.log(stringify);
+    // xhr.send(data);
+    xhr.send(stringify);
+    // console.log(data[0]['item_name']);
+    // xhr.onload = function () {
+    //     console.log("HELLO");
+    //     console.log(this.responseText);
+    //     var data = JSON.parse(this.responseText);
+    //     console.log(data);
+    // }
 
 }
 //
