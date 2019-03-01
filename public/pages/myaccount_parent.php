@@ -30,9 +30,9 @@ for ($i = 0; $i < count($result); $i++) {
 }
 
 //print_r($admin_s);
-echo "<br>";
+//echo "<br>";
 //print_r($school_s);
-echo "<br>";
+//echo "<br>";
 require_once('../../private/shared/pages_header.php');
 ?>
 

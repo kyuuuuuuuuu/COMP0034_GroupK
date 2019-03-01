@@ -310,7 +310,7 @@ function get_admin ($db, $user_input, $input_field) {
             array_push($data,$row);
         }
 //        print_r($data);
-        echo "<br>";
+//        echo "<br>";
     } else {
 //        echo "0 results" . "<br>";
         $data = false;

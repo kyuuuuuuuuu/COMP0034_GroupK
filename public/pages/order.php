@@ -48,7 +48,7 @@ if (isset($_SESSION['credential'])) {
                 <img name="item_image" src="../img/burger.jpeg" alt="Burger Image" class="orderOutline1" data-toggle="modal" data-target="#Modal0"/>
                 <?php
                 $title="Beef burger with chips";
-                $price=3.50;
+                $price=3.59;
                 $des="This is a description of Burger.";
                 $foodID="burgerQuantity";
                 $modal_id = 0;
@@ -61,7 +61,7 @@ if (isset($_SESSION['credential'])) {
                 <img name="item_image" src="../img/koleno.jpeg" alt="Koleno Image" class="orderOutline1" data-toggle="modal" data-target="#Modal1"/>
                 <?php
                 $title="Koleno";
-                $price=2.70;
+                $price=2.69;
                 $des="This is a description of Koleno.";
                 $foodID="kolenoQuantity";
                 $modal_id = 1;
@@ -74,7 +74,7 @@ if (isset($_SESSION['credential'])) {
                 <img name="item_image" src="../img/lamb.jpeg" alt="Lamb Image" class="orderOutline1" data-toggle="modal" data-target="#Modal2"/>
                 <?php
                 $title="Lamb";
-                $price=2.50;
+                $price=2.55;
                 $des="This is a description of Lamb.";
                 $foodID="lambQuantity";
                 $modal_id = 2;
@@ -90,7 +90,7 @@ if (isset($_SESSION['credential'])) {
                 <img name="item_image" src="../img/fruit.jpg" alt="Fruit Snack Image" class="orderOutline2" data-toggle="modal" data-target="#Modal3"/>
                 <?php
                 $title="Fruit Snack (80g)";
-                $price=1.80;
+                $price=1.89;
                 $des="This is a description of Fruit Snack.";
                 $foodID="fruitQuantity";
                 $modal_id = 3;
@@ -103,7 +103,7 @@ if (isset($_SESSION['credential'])) {
                 <img name="item_image" src="../img/rvCake.jpeg" alt="rvCake Image" class="orderOutline2" data-toggle="modal" data-target="#Modal4"/>
                 <?php
                 $title="Red velvet Cake";
-                $price=2.00;
+                $price=2.29;
                 $des="This is a description of rvCake.";
                 $foodID="rvQuantity";
                 $modal_id = 4;
@@ -116,7 +116,7 @@ if (isset($_SESSION['credential'])) {
                 <img name="item_image" src="../img/cake.jpeg" alt="Cake Image" class="orderOutline2" data-toggle="modal" data-target="#Modal5"/>
                 <?php
                 $title="Strawberry cake";
-                $price=2.00;
+                $price=2.05;
                 $des="This is a description of Cake.";
                 $foodID="cakeQuantity";
                 $modal_id = 5;
@@ -132,7 +132,7 @@ if (isset($_SESSION['credential'])) {
                 <img name="item_image" src="../img/water.jpg" alt="Water Image" class="orderOutline3" data-toggle="modal" data-target="#Modal6"/>
                 <?php
                 $title="Water (100ml)";
-                $price=0.70;
+                $price=0.75;
                 $des="This is a description of Water.";
                 $modal_id = 6;
                 include("modal.php"); ?>
@@ -144,7 +144,7 @@ if (isset($_SESSION['credential'])) {
                 <img name="item_image" src="../img/AppleJuice.jpeg" alt="Apple Juice Image" class="orderOutline3" data-toggle="modal" data-target="#Modal7"/>
                 <?php
                 $title="Innocent Apple juice (100ml)";
-                $price=1.20;
+                $price=1.25;
                 $des="This is a description of Apple Juice.";
                 $modal_id = 7;
                 include("modal.php"); ?>
@@ -156,7 +156,7 @@ if (isset($_SESSION['credential'])) {
                 <img name="item_image" src="../img/coke.jpg" alt="Coke Image" class="orderOutline3" data-toggle="modal" data-target="#Modal8"/>
                 <?php
                 $title="Coke (330ml)";
-                $price=1.20;
+                $price=1.25;
                 $des="This is a description of Coke.";
                 $modal_id = 8;
                 include("modal.php"); ?>
