@@ -51,7 +51,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         </tr>
         <tr>
             <td><img src='http://localhost:8888/COMP0034_GroupK/public/img/rvCake.jpeg' style='width:100px; height:100px; border-radius: 50%'></td>
-            <td><input name="cake" type="text" value="Red velvet Cake" style="display: none">Red velvet Cake</td>
+            <td><input name="cake" type="text" value="Red velvet" style="display: none">Red velvet Cake</td>
             <td name="quantity">2</td>
             <td>2</td>
             <td>4.00</td>

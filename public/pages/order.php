@@ -11,13 +11,13 @@ if (isset($_SESSION['credential'])) {
 }
 ?>
 <!--///////////////////////////////////////////////////////////////-->
-<style>
-    @media (max-width: 767.98px) {
-        .orderOutline1, .orderOutline2, .orderOutline3 {
-            width: 50vw;
-        }
-    }
-</style>
+<!--<style>-->
+<!--    @media (max-width: 767.98px) {-->
+<!--        .orderOutline1, .orderOutline2, .orderOutline3 {-->
+<!--            width: 50vw;-->
+<!--        }-->
+<!--    }-->
+<!--</style>-->
 <!--///////////////////////////////////////////////////////////////-->
 
 

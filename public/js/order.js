@@ -146,7 +146,7 @@ function addProduct(modalId) {
         html += "<td>" + basket[i].item_quantity + "</td>";
         html += "<td>" + basket[i].item_price + "</td>";
         html += "<td>" + total.toFixed(2) + "</td>";
-        html += "<td><button type='submit' onClick='deductQuantity(\"" + basket[i].item_name + "\", this);'/>Deduct Quantity</button> &nbsp<button type='submit' onClick='addQuantity(\"" + basket[i].item_name + "\", this);'/>Add Quantity</button> &nbsp<button type='submit' onClick='deleteItem(\"" + basket[i].item_name + "\", this);'/>Delete Item</button></td>";
+        html += "<td><button type='submit' class='btn btn-primary' onClick='deductQuantity(\"" + basket[i].item_name + "\", this);'/>Deduct Quantity</button> &nbsp<button type='submit' class='btn btn-primary' onClick='addQuantity(\"" + basket[i].item_name + "\", this);'/>Add Quantity</button> &nbsp<button type='submit' class='btn btn-primary' onClick='deleteItem(\"" + basket[i].item_name + "\", this);'/>Delete Item</button></td>";
         html += "</tr>";
     }
     html += "</table>";
@@ -201,7 +201,7 @@ function renderbasket(){
         html += "<td>" + basket[i].item_quantity + "</td>";
         html += "<td>" + basket[i].item_price + "</td>";
         html += "<td>" + total.toFixed(2) + "</td>";
-        html += "<td><button type='submit' onClick='deductQuantity(\"" + basket[i].item_name + "\", this);'/>Deduct Quantity</button> &nbsp<button type='submit' onClick='addQuantity(\"" + basket[i].item_name + "\", this);'/>Add Quantity</button> &nbsp<button type='submit' onClick='deleteItem(\"" + basket[i].item_name + "\", this);'/>Delete Item</button></td>";
+        html += "<td><button type='submit' class='btn btn-primary' onClick='deductQuantity(\"" + basket[i].item_name + "\", this);'/>Deduct Quantity</button> &nbsp<button type='submit' class='btn btn-primary' onClick='addQuantity(\"" + basket[i].item_name + "\", this);'/>Add Quantity</button> &nbsp<button type='submit' class='btn btn-primary' onClick='deleteItem(\"" + basket[i].item_name + "\", this);'/>Delete Item</button></td>";
         html += "</tr>";
         name_session[i] = basket[i].item_name;
         let itemName = "itemName" + i;

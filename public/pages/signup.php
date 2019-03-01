@@ -36,7 +36,7 @@
             <!--Sign up information required from user -->
             <div class="form-group">
                 <label>Email address*</label>
-                <input id="emailStudent" name="email" type="email" class="form-control" placeholder="Enter your email">
+                <input id="emailStudent" name="email" type="email" class="form-control" placeholder="Enter your email" value="<?php if (isset($_SESSION['POST']['email'])) {echo $_SESSION['POST']['email'];}?>">
                 <p class="text-danger" id="emailStudent_error"></p>
             </div>
             <div class="form-row">
@@ -180,6 +180,8 @@
     </div>
 </div>
 
-<?php require_once('../../private/shared/pages_footer.php');?>
+
+<?php unset($_SESSION['POST']);
+require_once('../../private/shared/pages_footer.php');?>
 
 

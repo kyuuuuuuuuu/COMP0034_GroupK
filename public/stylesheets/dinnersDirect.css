@@ -125,29 +125,33 @@ li a {
     color: darkred;
 }
 
-.orderOutline1 {
-    border:10px solid cornflowerblue;
-    border-radius: 50%;
-    width: 250px;
+@media (max-width: 767.98px) {
+    .orderOutline1, .orderOutline2, .orderOutline3 {
+        width: 50vw;
+    }
 }
 
-.orderOutline2 {
-    border:10px solid darkslateblue;
-    border-radius: 50%;
-    width: 250px;
+
+@media (min-width: 767.99px) {
+    .orderOutline1 {
+        border: 10px solid cornflowerblue;
+        border-radius: 50%;
+        width: 250px;
+    }
+
+    .orderOutline2 {
+        border: 10px solid darkslateblue;
+        border-radius: 50%;
+        width: 250px;
+    }
+
+    .orderOutline3 {
+        border: 10px solid slategrey;
+        border-radius: 50%;
+        width: 250px;
+    }
 }
 
-.orderOutline3 {
-    border:10px solid slategrey;
-    border-radius: 50%;
-    width: 250px;
-}
-
-/*@media (max-width: 767.98px) {*/
-    /*.orderOutline1, .orderOutline2, .orderOutline3 {*/
-        /*width: 50vw;*/
-    /*}*/
-/*}*/
 
 #orderTable {
     width:100%;
