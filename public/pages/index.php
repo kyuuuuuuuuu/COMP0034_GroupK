@@ -2,6 +2,7 @@
 
 <?php require_once('../../private/shared/pages_header.php');?>
 
+<div class="container-fluid">
     <br><br>
     <!-- Slide Show code -->
     <div class="slideshow-container">
@@ -37,7 +38,24 @@
         <span class="dot" onclick="currentSlide(3)"></span>
     </div>
 
-<h1>CHANGE SLIDESHOW PHOTOS</h1>
+    <br><br>
+    <div style="padding-left: 10%; padding-right:10%">
+        <h4>About DinnersDirect</h4>
+        <p>DinnersDirect aims to provide catering services to students and teachers of boarding and independent schools
+            around the United Kingdom. We prove a platform to allow our main users (students, parents and teachers) to place orders for their desired meal choices. DinnersDirect
+            strives to ensure that every school dinner has access to nutritious, homemade meals at a reasonable and
+            affordable cost. The development of a simple user interface allows our main users to browse our menu as well
+            as place orders in an effective and efficient manner, without any disturbance.</p><br>
+
+        <h4>Our History</h4>
+        <p>DinnersDirect was founded by Yeo Jin Lee in 2017. </p>
+
+    </div>
+
+
+    <br><br><br><br>
+</div>
+
 
 <!--    <div class="container">-->
 <!--        <br><hr>-->

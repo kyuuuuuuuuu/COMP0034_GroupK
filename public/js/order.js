@@ -60,7 +60,7 @@ document.getElementById("thisdate").setAttribute("max", maxDate);
 // };
 //
 // document.getElementById("toBasket").onclick = function () {
-//     location.href = 'basket.php';
+//
 // };
 
 var basket = [];

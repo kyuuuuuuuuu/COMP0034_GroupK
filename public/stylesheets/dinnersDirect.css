@@ -143,6 +143,11 @@ li a {
     width: 250px;
 }
 
+/*@media (max-width: 767.98px) {*/
+    /*.orderOutline1, .orderOutline2, .orderOutline3 {*/
+        /*width: 50vw;*/
+    /*}*/
+/*}*/
 
 #orderTable {
     width:100%;

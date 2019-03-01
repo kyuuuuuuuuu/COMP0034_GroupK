@@ -10,6 +10,16 @@ if (isset($_SESSION['credential'])) {
     $welcome_message = "Before placing an order, Please log in <a href=\"login.php\">here.</a>";
 }
 ?>
+<!--///////////////////////////////////////////////////////////////-->
+<style>
+    @media (max-width: 767.98px) {
+        .orderOutline1, .orderOutline2, .orderOutline3 {
+            width: 50vw;
+        }
+    }
+</style>
+<!--///////////////////////////////////////////////////////////////-->
+
 
     <div class="card-header text-center">
         <h1><?php echo $welcome_message;?></h1>
@@ -160,6 +170,19 @@ if (isset($_SESSION['credential'])) {
         </div>
 
         <div>
+
+
+<!--            --><?php
+//            if (isset($_SESSION['credential'])) {
+//                $user_email = $_SESSION['credential'];
+//                $accType = $_SESSION['accType'];
+//                $data = get_data($db, $user_email, $accType,"email_address");
+//                $welcome_message = "Welcome " . $data['first_name'] . " " . $data['last_name'] ."<br>Place your order";
+//            }else {
+//                $welcome_message = "Before placing an order, Please log in <a href=\"login.php\">here.</a>";
+//            }
+//            ?>
+
             <form action="order_summary.php" method="post" onsubmit="">
             <div id="step3">
 
@@ -169,7 +192,6 @@ if (isset($_SESSION['credential'])) {
 
                     <p id="grandtotal"></p>
                     </div>
-
 
 
 <!--                    <table id="orderTable">-->
