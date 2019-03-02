@@ -125,3 +125,24 @@ INSERT INTO student_parent (student_id, parent_id) VALUES ('27', '2');
 INSERT INTO student_parent (student_id, parent_id) VALUES ('28', '3');
 INSERT INTO student_parent (student_id, parent_id) VALUES ('29', '4');
 INSERT INTO student_parent (student_id, parent_id) VALUES ('30', '5');
+
+INSERT INTO `item` (`item_id`, `item_name`, `item_description`, `item_price`, `last_update`, `item_image`) VALUES (NULL, 'Beef burger with chips', 'This is a description of Burger.', '3.59', CURRENT_TIMESTAMP, '../img/burger.jpeg');
+INSERT INTO `item` (`item_id`, `item_name`, `item_description`, `item_price`, `last_update`, `item_image`) VALUES (NULL, 'Koleno', 'This is a description of Koleno.', '2.69', CURRENT_TIMESTAMP, '../img/koleno.jpeg');
+INSERT INTO `item` (`item_id`, `item_name`, `item_description`, `item_price`, `last_update`, `item_image`) VALUES (NULL, 'Lamb', 'This is a description of Lamb.', '2.55', CURRENT_TIMESTAMP, '../img/lamb.jpeg');
+INSERT INTO `item` (`item_id`, `item_name`, `item_description`, `item_price`, `last_update`, `item_image`) VALUES (NULL, 'Fruit Snack (80g)', 'This is a description of Fruit Snack.', '1.89', CURRENT_TIMESTAMP, '../img/fruit.jpg');
+INSERT INTO `item` (`item_id`, `item_name`, `item_description`, `item_price`, `last_update`, `item_image`) VALUES (NULL, 'Red Velvet Cake', 'This is a description of Red Velvet Cake.', '2.29', CURRENT_TIMESTAMP, '../img/rvCake.jpeg');
+INSERT INTO `item` (`item_id`, `item_name`, `item_description`, `item_price`, `last_update`, `item_image`) VALUES (NULL, 'Strawberry cake', 'This is a description of Strawberry cake.', '2.05', CURRENT_TIMESTAMP, '../img/cake.jpeg');
+INSERT INTO `item` (`item_id`, `item_name`, `item_description`, `item_price`, `last_update`, `item_image`) VALUES (NULL, 'Water (100ml)', 'This is a description of Water (100ml).', '0.75', CURRENT_TIMESTAMP, '../img/water.jpg');
+INSERT INTO `item` (`item_id`, `item_name`, `item_description`, `item_price`, `last_update`, `item_image`) VALUES (NULL, 'Innocent Apple juice (100ml)', 'This is a description of Innocent Apple juice (100ml).', '1.25', CURRENT_TIMESTAMP, '../img/AppleJuice.jpeg');
+INSERT INTO `item` (`item_id`, `item_name`, `item_description`, `item_price`, `last_update`, `item_image`) VALUES (NULL, 'Coke (330ml)', 'This is a description of Coke.', '1.25', CURRENT_TIMESTAMP, '../img/coke.jpg');
+
+INSERT INTO display_menu (display_id, item_id) VALUES ('1', '1');
+INSERT INTO display_menu (display_id, item_id) VALUES ('2', '2');
+INSERT INTO display_menu (display_id, item_id) VALUES ('3', '3');
+INSERT INTO display_menu (display_id, item_id) VALUES ('4', '4');
+INSERT INTO display_menu (display_id, item_id) VALUES ('5', '5');
+INSERT INTO display_menu (display_id, item_id) VALUES ('6', '6');
+INSERT INTO display_menu (display_id, item_id) VALUES ('7', '7');
+INSERT INTO display_menu (display_id, item_id) VALUES ('8', '8');
+INSERT INTO display_menu (display_id, item_id) VALUES ('9', '9');
+

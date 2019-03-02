@@ -95,9 +95,10 @@ CREATE TABLE order_detail (
 
 CREATE TABLE item (
   item_id int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  item_image blob,
-  item_name varchar(100) NOT NULL,
-  price_per_unit double(10,2) UNSIGNED NOT NULL,
+  item_image text,
+  item_name text NOT NULL,
+  item_price double(10,2) UNSIGNED NOT NULL,
+  item_description text NOT NULL,
   last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP  ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY(item_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -139,7 +140,13 @@ CREATE TABLE admin_order_detail (
   FOREIGN KEY(order_id) REFERENCES order_detail(order_id) ON DELETE RESTRICT ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
+CREATE TABLE display_menu (
+  display_id int(10) UNSIGNED NOT NULL,
+  item_id int(10) UNSIGNED NOT NULL,
+  last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP  ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY(display_id, item_id),
+  FOREIGN KEY(item_id) REFERENCES item(item_id) ON DELETE RESTRICT ON UPDATE CASCADE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*
 CREATE TABLE item (
   item_id int(10) NOT NULL,

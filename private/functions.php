@@ -52,39 +52,28 @@ function get_all($db, $table_name) { //get all data from a table
     return $data;
 }
 
-function get_data($db, $user_input, $table_name, $field_name) {
-    //Get all data from the database given the table name and column name
-    //db is database connection
+function get_specific_data ($db, $specific_field, $user_input, $table_name, $field_name) {
     $user_input = test_input($user_input);
-    $query = "SELECT * FROM $table_name WHERE $field_name = '$user_input'";
+    $query = "SELECT $specific_field FROM $table_name WHERE $field_name = '$user_input'";
     $result = mysqli_query($db, $query);
-    //echo $data;
     if (mysqli_num_rows($result) == 1) {
-        //echo "1 result" . "<br>";
         $data = mysqli_fetch_assoc($result);
-        //print_r($data);
     }
     elseif (mysqli_num_rows($result) > 1){
-        //echo "more than 1 result" . "<br>";
         $data = array();
         while($row = mysqli_fetch_assoc($result)) {
-            //print_r($row);
             array_push($data,$row);
         }
-        //echo "<br>";
-        //print_r($data);
     } else {
-        //echo "0 results" . "<br>";
         $data = false;
     }
+    return $data;
+}
 
-//    while ($row = mysqli_fetch_assoc($table_data)) {
-//        if ($user_input == $row[$field_name]) {
-//            $data = $row;
-//            break;
-//        }
-//    }
-
+//Get all data from the database given the table name and column name
+//db is database connection
+function get_data($db, $user_input, $table_name, $field_name) {
+    $data = get_specific_data ($db, '*', $user_input, $table_name, $field_name);
     return $data;
 }
 
@@ -160,73 +149,6 @@ function check_email($db, $user_input) {
         $existence = check_email_parent($db,$user_input);
     }
     return $existence;
-}
-
-function get_pair_id ($db, $user_input, $table_name, $input_field, $result_field) {
-    $user_input = test_input($user_input);
-    $data = get_all($db,$table_name);
-    $id_set = array();
-    while ($result = mysqli_fetch_assoc($data)){
-        if ($user_input == $result[$input_field]) {
-            array_push($id_set,$result[$result_field]);
-        }
-    }
-    return $id_set;
-}
-
-function get_from_3_tables ($db, $user_input, $table_name, $input_field, $table_name2, $field_id1, $table_name3, $field_id2) {
-    $query = "SELECT * FROM $table_name JOIN $table_name2 USING ($field_id1) JOIN $table_name3 USING ($field_id2) " .
-        "WHERE $table_name.$input_field = '$user_input'";
-    //echo $query . "<br>";
-    $result = mysqli_query($db, $query);
-    if (mysqli_num_rows($result) == 1) {
-        $data = array();
-        //echo "1 result" . "<br>";
-        $row = mysqli_fetch_assoc($result);
-        array_push($data,$row);
-        //print_r($data);
-        //echo "<br>";
-    }
-    elseif (mysqli_num_rows($result) > 1){
-        //echo "more than 1 result" . "<br>";
-        $data = array();
-        while($row = mysqli_fetch_assoc($result)) {
-            //print_r($row);
-            array_push($data,$row);
-        }
-        //print_r($data);
-        //echo "<br>";
-    } else {
-        //echo "0 results" . "<br>";
-        $data = false;
-    }
-    //echo "<br>";
-    return $data;
-}
-
-function get_admin_school ($db, $user_input, $input_field) {
-    $data = get_from_3_tables($db, $user_input, 'administrator', $input_field, 'school_admin', 'admin_id', 'school', 'school_id');
-    return $data;
-}
-
-function get_admin_student ($db, $user_input, $input_field) {
-    $data = get_from_3_tables($db, $user_input, 'administrator', $input_field, 'admin_student', 'admin_id', 'student', 'student_id');
-    return $data;
-}
-
-function get_student_admin ($db, $user_input, $input_field) {
-    $data = get_from_3_tables($db, $user_input, 'student', $input_field, 'admin_student', 'student_id', 'administrator', 'admin_id');
-    return $data;
-}
-
-function get_student_parent ($db, $user_input, $input_field) {
-    $data = get_from_3_tables($db, $user_input, 'student', $input_field, 'student_parent', 'student_id', 'parent', 'parent_id');
-    return $data;
-}
-
-function get_parent_student ($db, $user_input, $input_field) {
-    $data = get_from_3_tables($db, $user_input, 'parent', $input_field, 'student_parent', 'parent_id', 'student', 'student_id');
-    return $data;
 }
 
 function get_parent ($db, $user_input, $input_field) {
@@ -309,6 +231,16 @@ function get_admin ($db, $user_input, $input_field) {
     }
     return $data;
 //    return mysqli_fetch_array($result);
+}
+
+function get_menu ($db) {
+    $query = "SELECT * FROM display_menu JOIN item USING (item_id)";
+    $result = mysqli_query($db, $query);
+    $data = [];
+    while($row = mysqli_fetch_assoc($result)) {
+        array_push($data,$row);
+    }
+    return $data;
 }
 
 

@@ -70,33 +70,17 @@ function get_data1($db, $user_input, $table_name, $field_name) {
     return $data;
 }
 
+$data = get_specific_data($db, 'item_id', 'lamb', 'item', 'item_name');
+print_r($data);
+
 //get_data1($db, 'admin@lse.ac.uk', 'administrator', 'email_address');
-$user_input = 'admin@lse.ac.uk';
-$input_field = 'email_address';
-
-get_admin ($db, $user_input, $input_field);
-
-get_student ($db, $user_input, $input_field);
-
-get_parent ($db, $user_input, $input_field);
+//$user_input = 'admin@lse.ac.uk';
+//$input_field = 'email_address';
+//
+//get_admin ($db, $user_input, $input_field);
+//
+//get_student ($db, $user_input, $input_field);
+//
+//get_parent ($db, $user_input, $input_field);
 ?>
 <?php require_once('../../private/shared/pages_footer.php');?>
-[{"item_image":"<img src='http://localhost:8888/COMP0034_GroupK/public/img/burger.jpeg'
-                     style='width:100px;
-                     height:100px;
-                     border-radius: 50%'>",
-"item_name":"Beef burger with chips",
-"item_price":"3.59",
-"item_quantity":2},
-{"item_image":"<img src='http://localhost:8888/COMP0034_GroupK/public/img/koleno.jpeg'
-                    style='width:100px;
-                    height:100px; border-radius: 50%'>",
-"item_name":"Koleno",
-"item_price":"2.69",
-"item_quantity":"1"},
-{"item_image":"<img src='http://localhost:8888/COMP0034_GroupK/public/img/lamb.jpeg'
-                    style='width:100px;
-                    height:100px; border-radius: 50%'>",
-"item_name":"Lamb",
-"item_price":"2.55",
-"item_quantity":"1"}]

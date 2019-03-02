@@ -64,6 +64,7 @@ document.getElementById("thisdate").setAttribute("max", maxDate);
 // };
 
 var basket = [];
+var GrandTotal;
 
 // // function convertToInt (string) {
 // //     let integer = parseInt(string);
@@ -189,7 +190,7 @@ function renderbasket(){
     html += "<td class='font-weight-bolder'>Total Price</td>";
     html += "<td class='font-weight-bolder'>Action</td></tr>";
 
-    var GrandTotal = 0;
+    GrandTotal = 0;
     var name_session = [];
 
     for (var i = 0; i < basket.length; i++) {
@@ -312,7 +313,7 @@ function orderSummary() {
 
 function getdata() {
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "order_summary.php", true);
+    xhr.open("POST", "after_order.php", true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     console.log(JSON.stringify(basket));
     var vars = "itemname=" + "Apple Juice" + "&itemquantity=" + "2";
@@ -321,6 +322,7 @@ function getdata() {
     var stringify = "";
     let and = "&";
     stringify += "basket_length=" + basket.length;
+    stringify += and + "grand_total=" + GrandTotal;
 
     // var data = JSON.parse(stringify);
     console.log(basket);
