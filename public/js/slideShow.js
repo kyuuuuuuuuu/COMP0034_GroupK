@@ -12,11 +12,12 @@ function currentSlide(n) {
 
 function showSlides(n) {
     var i;
-    var slides = document.getElementsByClassName("hideByDefault");
-    var dots = document.getElementsByClassName("dot");
+    var slides = $(".hideByDefault");
+    var dots = $(".dot");
 
 
-    if (slides && dots) {
+    if (slides[0] || dots[0]) {
+        console.log(slides);
         if (n > slides.length) {slideIndex = 1}
         if (n < 1) {slideIndex = slides.length}
         for (i = 0; i < slides.length; i++) {
