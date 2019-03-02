@@ -30,7 +30,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "log in successful!<br>";
             $_SESSION['credential'] = $login_email;
             $_SESSION['accType'] = $table_name;
-            to_myAccount($table_name);
+            if (isset($_SESSION['customer_basket'])) {
+                redirect_to(url_for('/pages/order_summary.php'));
+            }else {
+                to_myAccount($table_name);
+            }
         }else {
             $_SESSION['error'] = "Your Password is wrong";
             redirect_to(url_for('/pages/login.php'));

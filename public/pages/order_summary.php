@@ -1,35 +1,23 @@
 <?php include($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
 <?php require_once('../../private/shared/pages_header.php');
+
 if (isset($_SESSION['credential'])) {
     $user_email = $_SESSION['credential'];
-    $accType = $_SESSION['accType'];
+    $acc_type = $_SESSION['accType'];
     $data = get_data($db, $user_email, $accType,"email_address");
-    $welcome_message = "Welcome " . $data['first_name'] . " " . $data['last_name'] ."<br>Place your order";
-}else {
-    $welcome_message = "Before placing an order, Please log in <a href=\"login.php\">here.</a>";
-}
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-    echo "method is post<br>";
-    //print_r($data);
-
-    //print_r($_POST);
-//    echo "item name is  " . $_POST['itemname'] . "quantity is " . $_POST['itemquantity'];
-    for ($i = 0; $i < $_POST['basket_length']; $i++) {
-        echo "item name is  " . $_POST['item_name_' . $i];
-        echo "<br>";
-        echo "quantity is " . $_POST['item_quantity_' . $i];
-        echo "<br>";
-        echo "price is" . $_POST['item_price_' . $i];
-        echo "<br>";
+    if ($acc_type == 'student') {
+        $id_list = get_student($db, $user_email, 'email_address');
+    }elseif ($acc_type == 'administrator') {
+        $id_list = get_admin($db, $user_email, 'email_address');
+    }elseif ($acc_type == 'parent') {
+        $id_list = get_parent($db, $user_email, 'email_address');
     }
+    $address = find_school_address($db, $id_list[0]['school_id']);
+}else {
+    redirect_to(url_for("/pages/login.php"));
 }
-
 ?>
-
-<body onload="orderSummary()">
-
-<!--<script>orderSummary();</script>-->
 
     <div class="card-header text-center" >
         <h1>Order Summary</h1>
@@ -40,40 +28,57 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         <br>
         Review your order and select "Place order" button at the end of the page.
         <br><hr>
-<!--        <b><h5>Order Id: </h5></b>-->
-
-<!--        <br>-->
         <b>Delivery Details: </b>
-        <br><br><br><br><br>
+        <p>
+            <?php echo $address;?>
+        </p><br><br>
 
         <h4>Items: </h4><hr>
         <br>
-        <p id="summaryTable"></p>
-<!--        <p id="shopping_basket"></p>-->
-        <hr>
-
-        <div class="row">
-            <div class="float-right">
-                <!--            <table>-->
-                <!--                <tr>Order Subtotal:</tr>-->
-                <!--                <tr>Tax:</tr>-->
-                <!--                <tr>Shipping:</tr>-->
-                <!--                <tr>Order Total:</tr>-->
-                <!--            </table>-->
-                Order Subtotal: £<label id="subTotal"></label><br>
-                Tax: £<label id="tax"></label><br>
-                Shipping: £1.00<br><br>
-                <b>Order Total: </b>£<label id="orderTotal"></label>
-                <br><br>
+        <div class="col-md-8">
+            <div class="row">
+                <?php
+                if (isset($_SESSION['customer_basket'])) { $basket = $_SESSION['customer_basket']; ?>
+                <table class='table table-striped text-center'>
+                    <tr>
+                        <td class='font-weight-bolder'>Item Name</td>
+                        <td class='font-weight-bolder'>Quantity</td>
+                        <td class='font-weight-bolder'>Item Price</td>
+                        <td class='font-weight-bolder'>Total Price</td>
+                    </tr>
+                    <?php for ($i = 0; $i < count($basket); $i++) { ?>
+                        <tr>
+                            <td><?php echo $basket[$i]['item_name'];?></td>
+                            <td><?php echo $basket[$i]['item_quantity'];?></td>
+                            <td><?php echo $basket[$i]['item_price'];?></td>
+                            <td><?php echo $basket[$i]['item_price'] * $basket[$i]['item_quantity'];?></td>
+                        </tr>
+                    <?php } ?>
+                </table>
+            </div>
+            <div class="row">
+                <div class="float-right">
+                    <!--            <table>-->
+                    <!--                <tr>Order Subtotal:</tr>-->
+                    <!--                <tr>Tax:</tr>-->
+                    <!--                <tr>Shipping:</tr>-->
+                    <!--                <tr>Order Total:</tr>-->
+                    <!--            </table>-->
+                    Order Subtotal: £<label id="subTotal"><td><?php echo number_format($_SESSION['grand_total'], 2, '.', ' ');?></td></label><br>
+                    Tax (included): £<label id="tax"></label><?php $tax = $_SESSION['grand_total'] * 0.11111111111;
+                    echo number_format($tax, 2, '.', ' ');?><br>
+                    Shipping: £1.00<br><br>
+                    <b>Order Total: </b>£<label id="orderTotal"><?php echo $_SESSION['grand_total'] + 1;?></label>
+                    <br><br>
+                </div>
             </div>
         </div>
 
-
         <div>
-            <a href="order.php"><button type="submit">Back</button></a>
+            <a href="order.php"><button>Back</button></a>
             <button type="submit">Place order</button>
         </div>
-
+                    <?php } ?>
     </div>
 </body>
 <?php require_once('../../private/shared/pages_footer.php');?>

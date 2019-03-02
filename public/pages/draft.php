@@ -55,11 +55,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             <td name="quantity">2</td>
             <td>2</td>
             <td>4.00</td>
-            <td>
-                <button type='submit' onClick='deductQuantity("Red velvet Cake", this);'/>Deduct Quantity</button>&nbsp
-                <button type='submit' onClick='addQuantity("Red velvet Cake", this);'/>Add Quantity</button> &nbsp
-                <button type='submit' onClick='deleteItem("Red velvet Cake", this);'/>Delete Item</button>
-            </td>
         </tr>
         <tr>
             <td>

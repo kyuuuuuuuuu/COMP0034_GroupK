@@ -29,12 +29,12 @@ if (isset($_SESSION['credential'])) {
             <br><br>
             <form action="" method="get" onsubmit="">
                 <h2>STEP 1: Choose date</h2><br>
-                <input type="date" id="thisdate" required><br><br>
-                    <button class="btn-secondary rounded btn-lg" onclick="datevalidation();" type="button">OK</button></a>
+                <input type="date" id="select_date" required><br><br>
+                    <button class="btn-secondary rounded btn-lg" onclick="date_validation();" type="button">OK</button></a>
             </form>
             <br><br><hr><br>
         </div>
-        <div id="menuitem" style="display: none" >
+        <div id="menu_item" style="display: none" >
 
             <div id="step2">
                 <h2> STEP 2: Choose items</h2>
@@ -192,7 +192,7 @@ if (isset($_SESSION['credential'])) {
 
                 <p id="shopping_basket"></p><br>
 
-                <p id="grandtotal"></p>
+                <p id="grand_total"></p>
             </div>
 
 
@@ -213,7 +213,7 @@ if (isset($_SESSION['credential'])) {
 
 
             <div>
-                <button action="order_summary.php" onclick="getdata()" id="toPayment">Proceed payment</button>
+                <button onclick="post_data_xhr();" id="toPayment">Proceed to Summary</button>
                 <br><br><br><br><br>
             </div>
             <!--        </form>-->

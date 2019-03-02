@@ -11,10 +11,7 @@
     <script src="<?php echo url_for('js/form.js');?>" defer></script>
     <script src="<?php echo url_for('js/order.js');?>" defer></script>
 
-<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="<?php echo url_for('/stylesheets/bootstrap.css');?>">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 </head>
 <body>
