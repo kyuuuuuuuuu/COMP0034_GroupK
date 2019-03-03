@@ -38,10 +38,8 @@ function redirect_to($url) {
 function submit_query($db, $query) { //Still need to deal with error!!!
     //submit a SQL query to the database
     if (mysqli_query($db, $query)) {
-        echo "<br>Data is saved succesfully";
         return true;
     } else {
-        echo"<br>Error occurs in saving process!";
         return false;
     }
 }
@@ -73,24 +71,7 @@ function get_specific_data ($db, $specific_field, $user_input, $table_name, $fie
 //Get all data from the database given the table name and column name
 //db is database connection
 function get_data($db, $user_input, $table_name, $field_name) {
-    $user_input = test_input($user_input);
-    $query = "SELECT * FROM $table_name WHERE $field_name = '$user_input'";
-    $result = mysqli_query($db, $query);
-    $data = NULL;
-    if ($result) {
-        if (mysqli_num_rows($result) == 1) {
-            $data = mysqli_fetch_assoc($result);
-        }
-        elseif (mysqli_num_rows($result) > 1){
-            $data = array();
-            while($row = mysqli_fetch_assoc($result)) {
-                array_push($data,$row);
-            }
-        } else {
-            $data = false;
-        }
-    }
-
+    $data = get_specific_data($db, '*', $user_input, $table_name, $field_name);
     return $data;
 }
 

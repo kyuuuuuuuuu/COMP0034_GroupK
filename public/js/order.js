@@ -165,17 +165,19 @@ function save_basket() {
 }
 
 function post_data_xhr() {
-    var xhr = new XMLHttpRequest();
+    let xhr = new XMLHttpRequest();
     xhr.open("POST", "after_order.php", true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    let delivery_date = document.getElementById('select_date').value;
 
-    var data_to_post = "";
+    let data_to_post = "";
     let and = "&";
     data_to_post += "basket_length=" + basket.length;
     data_to_post += and + "grand_total=" + GrandTotal;
+    data_to_post += and + "delivery_date=" + delivery_date;
 
     // var data = JSON.parse(stringify);
-    console.log(basket);
+    // console.log(basket);
     for (let i = 0; i < basket.length; i++) {
 
         data_to_post += and + "item_name_" + i + "=" + basket[i].item_name;

@@ -17,10 +17,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         redirect_to(url_for('/pages/login.php'));
     }elseif (check_email_admin($db,$login_email)) {
         $table_name = "administrator";
+        $id_field = "admin_id";
     }elseif (check_email_student($db,$login_email)) {
         $table_name = "student";
+        $id_field = "student_id";
     }elseif (check_email_parent($db,$login_email)) {
         $table_name = "parent";
+        $id_field = "parent_id";
     }
 
     if (!is_null($table_name)) {
@@ -30,6 +33,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "log in successful!<br>";
             $_SESSION['credential'] = $login_email;
             $_SESSION['accType'] = $table_name;
+            $_SESSION['id_field'] = $id_field;
+            $_SESSION['user_id'] = $data[$id_field];
             if (isset($_SESSION['customer_basket'])) {
                 redirect_to(url_for('/pages/order_summary.php'));
             }else {

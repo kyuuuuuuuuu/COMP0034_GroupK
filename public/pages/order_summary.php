@@ -5,7 +5,7 @@
 if (isset($_SESSION['credential'])) {
     $user_email = $_SESSION['credential'];
     $acc_type = $_SESSION['accType'];
-    $data = get_data($db, $user_email, $accType,"email_address");
+    $data = get_data($db, $user_email, $acc_type,"email_address");
     if ($acc_type == 'student') {
         $id_list = get_student($db, $user_email, 'email_address');
     }elseif ($acc_type == 'administrator') {
@@ -30,7 +30,7 @@ if (isset($_SESSION['credential'])) {
         <br><hr>
         <b>Delivery Details: </b>
         <p>
-            <?php echo $address;?>
+            <?php echo $address . " on " . $_SESSION['delivery_date'];?>
         </p><br><br>
 
         <h4>Items: </h4><hr>
@@ -76,7 +76,7 @@ if (isset($_SESSION['credential'])) {
 
         <div>
             <a href="order.php"><button>Back</button></a>
-            <button type="submit">Place order</button>
+            <a href="order_confirmation.php"><button>Place Order</button></a>
         </div>
                     <?php } ?>
     </div>

@@ -86,7 +86,7 @@ CREATE TABLE student_parent (
 
 CREATE TABLE order_detail (
   order_id int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  delivery_date date,
+  delivery_date date NOT NULL,
   total_price double(10,2) UNSIGNED NOT NULL,
   order_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP  ON UPDATE CURRENT_TIMESTAMP,
