@@ -179,6 +179,32 @@ li a {
     width: 25px;
 }
 
+.grid-wrapper {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.grid-logo {
+    grid-column: 2/2;
+    grid-row: 1/6;
+}
+
+.grid-search {
+    grid-column: 1;
+    grid-row: auto;
+}
+
+.grid-navbar {
+    grid-column: 2;
+    grid-row: auto;
+}
+
+
+
+
 /*.input-group-addon {*/
     /*padding: .375rem .75rem;*/
     /*margin-bottom: 0;*/

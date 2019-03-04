@@ -225,6 +225,17 @@ function find_school_address ($db, $school_id) {
     return $address;
 }
 
-
+function save_order_id ($db, $order_id, $user_id_field, $user_id) {
+    if ($user_id_field == 'admin_id') {
+        $query = "INSERT INTO admin_order_detail (admin_id, order_id) VALUES ('$user_id', '$order_id')";
+        echo "return true; <br>";
+        return submit_query($db,$query);
+    }elseif ($user_id_field == 'student_id') {
+        $query = "INSERT INTO student_order_detail (student_id, order_id) VALUES ('$user_id', '$order_id')";
+        return submit_query($db,$query);
+    }else {
+        return false;
+    }
+}
 ?>
 

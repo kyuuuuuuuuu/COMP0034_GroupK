@@ -157,34 +157,25 @@ function date_validation() {
     return checked;
 }
 
-function save_basket() {
-    let basket_stringify = JSON.stringify(basket);
-    console.log(basket_stringify);
-    sessionStorage.setItem('order_basket',basket_stringify);
-    window.location.href = "order_summary.php";
-}
-
 function post_data_xhr() {
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "after_order.php", true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    let delivery_date = document.getElementById('select_date').value;
 
+    let delivery_date = document.getElementById('select_date').value;
     let data_to_post = "";
     let and = "&";
     data_to_post += "basket_length=" + basket.length;
     data_to_post += and + "grand_total=" + GrandTotal;
     data_to_post += and + "delivery_date=" + delivery_date;
 
-    // var data = JSON.parse(stringify);
-    // console.log(basket);
     for (let i = 0; i < basket.length; i++) {
 
         data_to_post += and + "item_name_" + i + "=" + basket[i].item_name;
         data_to_post += and + "item_quantity_" + i + "=" + basket[i].item_quantity;
         data_to_post += and + "item_price_" + i + "=" + basket[i].item_price;
     }
-    console.log(data_to_post);
+
     xhr.send(data_to_post);
 
     xhr.onreadystatechange = function() {
