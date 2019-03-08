@@ -10,14 +10,20 @@ if (isset($_SESSION['accType'])) {
 ?>
 <div class="card-header text-center">
     <h1>Welcome to My Account</h1>
-    <h4>
-        If you have an account, Log in
-        <a href="login.php">here.</a>
-    </h4>
-    <h4>
-        Not a member? Sign up
-        <a href="signup.php">here.</a><br>
-    </h4>
+
+</div class="container">
+    <div class="text-center">
+        <br><h4>
+            If you have an account, Log in
+            <a href="login.php">here.</a>
+        </h4>
+        <h4>
+            Not a member? Sign up
+            <a href="signup.php">here.</a><br>
+        </h4>
+    </div>
+<div>
+
 </div>
 
 <?php

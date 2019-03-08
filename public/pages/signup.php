@@ -7,10 +7,10 @@
 </div>
 <div class="container">
     <div class="text-center">
-        <h4>
+        <br><h4>
             Let's set up your account. Already have one? Log in
             <a href="login.php">here.</a>
-        </h4>
+        </h4><br>
         <h3 class="text-danger">
             <strong>
                 <?php if(isset($_SESSION['error'])) {
@@ -22,9 +22,9 @@
     </div>
 
     <div class="btn-group btn-group container-fluid align-items-center" role="group" aria-label="...">
-        <button type="button" class="btn btn-primary" onclick="selectForm(0)">Student</button>
-        <button type="button" class="btn btn-primary" onclick="selectForm(1)">Administrator</button>
-        <button type="button" class="btn btn-primary" onclick="selectForm(2)">Parent</button>
+        <button type="button" class="btn" style="background-color: lightsteelblue ; border: 1px solid grey" onclick="selectForm(0)">Student</button>
+        <button type="button" class="btn" style="background-color: lavender; border: 1px solid grey" onclick="selectForm(1)">Administrator</button>
+        <button type="button" class="btn" style="background-color: lightsteelblue; border: 1px solid grey" onclick="selectForm(2)">Parent</button>
     </div>
 
 
@@ -75,7 +75,7 @@
                     <p class="text-danger" id="referenceStudent_error"></p>
                 </div>
             </div>
-            <button class="btn btn-block btn-primary" name="submit" value="student" type="submit">Sign Up</button>
+            <button class="btn btn-block" style="background-color: silver; border: 1px solid grey"  name="submit" value="student" type="submit">Sign Up</button>
         </form>
 
         <form style="display: none" name="registerForm" method="post" action="after_signup.php" onsubmit="return validate('Admin');">
@@ -128,7 +128,7 @@
                     <p class="text-danger" id="referenceAdmin_error"></p>
                 </div>
             </div>
-            <button class="btn btn-block btn-primary" name="submit" value="administrator" type="submit">Sign Up</button>
+            <button class="btn btn-block" style="background-color: silver; border: 1px solid grey"  name="submit" value="administrator" type="submit">Sign Up</button>
         </form>
 
         <form style="display: none" name="registerForm" method="post" action="after_signup.php" onsubmit="return validate('Parent');">
@@ -175,8 +175,9 @@
                     <p class="text-danger" id="referenceParent_error"></p>
                 </div>
             </div>
-            <button class="btn btn-block btn-primary" name="submit" value="parent" type="submit">Sign Up</button>
+            <button class="btn btn-block" style="background-color: silver; border: 1px solid grey"  name="submit" value="parent" type="submit">Sign Up</button>
         </form>
+        <br><br>
     </div>
 </div>
 

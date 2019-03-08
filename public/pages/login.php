@@ -51,7 +51,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-3"></div>
                     <div class="form-group col-md-6">
-                        <button class="btn btn-outline-primary btn-block" type="submit">Login</button>
+                        <button class="btn btn-block" style="background-color: silver; border: 1px solid grey" type="submit">Login</button>
                     </div>
                     <div class="form-group col-md-3"></div>
                 </div><br>

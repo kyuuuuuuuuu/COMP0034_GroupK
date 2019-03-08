@@ -19,7 +19,7 @@
 <div class="navbar navbar-light bg-light">
     <!-- Logo image attached to Nav Bar -->
     <a href="<?php echo url_for('/pages/index.php'); ?>" class="a">
-        <img src="../../public/img/logo.jpg" alt="DinnersDirect Logo" height="60" />
+        <img src="../../public/img/logo.jpg" alt="DinnersDirect Logo" height="100" />
     </a>
 <!--    <a href="index.php" class="a">HOME</a>-->
     <a href="<?php echo url_for('/pages/order.php'); ?>">ORDER</a>

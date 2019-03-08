@@ -26,7 +26,7 @@ if (isset($_SESSION['credential'])) {
     </div>
     <div class="container-fluid">
         <div id="step1">
-            <br><br>
+            <br>
             <form action="" method="get" onsubmit="">
                 <h2>STEP 1: Choose date</h2><br>
                 <input type="date" id="select_date" required><br><br>
