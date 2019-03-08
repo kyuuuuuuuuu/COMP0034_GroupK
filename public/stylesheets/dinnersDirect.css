@@ -202,7 +202,12 @@ li a {
     grid-row: auto;
 }
 
-
+.orderbtn {
+    width: 95%;
+    min-width: 80px;
+    max-width: 150px;
+    margin:5px;
+}
 
 
 /*.input-group-addon {*/

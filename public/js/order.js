@@ -99,7 +99,7 @@ function render_basket(){
         basket_table += "<td>" + basket[i].item_quantity + "</td>";
         basket_table += "<td>" + basket[i].item_price + "</td>";
         basket_table += "<td>" + total.toFixed(2) + "</td>";
-        basket_table += "<td><button type='submit' class='btn btn-primary' onClick='deductQuantity(\"" + basket[i].item_name + "\", this);'/>Deduct Quantity</button> &nbsp<button type='submit' class='btn btn-primary' onClick='addQuantity(\"" + basket[i].item_name + "\", this);'/>Add Quantity</button> &nbsp<button type='submit' class='btn btn-primary' onClick='deleteItem(\"" + basket[i].item_name + "\", this);'/>Delete Item</button></td>";
+        basket_table += "<td><button type='submit' class='btn btn-primary orderbtn' onClick='deductQuantity(\"" + basket[i].item_name + "\", this);'/>Deduct Quantity</button> &nbsp<button type='submit' class='btn btn-primary orderbtn' onClick='addQuantity(\"" + basket[i].item_name + "\", this);'/>Add Quantity</button> &nbsp<button type='submit' class='btn btn-primary orderbtn' onClick='deleteItem(\"" + basket[i].item_name + "\", this);'/>Delete Item</button></td>";
         basket_table += "</tr>";
         name_session[i] = basket[i].item_name;
         GrandTotal += parseFloat(basket[i].item_price) * parseInt(basket[i].item_quantity);
