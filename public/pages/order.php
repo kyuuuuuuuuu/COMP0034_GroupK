@@ -209,11 +209,11 @@ if (isset($_SESSION['credential'])) {
             <!--                        </tr>-->
             <!--                    </table>-->
 
-            <br><br><br>
+            <br>
 
 
             <div>
-                <button onclick="post_data_xhr();" id="toPayment">Proceed to Summary</button>
+                <button onclick="post_data_xhr();" class="button1" >Proceed to Summary</button>
                 <br><br><br><br><br>
             </div>
             <!--        </form>-->

@@ -36,6 +36,7 @@ var basket = [];
 var GrandTotal;
 
 function addProduct(modalId) {
+    console.log("run " + modalId);
     let image_src = document.getElementsByName("item_image")[modalId].src;
     let name = document.getElementsByName("item")[modalId].getAttribute("value");
     let price = document.getElementsByName("price")[modalId].getAttribute("value");
@@ -83,8 +84,8 @@ function render_basket(){
     basket_table += "<tr><td class='font-weight-bolder'>Item Image</td>";
     basket_table += "<td class='font-weight-bolder'>Item Name</td>";
     basket_table += "<td class='font-weight-bolder'>Quantity</td>";
-    basket_table += "<td class='font-weight-bolder'>Item Price</td>";
-    basket_table += "<td class='font-weight-bolder'>Total Price</td>";
+    basket_table += "<td class='font-weight-bolder'>Item Price (£)</td>";
+    basket_table += "<td class='font-weight-bolder'>Total Price (£)</td>";
     basket_table += "<td class='font-weight-bolder'>Action</td></tr>";
 
     GrandTotal = 0;
@@ -99,7 +100,7 @@ function render_basket(){
         basket_table += "<td>" + basket[i].item_quantity + "</td>";
         basket_table += "<td>" + basket[i].item_price + "</td>";
         basket_table += "<td>" + total.toFixed(2) + "</td>";
-        basket_table += "<td><button type='submit' class='btn btn-primary orderbtn' onClick='deductQuantity(\"" + basket[i].item_name + "\", this);'/>Deduct Quantity</button> &nbsp<button type='submit' class='btn btn-primary orderbtn' onClick='addQuantity(\"" + basket[i].item_name + "\", this);'/>Add Quantity</button> &nbsp<button type='submit' class='btn btn-primary orderbtn' onClick='deleteItem(\"" + basket[i].item_name + "\", this);'/>Delete Item</button></td>";
+        basket_table += "<td><button type='submit' class='btn btn-secondary orderbtn'  onClick='deductQuantity(\"" + basket[i].item_name + "\", this);'/>Deduct Quantity</button> &nbsp<button type='submit' class='btn btn-secondary orderbtn' onClick='addQuantity(\"" + basket[i].item_name + "\", this);'/>Add Quantity</button> &nbsp<button type='submit' class='btn btn-secondary orderbtn' onClick='deleteItem(\"" + basket[i].item_name + "\", this);'/>Delete Item</button></td>";
         basket_table += "</tr>";
         name_session[i] = basket[i].item_name;
         GrandTotal += parseFloat(basket[i].item_price) * parseInt(basket[i].item_quantity);

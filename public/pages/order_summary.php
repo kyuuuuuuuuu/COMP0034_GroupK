@@ -35,16 +35,16 @@ if (isset($_SESSION['credential'])) {
 
         <h4>Items: </h4><hr>
         <br>
-        <div class="col-md-8">
+<!--        <div class="col-md-8">-->
             <div class="row">
                 <?php
                 if (isset($_SESSION['customer_basket'])) { $basket = $_SESSION['customer_basket']; ?>
-                <table class='table table-striped text-center'>
+                <table class='table table-striped text-center col-md-8'>
                     <tr>
                         <td class='font-weight-bolder'>Item Name</td>
                         <td class='font-weight-bolder'>Quantity</td>
-                        <td class='font-weight-bolder'>Item Price</td>
-                        <td class='font-weight-bolder'>Total Price</td>
+                        <td class='font-weight-bolder'>Item Price (£)</td>
+                        <td class='font-weight-bolder'>Total Price (£)</td>
                     </tr>
                     <?php for ($i = 0; $i < count($basket); $i++) { ?>
                         <tr>
@@ -55,29 +55,25 @@ if (isset($_SESSION['credential'])) {
                         </tr>
                     <?php } ?>
                 </table>
-            </div>
-            <div class="row">
-                <div class="float-right">
-                    <!--            <table>-->
-                    <!--                <tr>Order Subtotal:</tr>-->
-                    <!--                <tr>Tax:</tr>-->
-                    <!--                <tr>Shipping:</tr>-->
-                    <!--                <tr>Order Total:</tr>-->
-                    <!--            </table>-->
+                <br>
+                <div class="float-right col-md-2" >
+
                     Order Subtotal: £<label id="subTotal"><td><?php echo number_format($_SESSION['grand_total'], 2, '.', ' ');?></td></label><br>
                     Tax (included): £<label id="tax"></label><?php $tax = $_SESSION['grand_total'] * 0.11111111111;
                     echo number_format($tax, 2, '.', ' ');?><br>
                     Shipping: £1.00<br><br>
                     <b>Order Total: </b>£<label id="orderTotal"><?php echo $_SESSION['grand_total'] + 1;?></label>
                     <br><br>
-                </div>
-            </div>
-        </div>
 
-        <div>
-            <a href="order.php"><button>Back</button></a>
-            <a href="order_confirmation.php"><button>Place Order</button></a>
-        </div>
+                    <a href="order.php"><button class="">Back</button></a>
+                    <a href="order_confirmation.php"><button class="">Place Order</button></a>
+                    <br><br>
+                </div>
+
+            </div>
+<!--        </div>-->
+
+
                     <?php } ?>
     </div>
 </body>

@@ -34,8 +34,12 @@ if(!isset($_SESSION['customer_basket'])){
     require_once('../../private/shared/pages_header.php');
     ?>
 
-    <h1>Confirmation</h1>
-    <p>Your order is saved in the database</p>
+    <div class="container-fluid" style="margin-left:5%; margin-right:5%">
+        <br><br>
+        <h1>Confirmation</h1>
+        <p>Your order has been successfully.</p>
+    </div>
+
 
 <?php }?>
 <?php require_once('../../private/shared/pages_footer.php');?>
