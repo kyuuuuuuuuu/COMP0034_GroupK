@@ -56,7 +56,7 @@ if (isset($_SESSION['credential'])) {
                     <?php } ?>
                 </table>
                 <br>
-                <div class="float-right col-md-2" >
+                <div class="col-md-4" >
 
                     Order Subtotal: £<label id="subTotal"><td><?php echo number_format($_SESSION['grand_total'], 2, '.', ' ');?></td></label><br>
                     Tax (included): £<label id="tax"></label><?php $tax = $_SESSION['grand_total'] * 0.11111111111;
@@ -64,13 +64,16 @@ if (isset($_SESSION['credential'])) {
                     Shipping: £1.00<br><br>
                     <b>Order Total: </b>£<label id="orderTotal"><?php echo $_SESSION['grand_total'] + 1;?></label>
                     <br><br>
-
-                    <a href="order.php"><button class="">Back</button></a>
-                    <a href="order_confirmation.php"><button class="">Place Order</button></a>
-                    <br><br>
                 </div>
 
             </div>
+        <div class="float-right">
+            <a href="order.php"><button class="button1">Back</button></a>
+            <a href="order_confirmation.php"><button class="button1">Place Order</button></a>
+
+        </div>
+
+
 <!--        </div>-->
 
 
