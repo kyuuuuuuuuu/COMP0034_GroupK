@@ -33,11 +33,14 @@ if(!isset($_SESSION['customer_basket'])){
     }
     require_once('../../private/shared/pages_header.php');
     ?>
-
-    <div class="container-fluid" style="margin-left:5%; margin-right:5%">
-        <br><br>
-        <h1>Confirmation</h1>
-        <p>Your order has been successfully.</p>
+    <br><br>
+    <div class="container-fluid">
+        <div style="text-align: center">
+            <h1>Confirmation</h1>
+            <h4>Thank you for ordering.</h4>
+            <h4>Your order has been successfully.</h4><br>
+            <img alt="confirmation"  src="../img/confirmation.jpg" style="width: 200px; heigh:auto">
+        </div>
     </div>
 
 

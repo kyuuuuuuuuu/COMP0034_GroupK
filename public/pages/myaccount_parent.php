@@ -50,12 +50,13 @@ require_once('../../private/shared/pages_header.php');
         <div class="col-md-4">
 
             <img class="img-profile rounded-circle" src="../img/kien.jpg" style="width:200px;height:200px;"><br>
-            <h2 class="text-left"><?php echo $data['first_name'] . " " . $data['last_name'];?></h2>
+            <h2><?php echo $data['first_name'] . " " . $data['last_name'];?></h2>
             <!--            <div class="name"><small>Trung Kien Nguyen</small></div><br><br>-->
         </div>
         <div class="col-md-7">
             <br><br>
-            <h3 >Xin Chao <?php echo $data['first_name'] . " " . $data['last_name'];?>. From your account dashboard, you can view your child's recent orders, edit your password and account details. </h3>
+            <h3 >Xin Chao <?php echo $data['first_name'] . " " . $data['last_name'];?>. </h3>
+            <h5>From your account dashboard, you can view your child's recent orders, edit your password and account details.</h5>
         </div>
     </div>
 

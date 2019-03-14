@@ -39,7 +39,7 @@ if (isset($_SESSION['credential'])) {
             <div class="row">
                 <?php
                 if (isset($_SESSION['customer_basket'])) { $basket = $_SESSION['customer_basket']; ?>
-                <table class='table table-striped text-center col-md-8'>
+                <table class='table table-striped text-center col-md-8' style="margin-left:3%; margin-right:3%">
                     <tr>
                         <td class='font-weight-bolder'>Item Name</td>
                         <td class='font-weight-bolder'>Quantity</td>
@@ -56,27 +56,19 @@ if (isset($_SESSION['credential'])) {
                     <?php } ?>
                 </table>
                 <br>
-                <div class="col-md-4" >
+                <div class="col-md-3" style="text-align: center">
 
                     Order Subtotal: £<label id="subTotal"><td><?php echo number_format($_SESSION['grand_total'], 2, '.', ' ');?></td></label><br>
                     Tax (included): £<label id="tax"></label><?php $tax = $_SESSION['grand_total'] * 0.11111111111;
                     echo number_format($tax, 2, '.', ' ');?><br>
                     Shipping: £1.00<br><br>
-                    <b>Order Total: </b>£<label id="orderTotal"><?php echo $_SESSION['grand_total'] + 1;?></label>
+                    <b>Order Total: </b>£<label id="orderTotal"><?php echo number_format($_SESSION['grand_total'] + 1 , 2, '.', ' ') ;?></label>
                     <br><br>
+                    <a href="order_confirmation.php"><button class="button1">Place Order</button></a>
+                    <a href="order.php"><button class="button1">Back</button></a>
                 </div>
-
             </div>
-        <div class="float-right">
-            <a href="order.php"><button class="button1">Back</button></a>
-            <a href="order_confirmation.php"><button class="button1">Place Order</button></a>
-
-        </div>
-
-
-<!--        </div>-->
-
-
+        <br>
                     <?php } ?>
     </div>
 </body>

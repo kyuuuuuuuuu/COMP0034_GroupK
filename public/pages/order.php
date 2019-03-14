@@ -10,17 +10,6 @@ if (isset($_SESSION['credential'])) {
     $welcome_message = "Before placing an order, Please log in <a href=\"login.php\">here.</a>";
 }
 ?>
-<!--///////////////////////////////////////////////////////////////-->
-<!--<style>-->
-<!--    @media (max-width: 767.98px) {-->
-<!--        .orderOutline1, .orderOutline2, .orderOutline3 {-->
-<!--            width: 50vw;-->
-<!--        }-->
-<!--    }-->
-<!--</style>-->
-<!--///////////////////////////////////////////////////////////////-->
-
-
     <div class="card-header text-center">
         <h1><?php echo $welcome_message;?></h1>
     </div>
