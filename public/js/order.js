@@ -73,10 +73,11 @@ function addProduct(modalId) {
         }
     }
     render_basket();
-    add_proceed_button();
+
 }
 
 function render_basket(){
+    add_proceed_button();
     let basket_table = '';
     let shopping_basket = document.getElementById('shopping_basket');
     shopping_basket.innerHTML = '';
@@ -108,11 +109,14 @@ function render_basket(){
     }
     document.getElementById('grand_total').innerHTML = "The Grand Total is: £ "+ GrandTotal.toFixed(2);
 
-    if (basket.length === 0) {
-        hide_proceed_button();
-    }
+
 
     basket_table += "</table>";
+    if (basket.length === 0) {
+        hide_proceed_button();
+        basket_table = "";
+        document.getElementById('grand_total').innerHTML = "";
+    }
     shopping_basket.innerHTML = basket_table;
 }
 
