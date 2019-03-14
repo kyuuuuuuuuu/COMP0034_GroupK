@@ -50,8 +50,8 @@
                 <h6 class="text-center"> <a href="#">Forgot your password?</a></h6><br>
                 <div class="form-row">
                     <div class="form-group col-md-2"></div>
-                    <div class="form-group col-md-8 button2">
-                        <button class="btn btn-block" type="submit">Login</button>
+                    <div class="form-group col-md-8">
+                        <button class="btn-block button2" type="submit">Login</button>
                     </div>
                     <div class="form-group col-md-2"></div>
                 </div><br>
