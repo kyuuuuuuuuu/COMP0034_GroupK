@@ -54,19 +54,19 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>First name*</label>
-                    <input id="firstNameStudent" name="first_name" type="text" class="form-control" placeholder="First name">
+                    <input id="firstNameStudent" name="first_name" type="text" class="form-control" placeholder="First name" value="<?php if (isset($_SESSION['POST']['first_name'])) {echo $_SESSION['POST']['first_name'];}?>">
                     <p class="text-danger" id="firstNameStudent_error"></p>
                 </div>
                 <div class="form-group col-md-6">
                     <label>Last name*</label>
-                    <input id="lastNameStudent" name="last_name" type="text" class="form-control" placeholder="Last name">
+                    <input id="lastNameStudent" name="last_name" type="text" class="form-control" placeholder="Last name" value="<?php if (isset($_SESSION['POST']['last_name'])) {echo $_SESSION['POST']['last_name'];}?>">
                     <p class="text-danger" id="lastNameStudent_error"></p>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>Phone Number</label>
-                    <input id="phoneStudent" name="phone_UK" type="number" class="form-control" placeholder="Phone number">
+                    <input id="phoneStudent" name="phone_UK" type="number" class="form-control" placeholder="Phone number" value="<?php if (isset($_SESSION['POST']['phone_UK'])) {echo $_SESSION['POST']['phone_UK'];}?>">
                     <p class="text-danger" id="phoneStudent_error"></p>
                 </div>
                 <div class="form-group col-md-6">
@@ -83,7 +83,7 @@
             <!--Sign up information required from user -->
             <div class="form-group">
                 <label>Admin Email address*</label>
-                <input id="emailAdmin" name="email" type="email" class="form-control" placeholder="Enter your email">
+                <input id="emailAdmin" name="email" type="email" class="form-control" placeholder="Enter your email" value="<?php if (isset($_SESSION['POST']['email'])) {echo $_SESSION['POST']['email'];}?>">
                 <p class="text-danger" id="emailAdmin_error"></p>
             </div>
             <div class="form-row">
@@ -101,19 +101,19 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>First name*</label>
-                    <input id="firstNameAdmin" name="first_name" type="text" class="form-control" placeholder="First name">
+                    <input id="firstNameAdmin" name="first_name" type="text" class="form-control" placeholder="First name" value="<?php if (isset($_SESSION['POST']['first_name'])) {echo $_SESSION['POST']['first_name'];}?>">
                     <p class="text-danger" id="firstNameAdmin_error"></p>
                 </div>
                 <div class="form-group col-md-6">
                     <label>Last name*</label>
-                    <input id="lastNameAdmin" name="last_name" type="text" class="form-control" placeholder="Last name">
+                    <input id="lastNameAdmin" name="last_name" type="text" class="form-control" placeholder="Last name" value="<?php if (isset($_SESSION['POST']['last_name'])) {echo $_SESSION['POST']['last_name'];}?>">
                     <p class="text-danger" id="lastNameAdmin_error"></p>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>Phone Number</label>
-                    <input id="phoneAdmin" name="phone_UK" type="number" class="form-control" placeholder="Phone number">
+                    <input id="phoneAdmin" name="phone_UK" type="number" class="form-control" placeholder="Phone number" value="<?php if (isset($_SESSION['POST']['phone_UK'])) {echo $_SESSION['POST']['phone_UK'];}?>">
                     <p class="text-danger" id="phoneAdmin_error"></p>
                 </div>
                 <div class="form-group col-md-6">
@@ -136,7 +136,7 @@
             <!--Sign up information required from user -->
             <div class="form-group">
                 <label>Email address*</label>
-                <input id="emailParent" name="email" type="email" class="form-control" placeholder="Enter your email">
+                <input id="emailParent" name="email" type="email" class="form-control" placeholder="Enter your email" value="<?php if (isset($_SESSION['POST']['email'])) {echo $_SESSION['POST']['email'];}?>">
                 <p class="text-danger" id="emailParent_error"></p>
             </div>
             <div class="form-row">
@@ -154,19 +154,19 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>First name*</label>
-                    <input id="firstNameParent" name="first_name" type="text" class="form-control" placeholder="First name">
+                    <input id="firstNameParent" name="first_name" type="text" class="form-control" placeholder="First name" value="<?php if (isset($_SESSION['POST']['first_name'])) {echo $_SESSION['POST']['first_name'];}?>">
                     <p class="text-danger" id="firstNameParent_error"></p>
                 </div>
                 <div class="form-group col-md-6">
                     <label>Last name*</label>
-                    <input id="lastNameParent" name="last_name" type="text" class="form-control" placeholder="Last name">
+                    <input id="lastNameParent" name="last_name" type="text" class="form-control" placeholder="Last name" value="<?php if (isset($_SESSION['POST']['last_name'])) {echo $_SESSION['POST']['last_name'];}?>">
                     <p class="text-danger" id="lastNameParent_error"></p>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>Phone Number</label>
-                    <input id="phoneParent" name="phone_UK" type="number" class="form-control" placeholder="Phone number">
+                    <input id="phoneParent" name="phone_UK" type="number" class="form-control" placeholder="Phone number"value="<?php if (isset($_SESSION['POST']['phone_UK'])) {echo $_SESSION['POST']['phone_UK'];}?>">
                     <p class="text-danger" id="phoneParent_error"></p>
                 </div>
                 <div class="form-group col-md-6">

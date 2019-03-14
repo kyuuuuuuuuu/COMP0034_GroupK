@@ -6,7 +6,7 @@
     <title>DinnersDirect</title>
     <link rel="stylesheet" href="<?php echo url_for('/stylesheets/dinnersDirect.css');?>">
 <!--    <link rel="stylesheet" href="css/testingYJ.css">-->
-    <script src="<?php echo url_for('/js/slideShow.js');?>" defer></script>
+<!--    <script src="--><?php //echo url_for('/js/slideShow.js');?><!--" defer></script>-->
     <script src="<?php echo url_for('js/emptyfield.js');?>" defer></script>
     <script src="<?php echo url_for('js/form.js');?>" defer></script>
     <script src="<?php echo url_for('js/order.js');?>" defer></script>

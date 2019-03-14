@@ -211,14 +211,16 @@ if (isset($_SESSION['credential'])) {
 
             <br>
 
-
-            <div>
+            <div style="display: none;" id="proceed_button">
                 <button onclick="post_data_xhr();" class="button1" >Proceed to Summary</button>
                 <br><br><br><br><br>
             </div>
+
+
             <!--        </form>-->
 
         </div>
+
 
     </div>
 <?php require_once('../../private/shared/pages_footer.php');?>

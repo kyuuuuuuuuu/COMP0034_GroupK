@@ -73,6 +73,7 @@ function addProduct(modalId) {
         }
     }
     render_basket();
+    add_proceed_button();
 }
 
 function render_basket(){
@@ -106,6 +107,11 @@ function render_basket(){
         GrandTotal += parseFloat(basket[i].item_price) * parseInt(basket[i].item_quantity);
     }
     document.getElementById('grand_total').innerHTML = "The Grand Total is: £ "+ GrandTotal.toFixed(2);
+
+    if (basket.length === 0) {
+        hide_proceed_button();
+    }
+
     basket_table += "</table>";
     shopping_basket.innerHTML = basket_table;
 }
@@ -156,6 +162,14 @@ function date_validation() {
         location.href='#step2';
     }
     return checked;
+}
+
+function add_proceed_button() {
+    document.getElementById('proceed_button').style.display = "";
+}
+
+function hide_proceed_button() {
+    document.getElementById('proceed_button').style.display = "none";
 }
 
 function post_data_xhr() {
