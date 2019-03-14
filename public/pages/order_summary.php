@@ -39,7 +39,7 @@ if (isset($_SESSION['credential'])) {
             <div class="row">
                 <?php
                 if (isset($_SESSION['customer_basket'])) { $basket = $_SESSION['customer_basket']; ?>
-                <table class='table table-striped text-center col-md-8' style="margin-left:3%; margin-right:3%">
+                <table class='table table-striped text-center col-md-8' id="margin_three">
                     <tr>
                         <td class='font-weight-bolder'>Item Name</td>
                         <td class='font-weight-bolder'>Quantity</td>
@@ -56,7 +56,7 @@ if (isset($_SESSION['credential'])) {
                     <?php } ?>
                 </table>
                 <br>
-                <div class="col-md-3" style="text-align: center">
+                <div class="col-md-3 text-center">
 
                     Order Subtotal: £<label id="subTotal"><td><?php echo number_format($_SESSION['grand_total'], 2, '.', ' ');?></td></label><br>
                     Tax (included): £<label id="tax"></label><?php $tax = $_SESSION['grand_total'] * 0.11111111111;

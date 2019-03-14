@@ -77,7 +77,7 @@ require_once('../../private/shared/pages_header.php');
         <hr class="sidebar-divider d-none d-md-block">
         <div class="col-lg-8">
             <div class="tab-content">
-                <div name="abcde" style="display: none" class="tab-content">
+                <div name="abcde" class="tab-content hideByDefault">
                     <h1>Parent Profile</h1>
                     <p>
                         You have
@@ -100,7 +100,7 @@ require_once('../../private/shared/pages_header.php');
                     </p>
 
                 </div>
-                <div name="abcde" style="display: none" class="tab-content">
+                <div name="abcde" class="tab-content hideByDefault">
                     <h1>View Order</h1>
 
                 </div>
@@ -112,7 +112,7 @@ require_once('../../private/shared/pages_header.php');
                         }?>
                     </strong>
                 </h3>
-                <div name="abcde" style="display: none" class="tab-content">
+                <div name="abcde" class="tab-content hideByDefault">
                     <form name="change_password_form" method="post" action="change_password.php" onsubmit="return true;">
                         <label>Email Address:</label>
                         <input name="user_email" type="email" class="form-control" placeholder="Enter your email"><br>

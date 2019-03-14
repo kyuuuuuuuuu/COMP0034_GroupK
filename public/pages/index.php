@@ -9,19 +9,19 @@
 
         <div class="hideByDefault">
             <div class="numbertext">1 / 3</div>
-            <img alt="slide show 1"  src="../img/slideshow1.jpeg" style="width:100%">
+            <img alt="slide show 1"  src="../img/slideshow1.jpeg" class="slideshow">
             <div class="text">This is slide show 1</div>
         </div>
 
         <div class="hideByDefault">
             <div class="numbertext">2 / 3</div>
-            <img alt="slide show 2"  src="../img/slideshow2.jpeg" style="width:100%">
+            <img alt="slide show 2"  src="../img/slideshow2.jpeg" class="slideshow">
             <div class="text">This is slide show 2</div>
         </div>
 
         <div class="hideByDefault">
             <div class="numbertext">3 / 3</div>
-            <img alt="slide show 3"  src="../img/slideshow3.jpeg" style="width:100%">
+            <img alt="slide show 3"  src="../img/slideshow3.jpeg" class="slideshow">
             <div class="text">This is slide show 3</div>
         </div>
 
@@ -32,14 +32,14 @@
 
     <br>
 
-    <div style="text-align:center">
+    <div class="text-center">
         <span class="dot" onclick="currentSlide(1)"></span>
         <span class="dot" onclick="currentSlide(2)"></span>
         <span class="dot" onclick="currentSlide(3)"></span>
     </div>
 
     <br><br>
-    <div style="padding-left: 10%; padding-right:10%">
+    <div id="margin_ten">
         <h4>About DinnersDirect</h4>
         <p>DinnersDirect aims to provide catering services to students and teachers of boarding and independent schools
             around the United Kingdom. We prove a platform to allow our main users (students, parents and teachers) to place orders for their desired meal choices. DinnersDirect

@@ -89,7 +89,7 @@ for ($i = 0; $i < count($result); $i++) {
                 </p>
 
             </div>
-            <div name="abc" style="display: none" class="tab-content">
+            <div name="abc" class="tab-content hideByDefault">
                 <table class="table table-striped">
                     <thead>
                     <tr>
@@ -119,7 +119,7 @@ for ($i = 0; $i < count($result); $i++) {
                 </table>
 
             </div>
-            <div name="abc" style="display: none" class="tab-content">
+            <div name="abc" class="tab-content hideByDefault">
                 <table class="table table-striped">
                     <thead>
                     <tr>
@@ -157,7 +157,7 @@ for ($i = 0; $i < count($result); $i++) {
 
             </div>
 
-            <div name="abc" style="display: none" class="tab-content">
+            <div name="abc" class="tab-content hideByDefault">
                 <form name="change_password_form" method="post" action="change_password.php" onsubmit="return true;">
                     <label>Email Address:</label>
                     <input name="user_email" type="email" class="form-control" placeholder="Enter your email"><br>

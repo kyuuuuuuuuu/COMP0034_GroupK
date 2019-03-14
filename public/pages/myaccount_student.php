@@ -73,7 +73,7 @@ for ($i = 0; $i < count($result); $i++) {
         <hr class="sidebar-divider d-none d-md-block">
         <div class="col-lg-8">
             <div class="tab-content">
-                <div name="abcd" style="display: none" class="tab-content">
+                <div name="abcd" class="tab-content hideByDefault">
                     <h1>Student Profile</h1>
                     <p>
                         <?php
@@ -85,7 +85,7 @@ for ($i = 0; $i < count($result); $i++) {
                     </p>
 
                 </div>
-                <div name="abcd" style="display: none" class="tab-content">
+                <div name="abcd" class="tab-content hideByDefault">
                     <h1>View Order</h1>
 
                 </div>
@@ -97,7 +97,7 @@ for ($i = 0; $i < count($result); $i++) {
                         }?>
                     </strong>
                 </h3>
-                <div name="abcd" style="display: none" class="tab-content">
+                <div name="abcd" class="tab-content hideByDefault">
                     <form name="change_password_form" method="post" action="change_password.php" onsubmit="return true;">
                         <label>Email Address:</label>
                         <input name="user_email" type="email" class="form-control" placeholder="Enter your email"><br>
