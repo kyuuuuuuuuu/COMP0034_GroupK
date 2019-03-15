@@ -30,7 +30,7 @@
 
     <!--Sign up form-->
     <div class="col-lg-12 align-content-lg-center signup-form">
-        <form style="display: none" name="registerForm" method="post" action="after_signup.php" onsubmit="return validate('Student');">
+        <form class="display_none" name="registerForm" method="post" action="after_signup.php" onsubmit="return validate('Student');">
             <h6>Fields with * are required.</h6>
             <!--Sign up information required from user -->
             <div class="form-group">
@@ -77,7 +77,7 @@
             <button class="btn-block button2" name="submit" value="student" type="submit">Sign Up</button>
         </form>
 
-        <form style="display: none" name="registerForm" method="post" action="after_signup.php" onsubmit="return validate('Admin');">
+        <form class="display_none" name="registerForm" method="post" action="after_signup.php" onsubmit="return validate('Admin');">
             <h6>Fields with * are required.</h6>
             <!--Sign up information required from user -->
             <div class="form-group">
@@ -130,7 +130,7 @@
             <button class="btn-block button2" name="submit" value="administrator" type="submit">Sign Up</button>
         </form>
 
-        <form style="display: none" name="registerForm" method="post" action="after_signup.php" onsubmit="return validate('Parent');">
+        <form class="display_none" name="registerForm" method="post" action="after_signup.php" onsubmit="return validate('Parent');">
             <h6>Fields with * are required.</h6>
             <!--Sign up information required from user -->
             <div class="form-group">

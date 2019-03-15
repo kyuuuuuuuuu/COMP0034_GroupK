@@ -4,6 +4,14 @@ header{
     font-family: helvetica;
 }
 
+.display_block {
+    display: block;
+}
+
+.display_none {
+    display: none;
+}
+
 .logoformat{
     height: auto;
     max-width: 100%;
@@ -49,6 +57,8 @@ li a {
 .hideByDefault {
     display: none;
 }
+
+
 
 /* Next & previous buttons */
 .prev, .next {

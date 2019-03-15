@@ -3,9 +3,9 @@ function selectTeacherTab(index) {
 
     for (let i = 0 ; i < teachertab.length; i++) {
         if (i === index) {
-            teachertab[i].style.visibility = "visible";
+            teachertab[i].style.display = "";
         } else {
-            teachertab[i].style.visibility = "hidden";
+            teachertab[i].style.display = "none";
         }
     }
 }
@@ -39,9 +39,9 @@ function selectForm(index) {
 
     for (let i = 0; i <= 2; i++) {
         if (i === index) {
-            forms[i].style.visibility = "visible";
+            forms[i].className = "display_block";
         } else {
-            forms[i].style.visibility = "hidden";
+            forms[i].className = "display_none";
         }
     }
 }
