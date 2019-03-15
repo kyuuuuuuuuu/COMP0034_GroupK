@@ -9,7 +9,7 @@
 
         <div class="hideByDefault">
             <div class="numbertext">1 / 3</div>
-            <img alt="slide show 1"  src="../img/slideshow1.jpeg" class="slideshow">
+            <img alt="slide show 1"  src="../img/slideshow1.jpg" class="slideshow">
             <div class="text">This is slide show 1</div>
         </div>
 
