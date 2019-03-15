@@ -134,6 +134,13 @@ li a {
         width: 60vw;
         border: 10px solid cornflowerblue;
         border-radius: 50%;
+        height: 60vw;
+        overflow: hidden;
+    }
+    .menu_image {
+        max-height: 60vw;
+        max-width: 60vw;
+        margin: auto;
     }
 }
 
@@ -143,18 +150,29 @@ li a {
         border: 10px solid cornflowerblue;
         border-radius: 50%;
         width: 250px;
+        height: 250px;
+        overflow: hidden;
     }
 
     .orderOutline2 {
         border: 10px solid darkslateblue;
         border-radius: 50%;
         width: 250px;
+        height: 250px;
+        overflow: hidden;
     }
 
     .orderOutline3 {
         border: 10px solid slategrey;
         border-radius: 50%;
         width: 250px;
+        height: 250px;
+        overflow: hidden;
+    }
+    .menu_image {
+        max-height: 250px;
+        max-width: 250px;
+        margin: auto;
     }
 }
 

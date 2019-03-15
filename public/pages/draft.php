@@ -39,60 +39,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 ?>
-<form name="basket" method="post" action="">
-    <table class='table table-striped text-center'>
-        <tr>
-            <td class='font-weight-bolder'>Item Image</td>
-            <td class='font-weight-bolder'>Item Name</td>
-            <td class='font-weight-bolder'>Quantity</td>
-            <td class='font-weight-bolder'>Item Price</td>
-            <td class='font-weight-bolder'>Total Price</td>
-            <td class='font-weight-bolder'>Action</td>
-        </tr>
-        <tr>
-            <td><img src='http://localhost:8888/COMP0034_GroupK/public/img/rvCake.jpeg' style='width:100px; height:100px; border-radius: 50%'></td>
-            <td><input name="cake" type="text" value="Red velvet" style="display: none">Red velvet Cake</td>
-            <td name="quantity">2</td>
-            <td>2</td>
-            <td>4.00</td>
-        </tr>
-        <tr>
-            <td>
-                <img src='http://localhost:8888/COMP0034_GroupK/public/img/AppleJuice.jpeg' style='width:100px; height:100px; border-radius: 50%'>
-            </td>
-            <td name="name">Innocent Apple juice (100ml)</td>
-            <td name="quantity">2</td>
-            <td>1.2</td>
-            <td>2.40</td>
-            <td><button type='submit' onClick='deductQuantity("Innocent Apple juice (100ml)", this);'/>Deduct Quantity</button> &nbsp
-                <button type='submit' onClick='addQuantity("Innocent Apple juice (100ml)", this);'/>Add Quantity</button> &nbsp
-                <button type='submit' onClick='deleteItem("Innocent Apple juice (100ml)", this);'/>Delete Item</button>
-            </td>
-        </tr>
-        <tr>
-            <td><img src='http://localhost:8888/COMP0034_GroupK/public/img/water.jpg' style='width:100px; height:100px; border-radius: 50%'></td>
-            <td name="name">Water (100ml)</td>
-            <td name="quantity">1</td>
-            <td>0.7</td>
-            <td>0.70</td>
-            <td><button type='submit' onClick='deductQuantity("Water (100ml)", this);'/>Deduct Quantity</button> &nbsp
-                <button type='submit' onClick='addQuantity("Water (100ml)", this);'/>Add Quantity</button> &nbsp
-                <button type='submit' onClick='deleteItem("Water (100ml)", this);'/>Delete Item</button>
-            </td>
-        </tr>
-        <tr>
-            <td><img src='http://localhost:8888/COMP0034_GroupK/public/img/fruit.jpg' style='width:100px; height:100px; border-radius: 50%'></td>
-            <td name="name">Fruit Snack (80g)</td>
-            <td name="quantity">1</td>
-            <td>1.8</td>
-            <td>1.80</td>
-            <td><button type='submit' onClick='deductQuantity("Fruit Snack (80g)", this);'/>Deduct Quantity</button> &nbsp
-                <button type='submit' onClick='addQuantity("Fruit Snack (80g)", this);'/>Add Quantity</button> &nbsp
-                <button type='submit' onClick='deleteItem("Fruit Snack (80g)", this);'/>Delete Item</button>
-            </td>
-        </tr>
-    </table>
-    <button id="toPayment" type="submit">Proceed payment</button>
-</form>
+
+<img src="../img/menu_image/dougnut.jpg">
 
 <?php require_once('../../private/shared/pages_footer.php');?>

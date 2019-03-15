@@ -15,6 +15,7 @@ $data = get_all($db, 'item');
 <div class="container">
     <div>
         <a class="action" href="<?php echo url_for('/staff/new.php'); ?>">Add new item</a>
+        <a class="action" href="<?php echo url_for('/staff/menu.php'); ?>">Alter menu item</a>
     </div>
     <table class="table table-responsive">
         <tr>

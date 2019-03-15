@@ -32,9 +32,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if(isset($_FILES["item_image"]["name"]) ) {
-        echo "upload image";
+        echo "upload image <br>";
+        echo basename($_FILES["item_image"]["name"]);
+        echo "<br>";
         $uploadOk = true;
         $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/public/img/menu_image/";
+        $saved_src = "../img/menu_image/" . basename($_FILES["item_image"]["name"]);
         echo $target_dir;
         $target_file = $target_dir . basename($_FILES["item_image"]["name"]);
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -57,6 +60,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             if (move_uploaded_file($_FILES["item_image"]["tmp_name"], $target_file)) {
                 echo "The file ". basename( $_FILES["item_image"]["name"]). " has been uploaded.";
+                echo $target_file;
+                $query = "UPDATE item SET item_image = '$saved_src' WHERE item_id = '$item_id'";
+                submit_query($db,$query);
             } else {
                 echo "Sorry, there was an error uploading your file.";
             }
@@ -64,7 +70,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     }
 
-    if ($new_item_name != NULL || $new_item_price != NULL || $new_item_desc != NULL) {
+    if ($new_item_name != NULL || $new_item_price != NULL || $new_item_desc != NULL || $uploadOk) {
         $_SESSION['message'] = "Edit item successfully!";
         redirect_to(url_for('/staff/'));
     }else {
@@ -77,7 +83,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class="container">
     <header><strong>Edit Item</strong> with ID: <?php echo $item_id;?></header>
     <div class="text-danger">
-        <p><?php echo $message;?></p>
+        <p><?php echo $message ?? '';?></p>
     </div>
     <form id="edit_item_form" method="post" action="" enctype="multipart/form-data">
         <div class="row">
