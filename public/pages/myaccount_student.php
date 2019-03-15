@@ -5,32 +5,35 @@ if (!isset($_SESSION['credential'])) {
     redirect_to(url_for('/pages/myaccount.php'));
 }else {
     $user_email = $_SESSION['credential'];
-    $data = get_data($db,$user_email,"student","email_address");
-}
+    $data = get_data($db, $user_email, "student", "email_address");
 
-$result = get_student ($db, $user_email, 'email_address');
+
+    $result = get_student($db, $user_email, 'email_address');
 //print_r($result);
 
-if (count($result) === 1) {
+    if (count($result) === 1) {
 //    echo "count is 1<br>";
-    $number_of_children = 1;
-}elseif (count($result) > 1) {
+        $number_of_children = 1;
+    } elseif (count($result) > 1) {
 //    echo "more than 1<br>" . count($result) . "<br>";
-    $number_of_children = count($result);
-}else {
-    echo "empty result";
-}
-$admin_s = [];
-$school_s = [];
-for ($i = 0; $i < count($result); $i++) {
-    $admin_s[$i] = get_data($db, $result[$i]['admin_id'], 'administrator', 'admin_id');
-    $school_s[$i] = get_data($db, $result[$i]['school_id'], 'school', 'school_id');
-}
+        $number_of_children = count($result);
+    } else {
+        echo "empty result";
+    }
+    $admin_s = [];
+    $school_s = [];
+    for ($i = 0; $i < count($result); $i++) {
+        $admin_s[$i] = get_data($db, $result[$i]['admin_id'], 'administrator', 'admin_id');
+        $school_s[$i] = get_data($db, $result[$i]['school_id'], 'school', 'school_id');
+    }
+
+    $student_orders = get_order_of_student($db, $_SESSION['user_id']);
 
 //print_r($admin_s);
 //echo "<br>";
 //print_r($school_s);
 //echo "<br>";
+}
 ?>
 
 <header class="card-header text-center">
@@ -100,7 +103,40 @@ for ($i = 0; $i < count($result); $i++) {
                 <div name="my_account_tab" class="display_none">
                     <div class="tab-content">
                         <h1>View Order</h1>
+                        <div class="tab-content">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Order ID</th>
+                                    <th scope="col">Delivery Date</th>
+                                    <th scope="col">Total Price</th>
+                                    <th scope="col">View</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php for ($i = 0; $i < count($student_orders); $i++) {?>
 
+                                    <tr>
+                                        <th scope="row"><?php echo $student_orders[$i]['order_id'];?></th>
+                                        <td><?php echo $student_orders[$i]['delivery_date'];?></td>
+                                        <td><?php echo $student_orders[$i]['total_price'];?></td>
+                                        <td><button data-toggle="modal" data-target="#Modal<?php echo $i;?>">View</button></td>
+                                    </tr>
+
+                                <?php }?>
+                                </tbody>
+                            </table>
+
+                            <?php for ($k = 0; $k < count($student_orders); $k++) {
+                                $modal_id = $k;
+                                $this_order_id = $student_orders[$k]['order_id'];
+                                $this_delivery_date = $student_orders[$k]['delivery_date'];
+                                $this_total_price = $student_orders[$k]['total_price'];
+                                include("modal_view_item.php");
+                            }
+                            ?>
+
+                        </div>
                     </div>
                 </div>
 

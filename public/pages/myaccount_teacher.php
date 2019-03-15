@@ -56,11 +56,12 @@ if (!isset($_SESSION['credential'])) {
         <div class="col-lg-4">
 
             <div class="nav list-group text-center text-uppercase">
-                <a class="nav-link list-group-item" onclick="show_selected_tab(0)">Profile</a>
-                <a class="nav-link list-group-item" onclick="show_selected_tab(1)">Approve Students</a>
-                <a class="nav-link list-group-item" onclick="show_selected_tab(2)">View Orders</a>
-                <a class="nav-link list-group-item" onclick="show_selected_tab(3)">View Students' Records</a>
-                <a class="nav-link list-group-item" onclick="show_selected_tab(4)">Edit Account</a>
+
+                <button class="nav-link list-group-item" onclick="show_selected_tab(0)">Profile</button>
+                <button class="nav-link list-group-item" onclick="show_selected_tab(1)">Approve Students</button>
+                <button class="nav-link list-group-item" onclick="show_selected_tab(2)">View Orders</button>
+                <button class="nav-link list-group-item" onclick="show_selected_tab(3)">View Students' Records</button>
+                <button class="nav-link list-group-item" onclick="show_selected_tab(4)">Edit Account</button>
                 <a class="nav-link list-group-item" href="log_out.php">Logout</a>
             </div>
 
