@@ -29,7 +29,7 @@
 
 
     <!--Sign up form-->
-    <div class="col-lg-12 align-content-lg-center">
+    <div class="col-lg-12 align-content-lg-center signup-form">
         <form style="display: none" name="registerForm" method="post" action="after_signup.php" onsubmit="return validate('Student');">
             <h6>Fields with * are required.</h6>
             <!--Sign up information required from user -->

@@ -279,6 +279,24 @@ li a {
     color: white;
 }
 
+.myfooter {
+    position: fixed;
+    left:0;
+    bottom:0;
+    height:60px;
+    width:100%;
+    padding:0;
+    margin:0;
+}
+
+body{
+    height:100%;
+}
+
+.signup-form {
+    height: 550px;
+}
+
 /*.input-group-addon {*/
     /*padding: .375rem .75rem;*/
     /*margin-bottom: 0;*/

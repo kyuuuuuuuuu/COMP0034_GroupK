@@ -15,6 +15,7 @@
 
 </head>
 <body>
+<div class="container2">
 <!--<h4>DinnersDirect</h4>-->
 <div class="navbar navbar-light bg-light">
     <!-- Logo image attached to Nav Bar -->
