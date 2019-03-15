@@ -40,7 +40,7 @@ li a {
 
 /* Slideshow container */
 .slideshow-container {
-    max-width: 800px;
+    max-width: 860px;
     position: relative;
     margin: auto;
 }
@@ -95,6 +95,10 @@ li a {
     padding: 8px 12px;
     position: absolute;
     top: 0;
+    /*check this later*/
+    width: 860px;
+    height: 480px;
+    overflow:hidden;
 }
 
 /* The dots/bullets/indicators */

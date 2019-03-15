@@ -23,7 +23,7 @@ if (isset($_SESSION['credential'])) {
             </form>
             <br><br><hr><br>
         </div>
-        <div id="menu_item" class="hideByDefault" >
+        <div id="menu_item" style="display: none" >
 
             <div id="step2">
                 <h2> STEP 2: Choose items</h2>
