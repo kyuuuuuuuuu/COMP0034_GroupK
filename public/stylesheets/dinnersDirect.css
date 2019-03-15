@@ -269,6 +269,12 @@ li a {
     border: 1px solid grey;
 }
 
+.copyright {
+    display:block;
+    text-align:center;
+    color: white;
+}
+
 /*.input-group-addon {*/
     /*padding: .375rem .75rem;*/
     /*margin-bottom: 0;*/
