@@ -100,11 +100,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         <br>
         <div class="row">
             <div class="col-md-4"></div>
-            <div class="col-md-2">
+            <div class="col-md-3">
             <label>Item Description: </label>
-            <textarea rows="5" cols="60" name="item_description" form="edit_item_form"><?php echo $item_data['item_description'];?></textarea>
+            <textarea rows="7" cols="27" name="item_description" form="edit_item_form"><?php echo $item_data['item_description'];?></textarea>
             </div>
-            <div class="col-md-6"></div>
+            <div class="col-md-5"></div>
         </div>
         <br>
         <div class="row">
