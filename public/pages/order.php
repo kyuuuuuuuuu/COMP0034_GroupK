@@ -37,14 +37,14 @@ if (isset($_SESSION['credential'])) {
                     <h3>DRINK</h3>';}?>
                     <div>
                         <img name="item_image" src="<?php echo $menu[$i]['item_image'];?>" alt="<?php echo $menu[$i]['item_name'];?>"
-                             class="orderOutline<?php if ($i < 3) {echo "1";}elseif ($i<6) {echo "2";}else {echo "3";}?>" data-toggle="modal"
-                             data-target="#Modal<?php echo $i;?>"/>
+                             class="orderOutline<?php if ($i < 3) {echo "1";}elseif ($i<6) {echo "2";}else {echo "3";}?>"
+                             data-toggle="modal" data-target="#Modal<?php echo $i;?>"/>
                         <?php
                         $title= $menu[$i]['item_name'];
                         $price= $menu[$i]['item_price'];
                         $des= $menu[$i]['item_description'];
                         $modal_id = $i;
-                        include("modal.php"); ?>
+                        include("modal_menu.php"); ?>
                     </div>
                     <?php if($i == 2 || $i == 5 || $i == 8) {echo '</div>';}else {echo '<br>';} }?>
             </div>

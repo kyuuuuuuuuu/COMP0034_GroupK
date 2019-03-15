@@ -19,7 +19,7 @@ if(!isset($_SESSION['customer_basket'])){
             $item = get_specific_data($db, 'item_id', $item_name, 'item', 'item_name');
             if ($item) {
                 $item_id = $item['item_id'];
-                $query = "INSERT INTO order_detail_item (order_id, item_id, quantity) "
+                $query = "INSERT INTO order_item (order_id, item_id, quantity) "
                     ."VALUES ('$order_id', '$item_id', '$item_quantity')";
                 submit_query($db, $query);
             }else {

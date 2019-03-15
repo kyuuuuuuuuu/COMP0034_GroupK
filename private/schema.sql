@@ -105,7 +105,7 @@ CREATE TABLE item (
   PRIMARY KEY(item_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE order_detail_item (
+CREATE TABLE order_item (
   order_id int(10) UNSIGNED NOT NULL,
   item_id int(10) UNSIGNED NOT NULL,
   quantity int(2) UNSIGNED NOT NULL,

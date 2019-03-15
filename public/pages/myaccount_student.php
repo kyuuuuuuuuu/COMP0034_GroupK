@@ -1,12 +1,11 @@
 <?php include($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
 <?php require_once('../../private/shared/pages_header.php');
-if (isset($_SESSION['credential'])) {
+if (!isset($_SESSION['credential'])) {
+    redirect_to(url_for('/pages/myaccount.php'));
+}else {
     $user_email = $_SESSION['credential'];
     $data = get_data($db,$user_email,"student","email_address");
-}else {
-//    $data = array("email_address"=>"default@email.com", "first_name"=>"default_fn", "last_name"=>"default_ln");
-    redirect_to(url_for('/pages/myaccount.php'));
 }
 
 $result = get_student ($db, $user_email, 'email_address');

@@ -227,14 +227,46 @@ function find_school_address ($db, $school_id) {
 
 function save_order_id ($db, $order_id, $user_id_field, $user_id) {
     if ($user_id_field == 'admin_id') {
-        $query = "INSERT INTO admin_order_detail (admin_id, order_id) VALUES ('$user_id', '$order_id')";
+        $query = "INSERT INTO admin_order (admin_id, order_id) VALUES ('$user_id', '$order_id')";
         return submit_query($db,$query);
     }elseif ($user_id_field == 'student_id') {
-        $query = "INSERT INTO student_order_detail (student_id, order_id) VALUES ('$user_id', '$order_id')";
+        $query = "INSERT INTO student_order (student_id, order_id) VALUES ('$user_id', '$order_id')";
         return submit_query($db,$query);
     }else {
         return false;
     }
+}
+
+function get_order_details ($db, $user_id, $id_field, $table_name) {
+    $query = "SELECT * FROM $table_name JOIN order_detail USING (order_id) " .
+        "WHERE $id_field = '$user_id' ORDER BY order_detail.delivery_date";
+    $result = mysqli_query($db, $query);
+    $data = [];
+    while($row = mysqli_fetch_assoc($result)) {
+        array_push($data,$row);
+    }
+    return $data;
+}
+
+function get_order_of_admin ($db, $user_id) {
+    $data = get_order_details($db, $user_id, 'admin_id', 'admin_order');
+    return $data;
+}
+
+function get_order_of_student ($db, $user_id) {
+    $data = get_order_details($db, $user_id, 'student_id', 'student_order');
+    return $data;
+}
+
+function get_order_item ($db, $order_id) {
+    $query = "SELECT * FROM order_item JOIN item USING (item_id) " .
+        "WHERE order_item.order_id = '$order_id'";
+    $result = mysqli_query($db, $query);
+    $data = [];
+    while($row = mysqli_fetch_assoc($result)) {
+        array_push($data,$row);
+    }
+    return $data;
 }
 ?>
 

@@ -203,3 +203,7 @@ function post_data_xhr() {
         }
     }
 }
+
+function view_order (id) {
+
+}

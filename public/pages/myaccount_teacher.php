@@ -1,28 +1,30 @@
 <?php include($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
 <?php require_once('../../private/shared/pages_header.php');
-if (isset($_SESSION['credential'])) {
-    $user_email = $_SESSION['credential'];
-    $data = get_data($db,$user_email,"administrator","email_address");
-}else {
-//    $data = array("email_address"=>"default@email.com", "first_name"=>"default_fn", "last_name"=>"default_ln");
+if (!isset($_SESSION['credential'])) {
     redirect_to(url_for('/pages/myaccount.php'));
-}
-$result = get_admin ($db, $user_email, 'email_address');
+}else {
+    $user_email = $_SESSION['credential'];
+    $data = get_data($db, $user_email, "administrator", "email_address");
+
+    $result = get_admin($db, $user_email, 'email_address');
 //print_r($result);
 
-$student_a = [];
-$school_a = [];
-$parent_a = [];
-for ($i = 0; $i < count($result); $i++) {
-    $student_a[$i] = get_data($db, $result[$i]['student_id'], 'student', 'student_id');
-    $school_a[$i] = get_data($db, $result[$i]['school_id'], 'school', 'school_id');
-}
+    $student_a = [];
+    $school_a = [];
+    $parent_a = [];
+    for ($i = 0; $i < count($result); $i++) {
+        $student_a[$i] = get_data($db, $result[$i]['student_id'], 'student', 'student_id');
+        $school_a[$i] = get_data($db, $result[$i]['school_id'], 'school', 'school_id');
+    }
+
+    $admin_orders = get_order_of_admin($db, $data['admin_id']);
 
 //print_r($student_a);
 //echo "<br>";
 //print_r($school_a);
 //echo "<br>";
+}
 ?>
 
 <header class="card-header text-center">
@@ -56,8 +58,9 @@ for ($i = 0; $i < count($result); $i++) {
             <div class="nav list-group text-center text-uppercase">
                 <a class="nav-link list-group-item" onclick="show_selected_tab(0)">Profile</a>
                 <a class="nav-link list-group-item" onclick="show_selected_tab(1)">Approve Students</a>
-                <a class="nav-link list-group-item" onclick="show_selected_tab(2)">View Students' Records</a>
-                <a class="nav-link list-group-item" onclick="show_selected_tab(3)">Edit Account</a>
+                <a class="nav-link list-group-item" onclick="show_selected_tab(2)">View Orders</a>
+                <a class="nav-link list-group-item" onclick="show_selected_tab(3)">View Students' Records</a>
+                <a class="nav-link list-group-item" onclick="show_selected_tab(4)">Edit Account</a>
                 <a class="nav-link list-group-item" href="log_out.php">Logout</a>
             </div>
 
@@ -123,6 +126,46 @@ for ($i = 0; $i < count($result); $i++) {
                         </tbody>
                     </table>
 
+                </div>
+            </div>
+
+            <div name="my_account_tab" class="display_none">
+                <div class="tab-content">
+                    <h1>View Order</h1>
+                    <div class="tab-content">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">Order ID</th>
+                                <th scope="col">Delivery Date</th>
+                                <th scope="col">Total Price</th>
+                                <th scope="col">View</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php for ($i = 0; $i < count($admin_orders); $i++) {?>
+
+                            <tr>
+                                <th scope="row"><?php echo $admin_orders[$i]['order_id'];?></th>
+                                <td><?php echo $admin_orders[$i]['delivery_date'];?></td>
+                                <td><?php echo $admin_orders[$i]['total_price'];?></td>
+                                <td><button data-toggle="modal" data-target="#Modal<?php echo $i;?>">View</button></td>
+                            </tr>
+
+                            <?php }?>
+                            </tbody>
+                        </table>
+
+                        <?php for ($k = 0; $k < count($admin_orders); $k++) {
+                            $modal_id = $k;
+                            $this_order_id = $admin_orders[$k]['order_id'];
+                            $this_delivery_date = $admin_orders[$k]['delivery_date'];
+                            $this_total_price = $admin_orders[$k]['total_price'];
+                            include("modal_view_item.php");
+                        }
+                        ?>
+
+                    </div>
                 </div>
             </div>
 
