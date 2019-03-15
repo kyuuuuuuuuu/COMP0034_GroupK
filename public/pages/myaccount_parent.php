@@ -67,9 +67,9 @@ require_once('../../private/shared/pages_header.php');
         <div class="col-lg-4">
 
             <div class="nav list-group text-center text-uppercase">
-                <a class="nav-link list-group-item" onclick="selectParentTab(0)">Profile</a>
-                <a class="nav-link list-group-item" onclick="selectParentTab(1)">View Orders</a>
-                <a class="nav-link list-group-item" onclick="selectParentTab(2)">Edit Account</a>
+                <a class="nav-link list-group-item" onclick="show_selected_tab(0)">Profile</a>
+                <a class="nav-link list-group-item" onclick="show_selected_tab(1)">View Orders</a>
+                <a class="nav-link list-group-item" onclick="show_selected_tab(2)">Edit Account</a>
                 <a class="nav-link list-group-item" href="log_out.php">Logout</a>
             </div>
 
@@ -77,53 +77,58 @@ require_once('../../private/shared/pages_header.php');
         <hr class="sidebar-divider d-none d-md-block">
         <div class="col-lg-8">
             <div class="tab-content">
-                <div name="abcde" class="tab-content hideByDefault">
-                    <h1>Parent Profile</h1>
-                    <p>
-                        You have
-                        <?php
-                        if ($number_of_children > 1) {
-                            echo $number_of_children . " children";
+                <div name="my_account_tab" class="display_none">
+                    <div class="tab-content">
+                        <h1>Parent Profile</h1>
+                        <p>
+                            You have
+                            <?php
+                            if ($number_of_children > 1) {
+                                echo $number_of_children . " children";
 
-                        }else {
-                            echo $number_of_children . " child";
-                        };
-                        ?>
-                        <br>
-                        <?php
-                        for ($i = 0; $i < $number_of_children; $i++) {?>
-                            Name: <?php echo $children_p[$i]['first_name'] . " " . $children_p[$i]['last_name'];?><br>
-                            Teacher: <?php echo $admin_p[$i]['first_name'] . " " . $admin_p[$i]['last_name'];?><br>
-                            School: <?php echo $school_p[$i]['school_name'];?><br>
-                            Address: <?php echo $school_p[$i]['school_address'];?><br>
-                        <?php } ?>
-                    </p>
+                            }else {
+                                echo $number_of_children . " child";
+                            };
+                            ?>
+                            <br>
+                            <?php
+                            for ($i = 0; $i < $number_of_children; $i++) {?>
+                                Name: <?php echo $children_p[$i]['first_name'] . " " . $children_p[$i]['last_name'];?><br>
+                                Teacher: <?php echo $admin_p[$i]['first_name'] . " " . $admin_p[$i]['last_name'];?><br>
+                                School: <?php echo $school_p[$i]['school_name'];?><br>
+                                Address: <?php echo $school_p[$i]['school_address'];?><br>
+                            <?php } ?>
+                        </p>
+                    </div>
+                </div>
 
-                </div>
-                <div name="abcde" class="tab-content hideByDefault">
-                    <h1>View Order</h1>
+                <div name="my_account_tab" class="display_none">
+                    <div class="tab-content">
+                        <h1>View Order</h1>
 
+                    </div>
                 </div>
-                <h3 class="text-danger">
-                    <strong>
-                        <?php if(isset($_SESSION['error'])) {
-                            echo $_SESSION['error'];
-                            unset($_SESSION['error']);
-                        }?>
-                    </strong>
-                </h3>
-                <div name="abcde" class="tab-content hideByDefault">
-                    <form name="change_password_form" method="post" action="change_password.php" onsubmit="return true;">
-                        <label>Email Address:</label>
-                        <input name="user_email" type="email" class="form-control" placeholder="Enter your email"><br>
-                        <label>Current Password:</label>
-                        <input name="old_password" type="password" class="form-control" placeholder="Enter your current password"><br>
-                        <label>New Password:</label>
-                        <input name="new_password" type="password" class="form-control" placeholder="Enter your new password">
-                        <br>
-                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
-                    </form>
+
+                <div name="my_account_tab" class="display_none">
+                    <div class="tab-content">
+                        <form name="change_password_form" method="post" action="change_password.php" onsubmit="return true;">
+                            <label>Email Address:</label>
+                            <input name="user_email" type="email" class="form-control" placeholder="Enter your email"><br>
+                            <label>Current Password:</label>
+                            <input name="old_password" type="password" class="form-control" placeholder="Enter your current password"><br>
+                            <label>New Password:</label>
+                            <input name="new_password" type="password" class="form-control" placeholder="Enter your new password">
+                            <br>
+                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        </form>
+                    </div>
                 </div>
+
+
+
+
+
+
 
             </div>
         </div>

@@ -34,6 +34,18 @@ function selectParentTab(index) {
     }
 }
 
+function show_selected_tab (index) {
+    let all_tabs = document.getElementsByName("my_account_tab");
+
+    for (let i = 0 ; i < all_tabs.length; i++) {
+        if (i === index) {
+            all_tabs[i].className = "display_block";
+        } else {
+            all_tabs[i].className = "display_none";
+        }
+    }
+}
+
 function selectForm(index) {
     var forms = document.getElementsByName("registerForm");
 
