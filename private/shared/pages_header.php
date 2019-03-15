@@ -24,9 +24,9 @@
     </a>
 <!--    <a href="index.php" class="a">HOME</a>-->
     <a href="<?php echo url_for('/pages/order.php'); ?>">ORDER</a>
-    <a href="<?php echo url_for('/pages/login.php'); ?>" class="a">LOGIN</a>
-    <a href="<?php echo url_for('/pages/signup.php'); ?>" class="a">SIGN UP</a>
-    <a href="<?php echo url_for('/pages/myaccount.php'); ?>" class="a">MY ACCOUNT</a>
+    <a href="<?php echo url_for('/pages/login.php'); ?>">LOGIN</a>
+    <a href="<?php echo url_for('/pages/signup.php'); ?>">SIGN UP</a>
+    <a href="<?php echo url_for('/pages/myaccount.php'); ?>">MY ACCOUNT</a>
     <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
