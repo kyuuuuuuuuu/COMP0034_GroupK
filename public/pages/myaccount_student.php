@@ -37,7 +37,7 @@ for ($i = 0; $i < count($result); $i++) {
     <h1>Welcome to your student account!</h1>
 </header>
 
-
+<body>
 <div class="container">
     <br><br>
     <div class="row">
@@ -125,6 +125,6 @@ for ($i = 0; $i < count($result); $i++) {
 
 
 </div>
-
+</body>
 <?php require_once('../../private/shared/pages_footer.php');?>
 
