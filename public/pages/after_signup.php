@@ -17,7 +17,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = test_input($_POST["email"]);
         if (check_email($db, $email)) {
             echo $email . " is existed, please choose another one.<br>";
-            $_SESSION['error'] = "<br>" . $email . " is existed, please choose another one.<br>";
+            $['error'] = "<br>" . $email . " is existed, please choose another one.<br>";
             $_SESSION['POST'] = $_POST;
             redirect_to(url_for('pages/signup.php'));
         }
