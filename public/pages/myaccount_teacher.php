@@ -39,7 +39,7 @@ if (!isset($_SESSION['credential'])) {
         <div class="col-md-1"></div>
         <div class="col-md-4">
 
-            <img class="img-profile rounded-circle" src="../img/kien.jpg" style="width:200px;height:200px;"><br>
+            <img class="img-profile rounded-circle" src="../img/kien.jpg" style="width:200px;height:200px;"><br><br>
             <h2><?php echo $data['first_name'] . " " . $data['last_name'];?> </h2>
             <!--            <div class="name"><small>Trung Kien Nguyen</small></div><br><br>-->
         </div>
@@ -58,12 +58,12 @@ if (!isset($_SESSION['credential'])) {
 
             <div class="nav list-group text-center text-uppercase">
 
-                <button class="nav-link list-group-item" onclick="show_selected_tab(0)">Profile</button>
-                <button class="nav-link list-group-item" onclick="show_selected_tab(1)">Approve Students</button>
-                <button class="nav-link list-group-item" onclick="show_selected_tab(2)">View Orders</button>
-                <button class="nav-link list-group-item" onclick="show_selected_tab(3)">View Students' Orders</button>
-                <button class="nav-link list-group-item" onclick="show_selected_tab(4)">Edit Account</button>
-                <a class="nav-link list-group-item" href="log_out.php">Logout</a>
+                <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(0)">Profile</button>
+                <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(1)">Approve Students</button>
+                <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(2)">View Orders</button>
+                <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(3)">View Students' Orders</button>
+                <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(4)">Edit Account</button>
+                <a class="nav-link list-group-item myaccount-logout" href="log_out.php">Logout</a>
             </div>
 
         </div>
@@ -82,8 +82,8 @@ if (!isset($_SESSION['credential'])) {
                 <div class="tab-content">
                     <h1>Teacher Profile</h1>
                     <p>
-                        School: <?php echo $school_a[0]['school_name'];?><br>
-                        Address: <?php echo $school_a[0]['school_address'];?><br><br>
+                        <b>School: </b><?php echo $school_a[0]['school_name'];?><br>
+                        <b>Address: </b><?php echo $school_a[0]['school_address'];?><br><br>
                     <h3 class="text-center">Student's Information</h3>
 
                     </p>
@@ -118,6 +118,7 @@ if (!isset($_SESSION['credential'])) {
             </div>
 
             <div name="my_account_tab" class="display_none">
+                <h1>Approve Students</h1>
                 <div class="tab-content">
                     <table class="table table-striped">
                         <thead>
@@ -140,7 +141,7 @@ if (!isset($_SESSION['credential'])) {
                                         <td><?php echo $student_a[$j]['first_name'];?></td>
                                         <td><?php echo $student_a[$j]['last_name'];?></td>
                                         <td><?php echo $student_a[$j]['email_address'];?></td>
-                                        <td><button class="btn btn-primary btn-block" name="submit" type="submit" value="<?php echo $student_a[$j]['student_id']?>">Approve</button></td>
+                                        <td><button class="btn btn-block button1" name="submit" type="submit" value="<?php echo $student_a[$j]['student_id']?>">Approve</button></td>
                                     </form>
                                 </tr>
                             <?php }}?>
@@ -152,7 +153,7 @@ if (!isset($_SESSION['credential'])) {
 
             <div name="my_account_tab" class="display_none">
                 <div class="tab-content">
-                    <h1>View Order</h1>
+                    <h1>View Orders</h1>
                     <div class="tab-content">
                         <table class="table table-striped">
                             <thead>
@@ -170,7 +171,7 @@ if (!isset($_SESSION['credential'])) {
                                 <th scope="row"><?php echo $admin_orders[$i]['order_id'];?></th>
                                 <td><?php echo $admin_orders[$i]['delivery_date'];?></td>
                                 <td><?php echo $admin_orders[$i]['total_price'];?></td>
-                                <td><button data-toggle="modal" data-target="#Modal<?php echo $i;?>">View</button></td>
+                                <td><button class="btn btn-block button1" data-toggle="modal" data-target="#Modal<?php echo $i;?>">View</button></td>
                             </tr>
 
                             <?php }?>
@@ -192,13 +193,14 @@ if (!isset($_SESSION['credential'])) {
 
             <div name="my_account_tab" class="display_none">
                 <div class="tab-content">
-                    <div class="align-items-center text-center">
+                    <div class="">
                         <form action="" method="get" onsubmit="">
-                            <h2>STEP 1: Choose date</h2><br>
-                            <input type="date" id="choose_date" required><br><br>
+                            <h1>View Students' Orders</h1>
+                            <h5>Choose date:</h5>
+                            <input type="date" id="choose_date" required>
                             <button class="btn-secondary rounded btn-sm" onclick="date_selection(<?php echo $data['admin_id'];?>);" type="button">OK</button>
                         </form>
-                        <br>
+                        <br><br>
                     </div>
 
                     <p id="list_of_orders"></p>
@@ -210,6 +212,7 @@ if (!isset($_SESSION['credential'])) {
             <div name="my_account_tab" class="display_none">
                 <div class="tab-content">
                     <form name="change_password_form" method="post" action="change_password.php" onsubmit="return true;">
+                        <h1>Edit Account</h1>
                         <label>Email Address:</label>
                         <input name="user_email" type="email" class="form-control" placeholder="Enter your email"><br>
                         <label>Current Password:</label>
@@ -217,7 +220,7 @@ if (!isset($_SESSION['credential'])) {
                         <label>New Password:</label>
                         <input name="new_password" type="password" class="form-control" placeholder="Enter your new password">
                         <br>
-                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        <button type="submit" class="btn btn-secondary btn-block">Submit</button>
                     </form>
                 </div>
             </div>

@@ -24,7 +24,7 @@ if (isset($_SESSION['credential'])) {
     </div>
 
 
-    <div class="container-fluid">
+    <div class="container">
         <br>
         Review your order and select "Place order" button at the end of the page.
         <br><hr>
@@ -39,7 +39,7 @@ if (isset($_SESSION['credential'])) {
             <div class="row">
                 <?php
                 if (isset($_SESSION['customer_basket'])) { $basket = $_SESSION['customer_basket']; ?>
-                <table class='table table-striped text-center col-md-8' id="margin_three">
+                <table class='table table-striped text-center col-md-8' id="">
                     <tr>
                         <td class='font-weight-bolder'>Item Name</td>
                         <td class='font-weight-bolder'>Quantity</td>
@@ -56,7 +56,7 @@ if (isset($_SESSION['credential'])) {
                     <?php } ?>
                 </table>
                 <br>
-                <div class="col-md-3 text-center">
+                <div class="col-md-4 text-center">
 
                     Order Subtotal: £<label id="subTotal"><td><?php echo number_format($_SESSION['grand_total'], 2, '.', ' ');?></td></label><br>
                     Tax (included): £<label id="tax"></label><?php $tax = $_SESSION['grand_total'] * 0.11111111111;
@@ -64,8 +64,8 @@ if (isset($_SESSION['credential'])) {
                     Shipping: £1.00<br><br>
                     <b>Order Total: </b>£<label id="orderTotal"><?php echo number_format($_SESSION['grand_total'] + 1 , 2, '.', ' ') ;?></label>
                     <br><br>
-                    <a href="order_confirmation.php"><button class="button1">Place Order</button></a>
-                    <a href="order.php"><button class="button1">Back</button></a>
+                    <a href="order.php"><button class="button1 rounded">Back</button></a>
+                    <a href="order_confirmation.php"><button class="button1 rounded">Place Order</button></a>
                 </div>
             </div>
         <br>

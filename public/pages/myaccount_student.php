@@ -66,10 +66,10 @@ if (!isset($_SESSION['credential'])) {
         <div class="col-lg-4">
 
             <div class="nav list-group text-center text-uppercase">
-                <a class="nav-link list-group-item" onclick="show_selected_tab(0)">Profile</a>
-                <a class="nav-link list-group-item" onclick="show_selected_tab(1)">View Orders</a>
-                <a class="nav-link list-group-item" onclick="show_selected_tab(2)">Edit Account</a>
-                <a class="nav-link list-group-item" href="log_out.php">Logout</a>
+                <a class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(0)">Profile</a>
+                <a class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(1)">View Orders</a>
+                <a class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(2)">Edit Account</a>
+                <a class="nav-link list-group-item myaccount-logout" href="log_out.php">LOGOUT</a>
             </div>
 
         </div>

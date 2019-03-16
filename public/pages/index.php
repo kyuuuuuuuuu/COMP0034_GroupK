@@ -10,19 +10,19 @@ require_once('../../private/shared/pages_header.php');?>
 
         <div class="hideByDefault">
             <div class="numbertext">1 / 3</div>
-            <img alt="slide show 1"  src="../img/slideshow1.jpg" class="slideshow">
+            <img class="slideshow-image" alt="slide show 1"  src="../img/slideshow1.jpg">
             <div class="text">This is slide show 1</div>
         </div>
 
         <div class="hideByDefault">
             <div class="numbertext">2 / 3</div>
-            <img alt="slide show 2"  src="../img/slideshow2.jpeg" class="slideshow">
+            <img class="slideshow-image" alt="slide show 2"  src="../img/slideshow2.jpeg">
             <div class="text">This is slide show 2</div>
         </div>
 
         <div class="hideByDefault">
             <div class="numbertext">3 / 3</div>
-            <img alt="slide show 3"  src="../img/slideshow3.jpeg" class="slideshow">
+            <img class="slideshow-image"  alt="slide show 3"  src="../img/slideshow3.jpeg">
             <div class="text">This is slide show 3</div>
         </div>
 

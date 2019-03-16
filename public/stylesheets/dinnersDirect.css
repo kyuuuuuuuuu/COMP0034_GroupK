@@ -47,11 +47,38 @@ li a {
 }
 
 /* Slideshow container */
-.slideshow-container {
-    max-width: 860px;
-    position: relative;
-    margin: auto;
+@media (max-width: 880px) {
+    .slideshow-container {
+        /*max-width: 860px;*/
+        max-width: 90vw;
+        position: relative;
+        margin: auto;
+    }
+
+    .slideshow-image {
+        width: 90vw;
+        height: auto;
+        overflow:hidden;
+    }
 }
+@media (min-width: 880.01px) {
+    .slideshow-container {
+        max-width: 860px;
+        /*max-width: 60vw;*/
+        position: relative;
+        margin: auto;
+    }
+
+    .slideshow-image {
+        /*check this later*/
+        width: 860px;
+        height: 480px;
+        /*width: 60vw;*/
+        /*height: 33.3vw;*/
+        overflow:hidden;
+    }
+}
+
 
 /* Hide the images by default */
 .hideByDefault {
@@ -105,10 +132,6 @@ li a {
     padding: 8px 12px;
     position: absolute;
     top: 0;
-    /*check this later*/
-    width: 860px;
-    height: 480px;
-    overflow:hidden;
 }
 
 /* The dots/bullets/indicators */
@@ -235,13 +258,13 @@ li a {
 }
 
 .button1 {
-    float:right;
     padding: 0.5rem 1rem;
     font-size: 1.25rem;
     line-height: 1.5;
     /*border-radius: 0.3rem;*/
-    background-color: #B2B3D0;
-    border-color: #9A9BB3;
+    background-color: #B2B3D0 !important;
+    border-color: #9A9BB3 !important;
+    color: black !important;
 }
 
 .button2 {
@@ -267,19 +290,15 @@ li a {
     right:10vw;
 }
 
-.slideshow {
-    width:100% ;
-}
-
 #margin_ten {
     margin-left: 10%;
     margin-right:10%;
 }
 
-#margin_three {
-    margin-left: 3%;
-    margin-right:3%;
-}
+/*#margin_three {*/
+    /*margin-left: 3%;*/
+    /*margin-right:3%;*/
+/*}*/
 
 #confirmation {
     max-width: 200px;
@@ -328,6 +347,27 @@ body{
 .myaccount-tab {
     height:auto;
 }
+
+.myaccount-nav {
+    background-color: #C4DDF6 !important;
+}
+
+.myaccount-logout {
+    background-color: #5588BC !important;
+    color:white;
+}
+
+h1, .container, .container-fluid {
+    font-family: Palatino !important;
+}
+
+/*h1, h2, h3, h4, h5, h6, p, table, button, nav, input, label {*/
+    /*font-family: Palatino !important;*/
+/*}*/
+
+/*p{*/
+    /*font-family: Georgia;*/
+/*}*/
 
 /*.input-group-addon {*/
     /*padding: .375rem .75rem;*/
