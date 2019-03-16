@@ -54,13 +54,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if(empty($_POST["pw2"])) {
         $pw2_empty = "Password confirmation is required";
-        //echo "empy confirm";
     } elseif (strcmp($_POST["pw2"], $_POST["pw"])  != 0){
         $pw2_empty = "Password confirmation need to be exactly the same as your Password";
-        //echo "doesnt match";
     } else{
         $pw2 = test_input($_POST["pw2"]);
-        //echo "save PW confirm";
         $checked++;
     };
 
@@ -69,7 +66,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif ($acc_type == 'student') {
         $reference = test_input($_POST["reference"]);
         if (!check_email_admin($db, $reference)) {
-            //echo $email . " is not a valid admin's email, please choose another one.<br>";
             $_SESSION['POST'] = $_POST;
             $_SESSION['error'] = "<br>" . $reference . " is not a valid admin's email, please choose another one.<br>";
             redirect_to(url_for('pages/signup.php'));
@@ -77,9 +73,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     }elseif ($acc_type == 'parent') {
         $reference = test_input($_POST["reference"]);
         if (!check_email_student($db, $reference)) {
-            //echo $email . " is not a valid admin's email, please choose another one.<br>";
             $_SESSION['POST'] = $_POST;
             $_SESSION['error'] = "<br>" . $reference . " is not a valid student's email, please choose another one.<br>";
+            echo check_student_avail($db,$reference);
+            //exit;check_student_avail($db,$reference)
             redirect_to(url_for('pages/signup.php'));
         }
     }else{
@@ -120,8 +117,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             $id_s = $data_student['student_id'];
             $id_p = $data_parent['parent_id'];
             $query_id_link = "INSERT INTO student_parent (student_id, parent_id) VALUES ('$id_s', '$id_p')";
-            //echo $query_id_link;
             submit_query($db, $query_id_link);
+            $_SESSION['id_field'] = 'parent_id';
+            $_SESSION['user_id'] = $id_p;
         }elseif ($acc_type == 'student') {
             echo "Dinnersdirect data base is successfully connected";
             $query = "INSERT INTO $acc_type (first_name, last_name, email_address, phone_number, password) "
@@ -137,29 +135,37 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             $id_s = $data_student['student_id'];
             $id_a = $data_admin['admin_id'];
             $query_id_link = "INSERT INTO admin_student (student_id, admin_id) VALUES ('$id_s', '$id_a')";
-            //echo $query_id_link;
             submit_query($db, $query_id_link);
+            $_SESSION['id_field'] = 'student_id';
+            $_SESSION['user_id'] = $id_s;
 
         }elseif ($acc_type == 'administrator') {
             echo "Dinnersdirect data base is successfully connected";
             $query = "INSERT INTO $acc_type (first_name, last_name, email_address, phone_number, password) "
                 ."VALUES ('$fname', '$lname', '$email', '$phone', '$pw')";
             submit_query($db, $query);
-            $data_admin = get_data($db,$email,'administrator','email_address');
             $data_school = get_data($db,$reference,'school','school_name');
 
-            if ($data_admin == 'Not Found' || $data_school == 'Not Found') {
+            if ($data_school == 'Not Found') {
                 echo "<br>Error occurs, Data not found!! <strong>You need to import schema.sql and data.sql to your database!!!</strong><br>";
                 exit;
             }
             $id_s = $data_school['school_id'];
             $id_a = $data_admin['admin_id'];
             $query_id_link = "INSERT INTO school_admin (admin_id, school_id) VALUES ('$id_a', '$id_s')";
-            //echo $query_id_link;
             submit_query($db, $query_id_link);
+            $_SESSION['id_field'] = 'admin_id';
+            $_SESSION['user_id'] = $id_a;
         }else {
             echo "unknown";
 
+        }
+        $_SESSION['credential'] = $email;
+        $_SESSION['acc_type'] = $acc_type;
+        if (isset($_SESSION['customer_basket'])) {
+            redirect_to(url_for('/pages/order_summary.php'));
+        }else {
+            to_myAccount($acc_type);
         }
 
 

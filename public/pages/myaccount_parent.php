@@ -1,14 +1,12 @@
 <?php include($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
-<?php if (!isset($_SESSION['credential'])) {
+<?php require_once ('check_log_in_status.php');
+if ($not_log_in) {
     redirect_to(url_for('/pages/myaccount.php'));
-}else {
-    $user_email = $_SESSION['credential'];
-    $data = get_data($db,$user_email,"parent","email_address");
 }
-
+echo $user_email;
 $result = get_parent ($db, $user_email, 'email_address');
-//print_r($result);
+echo gettype($result);
 
 if (count($result) === 1) {
 //    echo "count is 1<br>";

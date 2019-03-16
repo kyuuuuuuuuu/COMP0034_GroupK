@@ -220,7 +220,7 @@ function date_selection(admin_id) {
         data_to_post += and + "date_selected=" + date_selected;
 
         ajax.send(data_to_post);
-
+        document.getElementById('list_of_orders').innerHTML = "Loading...";
         ajax.onreadystatechange = function() {
             if (ajax.readyState === 4 && ajax.status === 200) {
                 let list_of_orders = JSON.parse(ajax.responseText);

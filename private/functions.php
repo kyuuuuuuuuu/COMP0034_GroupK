@@ -38,8 +38,10 @@ function redirect_to($url) {
 function submit_query($db, $query) { //Still need to deal with error!!!
     //submit a SQL query to the database
     if (mysqli_query($db, $query)) {
+//        echo "true";
         return true;
     } else {
+//        echo "false";
         return false;
     }
 }
@@ -154,6 +156,17 @@ function check_email($db, $user_input) {
         $existence = check_email_parent($db,$user_input);
     }
     return $existence;
+}
+
+function check_student_avail($db, $user_input) {
+    $query = "SELECT * FROM student_parent JOIN student s on student_parent.student_id = s.student_id WHERE email_address = '$user_input'";
+    $result = mysqli_fetch_assoc(mysqli_query($db, $query));
+
+    if($result['student_id']){
+        return false;
+    }else {
+        return true;
+    }
 }
 
 function get_parent ($db, $user_input, $input_field) {
