@@ -1,6 +1,7 @@
 <?php include($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
-<?php require_once('../../private/shared/pages_header.php');?>
+<?php require_once('check_log_in_status.php');
+require_once('../../private/shared/pages_header.php');?>
 
 <?php
 //$the_row = get_data($db,'trung.kien@gmail.com','student','email_address');
