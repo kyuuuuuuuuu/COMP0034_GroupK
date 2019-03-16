@@ -3,8 +3,8 @@
 <?php
 if (isset($_SESSION['credential'])) {
     $user_email = $_SESSION['credential'];
-    $accType = $_SESSION['accType'];
-    $data = get_data($db, $user_email, $accType,"email_address");
+    $acc_type = $_SESSION['acc_type'];
+    $data = get_data($db, $user_email, $acc_type,"email_address");
 }
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($_POST['basket_length'])) {

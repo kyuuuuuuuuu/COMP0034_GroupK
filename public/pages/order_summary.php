@@ -4,7 +4,7 @@
 
 if (isset($_SESSION['credential'])) {
     $user_email = $_SESSION['credential'];
-    $acc_type = $_SESSION['accType'];
+    $acc_type = $_SESSION['acc_type'];
     $data = get_data($db, $user_email, $acc_type,"email_address");
     if ($acc_type == 'student') {
         $id_list = get_student($db, $user_email, 'email_address');

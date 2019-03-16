@@ -8,6 +8,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         echo $query;
         submit_query($db, $query);
         $_SESSION['message'] = "Student is approved successfully!";
-        to_myAccount($_SESSION['accType']);
+        to_myAccount($_SESSION['acc_type']);
     }
 }

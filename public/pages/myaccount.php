@@ -3,9 +3,9 @@
 <?php require_once('../../private/shared/pages_header.php');?>
 
 <?php
-if (isset($_SESSION['accType'])) {
-    $accType = $_SESSION['accType'];
-    to_myAccount($accType);
+if (isset($_SESSION['$acc_type'])) {
+    $acc_type = $_SESSION['acc_type'];
+    to_myAccount($acc_type);
 }
 ?>
 <div class="card-header text-center">

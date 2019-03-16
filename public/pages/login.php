@@ -1,6 +1,10 @@
 <?php include($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
-<?php require_once('../../private/shared/pages_header.php');?>
+<?php require_once('check_log_in_status.php');
+if (!$not_log_in) {
+    to_myAccount($acc_type);
+}
+require_once('../../private/shared/pages_header.php');?>
 
     <div class="card-header text-center">
         <h1>Welcome to DinnersDirect</h1>

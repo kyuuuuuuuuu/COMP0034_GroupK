@@ -22,9 +22,9 @@
     </div>
 
     <div class="btn-group btn-group container-fluid align-items-center" role="group" aria-label="...">
-        <button type="button" class="btn" id="signup_btn1" onclick="selectForm(0)">Student</button>
-        <button type="button" class="btn" id="signup_btn2" onclick="selectForm(1)">Administrator</button>
-        <button type="button" class="btn" id="signup_btn3" onclick="selectForm(2)">Parent</button>
+        <button type="button" class="btn" id="signup_btn1" onclick="select_form(0)">Student</button>
+        <button type="button" class="btn" id="signup_btn2" onclick="select_form(1)">Administrator</button>
+        <button type="button" class="btn" id="signup_btn3" onclick="select_form(2)">Parent</button>
     </div>
 
 

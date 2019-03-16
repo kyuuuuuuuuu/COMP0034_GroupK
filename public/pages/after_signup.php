@@ -8,7 +8,7 @@ $checked = 0;
 //Validation of user input :)
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     $checked = 0;  //Set a variable to check how many input are validated
-    $accType = $_POST["submit"]; //Store the user chosen account type in a variable
+    $acc_type = $_POST["submit"]; //Store the user chosen account type in a variable
 
     //Validate email address
     if(empty($_POST["email"])) {
@@ -66,7 +66,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if(empty($_POST["reference"])) {
         $reference_empty = "<br>Enter your reference";
-    } elseif ($accType == 'student') {
+    } elseif ($acc_type == 'student') {
         $reference = test_input($_POST["reference"]);
         if (!check_email_admin($db, $reference)) {
             //echo $email . " is not a valid admin's email, please choose another one.<br>";
@@ -74,7 +74,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['error'] = "<br>" . $reference . " is not a valid admin's email, please choose another one.<br>";
             redirect_to(url_for('pages/signup.php'));
         }
-    }elseif ($accType == 'parent') {
+    }elseif ($acc_type == 'parent') {
         $reference = test_input($_POST["reference"]);
         if (!check_email_student($db, $reference)) {
             //echo $email . " is not a valid admin's email, please choose another one.<br>";
@@ -100,14 +100,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             $fname . " is your first name<br>" .$lname . " is your last name<br>" .
             $user_pw . " is your password<br>" . $pw2 . " is your password confirmation<br>" .
             $school . " is your school<br>" .  $phone . " is your phone number<br>" .
-            $accType . " is your account type<br>" . $pw . " is the encrypted password<br>";
+            $acc_type . " is your account type<br>" . $pw . " is the encrypted password<br>";
 
         if (mysqli_connect_errno())
         {
             echo "Failed to connect to MySQL: " . mysqli_connect_error();
-        } elseif ($accType == 'parent') {
+        } elseif ($acc_type == 'parent') {
             echo "Dinnersdirect data base is successfully connected";
-            $query = "INSERT INTO $accType (first_name, last_name, email_address, phone_number, password) "
+            $query = "INSERT INTO $acc_type (first_name, last_name, email_address, phone_number, password) "
                 ."VALUES ('$fname', '$lname', '$email', '$phone', '$pw')";
             submit_query($db, $query);
             $data_parent = get_data($db,$email,'parent','email_address');
@@ -122,9 +122,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             $query_id_link = "INSERT INTO student_parent (student_id, parent_id) VALUES ('$id_s', '$id_p')";
             //echo $query_id_link;
             submit_query($db, $query_id_link);
-        }elseif ($accType == 'student') {
+        }elseif ($acc_type == 'student') {
             echo "Dinnersdirect data base is successfully connected";
-            $query = "INSERT INTO $accType (first_name, last_name, email_address, phone_number, password) "
+            $query = "INSERT INTO $acc_type (first_name, last_name, email_address, phone_number, password) "
                 ."VALUES ('$fname', '$lname', '$email', '$phone', '$pw')";
             submit_query($db, $query);
             $data_admin = get_data($db,$reference,'administrator','email_address');
@@ -140,9 +140,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             //echo $query_id_link;
             submit_query($db, $query_id_link);
 
-        }elseif ($accType == 'administrator') {
+        }elseif ($acc_type == 'administrator') {
             echo "Dinnersdirect data base is successfully connected";
-            $query = "INSERT INTO $accType (first_name, last_name, email_address, phone_number, password) "
+            $query = "INSERT INTO $acc_type (first_name, last_name, email_address, phone_number, password) "
                 ."VALUES ('$fname', '$lname', '$email', '$phone', '$pw')";
             submit_query($db, $query);
             $data_admin = get_data($db,$email,'administrator','email_address');

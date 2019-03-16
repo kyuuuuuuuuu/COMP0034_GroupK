@@ -3,7 +3,7 @@
 <?php require_once('../../private/shared/pages_header.php');
 if (isset($_SESSION['credential'])) {
     $user_email = $_SESSION['credential'];
-    $acc_type = $_SESSION['accType'];
+    $acc_type = $_SESSION['$acc_type'];
     $data = get_data($db,$user_email, $acc_type,"email_address");
 }else {
 //    $data = array("email_address"=>"default@email.com", "first_name"=>"default_fn", "last_name"=>"default_ln");

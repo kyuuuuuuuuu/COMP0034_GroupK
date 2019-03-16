@@ -32,7 +32,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($login_password,$data['password'])) {
             echo "log in successful!<br>";
             $_SESSION['credential'] = $login_email;
-            $_SESSION['accType'] = $table_name;
+            $_SESSION['acc_type'] = $table_name;
             $_SESSION['id_field'] = $id_field;
             $_SESSION['user_id'] = $data[$id_field];
             if (isset($_SESSION['customer_basket'])) {

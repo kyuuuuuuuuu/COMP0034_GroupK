@@ -3,8 +3,8 @@
 <?php require_once('../../private/shared/pages_header.php');
 if (isset($_SESSION['credential'])) {
     $user_email = $_SESSION['credential'];
-    $accType = $_SESSION['accType'];
-    $data = get_data($db, $user_email, $accType,"email_address");
+    $acc_type = $_SESSION['acc_type'];
+    $data = get_data($db, $user_email, $acc_type,"email_address");
     $welcome_message = "Welcome " . $data['first_name'] . " " . $data['last_name'] ."<br>Place your order";
 }else {
     $welcome_message = "Before placing an order, Please log in <a href=\"login.php\">here.</a>";

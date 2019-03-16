@@ -1,29 +1,27 @@
 function show_selected_tab (index) {
     let all_tabs = document.getElementsByName("my_account_tab");
 
-    for (let i = 0 ; i < all_tabs.length; i++) {
-        if (i === index) {
-            all_tabs[i].className = "display_block";
-        } else {
-            all_tabs[i].className = "display_none";
-        }
-    }
+    hide_and_show(index, all_tabs);
 }
 
-function selectForm(index) {
+function select_form(index) {
     var forms = document.getElementsByName("registerForm");
 
-    for (let i = 0; i <= 2; i++) {
+    hide_and_show(index, forms);
+}
+
+function hide_and_show(index, html_element) {
+    for (let i = 0; i <= html_element.length; i++) {
         if (i === index) {
-            forms[i].className = "display_block";
+            html_element[i].className = "display_block";
         } else {
-            forms[i].className = "display_none";
+            html_element[i].className = "display_none";
         }
     }
 }
 
 function validate(type) {
-    var accType = type;
+    var acc_type = type;
     var verification = true;
     function string(message) {
         return function(value) {
@@ -83,7 +81,7 @@ function validate(type) {
     var schema_fields = Object.keys(schema);
     var fields = [];
     for (var f = 0; f < schema_fields.length; f++) {
-        fields[f] = schema_fields[f] + accType;
+        fields[f] = schema_fields[f] + acc_type;
     }
 
     //console.log(fields.length);
