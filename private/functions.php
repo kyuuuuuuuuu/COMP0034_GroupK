@@ -14,14 +14,12 @@ function test_input($user_input) {
 
 function error_404() {
     header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found!!!");
-    echo "<h1>404 Not Found</h1>";
-    echo "The page that you have requested could not be found.";
-    exit();
+    exit("<h1>404 Not Found</h1>");
 }
 
 function error_500() {
     header($_SERVER["SERVER_PROTOCOL"] . " 500 Internal Error!!!");
-    exit();
+    exit("<h1>500 Internal Error!!!</h1>");
 }
 
 function url_for($script_path) {

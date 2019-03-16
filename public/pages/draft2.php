@@ -1,6 +1,6 @@
 <?php include($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
-<?php error_404();
+<?php
 require_once('../../private/shared/pages_header.php');?>
 
 <?php
