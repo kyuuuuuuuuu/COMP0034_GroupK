@@ -60,7 +60,7 @@ if (!isset($_SESSION['credential'])) {
                 <button class="nav-link list-group-item" onclick="show_selected_tab(0)">Profile</button>
                 <button class="nav-link list-group-item" onclick="show_selected_tab(1)">Approve Students</button>
                 <button class="nav-link list-group-item" onclick="show_selected_tab(2)">View Orders</button>
-                <button class="nav-link list-group-item" onclick="show_selected_tab(3)">View Students' Records</button>
+                <button class="nav-link list-group-item" onclick="show_selected_tab(3)">View Students' Orders</button>
                 <button class="nav-link list-group-item" onclick="show_selected_tab(4)">Edit Account</button>
                 <a class="nav-link list-group-item" href="log_out.php">Logout</a>
             </div>
@@ -172,40 +172,17 @@ if (!isset($_SESSION['credential'])) {
 
             <div name="my_account_tab" class="display_none">
                 <div class="tab-content">
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th scope="col">No.</th>
-                            <th scope="col">First Name</th>
-                            <th scope="col">Last Name</th>
-                            <th scope="col">Email Address</th>
-                            <th scope="col">Order ID</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Trung Kien</td>
-                            <td>Nguyen</td>
-                            <td>zcectkn@ucl.ac.uk</td>
-                            <td>a123c</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Yeo Jin</td>
-                            <td>Lee</td>
-                            <td>zcecyjl@ucl.ac.uk</td>
-                            <td>b234d</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Koon Yew</td>
-                            <td>Ling</td>
-                            <td>zceckyl@ucl.ac.uk</td>
-                            <td>c345e</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <div class="align-items-center text-center">
+                        <form action="" method="get" onsubmit="">
+                            <h2>STEP 1: Choose date</h2><br>
+                            <input type="date" id="choose_date" required><br><br>
+                            <button class="btn-secondary rounded btn-sm" onclick="date_selection(<?php echo $data['admin_id'];?>);" type="button">OK</button>
+                        </form>
+                        <br>
+                    </div>
+
+                    <p id="list_of_orders"></p>
+
 
                 </div>
             </div>

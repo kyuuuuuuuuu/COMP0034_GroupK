@@ -68,11 +68,19 @@ function get_specific_data ($db, $specific_field, $user_input, $table_name, $fie
     return $data;
 }
 
+
 //Get all data from the database given the table name and column name
 //db is database connection
 function get_data($db, $user_input, $table_name, $field_name) {
     $data = get_specific_data($db, '*', $user_input, $table_name, $field_name);
     return $data;
+}
+
+
+function get_person_name($db, $user_input, $table_name, $field_name) {
+    $data = get_data($db, $user_input, $table_name, $field_name);
+    $full_name = $data['first_name'] . " " . $data['last_name'];
+    return $full_name;
 }
 
 function to_myAccount ($accType) {
@@ -237,9 +245,15 @@ function save_order_id ($db, $order_id, $user_id_field, $user_id) {
     }
 }
 
-function get_order_details ($db, $user_id, $id_field, $table_name) {
-    $query = "SELECT * FROM $table_name JOIN order_detail USING (order_id) " .
-        "WHERE $id_field = '$user_id' ORDER BY order_detail.delivery_date";
+function get_order_details ($db, $user_id, $id_field, $table_name, $delivery_date) {
+    if($delivery_date == NULL) {
+        $query = "SELECT * FROM $table_name JOIN order_detail USING (order_id) " .
+            "WHERE $id_field = '$user_id' ORDER BY order_detail.delivery_date";
+    }else {
+        $query = "SELECT * FROM $table_name JOIN order_detail USING (order_id) " .
+            "WHERE $id_field = '$user_id' AND order_detail.delivery_date = '$delivery_date'";
+    }
+
     $result = mysqli_query($db, $query);
     $data = [];
     while($row = mysqli_fetch_assoc($result)) {
@@ -249,12 +263,12 @@ function get_order_details ($db, $user_id, $id_field, $table_name) {
 }
 
 function get_order_of_admin ($db, $user_id) {
-    $data = get_order_details($db, $user_id, 'admin_id', 'admin_order');
+    $data = get_order_details($db, $user_id, 'admin_id', 'admin_order', NULL);
     return $data;
 }
 
 function get_order_of_student ($db, $user_id) {
-    $data = get_order_details($db, $user_id, 'student_id', 'student_order');
+    $data = get_order_details($db, $user_id, 'student_id', 'student_order', NULL);
     return $data;
 }
 

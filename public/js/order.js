@@ -177,9 +177,9 @@ function hide_proceed_button() {
 }
 
 function post_data_xhr() {
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", "after_order.php", true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    let ajax = new XMLHttpRequest();
+    ajax.open("POST", "after_order.php", true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     let delivery_date = document.getElementById('select_date').value;
     let data_to_post = "";
@@ -195,15 +195,71 @@ function post_data_xhr() {
         data_to_post += and + "item_price_" + i + "=" + basket[i].item_price;
     }
 
-    xhr.send(data_to_post);
+    ajax.send(data_to_post);
 
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState === 4 && ajax.status === 200) {
             window.location.href = "order_summary.php";
         }
     }
 }
 
-function view_order (id) {
+function date_selection(admin_id) {
+    let check = false;
+    let date_selected = document.getElementById('choose_date').value;
+    if (!Date.parse(date_selected)) {
+        alert("You need to select a date.");
+    }else {
+        check = true;
+        let ajax = new XMLHttpRequest();
+        ajax.open("POST", "get_orders.php", true);
+        ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        let data_to_post = "";
+        let and = "&";
+        data_to_post += "admin_id=" + admin_id;
+        data_to_post += and + "date_selected=" + date_selected;
 
+        ajax.send(data_to_post);
+
+        ajax.onreadystatechange = function() {
+            if (ajax.readyState === 4 && ajax.status === 200) {
+                let list_of_orders = JSON.parse(ajax.responseText);
+                if(list_of_orders[0]) {
+                    let summary_table = create_summary_table (list_of_orders);
+                    document.getElementById('list_of_orders').innerHTML = summary_table;
+                }else {
+                    let message = "There is no student that order to delivery for ";
+                    message += "<u>" + date_selected + "</u>.";
+                    document.getElementById('list_of_orders').innerHTML = message;
+                }
+
+            }
+        }
+    }
+
+}
+
+function create_summary_table (list_of_orders) {
+    let summary_table = "";
+    summary_table += "<table class='table table-striped text-center'>";
+    summary_table += "<tr>";
+    summary_table += "<th class='font-weight-bolder'>Order ID</th>";
+    summary_table += "<th class='font-weight-bolder'>Student ID</th>";
+    summary_table += "<th class='font-weight-bolder'>Student Name</th>";
+    summary_table += "<th class='font-weight-bolder'>Items</th>";
+    summary_table += "<th class='font-weight-bolder'>Total Price (£)</th>";
+    summary_table += "</tr>";
+
+    for (let i = 0; i < list_of_orders.length; i++) {
+        summary_table += "<tr>";
+
+        summary_table += "<td>" + list_of_orders[i].order_id + "</td>";
+        summary_table += "<td>" + list_of_orders[i].student_id + "</td>";
+        summary_table += "<td>" + list_of_orders[i].student_name + "</td>";
+        summary_table += "<td>" + list_of_orders[i].item_list + "</td>";
+        summary_table += "<td>" + list_of_orders[i].total_price + "</td>";
+        summary_table += "</tr>";
+    }
+
+    return summary_table;
 }
