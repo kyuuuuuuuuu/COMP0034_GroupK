@@ -29,6 +29,7 @@
         <a href="<?php echo url_for('/pages/signup.php'); ?>">SIGN UP</a>
     <?php }else {?>
         <a href="<?php echo url_for('/pages/myaccount.php'); ?>">MY ACCOUNT</a>
+        <a href="<?php echo url_for('/pages/log_out.php'); ?>">LOG OUT</a>
     <?php }?>
     <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
