@@ -83,17 +83,36 @@ if (!isset($_SESSION['credential'])) {
                     <p>
                         School: <?php echo $school_a[0]['school_name'];?><br>
                         Address: <?php echo $school_a[0]['school_address'];?><br><br>
+                    <h3 class="text-center">Student's Information</h3>
+
+                    </p>
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">No.</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Email Address</th>
+                            <th scope="col">Approve Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
                         <?php
                         for ($i = 0; $i < count($result); $i++) {?>
-                            Student: <?php echo $student_a[$i]['first_name'] . " " . $student_a[$i]['last_name'];?><br>
-                            Status: <?php if($student_a[$i]['status'] == 0) {
-                                echo "Not verified";
-                            }else {
-                                echo "Verified";
-                            }?><br>
-                        <?php } ?>
-                    </p>
+                        <tr>
+                            <th scope="row"><?php echo $i +1;?></th>
+                            <td><?php echo $student_a[$i]['first_name'];?></td>
+                            <td><?php echo $student_a[$i]['last_name'];?></td>
+                            <td><?php echo $student_a[$i]['email_address'];?></td>
+                            <td><?php if($student_a[$i]['status'] == 0) {
+                                    echo "Not verified";
+                                }else {
+                                    echo "Verified";
+                                }?></td>
 
+                            <?php } ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
@@ -106,7 +125,7 @@ if (!isset($_SESSION['credential'])) {
                             <th scope="col">First Name</th>
                             <th scope="col">Last Name</th>
                             <th scope="col">Email Address</th>
-                            <th scope="col">Approve Status</th>
+                            <th scope="col"></th>
                         </tr>
                         </thead>
                         <tbody>
