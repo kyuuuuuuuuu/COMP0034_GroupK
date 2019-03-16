@@ -42,6 +42,7 @@ if(!isset($_SESSION['customer_basket'])){
             <img alt="confirmation"  src="../img/confirmation.jpg" id="confirmation">
         </div>
     </div>
+    <br><br><br>
 
 
 <?php }?>

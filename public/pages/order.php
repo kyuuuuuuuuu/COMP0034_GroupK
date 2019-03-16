@@ -18,17 +18,18 @@ if (isset($_SESSION['credential'])) {
         <div id="step1">
             <br>
             <form action="" method="get" onsubmit="">
-                <h2>STEP 1: Choose date</h2><br>
-                <input type="date" id="select_date" required><br><br>
+                <h2>STEP 1: Choose date</h2>
+                <h5 class="redcolour">We accept from today to 2 months from today.</h5><br>
+                <input style="font-size:20px" type="date" id="select_date" required><br><br>
                     <button class="btn-secondary rounded btn-lg" onclick="date_validation();" type="button">OK</button></a>
             </form>
-            <br><br><hr><br>
+            <br><br><hr><br><br><br>
         </div>
         <div id="menu_item" style="display: none" >
 
             <div id="step2">
                 <h2> STEP 2: Choose items</h2>
-                <h4 id="redcolour">Click items for more information and to choose quantity</h4><br>
+                <h4 class="redcolour">Click items for more information and to choose quantity</h4><br>
             </div>
             <div class="row">
                 <?php $menu = get_menu($db);
@@ -67,7 +68,7 @@ if (isset($_SESSION['credential'])) {
 
             <div id="proceed_button" class="display_none">
                 <button onclick="post_data_xhr();" class="button1 rounded float-right" >Proceed to Summary</button>
-                <br><br><br><br><br>
+                <br><br><br>
             </div>
         </div>
 
