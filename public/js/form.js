@@ -5,7 +5,7 @@ function show_selected_tab (index) {
 }
 
 function select_form(index) {
-    var forms = document.getElementsByName("registerForm");
+    let forms = document.getElementsByName("registerForm");
 
     hide_and_show(index, forms);
 }
@@ -21,8 +21,8 @@ function hide_and_show(index, html_element) {
 }
 
 function validate(type) {
-    var acc_type = type;
-    var verification = true;
+    let acc_type = type;
+    let verification = true;
     function string(message) {
         return function(value) {
             if (typeof value !== "string") {
@@ -41,7 +41,7 @@ function validate(type) {
 
     function pwStrength(message) {
         return function(value) {
-            var regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+            let regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
             if (!regex.test(value)) {
                 return message;
             }
@@ -50,7 +50,7 @@ function validate(type) {
 
     function lettersSpace (message) {
         return function(value) {
-            var regex = /^[a-zA-Z\s]*$/;
+            let regex = /^[a-zA-Z\s]*$/;
             if (!regex.test(value)) {
                 return message;
             }
@@ -59,7 +59,7 @@ function validate(type) {
 
     function phoneUK (message) {
         return function (value) {
-            var regex = /((\+44(\s\(0\)\s|\s0\s|\s)?)|0)7\d{3}(\s)?\d{6}/g;
+            let regex = /((\+44(\s\(0\)\s|\s0\s|\s)?)|0)7\d{3}(\s)?\d{6}/g;
             if (value) {
                 if (!regex.test(value)) {
                     return message;
@@ -68,7 +68,7 @@ function validate(type) {
         }
     }
 
-    var schema = {
+    let schema = {
         firstName: [required("Name is required"), string("Name must be string"),lettersSpace("Name must contain only letters and spaces")],
         lastName: [required("Name is required"), string("Name must be string"),lettersSpace("Name must contain only letters and spaces")],
         email: [required("Email is required")],
@@ -78,31 +78,25 @@ function validate(type) {
         reference: [required("You must enter your reference")]
     };
 
-    var schema_fields = Object.keys(schema);
-    var fields = [];
-    for (var f = 0; f < schema_fields.length; f++) {
+    let schema_fields = Object.keys(schema);
+    let fields = [];
+    for (let f = 0; f < schema_fields.length; f++) {
         fields[f] = schema_fields[f] + acc_type;
     }
 
-    //console.log(fields.length);
-    var values ={};
-    var errors = {};
+    let values ={};
+    let errors = {};
 
-    for (var i = 0; i < fields.length; i++) {
-        //console.log(fields[i]);
-
+    for (let i = 0; i < fields.length; i++) {
         values[fields[i]] = document.getElementById(fields[i]).value;
-        //console.log("chay " + i);
-        //console.log(values[fields[i]]);
-        //console.log(document.getElementById(fields[i]).value);
     }
 
-    for (var j = 0; j < fields.length; j++) {
-        var validators = schema[schema_fields[j]];
-        var error = null;
-        for (var k = 0; k < validators.length; k++) {
+    for (let j = 0; j < fields.length; j++) {
+        let validators = schema[schema_fields[j]];
+        let error = null;
+        for (let k = 0; k < validators.length; k++) {
             error = validators[k](values[fields[j]]);
-            var error_field = fields[j] + "_error";
+            let error_field = fields[j] + "_error";
             if (error) {
                 document.getElementById(error_field).innerHTML = error;
                 errors[fields[j]] = error;
@@ -113,12 +107,9 @@ function validate(type) {
             }
         }
     }
-    //console.log(fields[3]);
-    //console.log(values[fields[3]]);
-    //console.log(values[fields[4]]);
+
     if (values[fields[4]] !== "" && values[fields[4]] !== values[fields[3]]) {
         let error_field = fields[4] + "_error";
-        //console.log(error_field);
         document.getElementById(error_field).innerHTML = "Password confirmation need to be exactly same as Password";
         verification = false;
     }
