@@ -41,7 +41,7 @@ require_once('../../private/shared/pages_header.php');
     <h1>Welcome to your Parent account!</h1>
 </header>
 
-
+<body>
 <div class="container">
     <br><br>
     <div class="row">
@@ -135,7 +135,7 @@ require_once('../../private/shared/pages_header.php');
 
 
 </div>
-
+</body>
 
 
 

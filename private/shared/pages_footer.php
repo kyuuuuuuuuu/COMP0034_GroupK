@@ -4,13 +4,13 @@
 <!---->
 <!--        <div class="row">-->
 <!---->
-
+<!---->
 <!--            <div class="col-md-6">-->
 <!--                <span class="copyright">Copyright @2019 All rights reserved</span>-->
 <!--            </div>-->
-
 <!---->
-
+<!---->
+<!---->
 <!--            <div class="col-md-6">-->
 <!--                <nav>-->
 <!--                    <a href="#">Home     </a>-->
@@ -20,13 +20,13 @@
 <!--                    <a href="#">My Account</a>-->
 <!--                </nav>-->
 <!--            </div>-->
-<!--             /footer nav -->
+<!--             /footer nav-->
 <!---->
 <!--        </div>-->
-<!--        /row -->
+<!--        /row-->
 <!---->
 <!--    </div>-->
-<!--     /container -->
+<!--     /container-->
 <!---->
 <!--</footer>-->
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

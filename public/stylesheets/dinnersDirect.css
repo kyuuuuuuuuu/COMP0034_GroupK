@@ -325,6 +325,10 @@ body{
     height: 550px;
 }
 
+.myaccount-tab {
+    height:auto;
+}
+
 /*.input-group-addon {*/
     /*padding: .375rem .75rem;*/
     /*margin-bottom: 0;*/

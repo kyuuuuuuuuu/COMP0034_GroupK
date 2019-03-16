@@ -40,7 +40,7 @@ if (!isset($_SESSION['credential'])) {
     <h1>Welcome to your student account!</h1>
 </header>
 
-
+<body>
 <div class="container">
     <br><br>
     <div class="row">
@@ -161,6 +161,6 @@ if (!isset($_SESSION['credential'])) {
 
 
 </div>
-
+</body>
 <?php require_once('../../private/shared/pages_footer.php');?>
 
