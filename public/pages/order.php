@@ -64,7 +64,7 @@ if (isset($_SESSION['credential'])) {
             <br>
 
 
-            <div id="proceed_button" style="display: none;">
+            <div id="proceed_button" class="display_none">
                 <button onclick="post_data_xhr();" class="button1 rounded" >Proceed to Summary</button>
                 <br><br><br><br><br>
             </div>

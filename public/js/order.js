@@ -169,11 +169,11 @@ function date_validation() {
 }
 
 function add_proceed_button() {
-    document.getElementById('proceed_button').style.display = "";
+    document.getElementById('proceed_button').className = "display_block";
 }
 
 function hide_proceed_button() {
-    document.getElementById('proceed_button').style.display = "none";
+    document.getElementById('proceed_button').className = "display_none";
 }
 
 function post_data_xhr() {
