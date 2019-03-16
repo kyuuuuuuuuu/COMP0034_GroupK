@@ -1,25 +1,31 @@
 <?php include($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
-<?php require_once('../../private/shared/pages_header.php');?>
+<?php require_once ('check_log_in_status.php');
+require_once('../../private/shared/pages_header.php');?>
 
 <div class="card-header text-center">
     <h1>Welcome to DinnersDirect</h1>
 </div>
 <div class="container">
     <div class="text-center">
-        <br><h4>
-            Let's set up your account. Already have one? Log in
-            <a href="login.php">here.</a>
-        </h4><br>
-        <h3 class="text-danger">
-            <strong>
-                <?php if(isset($_SESSION['error'])) {
-                    echo $_SESSION['error'];
-                    unset($_SESSION['error']);
-                }?>
-            </strong>
-        </h3>
-    </div>
+        <?php if(!$not_log_in) {?>
+            <br><h4>
+                You have already logged in. Go to your account <a href="myaccount.php">here.</a>
+        </h4><br></div>
+        <?php }else {?>
+    <br><h4>
+        Let's set up your account. Already have one? Log in
+        <a href="login.php">here.</a>
+    </h4><br>
+    <h3 class="text-danger">
+        <strong>
+            <?php if(isset($_SESSION['error'])) {
+                echo $_SESSION['error'];
+                unset($_SESSION['error']);
+            }?>
+        </strong>
+    </h3>
+</div>
 
     <div class="btn-group btn-group container-fluid align-items-center" role="group" aria-label="...">
         <button type="button" class="btn" id="signup_btn1" onclick="select_form(0)">Student</button>
@@ -28,7 +34,7 @@
     </div>
 
 
-    <!--Sign up form-->
+<!--Sign up form-->
     <div class="col-lg-12 align-content-lg-center signup-form">
         <form class="display_none" name="registerForm" method="post" action="after_signup.php" onsubmit="return validate('Student');">
             <h6>Fields with * are required.</h6>
@@ -178,6 +184,8 @@
         </form>
         <br><br>
     </div>
+        <?php }?>
+
 </div>
 
 
