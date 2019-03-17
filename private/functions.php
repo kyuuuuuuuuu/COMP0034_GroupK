@@ -159,13 +159,13 @@ function check_email($db, $user_input) {
 }
 
 function check_student_avail($db, $user_input) {
-    $query = "SELECT * FROM student_parent JOIN student s on student_parent.student_id = s.student_id WHERE email_address = '$user_input'";
-    $result = mysqli_fetch_assoc(mysqli_query($db, $query));
+    $query = "SELECT * FROM student_parent JOIN student s on student_parent.student_id = s.student_id WHERE s.email_address = '$user_input'";
 
-    if($result['student_id']){
-        return false;
+    $result = mysqli_query($db, $query);
+    if (mysqli_num_rows($result) > 0) {
+        return false; //Student has already registered to a parent account!
     }else {
-        return true;
+        return true; //Student is available to register
     }
 }
 

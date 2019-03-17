@@ -17,7 +17,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = test_input($_POST["email"]);
         if (check_email($db, $email)) {
             echo $email . " is existed, please choose another one.<br>";
-            $['error'] = "<br>" . $email . " is existed, please choose another one.<br>";
+            $_SESSION['error'] = "<br>" . $email . " is existed, please choose another one.<br>";
             $_SESSION['POST'] = $_POST;
             redirect_to(url_for('pages/signup.php'));
         }
@@ -75,8 +75,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         if (!check_email_student($db, $reference)) {
             $_SESSION['POST'] = $_POST;
             $_SESSION['error'] = "<br>" . $reference . " is not a valid student's email, please choose another one.<br>";
-            echo check_student_avail($db,$reference);
-            //exit;check_student_avail($db,$reference)
+            redirect_to(url_for('pages/signup.php'));
+        }elseif (!check_student_avail($db,$reference)) {
+            $_SESSION['POST'] = $_POST;
+            $_SESSION['error'] = "<br>" . $reference . " is registered with another parent's account, please choose another one.<br>";
             redirect_to(url_for('pages/signup.php'));
         }
     }else{
