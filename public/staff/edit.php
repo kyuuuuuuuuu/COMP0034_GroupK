@@ -36,8 +36,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         echo basename($_FILES["item_image"]["name"]);
         echo "<br>";
         $uploadOk = true;
-        $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/public/img/menu_image/";
-        $saved_src = "../img/menu_image/" . basename($_FILES["item_image"]["name"]);
+        $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/public/img/";
+        $saved_src = "../img/" . basename($_FILES["item_image"]["name"]);
         echo $target_dir;
         $target_file = $target_dir . basename($_FILES["item_image"]["name"]);
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
