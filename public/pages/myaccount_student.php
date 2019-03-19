@@ -54,8 +54,12 @@ if (!isset($_SESSION['credential'])) {
         </div>
     <div class="col-md-7">
         <br><br>
-        <h3 >Xin Chao <?php echo $data['first_name'];?>. </h3>
-        <h5>From your account dashboard, you can view your recent orders, edit your password and account details.</h5>
+        <h3>Hello <?php echo $data['first_name'];?>! </h3>
+        <h5>From your account dashboard, you can: </h5>
+        <ul>
+            <li>View orders that you have made</li>
+            <li>Edit Account</li>
+        </ul>
     </div>
     </div>
 
@@ -70,6 +74,7 @@ if (!isset($_SESSION['credential'])) {
                 <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(1)">View Orders</button>
                 <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(2)">Edit Account</button>
                 <button class="nav-link list-group-item myaccount-logout" href="log_out.php">LOGOUT</button>
+                <br><br>
             </div>
 
         </div>
@@ -144,6 +149,7 @@ if (!isset($_SESSION['credential'])) {
                 <div name="my_account_tab" class="display_none">
                     <div class="tab-content">
                         <form name="change_password_form" method="post" action="change_password.php" onsubmit="return true;">
+                            <h1>Edit Account</h1>
                             <label>Email Address:</label>
                             <input name="user_email" type="email" class="form-control" placeholder="Enter your email"><br>
                             <label>Current Password:</label>
