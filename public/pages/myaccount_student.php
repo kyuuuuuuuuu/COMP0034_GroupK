@@ -48,7 +48,7 @@ if (!isset($_SESSION['credential'])) {
         <div class="col-md-1"></div>
         <div class="col-md-4">
 
-            <img class="profile rounded-circle" src="../img/kien.jpg"><br>
+            <img class="profile rounded-circle" src="../img/kien.jpg"><br><br>
            <h2><?php echo $data['first_name'] . " " . $data['last_name'];?> </h2>
 <!--            <div class="name"><small>Trung Kien Nguyen</small></div><br><br>-->
         </div>
@@ -65,7 +65,7 @@ if (!isset($_SESSION['credential'])) {
     <div class="row">
         <div class="col-lg-4">
 
-            <div class="nav list-group text-center text-uppercase">
+            <div class="nav list-group text-center">
                 <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(0)">Profile</button>
                 <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(1)">View Orders</button>
                 <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(2)">Edit Account</button>

@@ -46,7 +46,7 @@ require_once('../../private/shared/pages_header.php');
         <div class="col-md-1"></div>
         <div class="col-md-4">
 
-            <img class="profile rounded-circle" src="../img/kien.jpg"><br>
+            <img class="profile rounded-circle" src="../img/kien.jpg"><br><br>
             <h2><?php echo $data['first_name'] . " " . $data['last_name'];?></h2>
             <!--            <div class="name"><small>Trung Kien Nguyen</small></div><br><br>-->
         </div>
@@ -67,11 +67,12 @@ require_once('../../private/shared/pages_header.php');
     <div class="row">
         <div class="col-lg-4">
 
-            <div class="nav list-group text-center text-uppercase">
-                <a class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(0)">Profile</a>
-                <a class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(1)">View Orders</a>
-                <a class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(2)">Edit Account</a>
-                <a class="nav-link list-group-item myaccount-logout" href="log_out.php">LOGOUT</a>
+            <div class="nav list-group text-center">
+                <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(0)">Profile</button>
+                <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(1)">View Orders</button>
+                <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(2)">Edit Account</button>
+                <button class="nav-link list-group-item myaccount-logout" href="log_out.php">LOGOUT</button>
+                <br><br>
             </div>
 
         </div>
@@ -115,6 +116,7 @@ require_once('../../private/shared/pages_header.php');
                 <div name="my_account_tab" class="display_none">
                     <div class="tab-content">
                         <form name="change_password_form" method="post" action="change_password.php" onsubmit="return true;">
+                            <h1>Edit Account</h1>
                             <label>Email Address:</label>
                             <input name="user_email" type="email" class="form-control" placeholder="Enter your email"><br>
                             <label>Current Password:</label>

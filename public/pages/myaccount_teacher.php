@@ -63,7 +63,7 @@ if (!isset($_SESSION['credential'])) {
     <div class="row">
         <div class="col-lg-4">
 
-            <div class="nav list-group text-center text-uppercase">
+            <div class="nav list-group text-center">
 
                 <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(0)">Profile</button>
                 <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(1)">Approve Students</button>
