@@ -26,17 +26,17 @@ header{
     border-top-right-radius: calc(0.25rem - 1px);
 }
 
-ul{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333333;
-}
+/*ul{*/
+    /*list-style-type: none;*/
+    /*margin: 0;*/
+    /*padding: 0;*/
+    /*overflow: hidden;*/
+    /*background-color: #333333;*/
+/*}*/
 
-li {
-    align: center;
-}
+/*li {*/
+    /*align: center;*/
+/*}*/
 
 li a {
     display: block;
@@ -366,6 +366,16 @@ body{
 
 h1, .container, .container-fluid {
     font-family: Palatino !important;
+}
+
+
+#select_date {
+    font-size:20px;
+}
+
+.profile {
+    width:200px ;
+    height:200px ;
 }
 
 /*h1, h2, h3, h4, h5, h6, p, table, button, nav, input, label {*/

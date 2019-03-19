@@ -20,7 +20,7 @@ if (isset($_SESSION['credential'])) {
             <form action="" method="get" onsubmit="">
                 <h2>STEP 1: Choose date</h2>
                 <h5 class="redcolour">We accept from today to 2 months from today.</h5><br>
-                <input style="font-size:20px" type="date" id="select_date" required><br><br>
+                <input type="date" id="select_date" required><br><br>
                     <button class="btn-secondary rounded btn-lg" onclick="date_validation();" type="button">OK</button></a>
             </form>
             <br><br><hr><br><br><br>

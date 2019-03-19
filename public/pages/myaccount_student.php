@@ -48,7 +48,7 @@ if (!isset($_SESSION['credential'])) {
         <div class="col-md-1"></div>
         <div class="col-md-4">
 
-            <img class="img-profile rounded-circle" src="../img/kien.jpg" style="width:200px;height:200px;"><br>
+            <img class="profile rounded-circle" src="../img/kien.jpg"><br>
            <h2><?php echo $data['first_name'] . " " . $data['last_name'];?> </h2>
 <!--            <div class="name"><small>Trung Kien Nguyen</small></div><br><br>-->
         </div>
@@ -151,7 +151,7 @@ if (!isset($_SESSION['credential'])) {
                             <label>New Password:</label>
                             <input name="new_password" type="password" class="form-control" placeholder="Enter your new password">
                             <br>
-                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                            <button type="submit" class="btn btn-secondary btn-block">Submit</button>
                         </form>
                     </div>
                 </div>

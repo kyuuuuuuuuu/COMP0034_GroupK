@@ -45,14 +45,19 @@ require_once('../../private/shared/pages_header.php');
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-4">
-            <img class="img-profile rounded-circle" src="../img/kien.jpg" style="width:200px;height:200px;"><br>
+
+            <img class="profile rounded-circle" src="../img/kien.jpg"><br>
             <h2><?php echo $data['first_name'] . " " . $data['last_name'];?></h2>
             <!--            <div class="name"><small>Trung Kien Nguyen</small></div><br><br>-->
         </div>
         <div class="col-md-7">
             <br><br>
-            <h3 >Xin Chao <?php echo $data['first_name'] . " " . $data['last_name'];?>. </h3>
-            <h5>From your account dashboard, you can view your child's recent orders, edit your password and account details.</h5>
+            <h3>Hello <?php echo $data['first_name'] . " " . $data['last_name'];?>! </h3>
+            <h5>From your account dashboard, you can: </h5>
+            <ul>
+                <li>View your child's recent order</li>
+                <li>Edit Account</li>
+            </ul>
         </div>
     </div>
 
@@ -63,10 +68,10 @@ require_once('../../private/shared/pages_header.php');
         <div class="col-lg-4">
 
             <div class="nav list-group text-center text-uppercase">
-                <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(0)">Profile</button>
-                <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(1)">View Orders</button>
-                <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(2)">Edit Account</button>
-                <button class="nav-link list-group-item myaccount-logout" href="log_out.php">LOGOUT</button>
+                <a class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(0)">Profile</a>
+                <a class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(1)">View Orders</a>
+                <a class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(2)">Edit Account</a>
+                <a class="nav-link list-group-item myaccount-logout" href="log_out.php">LOGOUT</a>
             </div>
 
         </div>
@@ -77,22 +82,24 @@ require_once('../../private/shared/pages_header.php');
                     <div class="tab-content">
                         <h1>Parent Profile</h1>
                         <p>
-                            You have
-                            <?php
-                            if ($number_of_children > 1) {
-                                echo $number_of_children . " children";
+                            <b>
+                                You have
+                                <?php
+                                if ($number_of_children > 1) {
+                                    echo $number_of_children . " children";
 
-                            }else {
-                                echo $number_of_children . " child";
-                            };
-                            ?>
+                                }else {
+                                    echo $number_of_children . " child";
+                                };
+                                ?>
+                            </b>
                             <br>
                             <?php
                             for ($i = 0; $i < $number_of_children; $i++) {?>
                                 Name: <?php echo $children_p[$i]['first_name'] . " " . $children_p[$i]['last_name'];?><br>
                                 Teacher: <?php echo $admin_p[$i]['first_name'] . " " . $admin_p[$i]['last_name'];?><br>
                                 School: <?php echo $school_p[$i]['school_name'];?><br>
-                                Address: <?php echo $school_p[$i]['school_address'];?><br>
+                                Address: <?php echo $school_p[$i]['school_address'];?><br><br>
                             <?php } ?>
                         </p>
                     </div>
@@ -115,10 +122,16 @@ require_once('../../private/shared/pages_header.php');
                             <label>New Password:</label>
                             <input name="new_password" type="password" class="form-control" placeholder="Enter your new password">
                             <br>
-                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                            <button type="submit" class="btn btn-secondary btn-block">Submit</button>
                         </form>
                     </div>
                 </div>
+
+
+
+
+
+
 
             </div>
         </div>
@@ -128,5 +141,47 @@ require_once('../../private/shared/pages_header.php');
 </div>
 </body>
 
+
+
+<!---->
+<!--<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">-->
+<!--<div class="container-fluid">-->
+<!--    <div class="row navbar">-->
+<!--        <div class="col-md-9 card-header text-center">-->
+<!--            <h1>Welcome to My Account</h1>-->
+<!--        </div>-->
+<!--        <div class="col-md-3">-->
+<!--           <ul class="navbar-nav ml-auto align-content-center">-->
+<!--                <li class="nav-item dropdown no-arrow">-->
+<!--                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Trung Kien Nguyen</span>-->
+<!--                        <img class="img-profile rounded-circle" src="img/kien.jpg" style="width:100px;height:100px;">-->
+<!--                    </a>-->
+<!--                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">-->
+<!--                        <a class="dropdown-item" href="#">-->
+<!--                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>-->
+<!--                            Profile-->
+<!--                        </a>-->
+<!--                        <a class="dropdown-item" href="#">-->
+<!--                            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>-->
+<!--                            Settings-->
+<!--                        </a>-->
+<!--                        <a class="dropdown-item" href="#">-->
+<!--                            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>-->
+<!--                            Activity Log-->
+<!--                        </a>-->
+<!--                        <div class="dropdown-divider"></div>-->
+<!--                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">-->
+<!--                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>-->
+<!--                            Logout-->
+<!--                        </a>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!---->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</nav>-->
 <?php require_once('../../private/shared/pages_footer.php');?>
 
