@@ -55,6 +55,14 @@ CREATE TABLE parent (
                       PRIMARY KEY(parent_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE list_of_menus (
+                      menu_id int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+                      menu_name varchar(100) NOT NULL,
+                      visibility smallint default 1,
+                      last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                      PRIMARY KEY (menu_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 CREATE TABLE school_admin (
   school_id int(10) UNSIGNED NOT NULL,
   admin_id int(10) UNSIGNED NOT NULL,
@@ -75,7 +83,13 @@ CREATE TABLE admin_student (
   FOREIGN KEY(student_id) REFERENCES student(student_id) ON DELETE RESTRICT ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
+CREATE TABLE student_registration_code (
+                              student_id int(10) UNSIGNED NOT NULL,
+                              registration_code varchar(50) NOT NULL,
+                              last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                              PRIMARY KEY(student_id),
+                              FOREIGN KEY(student_id) REFERENCES student(student_id) ON DELETE RESTRICT ON UPDATE CASCADE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE student_parent (
   student_id int(10) UNSIGNED NOT NULL,
@@ -97,7 +111,7 @@ CREATE TABLE order_detail (
 
 CREATE TABLE item (
   item_id int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  item_image text,
+  item_image text NOT NULL,
   item_name text NOT NULL,
   item_price double(10,2) UNSIGNED NOT NULL,
   item_description text NOT NULL,
@@ -134,38 +148,16 @@ CREATE TABLE admin_order (
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE display_menu (
+  menu_id int(10) UNSIGNED NOT NULL,
   display_id int(10) UNSIGNED NOT NULL,
   item_id int(10) UNSIGNED NOT NULL,
   last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP  ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY(display_id, item_id),
+  PRIMARY KEY(menu_id, display_id, item_id),
+  FOREIGN KEY(menu_id) REFERENCES list_of_menus(menu_id) ON DELETE RESTRICT ON UPDATE CASCADE,
   FOREIGN KEY(item_id) REFERENCES item(item_id) ON DELETE RESTRICT ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*
-CREATE TABLE item (
-  item_id int(10) NOT NULL,
-  item_image blob,
-  item_name varchar(100) NOT NULL,
-  price_per_unit double(10,2),
-  PRIMARY KEY(item_id)
-);
 
-CREATE TABLE order_detail (
-  order_id int(10),
-  item_id int(10),
-  quantity int(2),
-  dietary_option varchar(255),
-  delivery_date date,
-  sub_total double(10,2),
-  vat double(10,2),
-  total_price double(10,2),
-  order_date datetime,
-  student_id int(10),
-  parent_id int(10),
-  admin_id int(10),
-  PRIMARY KEY(order_id),
-  FOREIGN KEY(student_id) REFERENCES student(student_id),
-  FOREIGN KEY(parent_id) REFERENCES parent(parent_id),
-  FOREIGN KEY(admin_id) REFERENCES school_administrator(admin_id));*/
+
 DROP USER IF EXISTS 'dinnersdirect'@'localhost';
 CREATE USER 'dinnersdirect'@'localhost' IDENTIFIED BY 'groupk';
 GRANT USAGE ON *.* TO 'dinnersdirect'@'localhost' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;

@@ -263,3 +263,21 @@ function create_summary_table (list_of_orders) {
 
     return summary_table;
 }
+
+function generate_menu(menu_id) {
+    let ajax = new XMLHttpRequest();
+    ajax.open("POST", "menu_for_order.php", true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    let data_to_post = "";
+    // let and = "&";
+    data_to_post += "menu_id=" + menu_id;
+
+    ajax.send(data_to_post);
+
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState === 4 && ajax.status === 200) {
+            document.getElementById('menu_set_la').innerHTML = ajax.responseText;
+        }
+    }
+}

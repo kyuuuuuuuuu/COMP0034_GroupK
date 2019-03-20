@@ -15,24 +15,23 @@
 
 </head>
 <body>
-<div class="container2">
 <!--<h4>DinnersDirect</h4>-->
-<div class="navbar navbar-light bg-light">
-    <!-- Logo image attached to Nav Bar -->
-    <a href="<?php echo url_for('/pages/index.php'); ?>" class="a">
-        <img src="../../public/img/logo.jpg" alt="DinnersDirect Logo" height="100" />
-    </a>
-<!--    <a href="index.php" class="a">HOME</a>-->
-    <a href="<?php echo url_for('/pages/order.php'); ?>">ORDER</a>
-    <?php if($not_log_in) { ?>
-        <a href="<?php echo url_for('/pages/login.php'); ?>">LOGIN</a>
-        <a href="<?php echo url_for('/pages/signup.php'); ?>">SIGN UP</a>
-    <?php }else {?>
-        <a href="<?php echo url_for('/pages/myaccount.php'); ?>">MY ACCOUNT</a>
-        <a href="<?php echo url_for('/pages/log_out.php'); ?>">LOG OUT</a>
-    <?php }?>
-    <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-</div>
+    <div class="navbar navbar-light bg-light">
+        <!-- Logo image attached to Nav Bar -->
+        <a href="<?php echo url_for('/pages/index.php'); ?>" class="a">
+            <img src="../../public/img/logo.jpg" alt="DinnersDirect Logo" height="100" />
+        </a>
+        <!--    <a href="index.php" class="a">HOME</a>-->
+        <a href="<?php echo url_for('/pages/order.php'); ?>">ORDER</a>
+        <?php if($not_log_in) { ?>
+            <a href="<?php echo url_for('/pages/login.php'); ?>">LOGIN</a>
+            <a href="<?php echo url_for('/pages/signup.php'); ?>">SIGN UP</a>
+        <?php }else {?>
+            <a href="<?php echo url_for('/pages/myaccount.php'); ?>">MY ACCOUNT</a>
+            <a href="<?php echo url_for('/pages/log_out.php'); ?>">LOG OUT</a>
+        <?php }?>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>

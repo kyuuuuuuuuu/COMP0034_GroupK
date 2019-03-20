@@ -23,13 +23,13 @@ if(!isset($_SESSION['customer_basket'])){
                     ."VALUES ('$order_id', '$item_id', '$item_quantity')";
                 submit_query($db, $query);
             }else {
-                error_404();
+                error_404('no item');
             }
         }
         unset($_SESSION['customer_basket']);
         unset($_SESSION['grand_total']);
     }else {
-        error_404();
+        error_404('cant save order');
     }
     require_once('../../private/shared/pages_header.php');
     ?>

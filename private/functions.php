@@ -12,14 +12,14 @@ function test_input($user_input) {
     return $user_input;
 };
 
-function error_404() {
+function error_404($error_message = "") {
     header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found!!!");
-    exit("<h1>404 Not Found</h1>");
+    exit("<h1>404 Not Found</h1>" . $error_message);
 }
 
-function error_500() {
+function error_500($error_message = "") {
     header($_SERVER["SERVER_PROTOCOL"] . " 500 Internal Error!!!");
-    exit("<h1>500 Internal Error!!!</h1>");
+    exit("<h1>500 Internal Error!!!</h1>" . $error_message);
 }
 
 function url_for($script_path) {
@@ -229,8 +229,18 @@ function get_admin ($db, $user_input, $input_field) {
     return $data;
 }
 
-function get_menu ($db) {
-    $query = "SELECT * FROM display_menu JOIN item USING (item_id)";
+function get_list_of_menus ($db) {
+    $query = "SELECT DISTINCT * FROM list_of_menus WHERE visibility = '1'";
+    $result = mysqli_query($db, $query);
+    $data = [];
+    while($row = mysqli_fetch_assoc($result)) {
+        array_push($data,$row);
+    }
+    return $data;
+}
+
+function get_menu ($db, $menu_id) {
+    $query = "SELECT * FROM display_menu JOIN item USING (item_id) WHERE menu_id = '$menu_id'";
     $result = mysqli_query($db, $query);
     $data = [];
     while($row = mysqli_fetch_assoc($result)) {
@@ -296,15 +306,17 @@ function get_order_item ($db, $order_id) {
     return $data;
 }
 
-function generateRandomString($length = 10) {
+function generate_random_string($length, $pre_string = 0) {
 //    echo "works";
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    $randomString = '';
-    for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    $pre_string_length = strlen((string)$pre_string); //check the number of digits of the student_id
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';  //a set of characters that has all number, lowercase letters, uppercase letters.
+    $characters_length = strlen($characters); //Get the length of characters
+    $random_string = '';
+    $random_string .= $pre_string; //Add the student id as the first digit
+    for ($i = $pre_string_length - 1; $i < $length - 1; $i++) {
+        $random_string .= $characters[rand(0, $characters_length - 1)];
     }
-    return $randomString;
+    return $random_string;
 }
 
 ?>

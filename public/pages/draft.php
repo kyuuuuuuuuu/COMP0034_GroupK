@@ -3,44 +3,37 @@
 <?php require_once('check_log_in_status.php');
 require_once('../../private/shared/pages_header.php');?>
 
-<?php
-$the_row = get_data($db,'trung.kien@gmail.com','student','email_address');
-//
-//foreach($the_row as $x => $x_value) {
-//    echo "Key=" . $x . ", Value=" . $x_value;
-//    echo "<br>";
-//}
-//$data = get_data($db,'admin@ucl.ac.uk','administrator', 'email_address');
-//$saved_pw = $data['password'];
-//echo $saved_pw . '<br><br>';
-//
-//if (password_verify('Default123', $saved_pw)) {
-//    echo "correct password";
-//}else {
-//    echo "incorrect password";
-//}
-//$admin_id = 2;
-//$table_name = 'admin_student';
-//$input_field = 'admin_id';
-//$result_field = 'student_id';
-//$x = 1;
-//echo "<option value=\'" . $x . "\'>&nbsp&nbsp " . $x . "&nbsp&nbsp</option>";
-//
-////$result = check_email_student($db, 'student@ucl.ac.uk');
-////echo $result;
-//$setOfId = get_pair_id($db,$admin_id,$table_name,$input_field,$result_field);
-//print_r($setOfId);
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-    echo "post method<br>";
-    if (isset($_POST['cake'])) {
-        echo "isset<br>";
-        echo $_POST['cake'];
+
+<div>
+    <?php $list_menus = get_list_of_menus($db);
+    for ($i = 0; $i < count($list_menus); $i++) {;?>
+    <button onclick="generate_menu(<?php echo $list_menus[$i]['menu_id'];?>)">Choose <?php echo $list_menus[$i]['menu_name'];?></button>
+    <?php }?>
+</div>
+<div id="menu_set_la">
+
+</div>
+
+
+
+<script>
+    function generate_menu(menu_id) {
+        let ajax = new XMLHttpRequest();
+        ajax.open("POST", "menu_for_order.php", true);
+        ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        let data_to_post = "";
+        // let and = "&";
+        data_to_post += "menu_id=" + menu_id;
+
+        ajax.send(data_to_post);
+
+        ajax.onreadystatechange = function() {
+            if (ajax.readyState === 4 && ajax.status === 200) {
+                document.getElementById('menu_set_la').innerHTML = ajax.responseText;
+            }
+        }
     }
-}
-
-
-?>
-
-<img src="../img/menu_image/dougnut.jpg">
+</script>
 
 <?php require_once('../../private/shared/pages_footer.php');?>
