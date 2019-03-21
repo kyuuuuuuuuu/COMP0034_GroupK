@@ -28,6 +28,7 @@ for ($i = 0; $i < count($result); $i++) {
 //echo "<br>";
 //print_r($school_s);
 //echo "<br>";
+$page_title = "Parent Account";
 require_once('../../private/shared/pages_header.php');
 ?>
 

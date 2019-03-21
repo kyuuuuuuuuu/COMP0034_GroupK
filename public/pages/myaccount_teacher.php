@@ -1,6 +1,7 @@
 <?php include($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
 <?php require_once('check_log_in_status.php');
+$page_title = "Teacher Account";
 require_once('../../private/shared/pages_header.php');
 if (!isset($_SESSION['credential'])) {
     redirect_to(url_for('/pages/myaccount.php'));

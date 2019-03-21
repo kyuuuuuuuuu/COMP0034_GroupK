@@ -31,6 +31,7 @@ if(!isset($_SESSION['customer_basket'])){
     }else {
         error_404('cant save order');
     }
+    $page_title = "Order Confirmation";
     require_once('../../private/shared/pages_header.php');
     ?>
     <br><br>

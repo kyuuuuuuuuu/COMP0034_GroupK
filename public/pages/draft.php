@@ -1,6 +1,7 @@
 <?php include($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
 <?php require_once('check_log_in_status.php');
+$page_title = "Draft 1";
 require_once('../../private/shared/pages_header.php');
 $key_word = "bee";
 $query = "SELECT DISTINCT item.item_name, item.item_description, item.item_price, list_of_menus.menu_name, list_of_menus.visibility FROM item ";

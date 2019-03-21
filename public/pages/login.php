@@ -4,6 +4,7 @@
 if (!$not_log_in) {
     to_myAccount($acc_type);
 }
+$page_title = "DinnersDirect-Log in";
 require_once('../../private/shared/pages_header.php');?>
 
     <div class="card-header text-center">
