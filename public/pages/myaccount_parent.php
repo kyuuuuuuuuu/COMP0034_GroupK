@@ -4,9 +4,7 @@
 if ($not_log_in) {
     redirect_to(url_for('/pages/myaccount.php'));
 }
-echo $user_email;
 $result = get_parent ($db, $user_email, 'email_address');
-echo gettype($result);
 
 if (count($result) === 1) {
 //    echo "count is 1<br>";

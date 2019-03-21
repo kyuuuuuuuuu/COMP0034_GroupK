@@ -11,16 +11,16 @@ while($item = mysqli_fetch_assoc($all_items_sql)) {
 }
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-for ($i = 1; $i <= $total_number_of_items; $i++) {
-    if ($_POST["display_slot" . $i] != $menu_data[$i - 1]['item_id']) {
-        $new_item_id = $_POST["display_slot" . $i];
-        $query = "UPDATE display_menu SET item_id = '$new_item_id' WHERE menu_id = '$menu_id' AND display_id = '$i'";
-        submit_query($db,$query);
-        $message = "Menu is updated!!!";
-    }
-    $menu_data = get_menu($db, $menu_id);
+    for ($i = 1; $i <= $total_number_of_items; $i++) {
+        if ($_POST["display_slot" . $i] != $menu_data[$i - 1]['item_id']) {
+            $new_item_id = $_POST["display_slot" . $i];
+            $query = "UPDATE display_menu SET item_id = '$new_item_id' WHERE menu_id = '$menu_id' AND display_id = '$i'";
+            submit_query($db,$query);
+            $message = "Menu is updated!!!";
+        }
+        $menu_data = get_menu($db, $menu_id);
 
-}
+    }
 }
 ?>
 
