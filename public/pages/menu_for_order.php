@@ -13,19 +13,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php $list_menus = get_list_of_menus($db);
         for ($i = 0; $i < count($list_menus); $i++) {;?>
             <div class="col-md-3">
-                <button class="choose-menu list-group-item" onclick="generate_menu(<?php echo $list_menus[$i]['menu_id'];?>)">Choose <?php echo $list_menus[$i]['menu_name'];?></button>
-
+                <button class="choose-menu list-group-item" onclick="generate_menu(<?php echo $list_menus[$i]['menu_id'];?>)"><?php echo $list_menus[$i]['menu_name'];?></button>
             </div>
-        <?php }?>
+        <?php }?><br><br>
     </div>
     <?php
     $default_menu = $_COOKIE["chosen_menu"] ?? 1;
     $menu_id = $_POST['menu_id'] ?? $default_menu;
     $menu = get_menu($db, $menu_id);
     for ($i = 0; $i < count($menu); $i++) { if ($i == 0) {echo '<div class="col-md-3">
-                    <h3>MAIN</h3>';}elseif ($i == 3) {echo '<div class="col-md-3">
-                    <h3>DESSERTS</h3>';} elseif ($i == 6) {echo '<div class="col-md-3">
-                    <h3>DRINK</h3>';}?>
+                    <br><h3>MAIN</h3>';}elseif ($i == 3) {echo '<div class="col-md-3">
+                    <br><h3>DESSERTS</h3>';} elseif ($i == 6) {echo '<div class="col-md-3">
+                    <br><h3>DRINK</h3>';}?>
         <div>
             <img name="item_image" src="<?php echo $menu[$i]['item_image'];?>" alt="<?php echo $menu[$i]['item_name'];?>"
                  class="orderOutline<?php if ($i < 3) {echo "1";}elseif ($i<6) {echo "2";}else {echo "3";}?>"
