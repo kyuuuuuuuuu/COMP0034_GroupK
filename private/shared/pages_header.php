@@ -19,7 +19,9 @@
     <script src="<?php echo url_for('js/emptyfield.js');?>" defer></script>
     <script src="<?php echo url_for('js/form.js');?>" defer></script>
     <script src="<?php echo url_for('js/order.js');?>" defer></script>
+    <?php if ($page_title == "Search Function") {?>
     <script src="<?php echo url_for('js/search_food.js');?>" defer></script>
+    <?php }?>
 
 
 </head>

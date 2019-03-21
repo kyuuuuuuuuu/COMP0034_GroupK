@@ -71,7 +71,6 @@ if (!isset($_SESSION['credential'])) {
                 <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(2)">View Orders</button>
                 <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(3)">View Students' Orders</button>
                 <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(4)">Edit Account</button>
-                <a class="nav-link list-group-item myaccount-logout" href="log_out.php">Logout</a>
                 <br><br>
             </div>
 

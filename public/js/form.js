@@ -68,10 +68,21 @@ function validate(type) {
         }
     }
 
+    function emailFormat (message) {
+        return function (value) {
+            let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+            if (value) {
+                if (!regex.test(value)) {
+                    return message;
+                }
+            }
+        }
+    }
+
     let schema = {
         firstName: [required("Name is required"), string("Name must be string"),lettersSpace("Name must contain only letters and spaces")],
         lastName: [required("Name is required"), string("Name must be string"),lettersSpace("Name must contain only letters and spaces")],
-        email: [required("Email is required")],
+        email: [required("Email is required"), emailFormat("You must enter a valid email address")],
         password: [required("Password is required"), pwStrength("Password must have at least 6 characters and contain at least 1 number, 1 lowercase, 1 uppercase")],
         password2: [required("Confirmation is required")],
         phone: [phoneUK("You must enter a valid UK mobile phone")],
