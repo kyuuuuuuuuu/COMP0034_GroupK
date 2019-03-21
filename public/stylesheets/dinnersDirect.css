@@ -154,7 +154,7 @@ li a {
 /*Style under order.php*/
 
 
-#step1, #step2, #step3, .col-md-4 {
+#step1, #step2, #step3, .col-md-3 {
     text-align: center;
 }
 
@@ -376,6 +376,10 @@ h1, .container, .container-fluid {
 .profile {
     width:200px ;
     height:200px ;
+}
+
+.choose-menu {
+    width: 20vw;
 }
 
 /*h1, h2, h3, h4, h5, h6, p, table, button, nav, input, label {*/

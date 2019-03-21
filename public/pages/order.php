@@ -29,12 +29,6 @@ $menu = get_menu($db, $menu_id);
             <br><br><hr><br><br><br>
         </div>
         <div id="menu_item" style="display: none" >
-            <div id="choose_a_menu">
-                <?php $list_menus = get_list_of_menus($db);
-                for ($i = 0; $i < count($list_menus); $i++) {;?>
-                    <button onclick="generate_menu(<?php echo $list_menus[$i]['menu_id'];?>)">Choose <?php echo $list_menus[$i]['menu_name'];?></button>
-                <?php }?>
-            </div>
             <div id="menu_set_la"> <!--This div is where the menu get printed by AJAX -->
                 <?php require('menu_for_order.php');?>
             </div>
