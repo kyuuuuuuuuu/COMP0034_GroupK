@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    include($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php");
+    require_once($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php");
     setcookie("chosen_menu", $_POST['menu_id']);
 } ?>
 

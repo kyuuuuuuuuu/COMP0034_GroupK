@@ -1,4 +1,4 @@
-<?php include($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php");
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php");
 if (isset($_POST['hide_menu'])) {
     $menu_id = $_POST['hide_menu'];
     $query = "UPDATE list_of_menus SET visibility = '0' WHERE menu_id = '$menu_id'";
