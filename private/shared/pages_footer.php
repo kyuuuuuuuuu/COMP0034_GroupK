@@ -1,3 +1,4 @@
+</div>
 <footer class="myfooter" >
     <div class="container-fluid">
         Copyright @2019 All rights reserved

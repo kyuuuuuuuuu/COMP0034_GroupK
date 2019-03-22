@@ -10,11 +10,11 @@ if (!isset($_SESSION['credential'])) {
     $data = get_data($db, $user_email, "administrator", "email_address");
 
     $result = get_admin($db, $user_email, 'email_address');
-//print_r($result);
 
     $student_a = [];
     $school_a = [];
     $parent_a = [];
+
     for ($i = 0; $i < count($result); $i++) {
         $student_a[$i] = get_data($db, $result[$i]['student_id'], 'student', 'student_id');
         $school_a[$i] = get_data($db, $result[$i]['school_id'], 'school', 'school_id');

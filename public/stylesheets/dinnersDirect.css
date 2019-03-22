@@ -359,6 +359,10 @@ li a {
 /*}*/
 
 body{
+    min-height: 100%;
+}
+
+.main_body{
     min-height: 800px;
 }
 
