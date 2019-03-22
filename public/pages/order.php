@@ -33,7 +33,7 @@ if ($not_log_in) {
                 <p>Before placing an order, Please log in <a href="login.php">here.</a></p>
                 <?php }elseif ($acc_type == "parent") {
                     require ("get_children_info.php"); ?>
-                    <form method="get">
+                    <form method="get"><br>
                         <label for="choose_children">Choose the child that you are ordering for.</label>
                         <select name="choose_children" id="choose_children">
                             <?php for ($i = 0; $i < $number_of_children; $i++) {?>
@@ -45,13 +45,13 @@ if ($not_log_in) {
                             </option>
                             <?php }?>
                         </select>
-                        <button type="submit">Choose</button>
+                        <button class="btn-light btn-outline-dark rounded" type="submit">Choose</button>
                     </form>
                     <p id="chosen_children">
-                        <?php if(isset($children_info)) {?>
-                            Your are ordering for <?php echo get_person_name($db, $chosen_child_id, 'student', 'student_id');?>
+                        <?php if(isset($children_info)) {?><br>
+                            Your are ordering for <b><?php echo get_person_name($db, $chosen_child_id, 'student', 'student_id');?></b>
                             <br>
-                            This order will be delivered to <?php echo find_school_address($db, $children_info['email_address']);?>
+                            Delivered to <?php echo find_school_address($db, $children_info['email_address']);?>
                         <?php }?>
                     </p>
                 <?php }else {?>
