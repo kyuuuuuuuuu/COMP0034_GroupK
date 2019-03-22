@@ -26,10 +26,10 @@ if (mm1 < 10) {
 today = yyyy + '-' + mm + '-' + dd;
 var maxDate = yyyy + '-' + mm1 + '-' + dd;
 
-var select_date = document.getElementById("select_date");
-if (select_date) {
-    select_date.setAttribute("min", today);
-    select_date.setAttribute("max", maxDate);
+var selected_date = document.getElementById("select_date");
+if (selected_date) {
+    selected_date.setAttribute("min", today);
+    selected_date.setAttribute("max", maxDate);
 }
 
 var basket = [];
@@ -110,12 +110,13 @@ function render_basket(){
     document.getElementById('grand_total').innerHTML = "The Grand Total is: £ "+ GrandTotal.toFixed(2);
 
 
-
+    show_delivery_date();
     basket_table += "</table>";
     if (basket.length === 0) {
         hide_proceed_button();
         basket_table = "";
         document.getElementById('grand_total').innerHTML = "";
+        document.getElementById('delivery_date_message').innerHTML = "";
     }
     shopping_basket.innerHTML = basket_table;
 }
@@ -176,12 +177,16 @@ function hide_proceed_button() {
     document.getElementById('proceed_button').className = "display_none";
 }
 
+function show_delivery_date() {
+    document.getElementById('delivery_date_message').innerHTML = "<p>Your order will be delivered on " + selected_date.value + "</p>";
+}
+
 function post_data_xhr() {
     let ajax = new XMLHttpRequest();
     ajax.open("POST", "after_order.php", true);
     ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-    let delivery_date = document.getElementById('select_date').value;
+    let delivery_date = selected_date.value;
     let data_to_post = "";
     let and = "&";
     data_to_post += "basket_length=" + basket.length;

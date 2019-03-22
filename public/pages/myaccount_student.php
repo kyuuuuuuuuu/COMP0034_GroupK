@@ -8,33 +8,7 @@ if (!isset($_SESSION['credential'])) {
 }else {
     $user_email = $_SESSION['credential'];
     $data = get_data($db, $user_email, "student", "email_address");
-
-
-    $result = get_student($db, $user_email, 'email_address');
-//print_r($result);
-
-    if (count($result) === 1) {
-//    echo "count is 1<br>";
-        $number_of_children = 1;
-    } elseif (count($result) > 1) {
-//    echo "more than 1<br>" . count($result) . "<br>";
-        $number_of_children = count($result);
-    } else {
-        echo "empty result";
-    }
-    $admin_s = [];
-    $school_s = [];
-    for ($i = 0; $i < count($result); $i++) {
-        $admin_s[$i] = get_data($db, $result[$i]['admin_id'], 'administrator', 'admin_id');
-        $school_s[$i] = get_data($db, $result[$i]['school_id'], 'school', 'school_id');
-    }
-
     $student_orders = get_order_of_student($db, $_SESSION['user_id']);
-
-//print_r($admin_s);
-//echo "<br>";
-//print_r($school_s);
-//echo "<br>";
 }
 ?>
 
@@ -110,6 +84,7 @@ if (!isset($_SESSION['credential'])) {
                     <div class="tab-content">
                         <h1>View Order</h1>
                         <div class="tab-content">
+                            <?php if ($student_orders) {?>
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
@@ -141,6 +116,9 @@ if (!isset($_SESSION['credential'])) {
                                 include("modal_view_item.php");
                             }
                             ?>
+                            <?php }else {?>
+                            <p>You have not placed any order yet! <br>Click <a href="order.php">here</a> to make an order.</p>
+                            <?php }?>
 
                         </div>
                     </div>

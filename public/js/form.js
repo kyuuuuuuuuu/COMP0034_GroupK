@@ -70,7 +70,7 @@ function validate(type) {
 
     function emailFormat (message) {
         return function (value) {
-            let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+            let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/; //This regression expression is from "https://www.w3resource.com/javascript/form/email-validation.php"
             if (value) {
                 if (!regex.test(value)) {
                     return message;

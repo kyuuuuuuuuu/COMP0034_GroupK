@@ -4,26 +4,52 @@
 $page_title = "Order Summary";
 require_once('../../private/shared/pages_header.php');
 
-if (isset($_SESSION['credential'])) {
-    $user_email = $_SESSION['credential'];
-    $acc_type = $_SESSION['acc_type'];
-    $data = get_data($db, $user_email, $acc_type,"email_address");
-    if ($acc_type == 'student') {
-        $id_list = get_student($db, $user_email, 'email_address');
-    }elseif ($acc_type == 'administrator') {
-        $id_list = get_admin($db, $user_email, 'email_address');
-    }elseif ($acc_type == 'parent') {
-        $id_list = get_parent($db, $user_email, 'email_address');
-    }
-    $address = find_school_address($db, $id_list[0]['school_id']);
-}else {
+if ($not_log_in) {
     redirect_to(url_for("/pages/login.php"));
 }
+if ($acc_type == "parent" && $_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["choose_children"])) {
+    $chosen_child_id = test_input($_GET["choose_children"]);
+    $children_info = get_data($db, $chosen_child_id,'student', 'student_id');
+    $_SESSION["ordering_user_id"] = $children_info['student_id'];
+    $_SESSION["ordering_user_email"] = $children_info['email_address'];
+    $_SESSION["ordering_id_field"] = 'student_id';
+}
 ?>
-
     <div class="card-header text-center" >
         <h1>Order Summary</h1>
     </div>
+<?php
+if (!isset($_SESSION["ordering_user_id"])) {
+    if ($acc_type == "parent") {
+        $chosen_child_id = "";
+        require ('get_children_info.php');?>
+        <form method="get">
+            <label for="choose_children">Choose the child that you are ordering for.</label>
+            <select name="choose_children" id="choose_children">
+                <?php for ($i = 0; $i < $number_of_children; $i++) {?>
+                    <option value="<?php echo $children_p[$i]['student_id'];?>"
+                        <?php if ($children_p[$i]['student_id'] == $chosen_child_id) {?>
+                            selected="selected"
+                        <?php }?>>
+                        <?php echo $children_p[$i]['first_name'] . " " . $children_p[$i]['last_name'] . " at " . $school_p[$i]['school_name']; ?>
+                    </option>
+                <?php }?>
+            </select>
+            <button type="submit">Choose</button>
+        </form>
+    <?php
+
+    }else {
+        $_SESSION["ordering_user_id"] = $user_id;
+        $_SESSION["ordering_id_field"] = $_SESSION["id_field"];
+        $_SESSION["ordering_user_email"] = $user_email;
+        ;
+    }
+}else {
+    $address = find_school_address($db, $_SESSION["ordering_user_email"])
+    ?>
+
+
 
 
     <div class="container">
@@ -74,4 +100,5 @@ if (isset($_SESSION['credential'])) {
                     <?php } ?>
     </div>
 </body>
-<?php require_once('../../private/shared/pages_footer.php');?>
+<?php }
+require_once('../../private/shared/pages_footer.php');?>

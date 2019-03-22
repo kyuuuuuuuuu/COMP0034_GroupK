@@ -110,7 +110,6 @@ function check_email_student ($db,$user_input) {
     while (!$existence && $result = mysqli_fetch_assoc($result_student_table)) {
         if ($user_input == $result['email_address']) {
             $existence = true;
-            echo $user_input . " is found in student table<br>";
         }
     }
     return $existence;
@@ -118,13 +117,11 @@ function check_email_student ($db,$user_input) {
 
 function check_email_parent ($db,$user_input) {
     $existence = false;
-    //$table_parent_query = "SELECT * FROM parent";
     $result_parent_table = get_all($db, 'parent');
 
     while (!$existence && $result = mysqli_fetch_assoc($result_parent_table)) {
         if ($user_input == $result['email_address']) {
             $existence = true;
-            echo $user_input . " is found in parent table<br>";
         }
     }
     return $existence;
@@ -132,13 +129,11 @@ function check_email_parent ($db,$user_input) {
 
 function check_email_admin ($db,$user_input) {
     $existence = false;
-//    $table_admin_query = "SELECT * FROM administrator";
     $result_admin_table = get_all($db, 'administrator');
 
     while (!$existence && $result = mysqli_fetch_assoc($result_admin_table)) {
         if ($user_input == $result['email_address']) {
             $existence = true;
-            echo $user_input . " is found in admin table<br>";
         }
     }
     return $existence;
@@ -249,11 +244,23 @@ function get_menu ($db, $menu_id) {
     return $data;
 }
 
-function find_school_address ($db, $school_id) {
-    $query = "SELECT * FROM school WHERE school_id='$school_id'";
-    $result = mysqli_fetch_array(mysqli_query($db, $query));
-    $address = "School: " . $result['school_name'] . " at " . $result['school_address'];
-    return $address;
+function find_school_address ($db, $user_email) {
+    if (check_email_student($db, $user_email)) {
+        $id_list = get_student($db, $user_email, 'email_address');
+    }elseif (check_email_admin($db, $user_email)) {
+        $id_list = get_admin($db, $user_email, 'email_address');
+    }
+    if (isset($id_list)) {
+        $school_id = $id_list[0]['school_id'];
+
+        $query = "SELECT * FROM school WHERE school_id='$school_id'";
+        $result = mysqli_fetch_array(mysqli_query($db, $query));
+        $address = "School: " . $result['school_name'] . " at " . $result['school_address'];
+        return $address;
+    }else {
+        return false;
+    }
+
 }
 
 function save_order_id ($db, $order_id, $user_id_field, $user_id) {
@@ -319,5 +326,17 @@ function generate_random_string($length, $pre_string = 0) {
     return $random_string;
 }
 
+function get_data_by_email($db,$user_email) {
+    if (check_email_student($db, $user_email)) {
+        $data = get_data($db, $user_email,'student', 'email_address');
+    }elseif (check_email_admin($db, $user_email)) {
+        $data = get_data($db, $user_email,'administrator', 'email_address');
+    }elseif (check_email_parent($db, $user_email)) {
+        $data = get_data($db, $user_email,'parent', 'email_address');
+    }else {
+        $data = false;
+    }
+    return $data;
+}
 ?>
 

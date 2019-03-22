@@ -1,7 +1,7 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
 <?php require_once ('check_log_in_status.php');
-if(!isset($_SESSION['customer_basket'])){
+if(!isset($_SESSION['customer_basket']) || $not_log_in){
     redirect_to(url_for('/pages/order.php'));
 }else {
     $shipping_fee = 1;
@@ -12,7 +12,7 @@ if(!isset($_SESSION['customer_basket'])){
         ."VALUES ('$grand_total', '$delivery_date')";
     submit_query($db, $query);
     $order_id = mysqli_insert_id($db);
-    if (save_order_id($db,$order_id, $_SESSION['id_field'],$_SESSION['user_id'])) {
+    if (save_order_id($db,$order_id, $_SESSION['ordering_id_field'],$_SESSION['ordering_user_id'])) {
         for ($i = 0; $i < count($basket); $i++) {
             $item_name = $basket[$i]['item_name'];
             $item_quantity = $basket[$i]['item_quantity'];
@@ -23,13 +23,16 @@ if(!isset($_SESSION['customer_basket'])){
                     ."VALUES ('$order_id', '$item_id', '$item_quantity')";
                 submit_query($db, $query);
             }else {
-                error_404('no item');
+                error_500('There is an internal problem');
             }
         }
         unset($_SESSION['customer_basket']);
         unset($_SESSION['grand_total']);
+        unset($_SESSION['ordering_id_field']);
+        unset($_SESSION['ordering_user_id']);
+
     }else {
-        error_404('cant save order');
+        error_500('There is an internal problem');
     }
     $page_title = "Order Confirmation";
     require_once('../../private/shared/pages_header.php');

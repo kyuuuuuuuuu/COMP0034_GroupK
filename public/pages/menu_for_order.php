@@ -9,10 +9,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <h4 class="redcolour">Click items for more information and to choose quantity</h4><br>
 </div>
 <div class="row">
-    <div id="choose_a_menu">
+    <div id="choose_a_menu" class="col-md-3">
         <?php $list_menus = get_list_of_menus($db);
         for ($i = 0; $i < count($list_menus); $i++) {;?>
-            <div class="col-md-3">
+            <div >
                 <button class="choose-menu list-group-item" onclick="generate_menu(<?php echo $list_menus[$i]['menu_id'];?>)"><?php echo $list_menus[$i]['menu_name'];?></button>
             </div>
         <?php }?><br><br>

@@ -11,34 +11,7 @@ $query .= "WHERE item.item_name LIKE '%" . $key_word . "%' ";
 $query .= "OR item.item_description LIKE '%" . $key_word . "%' ";
 $query .= "ORDER BY item.item_name LIMIT 10";
 
-if ($result = mysqli_query($db, $query)) { ?>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th scope="col">Item Name</th>
-            <th scope="col">Item Price</th>
-            <th scope="col">Item Description</th>
-            <th scope="col">Menu</th>
-            <th scope="col">Availability</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php while ($row = mysqli_fetch_assoc($result)) {?>
-            <tr>
-                <td><?php echo $row['item_name'];?></td>
-                <td><?php echo $row['item_price'];?></td>
-                <td><?php echo $row['item_description'];?></td>
-                <td><?php echo $row['menu_name'];?></td>
-                <td><?php if($row['visibility'] == 1) {echo "Available";} elseif ($row['visibility'] == 1) {echo "Temporary Unavailable";}?></td>
-            </tr>
-
-        <?php } ?>
-        </tbody>
-    </table>
-<?php }else { ?>
-    <p>There is no result that match your search</p>
-<?php }?>
-
+print_r(get_data($db, '11','student', 'student_id')) ; ?>
 
 
 

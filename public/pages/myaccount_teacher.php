@@ -164,6 +164,7 @@ if (!isset($_SESSION['credential'])) {
                 <div class="tab-content">
                     <h1>View Orders</h1>
                     <div class="tab-content">
+                        <?php if ($admin_orders) {?>
                         <table class="table table-striped">
                             <thead>
                             <tr>
@@ -195,6 +196,9 @@ if (!isset($_SESSION['credential'])) {
                             include("modal_view_item.php");
                         }
                         ?>
+                        <?php }else {?>
+                            <p>You have not placed any order yet! <br>Click <a href="order.php">here</a> to make an order.</p>
+                        <?php }?>
                         <br><br>
                     </div>
                 </div>
