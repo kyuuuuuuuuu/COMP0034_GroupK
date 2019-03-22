@@ -9,23 +9,20 @@ if (!isset($_SESSION['credential'])) {
     $user_email = $_SESSION['credential'];
     $data = get_data($db, $user_email, "administrator", "email_address");
 
+    $school_info = find_school_address($db, $user_email);
+
     $result = get_admin($db, $user_email, 'email_address');
 
     $student_a = [];
-    $school_a = [];
-    $parent_a = [];
 
-    for ($i = 0; $i < count($result); $i++) {
-        $student_a[$i] = get_data($db, $result[$i]['student_id'], 'student', 'student_id');
-        $school_a[$i] = get_data($db, $result[$i]['school_id'], 'school', 'school_id');
+    if ($result) {
+        for ($i = 0; $i < count($result); $i++) {
+            $student_a[$i] = get_data($db, $result[$i]['student_id'], 'student', 'student_id');
+        }
     }
 
     $admin_orders = get_order_of_admin($db, $data['admin_id']);
 
-//print_r($student_a);
-//echo "<br>";
-//print_r($school_a);
-//echo "<br>";
 }
 ?>
 
@@ -90,8 +87,7 @@ if (!isset($_SESSION['credential'])) {
                 <div class="tab-content">
                     <h1>Teacher Profile</h1>
                     <p>
-                        <b>School: </b><?php echo $school_a[0]['school_name'];?><br>
-                        <b>Address: </b><?php echo $school_a[0]['school_address'];?><br><br>
+                        <b>School: </b><?php echo $school_info;?><br>
                     <h3 class="text-center">Student's Information</h3>
 
                     </p>

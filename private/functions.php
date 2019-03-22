@@ -60,10 +60,7 @@ function get_specific_data ($db, $specific_field, $user_input, $table_name, $fie
         $data = mysqli_fetch_assoc($result);
     }
     elseif (mysqli_num_rows($result) > 1){
-        $data = array();
-        while($row = mysqli_fetch_assoc($result)) {
-            array_push($data,$row);
-        }
+        $data = convert_sql_result_to_array($result);
     } else {
         $data = false;
     }
@@ -168,54 +165,44 @@ function get_parent ($db, $user_input, $input_field) {
     $query = "SELECT * FROM parent JOIN student_parent USING (parent_id) JOIN admin_student USING (student_id) JOIN school_admin USING (admin_id) " .
         "WHERE parent.$input_field = '$user_input'";
     $result = mysqli_query($db, $query);
-    if (mysqli_num_rows($result) == 1) {
-        $data = array();
-        $row = mysqli_fetch_assoc($result);
-        array_push($data,$row);
-    }
-    elseif (mysqli_num_rows($result) > 1){
-        $data = array();
-        while($row = mysqli_fetch_assoc($result)) {
-            array_push($data,$row);
-        }
-    } else {
-        $data = false;
-    }
-    return $data;
+    return convert_sql_result_to_array($result);
 }
 
 function get_student ($db, $user_input, $input_field) {
     $query = "SELECT * FROM student JOIN admin_student USING (student_id) JOIN school_admin USING (admin_id) " .
         "WHERE student.$input_field = '$user_input'";
     $result = mysqli_query($db, $query);
-    if (mysqli_num_rows($result) == 1) {
-        $data = array();
-        $row = mysqli_fetch_assoc($result);
-        array_push($data,$row);
-    }
-    elseif (mysqli_num_rows($result) > 1){
-        $data = array();
-        while($row = mysqli_fetch_assoc($result)) {
-            array_push($data,$row);
-        }
-    } else {
-        $data = false;
-    }
-    return $data;
+    return convert_sql_result_to_array($result);
 }
 
 function get_admin ($db, $user_input, $input_field) {
     $query = "SELECT * FROM administrator JOIN admin_student USING (admin_id) JOIN school_admin USING (admin_id) " .
         "WHERE administrator.$input_field = '$user_input'";
     $result = mysqli_query($db, $query);
-    if (mysqli_num_rows($result) == 1) {
-        $data = array();
-        $row = mysqli_fetch_assoc($result);
-        array_push($data,$row);
-    }
-    elseif (mysqli_num_rows($result) > 1){
-        $data = array();
-        while($row = mysqli_fetch_assoc($result)) {
+
+    return convert_sql_result_to_array($result);
+}
+
+function get_admin_school ($db, $user_input, $input_field) {
+    $query = "SELECT * FROM administrator JOIN school_admin USING (admin_id) " .
+        "WHERE administrator.$input_field = '$user_input'";
+    $result = mysqli_query($db, $query);
+
+    return convert_sql_result_to_array($result);
+}
+
+function get_admin_student ($db, $user_input, $input_field) {
+    $query = "SELECT * FROM administrator JOIN admin_student USING (admin_id) " .
+        "WHERE administrator.$input_field = '$user_input'";
+    $result = mysqli_query($db, $query);
+
+    return convert_sql_result_to_array($result);
+}
+
+function convert_sql_result_to_array ($sql_result) {
+    if ($sql_result){
+        $data = [];
+        while($row = mysqli_fetch_assoc($sql_result)) {
             array_push($data,$row);
         }
     } else {
@@ -248,14 +235,15 @@ function find_school_address ($db, $user_email) {
     if (check_email_student($db, $user_email)) {
         $id_list = get_student($db, $user_email, 'email_address');
     }elseif (check_email_admin($db, $user_email)) {
-        $id_list = get_admin($db, $user_email, 'email_address');
+        $id_list = get_admin_school($db, $user_email, 'email_address');
+        print_r($id_list);
     }
     if (isset($id_list)) {
         $school_id = $id_list[0]['school_id'];
 
         $query = "SELECT * FROM school WHERE school_id='$school_id'";
         $result = mysqli_fetch_array(mysqli_query($db, $query));
-        $address = "School: " . $result['school_name'] . " at " . $result['school_address'];
+        $address = $result['school_name'] . " at " . $result['school_address'];
         return $address;
     }else {
         return false;
