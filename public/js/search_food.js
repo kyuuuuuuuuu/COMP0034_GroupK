@@ -1,7 +1,6 @@
 //Wait until the whole page is loaded before this is executed
 $(function () {
     search_food();
-    console.log("loaded");
 });
 
 function search_on_input() {
