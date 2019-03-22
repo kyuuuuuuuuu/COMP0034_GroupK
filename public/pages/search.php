@@ -14,13 +14,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         <h1>Searching for your favourite food...</h1>
     </div>
     <form class="my-2 row" name="search_function" id="search_function" onsubmit="search_food()">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
+
+        <div class="col-md-12 text-center">
             <input class="searchitem" type="search" placeholder="Search for food..." oninput="search_on_input()"
                    aria-label="Search" name="key_word" id="key_word" value="<?php echo $search_key_words ?? ""; ?>">
             <button class="btn btn-outline-success" id="search_button" onclick="search_food()">Search</button>
         </div>
-        <div class="col-md-3"></div>
     </form>
 
     <div id="search_result"></div>
