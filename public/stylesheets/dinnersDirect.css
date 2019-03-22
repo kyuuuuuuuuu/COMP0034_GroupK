@@ -190,29 +190,29 @@ li a {
         border-radius: 50%;
         /*width: 250px;*/
         /*height: 250px;*/
-        width: 22vw;
-        height: 22vw;
+        width: 20vw;
+        height: 20vw;
         overflow: hidden;
     }
 
     .orderOutline2 {
         border: 7px solid darkslateblue;
         border-radius: 50%;
-        width: 22vw;
-        height: 22vw;
+        width: 20vw;
+        height: 20vw;
         overflow: hidden;
     }
 
     .orderOutline3 {
         border: 7px solid slategrey;
         border-radius: 50%;
-        width: 22vw;
-        height: 22vw;
+        width: 20vw;
+        height: 20vw;
         overflow: hidden;
     }
     .menu_image {
-        max-height: 22vw;
-        max-width: 22vw;
+        max-height: 20vw;
+        max-width: 20vw;
         margin: auto;
     }
 
