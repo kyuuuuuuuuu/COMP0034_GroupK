@@ -393,6 +393,25 @@ h1, .container, .container-fluid {
     height:200px ;
 }
 
+/*.center {*/
+    /*margin-right: 0 auto !important;*/
+    /*margin-left: 0 auto !important;*/
+/*}*/
+
+.searchitem {
+    width:75%;
+    height: calc(2.25rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
 
 /*h1, h2, h3, h4, h5, h6, p, table, button, nav, input, label {*/
     /*font-family: Palatino !important;*/

@@ -55,21 +55,22 @@ if ($not_log_in) {
                         <?php }?>
                     </p>
                 <?php }else {?>
-                <p>Your order will be delivered to <?php echo find_school_address($db, $user_email);?></p>
+                <br><p>Your order will be delivered to <?php echo find_school_address($db, $user_email);?></p>
                 <?php }?>
             </div>
-            <div class="col-md-9 text-center">
+            <div class="col-md-6 text-center">
                 <br>
                 <form action="" method="get" onsubmit="">
                     <h2>STEP 1: Choose date</h2>
                     <h5 class="redcolour">We accept from today to 2 months from today.</h5><br>
                     <input type="date" id="select_date" required><br><br>
-                    <button class="btn-secondary rounded btn-lg" onclick="date_validation();" type="button">OK</button></a>
+                    <button class="btn-secondary rounded btn-lg" onclick="date_validation();" type="button">OK</button>
                 </form>
-                <br><br><hr><br><br><br>
+                <br><br>
             </div>
-
+            <div class="col-md-3"></div>
         </div>
+        <hr><br><br><br>
         <div id="menu_item" style="display: none" >
             <div id="menu_set_la"> <!--This div is where the menu get printed by AJAX -->
                 <?php require('menu_for_order.php');?>
@@ -77,15 +78,18 @@ if ($not_log_in) {
 
             <br><br><hr><br>
 
-            <div id="step3" class="row">
-                <div class="col-md-3">
-                    <p id="delivery_date_message"></p>
+            <div id="step3">
+                <h2>STEP 3: View Basket</h2><br>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p id="delivery_date_message"></p>
+                    </div>
+                    <div class="col-md-8">
 
-                </div>
-                <div class="col-md-9">
-                    <h2>STEP 3: View Basket</h2><br><br>
-                    <p id="shopping_basket"></p><br>
-                    <p id="grand_total"></p>
+                        <p id="shopping_basket"></p><br>
+                        <p id="grand_total"></p>
+                    </div>
+                    <div class="col-md-1"></div>
                 </div>
             </div>
             <br>
