@@ -18,6 +18,9 @@ if(isset($_SESSION['message'])) {
     unset ($_SESSION['message']);
 }?>
     <div class="container">
+        <div>
+            <a class="action" href="<?php echo url_for('/staff/menu_new.php'); ?>">Add new menu</a>
+        </div>
         <div class="col-md-12 text-center">
             <table class="table table-responsive">
                 <tr>

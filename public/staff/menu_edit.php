@@ -1,7 +1,8 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
 <?php require_once('staff_header.php');
-$menu_id = $_GET['id'] ?? '1';
+$menu_id = test_input($_GET['id'] ?? '1');
+$menu_info = get_data($db, $menu_id, 'list_of_menus', 'menu_id');
 $menu_data = get_menu($db, $menu_id);
 $total_number_of_items = 9;
 $all_items_sql = get_all($db, 'item');
@@ -11,25 +12,48 @@ while($item = mysqli_fetch_assoc($all_items_sql)) {
 }
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
+    $there_is_changes = false;
     for ($i = 1; $i <= $total_number_of_items; $i++) {
         if ($_POST["display_slot" . $i] != $menu_data[$i - 1]['item_id']) {
             $new_item_id = $_POST["display_slot" . $i];
             $query = "UPDATE display_menu SET item_id = '$new_item_id' WHERE menu_id = '$menu_id' AND display_id = '$i'";
-            submit_query($db,$query);
-            $message = "Menu is updated!!!";
-        }
-        $menu_data = get_menu($db, $menu_id);
 
+            if (submit_query($db,$query)) {
+                $there_is_changes = true;
+                $message = "Menu is updated!!!";
+            }
+        }
+
+
+    }
+
+    if (!empty($_POST["menu_description"])) {
+        $new_menu_desc = $_POST["menu_description"];
+        if ($new_menu_desc != $menu_info['menu_description']) {
+            $query = "UPDATE list_of_menus SET menu_description = '$new_menu_desc' WHERE menu_id = '$menu_id'";
+            if (submit_query($db,$query)) {
+                $there_is_changes = true;
+                $message = "Menu is updated!!!";
+            }
+        }
+    }
+    if ($there_is_changes) {
+        $menu_info = get_data($db, $menu_id, 'list_of_menus', 'menu_id');
+        $menu_data = get_menu($db, $menu_id);
     }
 }
 ?>
 
-<div class="container">
+<div class="container text-center">
     <header><strong>Edit Menu</strong> with ID: <?php echo $menu_id;?></header>
     <div class="text-danger">
-        <p><?php echo $message ?? '';?></p>
+        <h5><?php echo $message ?? '';?></h5>
     </div>
     <form method="post" action="">
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label"><strong>Description</strong></label>
+            <input name="menu_description" id="menu_description" type="text" class="form-control col-md-9" value="<?php echo $menu_info['menu_description'];?>">
+        </div>
         <table class="table table-responsive">
             <tr>
                 <th class='font-weight-bolder'>Display slot</th>

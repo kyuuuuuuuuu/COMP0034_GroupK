@@ -80,7 +80,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 ?>
-<div class="container">
+<div class="container text-center">
     <header><strong>New Item</strong></header>
     <div class="text-danger">
         <p><?php echo $message ?? '';?></p>
