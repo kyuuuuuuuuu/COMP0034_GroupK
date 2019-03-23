@@ -161,6 +161,7 @@ function check_student_avail($db, $user_input) {
     }
 }
 
+
 function get_parent ($db, $user_input, $input_field) {
     $query = "SELECT * FROM parent JOIN student_parent USING (parent_id) JOIN admin_student USING (student_id) JOIN school_admin USING (admin_id) " .
         "WHERE parent.$input_field = '$user_input'";
@@ -236,7 +237,6 @@ function find_school_address ($db, $user_email) {
         $id_list = get_student($db, $user_email, 'email_address');
     }elseif (check_email_admin($db, $user_email)) {
         $id_list = get_admin_school($db, $user_email, 'email_address');
-        print_r($id_list);
     }
     if (isset($id_list)) {
         $school_id = $id_list[0]['school_id'];
@@ -314,6 +314,12 @@ function generate_random_string($length, $pre_string = 0) {
     return $random_string;
 }
 
+function generate_registration_code($db, $student_id) {
+    $registration_code = generate_random_string("15", $student_id);
+    $query = "UPDATE student SET registration_code = '$registration_code' WHERE student_id = '$student_id'";
+    return submit_query($db, $query);
+}
+
 function get_data_by_email($db,$user_email) {
     if (check_email_student($db, $user_email)) {
         $data = get_data($db, $user_email,'student', 'email_address');
@@ -325,6 +331,32 @@ function get_data_by_email($db,$user_email) {
         $data = false;
     }
     return $data;
+}
+
+function check_student_ref_code ($db, $student_email, $ref_code) {
+    $code_from_db = get_specific_data($db, 'registration_code',$student_email,'student','email_address');
+    if ($code_from_db) {
+        if ($ref_code == $code_from_db['registration_code']) {
+            return true;
+        }else {
+            return false;
+        }
+    }else {
+        return false;
+    }
+}
+
+function check_school_password($db,$reference,$school_password) {
+    $password_from_db = get_specific_data($db, 'school_password', $reference, 'school', 'school_id');
+    if ($password_from_db) {
+        if ($password_from_db['school_password'] == $school_password) {
+            return true;
+        }else {
+            return false;
+        }
+    }else {
+        return false;
+    }
 }
 ?>
 

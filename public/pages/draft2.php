@@ -8,16 +8,21 @@ require_once('../../private/shared/pages_header.php');?>
 
 $br = "<br>";
 echo $_SESSION['user_id'] . $_SESSION['id_field'] . "<br><br>";
+
 //dhl141195@gmail.com
 $user_input = "dhl141195@gmail.com";
+$reference = "student@lse.ac.uk";
+$registration_code = "2TfU61FkTiCEbWr";
 
-for ($id = 1; $id < 31; $id++) {
-    echo "student ID: " . $id;
-    echo " code is: ";
-    $result = generate_random_string('15', $id);
-    echo $result;
-    echo $br;
+if (!check_student_ref_code($db,$reference,$registration_code)) {
+    $all_correct = false;
+    $error_message = "The registration code you entered is incorrect.<br>";
+    echo $error_message;
+}else {
+    echo "correct";
 }
+
+
 ?>
 
 <?php require_once('../../private/shared/pages_footer.php');?>

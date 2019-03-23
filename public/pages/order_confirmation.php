@@ -26,10 +26,7 @@ if(!isset($_SESSION['customer_basket']) || $not_log_in){
                 error_500('There is an internal problem');
             }
         }
-        unset($_SESSION['customer_basket']);
-        unset($_SESSION['grand_total']);
-        unset($_SESSION['ordering_id_field']);
-        unset($_SESSION['ordering_user_id']);
+
 
     }else {
         error_500('There is an internal problem');
@@ -42,12 +39,17 @@ if(!isset($_SESSION['customer_basket']) || $not_log_in){
         <div class="text-center">
             <h1>Confirmation</h1>
             <h4>Thank you for ordering.</h4>
-            <h4>Your order has been successfully.</h4><br>
+            <h4>Your order will be delivered on <u><?php echo $delivery_date;?></u>.</h4><br>
             <img alt="confirmation"  src="../img/confirmation.jpg" id="confirmation">
         </div>
     </div>
     <br><br><br>
 
 
-<?php }?>
+<?php
+    unset($_SESSION['customer_basket']);
+    unset($_SESSION['grand_total']);
+    unset($_SESSION['ordering_id_field']);
+    unset($_SESSION['ordering_user_id']);
+}?>
 <?php require_once('../../private/shared/pages_footer.php');?>

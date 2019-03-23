@@ -2,7 +2,9 @@
 
 <?php require_once ('check_log_in_status.php');
 $page_title = "DinnersDirect-Sign up";
-require_once('../../private/shared/pages_header.php');?>
+require_once('../../private/shared/pages_header.php');
+$list_of_school = get_all($db, 'school');
+?>
 
 <div class="card-header text-center">
     <h1>Welcome to DinnersDirect</h1>
@@ -37,6 +39,7 @@ require_once('../../private/shared/pages_header.php');?>
 
 <!--Sign up form-->
     <div class="col-lg-12 align-content-lg-center signup-form">
+<!--        Student register form-->
         <form class="display_none" name="registerForm" method="post" action="after_signup.php" onsubmit="return validate('Student');">
             <h6>Fields with * are required.</h6>
             <!--Sign up information required from user -->
@@ -83,14 +86,21 @@ require_once('../../private/shared/pages_header.php');?>
             </div>
             <button class="btn-block button2" name="submit" value="student" type="submit">Sign Up</button>
         </form>
-
+<!--        Teacher register form-->
         <form class="display_none" name="registerForm" method="post" action="after_signup.php" onsubmit="return validate('Admin');">
             <h6>Fields with * are required.</h6>
             <!--Sign up information required from user -->
-            <div class="form-group">
-                <label>Admin Email address*</label>
-                <input id="emailAdmin" name="email" type="email" class="form-control" placeholder="Enter your email" value="<?php if (isset($_SESSION['POST']['email'])) {echo $_SESSION['POST']['email'];}?>">
-                <p class="text-danger" id="emailAdmin_error"></p>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Admin Email address*</label>
+                    <input id="emailAdmin" name="email" type="email" class="form-control" placeholder="Enter your email" value="<?php if (isset($_SESSION['POST']['email'])) {echo $_SESSION['POST']['email'];}?>">
+                    <p class="text-danger" id="emailAdmin_error"></p>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Phone Number</label>
+                    <input id="phoneAdmin" name="phone_UK" type="number" class="form-control" placeholder="Phone number" value="<?php if (isset($_SESSION['POST']['phone_UK'])) {echo $_SESSION['POST']['phone_UK'];}?>">
+                    <p class="text-danger" id="phoneAdmin_error"></p>
+                </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -118,33 +128,40 @@ require_once('../../private/shared/pages_header.php');?>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label>Phone Number</label>
-                    <input id="phoneAdmin" name="phone_UK" type="number" class="form-control" placeholder="Phone number" value="<?php if (isset($_SESSION['POST']['phone_UK'])) {echo $_SESSION['POST']['phone_UK'];}?>">
-                    <p class="text-danger" id="phoneAdmin_error"></p>
-                </div>
-                <div class="form-group col-md-6">
                     <label>School*</label>
                     <select id="referenceAdmin" name="reference" class="form-control">
-                        <option>UCL</option>
-                        <option>LSE</option>
-                        <option>King</option>
-                        <option>City</option>
-                        <option>QMUL</option>
+                        <?php while ($school = mysqli_fetch_assoc($list_of_school)) {?>
+                        <option value="<?php echo $school['school_id'];?>"><?php echo $school['school_name'];?></option>
+                        <?php }?>
                     </select>
                     <p class="text-danger" id="referenceAdmin_error"></p>
                 </div>
+                <div class="form-group col-md-6">
+                    <label>School Code*</label>
+                    <input id="schoolPasswordAdmin" name="school_password" type="password" class="form-control" placeholder="Enter your school password">
+                    <p class="text-danger" id="schoolPasswordAdmin_error"></p>
+                </div>
+
             </div>
             <button class="btn-block button2" name="submit" value="administrator" type="submit">Sign Up</button>
         </form>
-
+<!--        Parent register form-->
         <form class="display_none" name="registerForm" method="post" action="after_signup.php" onsubmit="return validate('Parent');">
             <h6>Fields with * are required.</h6>
             <!--Sign up information required from user -->
-            <div class="form-group">
-                <label>Email address*</label>
-                <input id="emailParent" name="email" type="email" class="form-control" placeholder="Enter your email" value="<?php if (isset($_SESSION['POST']['email'])) {echo $_SESSION['POST']['email'];}?>">
-                <p class="text-danger" id="emailParent_error"></p>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Email address*</label>
+                    <input id="emailParent" name="email" type="email" class="form-control" placeholder="Enter your email" value="<?php if (isset($_SESSION['POST']['email'])) {echo $_SESSION['POST']['email'];}?>">
+                    <p class="text-danger" id="emailParent_error"></p>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Phone Number</label>
+                    <input id="phoneParent" name="phone_UK" type="number" class="form-control" placeholder="Phone number"value="<?php if (isset($_SESSION['POST']['phone_UK'])) {echo $_SESSION['POST']['phone_UK'];}?>">
+                    <p class="text-danger" id="phoneParent_error"></p>
+                </div>
             </div>
+
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>Password*</label>
@@ -171,14 +188,14 @@ require_once('../../private/shared/pages_header.php');?>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label>Phone Number</label>
-                    <input id="phoneParent" name="phone_UK" type="number" class="form-control" placeholder="Phone number"value="<?php if (isset($_SESSION['POST']['phone_UK'])) {echo $_SESSION['POST']['phone_UK'];}?>">
-                    <p class="text-danger" id="phoneParent_error"></p>
-                </div>
-                <div class="form-group col-md-6">
                     <label>Your children's email*</label>
                     <input id="referenceParent" name="reference" type="email" class="form-control" placeholder="Enter your children's email">
                     <p class="text-danger" id="referenceParent_error"></p>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Your children's reference code*</label>
+                    <input id="codeParent" name="registration_code" type="text" class="form-control" placeholder="Enter your children's reference code">
+                    <p class="text-danger" id="codeParent_error"></p>
                 </div>
             </div>
             <button class="btn-block button2"  name="submit" value="parent" type="submit">Sign Up</button>

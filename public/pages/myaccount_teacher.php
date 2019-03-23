@@ -1,12 +1,11 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
 <?php require_once('check_log_in_status.php');
-$page_title = "Teacher Account";
+$page_title = "Admin Account";
 require_once('../../private/shared/pages_header.php');
-if (!isset($_SESSION['credential'])) {
+if ($not_log_in) {
     redirect_to(url_for('/pages/myaccount.php'));
 }else {
-    $user_email = $_SESSION['credential'];
     $data = get_data($db, $user_email, "administrator", "email_address");
 
     $school_info = find_school_address($db, $user_email);

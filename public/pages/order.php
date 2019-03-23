@@ -72,9 +72,24 @@ if ($not_log_in) {
         </div>
         <hr><br><br><br>
         <div id="menu_item" style="display: none" >
-            <div id="menu_set_la"> <!--This div is where the menu get printed by AJAX -->
-                <?php require('menu_for_order.php');?>
+            <div id="step2">
+                <h2> STEP 2: Choose items</h2>
+                <h4 class="redcolour">Click items for more information and to choose quantity</h4><br>
             </div>
+            <div class="row">
+                <div id="choose_a_menu" class="col-md-3">
+                    <?php $list_menus = get_list_of_menus($db);
+                    for ($i = 0; $i < count($list_menus); $i++) {;?>
+                        <div>
+                            <button class="choose-menu list-group-item" data-tip="<?php echo $list_menus[$i]['menu_description']?>" onclick="generate_menu(<?php echo $list_menus[$i]['menu_id'];?>)"><?php echo $list_menus[$i]['menu_name'];?></button>
+                        </div>
+                    <?php }?><br><br>
+                </div>
+                <div id="menu_set_la" class="col-md-9"> <!--This div is where the menu get printed by AJAX -->
+                    <?php require('menu_for_order.php');?>
+                </div>
+            </div>
+
 
             <br><br><hr><br>
 

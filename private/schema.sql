@@ -38,6 +38,7 @@ CREATE TABLE student (
                        last_name varchar(100) NOT NULL,
                        phone_number varchar(20),
                        password varchar(255) NOT NULL,
+                       registration_code varchar(15),
                        status smallint default 0,
                        last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                        PRIMARY KEY(student_id)
@@ -58,6 +59,7 @@ CREATE TABLE parent (
 CREATE TABLE list_of_menus (
                       menu_id int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
                       menu_name varchar(100) NOT NULL,
+                      menu_description text NOT NULL,
                       visibility smallint default 1,
                       last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                       PRIMARY KEY (menu_id)
@@ -72,8 +74,6 @@ CREATE TABLE school_admin (
   FOREIGN KEY (admin_id) REFERENCES administrator(admin_id) ON DELETE RESTRICT ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
-
 CREATE TABLE admin_student (
   student_id int(10) UNSIGNED NOT NULL,
   admin_id int(10) UNSIGNED NOT NULL,
@@ -81,14 +81,6 @@ CREATE TABLE admin_student (
   PRIMARY KEY (admin_id, student_id),
   FOREIGN KEY(admin_id) REFERENCES administrator(admin_id) ON DELETE RESTRICT ON UPDATE CASCADE,
   FOREIGN KEY(student_id) REFERENCES student(student_id) ON DELETE RESTRICT ON UPDATE CASCADE
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE student_registration_code (
-                              student_id int(10) UNSIGNED NOT NULL,
-                              registration_code varchar(50) NOT NULL,
-                              last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-                              PRIMARY KEY(student_id),
-                              FOREIGN KEY(student_id) REFERENCES student(student_id) ON DELETE RESTRICT ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE student_parent (

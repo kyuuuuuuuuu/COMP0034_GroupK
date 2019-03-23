@@ -7,6 +7,8 @@ require_once('../../private/shared/pages_header.php');
 if ($not_log_in) {
     redirect_to(url_for("/pages/login.php"));
 }
+
+$chosen_child_id = "";
 if ($acc_type == "parent" && $_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["choose_children"])) {
     $chosen_child_id = test_input($_GET["choose_children"]);
     $children_info = get_data($db, $chosen_child_id,'student', 'student_id');
@@ -20,22 +22,24 @@ if ($acc_type == "parent" && $_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET[
     </div>
 <?php
 if ($acc_type == "parent") {
-    $chosen_child_id = "";
     require ('get_children_info.php');?>
-    <form method="get">
-        <label for="choose_children">Choose the child that you are ordering for.</label>
-        <select name="choose_children" id="choose_children">
-            <?php for ($i = 0; $i < $number_of_children; $i++) {?>
-                <option value="<?php echo $children_p[$i]['student_id'];?>"
-                    <?php if ($children_p[$i]['student_id'] == $chosen_child_id) {?>
-                        selected="selected"
-                    <?php }?>>
-                    <?php echo $children_p[$i]['first_name'] . " " . $children_p[$i]['last_name'] . " at " . $school_p[$i]['school_name']; ?>
-                </option>
-            <?php }?>
-        </select>
-        <button type="submit">Choose</button>
-    </form>
+    <div class="text-center">
+        <form method="get">
+            <label for="choose_children">Choose the child that you are ordering for.</label>
+            <select name="choose_children" id="choose_children">
+                <?php for ($i = 0; $i < $number_of_children; $i++) {?>
+                    <option value="<?php echo $children_p[$i]['student_id'];?>"
+                        <?php if ($children_p[$i]['student_id'] == $chosen_child_id) {?>
+                            selected="selected"
+                        <?php }?>>
+                        <?php echo $children_p[$i]['first_name'] . " " . $children_p[$i]['last_name'] . " at " . $school_p[$i]['school_name']; ?>
+                    </option>
+                <?php }?>
+            </select>
+            <button type="submit">Choose</button>
+        </form>
+    </div>
+
     <?php
 
 }

@@ -3,12 +3,14 @@
 <?php require_once('check_log_in_status.php');
 $page_title = "Student Account";
 require_once('../../private/shared/pages_header.php');
-if (!isset($_SESSION['credential'])) {
+if ($not_log_in) {
     redirect_to(url_for('/pages/myaccount.php'));
 }else {
-    $user_email = $_SESSION['credential'];
     $data = get_data($db, $user_email, "student", "email_address");
-    $student_orders = get_order_of_student($db, $_SESSION['user_id']);
+    $student_orders = get_order_of_student($db, $user_id);
+    $school_address = find_school_address($db, $user_email);
+    $related_id = get_student($db, $user_email, 'email_address');
+    $admin_name = get_person_name($db,$related_id[0]['admin_id'],'administrator','admin_id');
 }
 ?>
 
@@ -69,12 +71,8 @@ if (!isset($_SESSION['credential'])) {
                     <div class="tab-content">
                         <h1>Student Profile</h1>
                         <p>
-                            <?php
-                            for ($i = 0; $i < $number_of_children; $i++) {?>
-                                Teacher: <?php echo $admin_s[$i]['first_name'] . " " . $admin_s[$i]['last_name'];?><br>
-                                School: <?php echo $school_s[$i]['school_name'];?><br>
-                                Address: <?php echo $school_s[$i]['school_address'];?><br>
-                            <?php } ?>
+                            Teacher: <?php echo $admin_name;?><br>
+                            School: <?php echo $school_address;?><br>
                         </p>
 
                     </div>

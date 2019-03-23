@@ -11,7 +11,7 @@ function select_form(index) {
 }
 
 function hide_and_show(index, html_element) {
-    for (let i = 0; i <= html_element.length; i++) {
+    for (let i = 0; i < html_element.length; i++) {
         if (i === index) {
             html_element[i].className = "display_block";
         } else {
@@ -79,6 +79,17 @@ function validate(type) {
         }
     }
 
+    function referenceCodeLength (message) {
+        return function (value) {
+            let regex = /[a-zA-Z0-9]{15}/;
+            if (value) {
+                if (!regex.test(value)) {
+                    return message;
+                }
+            }
+        }
+    }
+
     let schema = {
         firstName: [required("Name is required"), string("Name must be string"),lettersSpace("Name must contain only letters and spaces")],
         lastName: [required("Name is required"), string("Name must be string"),lettersSpace("Name must contain only letters and spaces")],
@@ -86,13 +97,23 @@ function validate(type) {
         password: [required("Password is required"), pwStrength("Password must have at least 6 characters and contain at least 1 number, 1 lowercase, 1 uppercase")],
         password2: [required("Confirmation is required")],
         phone: [phoneUK("You must enter a valid UK mobile phone")],
-        reference: [required("You must enter your reference")]
+        reference: [required("You must enter your reference")],
+        schoolPassword: [required("You must enter the school password")],
+        code: [required("You must enter your children's reference code."), referenceCodeLength("The reference code only contains letters and numbers (exactly 15 characters long).")]
     };
 
-    let schema_fields = Object.keys(schema);
+    let schema_fields = Object.keys(schema); //Get all the key of the object 'schema' and store in an array
     let fields = [];
-    for (let f = 0; f < schema_fields.length; f++) {
-        fields[f] = schema_fields[f] + acc_type;
+    let exist_schema_field = [];
+
+    for (let f = 0; f < schema_fields.length; f++) { //Go through all of schema key
+        let field_id = schema_fields[f] + acc_type;
+        let DOM = document.getElementById(field_id);
+        if (DOM) {  //Check if there is and element with that ID exists.
+            console.log("exists " + field_id);
+            fields.push(field_id);
+            exist_schema_field.push(schema_fields[f])
+        }
     }
 
     let values ={};
@@ -103,7 +124,7 @@ function validate(type) {
     }
 
     for (let j = 0; j < fields.length; j++) {
-        let validators = schema[schema_fields[j]];
+        let validators = schema[exist_schema_field[j]];
         let error = null;
         for (let k = 0; k < validators.length; k++) {
             error = validators[k](values[fields[j]]);

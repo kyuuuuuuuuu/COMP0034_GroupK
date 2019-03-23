@@ -4,26 +4,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     setcookie("chosen_menu", $_POST['menu_id']);
 } ?>
 
-<div id="step2">
-    <h2> STEP 2: Choose items</h2>
-    <h4 class="redcolour">Click items for more information and to choose quantity</h4><br>
-</div>
 <div class="row">
-    <div id="choose_a_menu" class="col-md-3">
-        <?php $list_menus = get_list_of_menus($db);
-        for ($i = 0; $i < count($list_menus); $i++) {;?>
-            <div >
-                <button class="choose-menu list-group-item" onclick="generate_menu(<?php echo $list_menus[$i]['menu_id'];?>)"><?php echo $list_menus[$i]['menu_name'];?></button>
-            </div>
-        <?php }?><br><br>
-    </div>
+
     <?php
     $default_menu = $_COOKIE["chosen_menu"] ?? 1;
     $menu_id = $_POST['menu_id'] ?? $default_menu;
     $menu = get_menu($db, $menu_id);
-    for ($i = 0; $i < count($menu); $i++) { if ($i == 0) {echo '<div class="col-md-3">
-                    <br><h3>MAIN</h3>';}elseif ($i == 3) {echo '<div class="col-md-3">
-                    <br><h3>DESSERTS</h3>';} elseif ($i == 6) {echo '<div class="col-md-3">
+    for ($i = 0; $i < count($menu); $i++) { if ($i == 0) {echo '<div class="col-md-4 text-center">
+                    <br><h3>MAIN</h3>';}elseif ($i == 3) {echo '<div class="col-md-4 text-center">
+                    <br><h3>DESSERTS</h3>';} elseif ($i == 6) {echo '<div class="col-md-4 text-center">
                     <br><h3>DRINK</h3>';}?>
         <div>
             <img name="item_image" src="<?php echo $menu[$i]['item_image'];?>" alt="<?php echo $menu[$i]['item_name'];?>"
@@ -33,8 +22,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $title= $menu[$i]['item_name'];
             $price= $menu[$i]['item_price'];
             $des= $menu[$i]['item_description'];
-            $modal_id = $i;
-            include("modal_menu.php"); ?>
+            $modal_id = $i;?>
+            <br>
+            <div class="item_caption">
+                <a data-toggle="modal" data-target="#Modal1"><?php echo $title;?></a>
+            </div>
+
+            <?php include("modal_menu.php"); ?>
         </div>
         <?php if($i == 2 || $i == 5 || $i == 8) {echo '</div>';}else {echo '<br>';} }?>
 </div>
