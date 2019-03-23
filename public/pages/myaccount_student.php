@@ -79,7 +79,7 @@ if ($not_log_in) {
                         </p>
                         <?php if(check_student_avail($db, $user_email)) {?>
                         <div id="registration_code_info">
-                            <button data-toggle="modal" data-target="#modal_reg_code">View your registration code</button>
+                            <button class="button2" data-toggle="modal" data-target="#modal_reg_code">View your registration code</button>
 
                             <div id="modal_reg_code" class="modal fade" role="dialog">
                                 <div class="modal-dialog">
