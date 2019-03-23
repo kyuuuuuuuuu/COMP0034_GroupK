@@ -30,7 +30,7 @@ if ($not_log_in) {
         <div id="step1" class="row">
             <div class="col-md-3">
                 <?php if ($not_log_in) {?>
-                <p>Before placing an order, Please log in <a href="login.php">here.</a></p>
+                <br><p>Before placing an order, Please log in <a href="login.php">here.</a></p>
                 <?php }elseif ($acc_type == "parent") {
                     require ("get_children_info.php"); ?>
                     <form method="get"><br>

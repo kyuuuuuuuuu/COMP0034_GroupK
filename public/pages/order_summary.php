@@ -61,13 +61,27 @@ if (!isset($_SESSION["ordering_user_id"])) {
     <div class="container">
         <br>
         Review your order and select "Place order" button at the end of the page.
-        <br><hr>
+        <br>
+    </div>
+
+    <div class="container-fluid">
+        <hr>
+    </div>
+
+    <div class="container">
         <b>Delivery Details: </b>
         <p>
             <?php echo $address . " on " . $_SESSION['delivery_date'];?>
         </p><br><br>
 
-        <h4>Items: </h4><hr>
+        <h4>Items: </h4>
+    </div>
+
+    <div class="container-fluid">
+        <hr>
+    </div>
+
+    <div class="container">
         <br>
 <!--        <div class="col-md-8">-->
             <div class="row">
