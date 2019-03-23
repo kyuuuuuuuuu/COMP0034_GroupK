@@ -1,6 +1,5 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
-<?php require_once('../../private/shared/pages_header.php');?>
 
 <?php
 
@@ -14,7 +13,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!check_email($db,$login_email)) {
         $_SESSION['error'] = "Email does not exist";
-        redirect_to(url_for('/pages/login.php'));
+        redirect_to(url_for('/pages/login.php')); //wrong email redirect back to log in
     }elseif (check_email_admin($db,$login_email)) {
         $table_name = "administrator";
         $id_field = "admin_id";
@@ -27,23 +26,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (!is_null($table_name)) {
-        echo $table_name . " is the table name<br>";
         $data = get_data($db,$login_email,$table_name,"email_address");
         if (password_verify($login_password,$data['password'])) {
-            echo "log in successful!<br>";
             $_SESSION['credential'] = $login_email;
             $_SESSION['acc_type'] = $table_name;
             $_SESSION['id_field'] = $id_field;
             $_SESSION['user_id'] = $data[$id_field];
 
             if (isset($_SESSION['customer_basket'])) {
-                redirect_to(url_for('/pages/order_summary.php'));
+                redirect_to(url_for('/pages/order_summary.php')); //if ordering redirect to order summary
             }else {
-                to_myAccount($table_name);
+                to_myAccount($table_name); //redirect to correct my account page
             }
         }else {
             $_SESSION['error'] = "Your Password is wrong";
-            redirect_to(url_for('/pages/login.php'));
+            redirect_to(url_for('/pages/login.php')); // wrong password redirect to sign in
         }
     }
 
@@ -53,4 +50,3 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 ?>
 
-<?php require_once('../../private/shared/pages_footer.php');?>

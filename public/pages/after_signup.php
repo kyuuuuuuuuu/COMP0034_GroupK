@@ -68,29 +68,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     };
 
     if(empty($_POST["reference"])) {
-        $error_message .= "Enter your reference<br>";
-        $all_correct = false;
-    } elseif ($acc_type == 'student') {
-        $reference = test_input($_POST["reference"]);
-        if (!check_email_admin($db, $reference)) {
-            $all_correct = false;
-            $error_message .= $reference . " is not a valid admin's email, please choose another one.<br>";
-        }
-    }elseif ($acc_type == 'parent') {
-        $reference = test_input($_POST["reference"]);
-        if (!check_email_student($db, $reference)) {
-            $all_correct = false;
-            $error_message .= $reference . " is not a valid student's email, please choose another one.<br>";
-        }elseif (!check_student_avail($db,$reference)) {
-            $all_correct = false;
-            $error_message .= $reference . " is registered with another parent's account, please choose another one.<br>";
-        }
-    }else{
-        $reference = test_input($_POST["reference"]);
-        $checked++;
-    };
-
-    if(empty($_POST["reference"])) {
         $error_message .= "Your must enter your reference email<br>";
         $all_correct = false;
     }else {
