@@ -130,7 +130,7 @@ if ($not_log_in) {
                                         <th scope="row"><?php echo $student_orders[$i]['order_id'];?></th>
                                         <td><?php echo $student_orders[$i]['delivery_date'];?></td>
                                         <td><?php echo $student_orders[$i]['total_price'];?></td>
-                                        <td><button data-toggle="modal" data-target="#Modal<?php echo $i;?>">View</button></td>
+                                        <td><button class="btn btn-block button1" data-toggle="modal" data-target="#Modal<?php echo $i;?>">View</button></td>
                                     </tr>
 
                                 <?php }?>
