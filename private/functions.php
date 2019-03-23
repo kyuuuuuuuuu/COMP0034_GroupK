@@ -372,5 +372,17 @@ function check_student_verification_status ($db, $user_email) {
     }
 }
 
+function check_staff_credential ($db, $staff_username, $staff_password) {
+    $result = get_all($db, "staff_credential");
+    while ($row = mysqli_fetch_assoc($result)) {
+        if ($row["username"] == $staff_username && $row["password"] == $staff_password) {
+            return true;
+            break;
+        }
+    }
+    return false;
+
+}
+
 ?>
 

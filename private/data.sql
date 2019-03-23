@@ -205,3 +205,4 @@ INSERT INTO display_menu (menu_id, display_id, item_id) VALUES ('4', '7', '7');
 INSERT INTO display_menu (menu_id, display_id, item_id) VALUES ('4', '8', '31');
 INSERT INTO display_menu (menu_id, display_id, item_id) VALUES ('4', '9', '9');
 
+INSERT INTO staff_credential (username, password) VALUES ('staff@dinnersdirect.co.uk', 'Groupk123');
