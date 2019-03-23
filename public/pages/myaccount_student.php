@@ -74,6 +74,34 @@ if ($not_log_in) {
                             Teacher: <?php echo $admin_name;?><br>
                             School: <?php echo $school_address;?><br>
                         </p>
+                        <?php if(check_student_avail($db, $user_email)) {?>
+                        <div id="registration_code_info">
+                            <button data-toggle="modal" data-target="#modal_reg_code">View your registration code</button>
+
+                            <div id="modal_reg_code" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Your Registration code</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Here is your registration code: <strong><?php echo $data['registration_code'];?></strong>
+                                                <br>
+                                                Give this code to your parent so they can link their accounts with yours!.
+                                                <br>
+                                                Remember: Only <u><strong>1</strong></u> parent account can be linked with this account!
+                                                <br>
+                                                Once your account is linked with a parent account, This button will disappear.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php }?>
+
 
                     </div>
                 </div>

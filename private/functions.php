@@ -150,8 +150,8 @@ function check_email($db, $user_input) {
     return $existence;
 }
 
-function check_student_avail($db, $user_input) {
-    $query = "SELECT * FROM student_parent JOIN student s on student_parent.student_id = s.student_id WHERE s.email_address = '$user_input'";
+function check_student_avail($db, $user_email) {
+    $query = "SELECT * FROM student_parent JOIN student s on student_parent.student_id = s.student_id WHERE s.email_address = '$user_email'";
 
     $result = mysqli_query($db, $query);
     if (mysqli_num_rows($result) > 0) {

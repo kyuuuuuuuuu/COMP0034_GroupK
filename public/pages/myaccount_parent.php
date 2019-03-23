@@ -141,7 +141,6 @@ require ("get_children_info.php");
 
                         <div class="text-center">
                             <form method="get">
-                                <label for="choose_children">Choose the child that you are ordering for.</label>
                                 <select name="choose_children" id="choose_children">
                                     <?php for ($i = 0; $i < $number_of_children; $i++) {?>
                                         <option value="<?php echo $children_p[$i]['student_id'];?>"
