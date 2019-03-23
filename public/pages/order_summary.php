@@ -15,6 +15,7 @@ if ($acc_type == "parent" && $_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET[
     $_SESSION["ordering_user_id"] = $children_info['student_id'];
     $_SESSION["ordering_user_email"] = $children_info['email_address'];
     $_SESSION["ordering_id_field"] = 'student_id';
+    $_SESSION["allowed_to_order"] = check_student_verification_status ($db, $children_info['email_address']);
 }
 ?>
     <div class="card-header text-center" >
@@ -50,13 +51,17 @@ if (!isset($_SESSION["ordering_user_id"])) {
         $_SESSION["ordering_id_field"] = $_SESSION["id_field"];
         $_SESSION["ordering_user_email"] = $user_email;
 
+        if ($acc_type == "administrator") {
+            $_SESSION["allowed_to_order"] = true;
+        }elseif ($acc_type == "student") {
+            $_SESSION["allowed_to_order"] = check_student_verification_status ($db, $user_email);
+        }
+
     }
 }else {
-    $address = find_school_address($db, $_SESSION["ordering_user_email"])
-    ?>
-
-
-
+    if ($_SESSION["allowed_to_order"]) {
+        $address = find_school_address($db, $_SESSION["ordering_user_email"])
+        ?>
 
     <div class="container">
         <br>
@@ -120,5 +125,7 @@ if (!isset($_SESSION["ordering_user_id"])) {
                     <?php } ?>
     </div>
 </body>
-<?php }
+<?php }else {?>
+        <h5 class="text-center"> <?= get_person_name($db, $_SESSION["ordering_user_email"], 'student', 'email_address')?> is <strong>not verified</strong>, therefore, not allowed to place the order. Contact the school admin for verification.</h5>
+    <?php } }
 require_once('../../private/shared/pages_footer.php');?>

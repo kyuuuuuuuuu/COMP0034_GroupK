@@ -358,5 +358,19 @@ function check_school_password($db,$reference,$school_password) {
         return false;
     }
 }
+
+function check_student_verification_status ($db, $user_email) {
+    $data = get_data_by_email($db,$user_email);
+    if ($data) {
+        if ($data["status"] == 1) {
+            return true;
+        }elseif ($data["status"] == 0) {
+            return false;
+        }
+    }else {
+        return false;
+    }
+}
+
 ?>
 
