@@ -3,19 +3,40 @@
 <?php require_once ('check_log_in_status.php');
 $page_title = "Order Summary";
 require_once('../../private/shared/pages_header.php');
-
+$show_summary = false;
 if ($not_log_in) {
     redirect_to(url_for("/pages/login.php"));
+}elseif (!isset($_SESSION['customer_basket'])) {
+    redirect_to(url_for("/pages/order.php"));
+}else {
+    $show_summary = true;
 }
 
 $chosen_child_id = "";
-if ($acc_type == "parent" && $_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["choose_children"])) {
-    $chosen_child_id = test_input($_GET["choose_children"]);
+if ($acc_type == "parent" && $_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["choose_children"])) {
+    $chosen_child_id = test_input($_POST["choose_children"]);
     $children_info = get_data($db, $chosen_child_id,'student', 'student_id');
     $_SESSION["ordering_user_id"] = $children_info['student_id'];
     $_SESSION["ordering_user_email"] = $children_info['email_address'];
     $_SESSION["ordering_id_field"] = 'student_id';
     $_SESSION["allowed_to_order"] = check_student_verification_status ($db, $children_info['email_address']);
+    $show_summary = true;
+}
+
+if (!isset($_SESSION["ordering_user_id"])) {
+    if ($acc_type != "parent") { // you are student or admin
+        $_SESSION["ordering_user_id"] = $user_id;
+        $_SESSION["ordering_id_field"] = $_SESSION["id_field"];
+        $_SESSION["ordering_user_email"] = $user_email;
+
+        if ($acc_type == "administrator") {
+            $_SESSION["allowed_to_order"] = true;
+
+        }elseif ($acc_type == "student") {
+            $_SESSION["allowed_to_order"] = check_student_verification_status ($db, $user_email);
+        }
+        $show_summary = true;
+    }
 }
 ?>
     <div class="card-header text-center" >
@@ -25,7 +46,7 @@ if ($acc_type == "parent" && $_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET[
 if ($acc_type == "parent") {
     require ('get_children_info.php');?>
     <div class="text-center">
-        <form method="get">
+        <form method="post">
             <br><label for="choose_children">Choose the child that you are ordering for.</label>
             <select name="choose_children" id="choose_children">
                 <?php for ($i = 0; $i < $number_of_children; $i++) {?>
@@ -44,51 +65,37 @@ if ($acc_type == "parent") {
     <?php
 
 }
-
-if (!isset($_SESSION["ordering_user_id"])) {
-    if ($acc_type != "parent") { // you are student or admin
-        $_SESSION["ordering_user_id"] = $user_id;
-        $_SESSION["ordering_id_field"] = $_SESSION["id_field"];
-        $_SESSION["ordering_user_email"] = $user_email;
-
-        if ($acc_type == "administrator") {
-            $_SESSION["allowed_to_order"] = true;
-        }elseif ($acc_type == "student") {
-            $_SESSION["allowed_to_order"] = check_student_verification_status ($db, $user_email);
-        }
-
-    }
-}else {
-    if ($_SESSION["allowed_to_order"]) {
+if (isset($_SESSION["allowed_to_order"])) {
+    if ($_SESSION["allowed_to_order"] && $show_summary) {
         $address = find_school_address($db, $_SESSION["ordering_user_email"])
         ?>
 
-    <div class="container">
-        <br>
-        Review your order and select "Place order" button at the end of the page.
-        <br>
-    </div>
+        <div class="container">
+            <br>
+            Review your order and select "Place order" button at the end of the page.
+            <br>
+        </div>
 
-    <div class="container-fluid">
-        <hr>
-    </div>
+        <div class="container-fluid">
+            <hr>
+        </div>
 
-    <div class="container">
-        <b>Delivery Details: </b>
-        <p>
-            <?php echo $address . " on " . $_SESSION['delivery_date'];?>
-        </p><br><br>
+        <div class="container">
+            <b>Delivery Details: </b>
+            <p>
+                <?php echo $address . " on " . $_SESSION['delivery_date'];?>
+            </p><br><br>
 
-        <h4>Items: </h4>
-    </div>
+            <h4>Items: </h4>
+        </div>
 
-    <div class="container-fluid">
-        <hr>
-    </div>
+        <div class="container-fluid">
+            <hr>
+        </div>
 
-    <div class="container">
-        <br>
-<!--        <div class="col-md-8">-->
+        <div class="container">
+            <br>
+            <!--        <div class="col-md-8">-->
             <div class="row">
                 <?php
                 if (isset($_SESSION['customer_basket'])) { $basket = $_SESSION['customer_basket']; ?>
@@ -121,11 +128,11 @@ if (!isset($_SESSION["ordering_user_id"])) {
                     <a href="order_confirmation.php"><button class="button1 rounded">Place Order</button></a>
                 </div>
             </div>
-        <br>
-                    <?php } ?>
-    </div>
-</body>
-<?php }else {?>
+            <br>
+            <?php } ?>
+        </div>
+        </body>
+    <?php }else {?>
         <br><h5 class="text-center"> <?= get_person_name($db, $_SESSION["ordering_user_email"], 'student', 'email_address')?> is <strong>not verified</strong>, therefore, not allowed to place the order. Contact the school admin for verification.</h5>
     <?php } }
 require_once('../../private/shared/pages_footer.php');?>
