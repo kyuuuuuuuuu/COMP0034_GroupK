@@ -1,4 +1,7 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php");
+if (!isset($_SESSION["staff_credential"])) {
+    redirect_to(url_for('/staff/index.php'));
+}else {
 if (isset($_POST['hide_menu'])) {
     $menu_id = $_POST['hide_menu'];
     $query = "UPDATE list_of_menus SET visibility = '0' WHERE menu_id = '$menu_id'";
@@ -59,4 +62,4 @@ if(isset($_SESSION['message'])) {
         </div>
 
     </div>
-<?php require_once('staff_footer.php');
+<?php require_once('staff_footer.php'); }

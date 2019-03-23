@@ -149,6 +149,14 @@ CREATE TABLE display_menu (
   FOREIGN KEY(item_id) REFERENCES item(item_id) ON DELETE RESTRICT ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE staff_credential (
+                      staff_id int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+                      username varchar(100) NOT NULL,
+                      password varchar(255) NOT NULL,
+                      last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                      PRIMARY KEY(staff_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 DROP USER IF EXISTS 'dinnersdirect'@'localhost';
 CREATE USER 'dinnersdirect'@'localhost' IDENTIFIED BY 'groupk';
