@@ -26,7 +26,7 @@ if ($not_log_in) {
 ?>
 
 <header class="card-header text-center">
-    <h1>Welcome to your Teacher's Account!</h1>
+    <h1>Welcome to your Administrator's Account!</h1>
 </header>
 
 
@@ -86,7 +86,7 @@ if ($not_log_in) {
 
             <div name="my_account_tab" class="display_none">
                 <div class="tab-content">
-                    <h1>Teacher Profile</h1>
+                    <h1>Admin Profile</h1>
                     <p>
                         <b>School: </b><?php echo $school_info;?><br>
                     <h3 class="text-center">Student's Information</h3>

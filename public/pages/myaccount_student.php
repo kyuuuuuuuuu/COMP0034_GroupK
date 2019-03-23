@@ -74,7 +74,7 @@ if ($not_log_in) {
                     <div class="tab-content">
                         <h1>Student Profile</h1>
                         <p>
-                            Teacher: <?php echo $admin_name;?><br>
+                            Admin: <?php echo $admin_name;?><br>
                             School: <?php echo $school_address;?><br>
                         </p>
                         <?php if(check_student_avail($db, $user_email)) {?>

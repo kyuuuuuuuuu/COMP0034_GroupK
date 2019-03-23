@@ -403,7 +403,7 @@ body{
     color:white;
 }
 
-h1, .container, .container-fluid, label {
+h1, h5, .container, .container-fluid, label {
     font-family: Palatino !important;
 }
 

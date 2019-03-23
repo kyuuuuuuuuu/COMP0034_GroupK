@@ -126,7 +126,7 @@ require ("get_children_info.php");
                             <?php
                             for ($i = 0; $i < $number_of_children; $i++) {?>
                                 Name: <?php echo $children_p[$i]['first_name'] . " " . $children_p[$i]['last_name'];?><br>
-                                Teacher: <?php echo $admin_p[$i]['first_name'] . " " . $admin_p[$i]['last_name'];?><br>
+                                Admin: <?php echo $admin_p[$i]['first_name'] . " " . $admin_p[$i]['last_name'];?><br>
                                 School: <?php echo $school_p[$i]['school_name'];?><br>
                                 Address: <?php echo $school_p[$i]['school_address'];?><br><br>
                             <?php } ?>

@@ -126,6 +126,6 @@ if (!isset($_SESSION["ordering_user_id"])) {
     </div>
 </body>
 <?php }else {?>
-        <h5 class="text-center"> <?= get_person_name($db, $_SESSION["ordering_user_email"], 'student', 'email_address')?> is <strong>not verified</strong>, therefore, not allowed to place the order. Contact the school admin for verification.</h5>
+        <br><h5 class="text-center"> <?= get_person_name($db, $_SESSION["ordering_user_email"], 'student', 'email_address')?> is <strong>not verified</strong>, therefore, not allowed to place the order. Contact the school admin for verification.</h5>
     <?php } }
 require_once('../../private/shared/pages_footer.php');?>
