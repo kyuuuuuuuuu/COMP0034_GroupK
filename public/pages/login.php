@@ -52,7 +52,6 @@ require_once('../../private/shared/pages_header.php');?>
                     <div class="form-group col-md-2"></div>
                 </div>
 
-                <h6 class="text-center"> <a href="#">Forgot your password?</a></h6><br>
                 <div class="form-row">
                     <div class="form-group col-md-2"></div>
                     <div class="form-group col-md-8">
