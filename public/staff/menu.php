@@ -18,39 +18,42 @@ if(isset($_SESSION['message'])) {
     unset ($_SESSION['message']);
 }?>
     <div class="container">
-        <table class="table table-responsive">
-            <tr>
-                <th class='font-weight-bolder'>Menu ID</th>
-                <th class='font-weight-bolder'>Menu Name</th>
-                <th class='font-weight-bolder'>Menu Description</th>
-                <th class='font-weight-bolder'>Edit</th>
-                <th class='font-weight-bolder'>Visibility</th>
-                <th class='font-weight-bolder'>Action</th>
-            </tr>
-            <?php while($menu = mysqli_fetch_assoc($data)) {?>
+        <div class="col-md-12 text-center">
+            <table class="table table-responsive">
                 <tr>
-                    <td><?php echo $menu['menu_id'];?></td>
-                    <td><?php echo $menu['menu_name'];?></td>
-                    <td><?php echo "description";?></td>
-                    <td><a class="action" href="<?php echo url_for('/staff/edit_menu.php?id=' . test_input($menu['menu_id'])); ?>">Edit</td>
-                    <?php if ($menu['visibility'] == 1) {?>
-                        <td>Visible</td>
-                        <td>
-                            <form method="post" action="">
-                                <button name="hide_menu" type="submit" value="<?php echo $menu['menu_id'];?>">Hide this</button>
-                            </form>
-                        </td>
-                    <?php }elseif ($menu['visibility'] == 0) {?>
-                        <td>Hidden</td>
-                        <td>
-                            <form method="post" action="">
-                                <button name="show_menu" type="submit" value="<?php echo $menu['menu_id'];?>">Show this</button>
-                            </form>
-                        </td>
-                    <?php }?>
+                    <th class='font-weight-bolder'>Menu ID</th>
+                    <th class='font-weight-bolder'>Menu Name</th>
+                    <th class='font-weight-bolder'>Menu Description</th>
+                    <th class='font-weight-bolder'>Edit</th>
+                    <th class='font-weight-bolder'>Visibility</th>
+                    <th class='font-weight-bolder'>Action</th>
                 </tr>
-            <?php }?>
+                <?php while($menu = mysqli_fetch_assoc($data)) {?>
+                    <tr>
+                        <td><?php echo $menu['menu_id'];?></td>
+                        <td><?php echo $menu['menu_name'];?></td>
+                        <td><?php echo $menu['menu_description'];?></td>
+                        <td><a class="action" href="<?php echo url_for('/staff/menu_edit.php?id=' . test_input($menu['menu_id'])); ?>">Edit</td>
+                        <?php if ($menu['visibility'] == 1) {?>
+                            <td>Visible</td>
+                            <td>
+                                <form method="post" action="">
+                                    <button name="hide_menu" type="submit" value="<?php echo $menu['menu_id'];?>">Hide this</button>
+                                </form>
+                            </td>
+                        <?php }elseif ($menu['visibility'] == 0) {?>
+                            <td>Hidden</td>
+                            <td>
+                                <form method="post" action="">
+                                    <button name="show_menu" type="submit" value="<?php echo $menu['menu_id'];?>">Show this</button>
+                                </form>
+                            </td>
+                        <?php }?>
+                    </tr>
+                <?php }?>
 
-        </table>
+            </table>
+        </div>
+
     </div>
 <?php require_once('staff_footer.php');

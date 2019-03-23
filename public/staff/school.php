@@ -1,0 +1,31 @@
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
+
+
+<?php require_once('staff_header.php');
+$list_of_school = get_all($db, 'school');?>
+
+<div class="container">
+    <div>
+        <a class="action" href="<?php echo url_for('/staff/school_new.php'); ?>">Add new school</a>
+    </div>
+    <table class="table table-responsive">
+        <tr>
+            <th class='font-weight-bolder'>School ID</th>
+            <th class='font-weight-bolder'>School Name</th>
+            <th class='font-weight-bolder'>School Address</th>
+            <th class='font-weight-bolder'>School Password</th>
+            <th class='font-weight-bolder'>Edit</th>
+        </tr>
+        <?php while ($school = mysqli_fetch_assoc($list_of_school)) {?>
+            <tr>
+                <td><?php echo $school['school_id'];?></td>
+                <td><?php echo $school['school_name'];?></td>
+                <td><?php echo $school['school_address'];?></td>
+                <td><?php echo $school['school_password'];?></td>
+                <td><a class="action" href="<?php echo url_for('/staff/school_edit.php?id=' . test_input($school['school_id'])); ?>">Edit</a></td>
+            </tr>
+        <?php }?>
+
+    </table>
+</div>
+<?php require_once('staff_footer.php');

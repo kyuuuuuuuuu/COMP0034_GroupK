@@ -9,7 +9,7 @@ $data = get_all($db, 'item');
 }?>
 <div class="container">
     <div>
-        <a class="action" href="<?php echo url_for('/staff/new_item.php'); ?>">Add new item</a>
+        <a class="action" href="<?php echo url_for('/staff/items_new.php'); ?>">Add new item</a>
         <a class="action" href="<?php echo url_for('/staff/menu.php'); ?>">Alter menu item</a>
     </div>
     <table class="table table-responsive">
@@ -29,8 +29,8 @@ $data = get_all($db, 'item');
                 <td><?php echo $item['item_price'];?></td>
                 <td><?php echo $item['item_image'];?></td>
                 <td><?php echo $item['item_description'];?></td>
-                <td><a class="action" href="<?php echo url_for('/staff/edit_item.php?id=' . test_input($item['item_id'])); ?>">Edit</a></td>
-                <td><a class="action" href="<?php echo url_for('/staff/delete_item.php?id=' . test_input($item['item_id'])); ?>">Delete</a></td>
+                <td><a class="action" href="<?php echo url_for('/staff/items_edit.php?id=' . test_input($item['item_id'])); ?>">Edit</a></td>
+                <td><a class="action" href="<?php echo url_for('/staff/item_delete.php?id=' . test_input($item['item_id'])); ?>">Delete</a></td>
             </tr>
         <?php }?>
 
