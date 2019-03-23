@@ -36,7 +36,7 @@ if ($acc_type == "parent") {
                     </option>
                 <?php }?>
             </select>
-            <button type="submit">Choose</button>
+            <button class="button2" type="submit">Choose</button>
         </form>
     </div>
 
@@ -107,7 +107,7 @@ if (!isset($_SESSION["ordering_user_id"])) {
                 <div class="col-md-4 text-center">
 
                     Order Subtotal: £<label id="subTotal"><td><?php echo number_format($_SESSION['grand_total'], 2, '.', ' ');?></td></label><br>
-                    Tax (included): £<label id="tax"></label><?php $tax = $_SESSION['grand_total'] * 0.11111111111;
+                    Tax: £<label id="tax"></label><?php $tax = $_SESSION['grand_total'] * 0.11111111111;
                     echo number_format($tax, 2, '.', ' ');?><br>
                     Shipping: £1.00<br><br>
                     <b>Order Total: </b>£<label id="orderTotal"><?php echo number_format($_SESSION['grand_total'] + 1 , 2, '.', ' ') ;?></label>
