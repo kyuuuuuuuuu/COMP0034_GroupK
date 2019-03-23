@@ -4,6 +4,7 @@
     $user_id = $_SESSION['user_id'];
     $id_field = $_SESSION['id_field'];
     $data = get_data_by_email($db,$user_email);
+
     $not_log_in = false;
 }else {
     $not_log_in = true;

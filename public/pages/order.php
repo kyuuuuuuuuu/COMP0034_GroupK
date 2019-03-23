@@ -7,10 +7,16 @@ if ($not_log_in) {
     $welcome_message = "Welcome to our order page";
 }else {
     $welcome_message = "Welcome " . $data['first_name'] . " " . $data['last_name'] ."<br>Place your order";
-    if ($acc_type != "parent") {
+    if ($acc_type == "administrator") {
         $_SESSION["ordering_user_id"] = $user_id;
-        $_SESSION["ordering_id_field"] = $_SESSION["id_field"];
+        $_SESSION["ordering_id_field"] = $id_field;
         $_SESSION["ordering_user_email"] = $user_email;
+        $_SESSION["allowed_to_order"] = true;
+    }elseif ($acc_type == "student") {
+        $_SESSION["ordering_user_id"] = $user_id;
+        $_SESSION["ordering_id_field"] = $id_field;
+        $_SESSION["ordering_user_email"] = $user_email;
+        $_SESSION["allowed_to_order"] = check_student_verification_status ($db, $user_email);
     }
 
     $chosen_child_id = "";
@@ -20,6 +26,7 @@ if ($not_log_in) {
         $_SESSION["ordering_user_id"] = $children_info['student_id'];
         $_SESSION["ordering_user_email"] = $children_info['email_address'];
         $_SESSION["ordering_id_field"] = 'student_id';
+        $_SESSION["allowed_to_order"] = check_student_verification_status ($db, $children_info["email_address"]);
     }
 }
 ?>
@@ -48,12 +55,20 @@ if ($not_log_in) {
                         <button class="btn-light btn-outline-dark rounded" type="submit">Choose</button>
                     </form>
                     <p id="chosen_children">
-                        <?php if(isset($children_info)) {?><br>
-                            Your are ordering for <b><?php echo get_person_name($db, $chosen_child_id, 'student', 'student_id');?></b>
-                            <br>
-                            Delivered to <?php echo find_school_address($db, $children_info['email_address']);?>
+                        <?php if(isset($children_info)) {
+                            if ($_SESSION["allowed_to_order"]) {?>
+                                <br>
+                                Your are ordering for <b><?php echo get_person_name($db, $chosen_child_id, 'student', 'student_id');?></b>
+                                <br>
+                                Delivered to <?php echo find_school_address($db, $children_info['email_address']);?>
+                            <?php }else {?>
+                                <br>
+                                This child has <strong>not been verified</strong> by the school admin. You <u>won't</u> be able to place order for this one!
+                            <?php }?>
                         <?php }?>
                     </p>
+                <?php }elseif (!$_SESSION["allowed_to_order"]) {?>
+                    <br><p>Your account is <strong>not verified</strong>, you won't be able to place your order.</p>
                 <?php }else {?>
                 <br><p>Your order will be delivered to <?php echo find_school_address($db, $user_email);?></p>
                 <?php }?>
@@ -71,7 +86,7 @@ if ($not_log_in) {
             <div class="col-md-3"></div>
         </div>
         <hr><br><br><br>
-        <div id="menu_item" style="display: none" >
+        <div id="menu_item" class="display_none" >
             <div id="step2">
                 <h2> STEP 2: Choose items</h2>
                 <h4 class="redcolour">Click items for more information and to choose quantity</h4><br>

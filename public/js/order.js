@@ -163,7 +163,7 @@ function date_validation() {
     }
     if (checked) {
         var order_date = document.getElementById("menu_item");
-        order_date.style.display = "";
+        order_date.className = "display_block";
         location.href='#step2';
     }
     return checked;
