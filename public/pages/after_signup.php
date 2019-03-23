@@ -118,10 +118,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 break;
 
             case "student":
-                if (!check_email_admin($db, $reference)) {
-                    $all_correct = false;
-                    $error_message .= $reference . " is not a valid admin's email, please choose another one.<br>";
-                }
                 break;
 
             case "administrator":
