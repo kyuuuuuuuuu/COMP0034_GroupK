@@ -68,7 +68,7 @@ if ($not_log_in) {
                 <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(1)">Approve Students</button>
                 <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(2)">View Orders</button>
                 <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(3)">View Students' Orders</button>
-                <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(4)">Edit Account</button>
+                <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(4)">Change Password</button>
                 <br><br>
             </div>
 
@@ -222,7 +222,7 @@ if ($not_log_in) {
             <div name="my_account_tab" class="display_none">
                 <div class="tab-content">
                     <form name="change_password_form" method="post" action="change_password.php" onsubmit="return true;">
-                        <h1>Edit Account</h1>
+                        <h1>Change Password</h1>
                         <label>Email Address:</label>
                         <input name="user_email" type="email" class="form-control" placeholder="Enter your email"><br>
                         <label>Current Password:</label>
