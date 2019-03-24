@@ -229,6 +229,8 @@ if ($not_log_in) {
                         <input name="old_password" type="password" class="form-control" placeholder="Enter your current password"><br>
                         <label>New Password:</label>
                         <input name="new_password" type="password" class="form-control" placeholder="Enter your new password">
+                        <label>Confirm New Password:</label>
+                        <input name="new_password2" type="password" class="form-control" placeholder="Enter your new password">
                         <br>
                         <button type="submit" class="btn btn-secondary btn-block">Submit</button>
                         <br><br>
