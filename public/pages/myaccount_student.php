@@ -161,7 +161,7 @@ if ($not_log_in) {
                             <label>Current Password:</label>
                             <input name="old_password" type="password" class="form-control" placeholder="Enter your current password"><br>
                             <label>New Password:</label>
-                            <input name="new_password" type="password" class="form-control" placeholder="Enter your new password">
+                            <input name="new_password" type="password" class="form-control" placeholder="Enter your new password"><br>
                             <label>Confirm New Password:</label>
                             <input name="new_password2" type="password" class="form-control" placeholder="Enter your new password">
                             <br>
