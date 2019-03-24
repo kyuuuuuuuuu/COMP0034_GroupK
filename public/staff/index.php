@@ -55,8 +55,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["email_staff"])) {
         <h3>You have logged in successfully as a staff!</h3>
         <h5>As a staff you can:</h5>
         <li>Add, edit, delete items</li>
-        <li>Add, edit, delete menus</li>
-        <li>Add, edit, delete schools</li>
+        <li>Add, edit, hide menus</li>
+        <li>Add, edit schools</li>
     </div>
 
 <?php }require_once('staff_footer.php');?>
