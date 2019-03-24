@@ -47,7 +47,6 @@ if(!isset($_SESSION['customer_basket']) || $not_log_in){
 
 
 <?php
-    setcookie("customer_basket", $_SESSION['customer_basket']);
     unset($_SESSION['customer_basket']);
     unset($_SESSION['grand_total']);
     unset($_SESSION['ordering_id_field']);
