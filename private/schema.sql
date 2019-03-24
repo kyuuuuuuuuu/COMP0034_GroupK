@@ -13,7 +13,6 @@ USE dinnersdirect;
 CREATE TABLE school (
   school_id int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   school_password varchar(255) NOT NULL,
-  school_code varchar(3) NOT NULL,
   school_name varchar(100) NOT NULL,
   school_address varchar (265) NOT NULL,
   last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

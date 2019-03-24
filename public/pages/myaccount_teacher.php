@@ -75,14 +75,6 @@ if ($not_log_in) {
         </div>
         <hr class="sidebar-divider d-none d-md-block">
         <div class="col-lg-8">
-            <h3 class="text-danger">
-                <strong>
-                    <?php if(isset($_SESSION['message'])) {
-                        echo $_SESSION['message'];
-                        unset($_SESSION['message']);
-                    }?>
-                </strong>
-            </h3>
 
             <div name="my_account_tab" class="display_none">
                 <div class="tab-content">
@@ -123,7 +115,16 @@ if ($not_log_in) {
                 </div>
             </div>
 
-            <div name="my_account_tab" class="display_none">
+            <div name="my_account_tab" class="<?php if(isset($_SESSION['approve_message'])) {echo "display_block";}else {echo "display_none";}?>">
+                <h3 class="text-danger">
+                    <strong>
+                        <?php if(isset($_SESSION['approve_message'])) {
+                            echo $_SESSION['approve_message'];
+                            unset($_SESSION['approve_message']);
+                        }?>
+                    </strong>
+                </h3>
+
                 <h1>Approve Students</h1>
                 <div class="tab-content">
                     <table class="table table-striped">

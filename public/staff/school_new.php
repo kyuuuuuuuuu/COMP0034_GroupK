@@ -25,6 +25,13 @@
         }
 
         if ($allow_to_add) {
+            $query = "INSERT INTO school (school_password, school_name, school_address) VALUE ('$new_school_password', '$new_school_name', '$new_school_address')";
+            if (submit_query($db, $query)) {
+                $_SESSION['message'] = "New school is added successfully!";
+                redirect_to(url_for("/staff/school.php"));
+            }else {
+                error_500("SQL Query error!!!");
+            }
 
         }
     }

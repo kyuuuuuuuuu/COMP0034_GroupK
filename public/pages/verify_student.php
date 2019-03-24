@@ -7,7 +7,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $query = "UPDATE student SET status = '1' WHERE student_id = '$id_student'";
         echo $query;
         submit_query($db, $query);
-        $_SESSION['message'] = "Student is approved successfully!";
+        $_SESSION['approve_message'] = "Student is approved successfully!";
         to_myAccount($_SESSION['acc_type']);
     }
 }

@@ -3,10 +3,10 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
 USE dinnersdirect;
-INSERT INTO `school` (`school_id`,`school_name`, `school_password`, `school_code`, `school_address`, `last_update`) VALUES (NULL, 'UCL', 'UCL123', 'UCL', 'Gower St, Bloomsbury, London WC1E 6BT', CURRENT_TIMESTAMP);
-INSERT INTO `school` (`school_id`,`school_name`, `school_password`, `school_code`, `school_address`, `last_update`) VALUES (NULL, 'LSE', 'LSE123', 'LSE', 'Houghton St, London WC2A 2AE', CURRENT_TIMESTAMP);
-INSERT INTO `school` (`school_id`,`school_name`, `school_password`, `school_code`, `school_address`, `last_update`) VALUES (NULL, 'King', 'KCL123', 'KCL', 'Strand, London WC2R 2LS', CURRENT_TIMESTAMP);
-INSERT INTO `school` (`school_id`,`school_name`, `school_password`, `school_code`, `school_address`, `last_update`) VALUES (NULL, 'City', 'CUL123', 'CUL', 'Northampton Square, Clerkenwell, London EC1V 0HB', CURRENT_TIMESTAMP), (NULL, 'QMUL', 'QMUL123', 'QML', 'Mile End Rd, Bethnal Green, London E1 4NS', CURRENT_TIMESTAMP);
+INSERT INTO `school` (`school_id`,`school_name`, `school_password`, `school_address`, `last_update`) VALUES (NULL, 'UCL', 'UCL123', 'Gower St, Bloomsbury, London WC1E 6BT', CURRENT_TIMESTAMP);
+INSERT INTO `school` (`school_id`,`school_name`, `school_password`, `school_address`, `last_update`) VALUES (NULL, 'LSE', 'LSE123', 'Houghton St, London WC2A 2AE', CURRENT_TIMESTAMP);
+INSERT INTO `school` (`school_id`,`school_name`, `school_password`, `school_address`, `last_update`) VALUES (NULL, 'King', 'KCL123', 'Strand, London WC2R 2LS', CURRENT_TIMESTAMP);
+INSERT INTO `school` (`school_id`,`school_name`, `school_password`, `school_address`, `last_update`) VALUES (NULL, 'City', 'CUL123', 'Northampton Square, Clerkenwell, London EC1V 0HB', CURRENT_TIMESTAMP), (NULL, 'QMUL', 'QMUL123', 'Mile End Rd, Bethnal Green, London E1 4NS', CURRENT_TIMESTAMP);
 
 INSERT INTO `parent` (`parent_id`, `email_address`, `first_name`, `last_name`, `phone_number`, `password`, `status`, `last_update`) VALUES (NULL, 'aparent@gmail.com', 'Alexander', 'Abert', NULL, '$2y$10$pbFvfad.1F4WWutcoqecOO2TzM.SEy/5gFDihfJwigVZiOMPrcS7K', '0', CURRENT_TIMESTAMP);
 INSERT INTO `parent` (`parent_id`, `email_address`, `first_name`, `last_name`, `phone_number`, `password`, `status`, `last_update`) VALUES (NULL, 'bparent@gmail.com', 'Brenda', 'Barrack', NULL, '$2y$10$pbFvfad.1F4WWutcoqecOO2TzM.SEy/5gFDihfJwigVZiOMPrcS7K', '0', CURRENT_TIMESTAMP);

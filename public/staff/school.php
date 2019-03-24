@@ -7,6 +7,12 @@
 $list_of_school = get_all($db, 'school');?>
 
 <div class="container">
+    <h5 class="text-center text-danger">
+        <?php if(isset($_SESSION['message'])) {
+            echo $_SESSION['message'];
+            unset ($_SESSION['message']);
+        }?>
+    </h5>
     <div>
         <a class="action" href="<?php echo url_for('/staff/school_new.php'); ?>">Add new school</a>
     </div>
