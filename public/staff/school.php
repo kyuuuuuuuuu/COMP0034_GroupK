@@ -24,7 +24,7 @@ $list_of_school = get_all($db, 'school');?>
                 <td><?php echo $school['school_name'];?></td>
                 <td><?php echo $school['school_address'];?></td>
                 <td><?php echo $school['school_password'];?></td>
-                <td><a class="action" href="<?php echo url_for('/staff/school_edit.php?id=' . test_input($school['school_id'])); ?>">Edit</a></td>
+                <td><a class="action" href="<?php echo url_for('/staff/school_edit.php?school_id=' . test_input($school['school_id'])); ?>">Edit</a></td>
             </tr>
         <?php }?>
 
