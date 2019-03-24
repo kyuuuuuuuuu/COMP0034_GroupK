@@ -13,12 +13,10 @@ require_once('../../private/shared/pages_header.php');?>
 
     <div class="container">
         <?php if (isset($_COOKIE["user_email"])) {?>
-        <div name="log_in" class="display_block">
-            <h4>
-                Welcome back, <?= $_COOKIE["user_name"]?>
-            </h4>
-            <p>Let sign in now</p>
-            <button onclick="show_log_in(1)">Sign in</button>
+        <div name="log_in" class="display_block text-center"><br>
+            <h3>Welcome back, <?= $_COOKIE["user_name"]?></h3>
+            <h5>Let sign in now</h5><br>
+            <button class="button2" onclick="show_log_in(1)">Sign in</button>
         </div>
         <?php }?>
         <div name="log_in" class="<?php if(isset($_COOKIE["user_email"])) {echo "display_none";}?>">
