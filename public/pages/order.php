@@ -101,7 +101,8 @@ if ($not_log_in) {
                     <?php }?><br><br>
                 </div>
                 <div id="menu_set_la" class="col-md-9"> <!--This div is where the menu get printed by AJAX -->
-                    <p class="text-center">Please select a menu on the left-hand side.</p>
+<!--                    <h6 class="text-center">Please select a menu on the left-hand side.</h6>-->
+                    <?php require('menu_for_order.php');?>
                 </div>
             </div>
 
