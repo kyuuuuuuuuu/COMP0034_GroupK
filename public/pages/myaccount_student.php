@@ -154,17 +154,24 @@ if ($not_log_in) {
 
                 <div name="my_account_tab" class="display_none">
                     <div class="tab-content">
-                        <form name="change_password_form" method="post" action="change_password.php" onsubmit="return true;">
-                            <h1>Change Password</h1>
+                        <form name="change_password_form" method="post" action="change_password.php" onsubmit="return validate('Change');">
+                            <h1 class="text-center">Change Password</h1>
                             <label>Email Address:</label>
-                            <input name="user_email" type="email" class="form-control" placeholder="Enter your email"><br>
+                            <input name="user_email" id="emailChange" type="email" class="form-control" placeholder="Enter your email">
+                            <p class="text-danger" id="emailChange_error"></p><br>
+
                             <label>Current Password:</label>
-                            <input name="old_password" type="password" class="form-control" placeholder="Enter your current password"><br>
+                            <input name="old_password" id="oldPasswordChange" type="password" class="form-control" placeholder="Enter your current password">
+                            <p class="text-danger" id="oldPasswordChange_error"></p><br>
+
                             <label>New Password:</label>
-                            <input name="new_password" type="password" class="form-control" placeholder="Enter your new password"><br>
+                            <input name="new_password" id="passwordChange" type="password" class="form-control" placeholder="Enter your new password">
+                            <p class="text-danger" id="passwordChange_error"></p><br>
+
                             <label>Confirm New Password:</label>
-                            <input name="new_password2" type="password" class="form-control" placeholder="Enter your new password">
-                            <br>
+                            <input name="new_password2" id="password2Change" type="password" class="form-control" placeholder="Enter your new password">
+                            <p class="text-danger" id="password2Change_error"></p><br>
+
                             <button type="submit" class="btn btn-secondary btn-block">Submit</button>
                         </form>
                     </div>

@@ -102,6 +102,7 @@ function validate(type) {
         email: [required("Email is required"), emailFormat("You must enter a valid email address")],
         password: [required("Password is required"), pwStrength("Password must have at least 6 characters and contain at least 1 number, 1 lowercase, 1 uppercase")],
         password2: [required("Confirmation is required")],
+        oldPassword: [required("Password is required"), pwStrength("Password must have at least 6 characters and contain at least 1 number, 1 lowercase, 1 uppercase")],
         phone: [phoneUK("You must enter a valid UK mobile phone")],
         reference: [required("You must enter your reference")],
         schoolPassword: [required("You must enter the school password")],
@@ -146,14 +147,25 @@ function validate(type) {
         }
     }
 
-    if (values[fields[4]] !== "" && values[fields[4]] !== values[fields[3]]) {
-        let error_field = fields[4] + "_error";
-        document.getElementById(error_field).innerHTML = "Password confirmation need to be exactly same as Password";
-        verification = false;
+    let two_password_fields = ["password" + acc_type, "password2" + acc_type];
+
+    if (containsAll(two_password_fields,fields)) {
+        if (values["password" + acc_type] !== "" && values["password2" + acc_type] !== "" && values["password2" + acc_type] !== values["password" + acc_type]) {
+            let error_field = "password2" + acc_type + "_error";
+            document.getElementById(error_field).innerHTML = "Password confirmation need to be exactly same as Password";
+            verification = false;
+        }
     }
-
-
 
     return verification;
 }
 
+
+//Get from stack overflow to check if the haystack array include all values of needles array.
+// scr="https://stackoverflow.com/questions/9204283/how-to-check-whether-multiple-values-exist-within-an-javascript-array#comment46388832_9204298"
+function containsAll(needles, haystack){
+    for(var i = 0 , len = needles.length; i < len; i++){
+        if($.inArray(needles[i], haystack) == -1) return false;
+    }
+    return true;
+}
