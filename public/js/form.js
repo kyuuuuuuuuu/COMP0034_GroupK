@@ -10,6 +10,12 @@ function select_form(index) {
     hide_and_show(index, forms);
 }
 
+function show_log_in(index) {
+    let log_in = document.getElementsByName("log_in");
+
+    hide_and_show(index,log_in);
+}
+
 function hide_and_show(index, html_element) {
     for (let i = 0; i < html_element.length; i++) {
         if (i === index) {

@@ -32,7 +32,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['acc_type'] = $table_name;
             $_SESSION['id_field'] = $id_field;
             $_SESSION['user_id'] = $data[$id_field];
-
+            setcookie("user_email", $login_email);
+            setcookie("user_name", get_person_name($db, $login_email, $table_name, "email_address"));
             if (isset($_SESSION['customer_basket'])) {
                 redirect_to(url_for('/pages/order_summary.php')); //if ordering redirect to order summary
             }else {
