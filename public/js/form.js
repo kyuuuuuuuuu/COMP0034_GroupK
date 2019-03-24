@@ -26,6 +26,10 @@ function hide_and_show(index, html_element) {
     }
 }
 
+function redirect_to (url) {
+    window.location.href = url;
+}
+
 function validate(type) {
     let acc_type = type;
     let verification = true;

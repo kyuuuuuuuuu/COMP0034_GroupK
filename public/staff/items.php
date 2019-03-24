@@ -7,11 +7,14 @@
 require_once('staff_header.php');
 
 $data = get_all($db, 'item');
- if(isset($_SESSION['message'])) {
-    echo $_SESSION['message'];
-    unset ($_SESSION['message']);
-}?>
+ ?>
 <div class="container">
+    <h5 class="text-center text-danger">
+        <?php if(isset($_SESSION['message'])) {
+            echo $_SESSION['message'];
+            unset ($_SESSION['message']);
+        }?>
+    </h5>
     <div>
         <a class="action" href="<?php echo url_for('/staff/items_new.php'); ?>">Add new item</a>
         <a class="action" href="<?php echo url_for('/staff/menu.php'); ?>">Alter menu item</a>
@@ -33,8 +36,8 @@ $data = get_all($db, 'item');
                 <td><?php echo $item['item_price'];?></td>
                 <td><?php echo $item['item_image'];?></td>
                 <td><?php echo $item['item_description'];?></td>
-                <td><a class="action" href="<?php echo url_for('/staff/items_edit.php?id=' . test_input($item['item_id'])); ?>">Edit</a></td>
-                <td><a class="action" href="<?php echo url_for('/staff/item_delete.php?id=' . test_input($item['item_id'])); ?>">Delete</a></td>
+                <td><a class="action" href="<?php echo url_for('/staff/items_edit.php?item_id=' . test_input($item['item_id'])); ?>">Edit</a></td>
+                <td><a class="action" href="<?php echo url_for('/staff/items_delete.php?item_id=' . test_input($item['item_id'])); ?>">Delete</a></td>
             </tr>
         <?php }?>
 

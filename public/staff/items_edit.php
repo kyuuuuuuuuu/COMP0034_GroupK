@@ -6,7 +6,7 @@ if (!isset($_SESSION["staff_credential"])) {
 }else {
     require_once('staff_header.php');
 
-$item_id = $_GET['id'] ?? '1';
+$item_id = $_GET['item_id'] ?? '1';
 $item_data = get_data($db, $item_id, 'item', 'item_id');
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {

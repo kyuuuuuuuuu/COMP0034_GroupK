@@ -6,7 +6,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["email_staff"])) {
         $staff_username = test_input($_POST["email_staff"]);
         $staff_password = test_input($_POST["password_staff"]);
         if (check_staff_credential ($db, $staff_username, $staff_password)) {
-            $_SESSION["staff_credential"] = true;
+            $_SESSION["staff_credential"] = $staff_username;
         }else {
             $error_message = "Wrong username and password.";
         }
