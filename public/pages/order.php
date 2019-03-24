@@ -86,7 +86,7 @@ if ($not_log_in) {
             <div class="col-md-3"></div>
         </div>
         <hr><br><br><br>
-        <div id="menu_item" class="display_none" >
+        <div id="menu_item" class="display_none">
             <div id="step2">
                 <h2> STEP 2: Choose items</h2>
                 <h4 class="redcolour">Click items for more information and to choose quantity</h4><br>
@@ -101,7 +101,7 @@ if ($not_log_in) {
                     <?php }?><br><br>
                 </div>
                 <div id="menu_set_la" class="col-md-9"> <!--This div is where the menu get printed by AJAX -->
-                    <?php require('menu_for_order.php');?>
+                    <p class="text-center">Please select a menu on the left-hand side.</p>
                 </div>
             </div>
 

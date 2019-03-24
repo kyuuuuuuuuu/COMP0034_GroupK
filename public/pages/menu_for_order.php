@@ -1,14 +1,12 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['menu_id'])) {
     require_once($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php");
-    setcookie("chosen_menu", $_POST['menu_id']);
-} ?>
+ ?>
 
 <div class="row">
 
     <?php
-    $default_menu = $_COOKIE["chosen_menu"] ?? 1;
-    $menu_id = $_POST['menu_id'] ?? $default_menu;
+    $menu_id = $_POST['menu_id'];
     $menu = get_menu($db, $menu_id);
     for ($i = 0; $i < count($menu); $i++) { if ($i == 0) {echo '<div class="col-md-4 text-center">
                     <br><h3>MAIN</h3>';}elseif ($i == 3) {echo '<div class="col-md-4 text-center">
@@ -33,4 +31,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php if($i == 2 || $i == 5 || $i == 8) {echo '</div>';}else {echo '<br>';} }?>
 </div>
 
-<?php ?>
+<?php }?>
