@@ -60,7 +60,7 @@ if (!isset($_SESSION["staff_credential"])) {
             if (!$uploadOk) {
                 echo "Sorry, your file was not uploaded.";
                 $boolean = false;
-// if everything is ok, try to upload file
+                // if everything is ok, try to upload file
             } else {
                 if (move_uploaded_file($_FILES["item_image"]["tmp_name"], $target_file)) {
                     echo "The file ". basename( $_FILES["item_image"]["name"]). " has been uploaded.";
@@ -89,7 +89,7 @@ if (!isset($_SESSION["staff_credential"])) {
         <div class="text-danger">
             <p><?php echo $message ?? '';?></p>
         </div>
-        <form id="edit_item_form" method="post" action="" enctype="multipart/form-data">
+        <form id="new_item_form" method="post" action="" enctype="multipart/form-data">
             <div class="form-row">
                 <label class="col-md-3">Item name: </label>
                 <input  class="form-control col-md-8" name="item_name" type="text">
@@ -107,7 +107,7 @@ if (!isset($_SESSION["staff_credential"])) {
             <br>
             <div class="form-row">
                 <label class="col-md-3">Item image: </label>
-                <input col-md-8 name="item_image" type="file">
+                <input class="form-control col-md-8" name="item_image" type="file">
             </div>
             <br>
             <div class="form-row">

@@ -1,26 +1,25 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php");
 
-
-    if (!isset($_SESSION["staff_credential"])) {
+if (!isset($_SESSION["staff_credential"])) {
     redirect_to(url_for('/staff/index.php'));
 }else {
-        require_once('../staff_header.php');
-        if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["password_staff"])) {
-            if (check_staff_credential ($db, $_SESSION["staff_credential"], $_POST["password_staff"])) {
-                $item_id = $_GET["item_id"];
-                $delete_query = "DELETE FROM item WHERE item_id = '$item_id'";
-                if (submit_query($db, $delete_query)) {
-                    $_SESSION['message'] = "Successfully delete item with ID: " . $_GET["item_id"];
-                    redirect_to(url_for('/staff/item/index.php'));
-                }else {
-                    error_500("Delete Query fails!!!");
-                }
-
-            }else {
-                $_SESSION['message'] = "Wrong password.";
+    require_once('../staff_header.php');
+    if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["password_staff"])) {
+        if (check_staff_credential ($db, $_SESSION["staff_credential"], $_POST["password_staff"])) {
+            $item_id = $_GET["item_id"];
+            $delete_query = "DELETE FROM item WHERE item_id = '$item_id'";
+            if (submit_query($db, $delete_query)) {
+                $_SESSION['message'] = "Successfully delete item with ID: " . $_GET["item_id"];
                 redirect_to(url_for('/staff/item/index.php'));
+            }else {
+                error_500("Delete Query fails!!!");
             }
+
+        }else {
+            $_SESSION['message'] = "Wrong password.";
+            redirect_to(url_for('/staff/item/index.php'));
         }
+    }
 
     if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["item_id"])){
         $item_id = test_input($_GET["item_id"]);
@@ -40,42 +39,42 @@
                 }
             }
         }
-    if ($allow_to_delete && $item_info) {
-        ?>
-        <div class="container">
-            <form method="post" action="" onsubmit="return validate('Staff');">
-                <h3 class="text-center">Enter your password to confirm the action</h3><br>
-                <h4 class="text-center text-danger">You are deleting <u><?= $item_info["item_name"]?></u></h4><br>
+        if ($allow_to_delete && $item_info) {
+            ?>
+            <div class="container">
+                <form method="post" action="" onsubmit="return validate('Staff');">
+                    <h3 class="text-center">Enter your password to confirm the action</h3><br>
+                    <h4 class="text-center text-danger">You are deleting <u><?= $item_info["item_name"]?></u></h4><br>
 
-                <div class="form-row">
-                    <div class="form-group col-md-2"></div>
-                    <div class="form-group col-md-8">
-                        <label>Password*</label>
-                        <input id="passwordStaff" name="password_staff" type="password" class="form-control" placeholder="Password" value="">
-                        <p class="text-danger" id="passwordStaff_error"></p>
+                    <div class="form-row">
+                        <div class="form-group col-md-2"></div>
+                        <div class="form-group col-md-8">
+                            <label>Password*</label>
+                            <input id="passwordStaff" name="password_staff" type="password" class="form-control" placeholder="Password" value="">
+                            <p class="text-danger" id="passwordStaff_error"></p>
+                        </div>
+                        <div class="form-group col-md-2"></div>
                     </div>
-                    <div class="form-group col-md-2"></div>
-                </div>
 
-                <div class="form-row">
-                    <div class="form-group col-md-2"></div>
-                    <div class="form-group col-md-8">
-                        <button class="btn-block button2" type="submit">Confirm to delete</button>
-                    </div>
-                    <div class="form-group col-md-2"></div>
-                </div><br>
-            </form>
-        </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-2"></div>
+                        <div class="form-group col-md-8">
+                            <button class="btn-block button2" type="submit">Confirm to delete</button>
+                        </div>
+                        <div class="form-group col-md-2"></div>
+                    </div><br>
+                </form>
+            </div>
 
-<?php }else { ?>
-        <div class="container text-center">
+        <?php }else { ?>
+            <div class="container text-center">
 
                 <h3>You are not allow to delete this item<br>
-                You have to remove it from the menu first!
+                    You have to remove it from the menu first!
                 </h3><br>
                 <h4 class="text-danger">You are deleting item with ID:<u><?= $_GET["item_id"]?></u></h4>
-            <a class="action" href="<?php echo url_for('/staff/item/index.php'); ?>">Go back to item list!</a>
-        </div>
-    <?php } }
-        require_once('../staff_footer.php');
-    }?>
+                <a class="action" href="<?php echo url_for('/staff/item/index.php'); ?>">Go back to item list!</a>
+            </div>
+        <?php } }
+    require_once('../staff_footer.php');
+}?>
