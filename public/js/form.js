@@ -121,7 +121,6 @@ function validate(type) {
         let field_id = schema_fields[f] + acc_type;
         let DOM = document.getElementById(field_id);
         if (DOM) {  //Check if there is and element with that ID exists.
-            console.log("exists " + field_id);
             fields.push(field_id);
             exist_schema_field.push(schema_fields[f])
         }

@@ -36,7 +36,6 @@ var basket = [];
 var GrandTotal;
 
 function addProduct(modalId) {
-    console.log("run " + modalId);
     let image_src = document.getElementsByName("item_image")[modalId].src;
     let name = document.getElementsByName("item")[modalId].getAttribute("value");
     let price = document.getElementsByName("price")[modalId].getAttribute("value");

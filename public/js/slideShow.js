@@ -1,4 +1,4 @@
-var slideIndex = 1;
+let slideIndex = 1;
 
 showSlides(slideIndex);
 
@@ -17,7 +17,6 @@ function showSlides(n) {
 
 
     if (slides[0] || dots[0]) {
-        console.log(slides);
         if (n > slides.length) {slideIndex = 1}
         if (n < 1) {slideIndex = slides.length}
         for (i = 0; i < slides.length; i++) {
