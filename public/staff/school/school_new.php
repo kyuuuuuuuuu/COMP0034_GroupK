@@ -28,7 +28,7 @@
             $query = "INSERT INTO school (school_password, school_name, school_address) VALUE ('$new_school_password', '$new_school_name', '$new_school_address')";
             if (submit_query($db, $query)) {
                 $_SESSION['message'] = "New school is added successfully!";
-                redirect_to(url_for("/staff/school.php"));
+                redirect_to(url_for("/staff/school/index.php"));
             }else {
                 error_500("SQL Query error!!!");
             }
@@ -37,7 +37,7 @@
     }
 
 
-    require_once('staff_header.php'); ?>
+    require_once('../staff_header.php'); ?>
     <div class="container text-center">
         <header><strong>New School</strong></header>
         <div class="text-danger">
@@ -70,4 +70,4 @@
 
 
 
-<?php require_once('staff_footer.php');}?>
+<?php require_once('../staff_footer.php');}?>

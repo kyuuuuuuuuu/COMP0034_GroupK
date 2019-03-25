@@ -17,10 +17,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = test_input($_POST["email"]);
         if (check_email($db, $email)) {
             $all_correct = false;
-//            echo $email . " is existed, please choose another one.<br>";
             $error_message .= $email . " is existed, please choose another one.<br>";
         }
-        $checked++;
     };
 
     //validate User input for Last Name
@@ -32,7 +30,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $all_correct = false;
     } else {
         $lname = test_input($_POST["last_name"]);
-        $checked++;
     };
 
     //validate User input for First Name
@@ -181,7 +178,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['credential'] = $email;
             $_SESSION['acc_type'] = $acc_type;
             if (isset($_SESSION['customer_basket'])) {
-                redirect_to(url_for('/pages/order_summary.php'));
+                redirect_to(url_for('/pages/order/order_summary.php'));
             }else {
                 to_myAccount($acc_type);
             }
@@ -191,91 +188,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         //Redirect back to sign up and show error
         $_SESSION['POST'] = $_POST; //Store to post in session to echo back into the form so the user doesn't have to enter some fields again
         $_SESSION['error'] = $error_message; //store the error message in session to echo out after redirecting
-        redirect_to(url_for('pages/signup.php')); //redirect to sign up
+        redirect_to(url_for('pages/sign_up/index.php')); //redirect to sign up
     }
 
-//    if ($checked = 6) {
-////        echo "You have registered successfully <br>";
-////        $pw = password_hash($user_pw, PASSWORD_BCRYPT);
-////
-////
-////        echo $email . " is your email<br>" .
-////            $fname . " is your first name<br>" .$lname . " is your last name<br>" .
-////            $user_pw . " is your password<br>" . $pw2 . " is your password confirmation<br>" .
-////            $school . " is your school<br>" .  $phone . " is your phone number<br>" .
-////            $acc_type . " is your account type<br>" . $pw . " is the encrypted password<br>";
-////
-////        if (mysqli_connect_errno())
-////        {
-////            echo "Failed to connect to MySQL: " . mysqli_connect_error();
-////        } elseif ($acc_type == 'parent') {
-////            echo "Dinnersdirect data base is successfully connected";
-////            $query = "INSERT INTO $acc_type (first_name, last_name, email_address, phone_number, password) "
-////                ."VALUES ('$fname', '$lname', '$email', '$phone', '$pw')";
-////            submit_query($db, $query);
-////            $data_parent = get_data($db,$email,'parent','email_address');
-////            $data_student = get_data($db,$reference,'student','email_address');
-////
-////            if ($data_parent == 'Not Found' || $data_student == 'Not Found') {
-////                echo "<br>Error occurs, Data not found!! <strong>You need to import schema.sql and data.sql to your database!!!</strong><br>";
-////                exit;
-////            }
-////            $id_s = $data_student['student_id'];
-////            $id_p = $data_parent['parent_id'];
-////            $query_id_link = "INSERT INTO student_parent (student_id, parent_id) VALUES ('$id_s', '$id_p')";
-////            submit_query($db, $query_id_link);
-////            $_SESSION['id_field'] = 'parent_id';
-////            $_SESSION['user_id'] = $id_p;
-////        }elseif ($acc_type == 'student') {
-////            echo "Dinnersdirect data base is successfully connected";
-////            $query = "INSERT INTO $acc_type (first_name, last_name, email_address, phone_number, password) "
-////                ."VALUES ('$fname', '$lname', '$email', '$phone', '$pw')";
-////            submit_query($db, $query);
-////            $data_admin = get_data($db,$reference,'administrator','email_address');
-////            $data_student = get_data($db,$email,'student','email_address');
-////
-////            if ($data_admin == 'Not Found' || $data_student == 'Not Found') {
-////                echo "<br>Error occurs, Data not found!! <strong>You need to import schema.sql and data.sql to your database!!!</strong><br>";
-////                exit;
-////            }
-////            $id_s = $data_student['student_id'];
-////            $id_a = $data_admin['admin_id'];
-////            $query_id_link = "INSERT INTO admin_student (student_id, admin_id) VALUES ('$id_s', '$id_a')";
-////            submit_query($db, $query_id_link);
-////            $_SESSION['id_field'] = 'student_id';
-////            $_SESSION['user_id'] = $id_s;
-////
-////        }elseif ($acc_type == 'administrator') {
-////            echo "Dinnersdirect data base is successfully connected";
-////            $query = "INSERT INTO $acc_type (first_name, last_name, email_address, phone_number, password) "
-////                ."VALUES ('$fname', '$lname', '$email', '$phone', '$pw')";
-////            submit_query($db, $query);
-////            $data_school = get_data($db,$reference,'school','school_name');
-////
-////            if ($data_school == 'Not Found') {
-////                echo "<br>Error occurs, Data not found!! <strong>You need to import schema.sql and data.sql to your database!!!</strong><br>";
-////                exit;
-////            }
-////            $id_s = $data_school['school_id'];
-////            $id_a = $data_admin['admin_id'];
-////            $query_id_link = "INSERT INTO school_admin (admin_id, school_id) VALUES ('$id_a', '$id_s')";
-////            submit_query($db, $query_id_link);
-////            $_SESSION['id_field'] = 'admin_id';
-////            $_SESSION['user_id'] = $id_a;
-////        }else {
-////            echo "unknown";
-////
-////        }
-////        $_SESSION['credential'] = $email;
-////        $_SESSION['acc_type'] = $acc_type;
-////        if (isset($_SESSION['customer_basket'])) {
-////            redirect_to(url_for('/pages/order_summary.php'));
-////        }else {
-////            to_myAccount($acc_type);
-////        }
-////
-////
-////    }
 };
 
 ?>

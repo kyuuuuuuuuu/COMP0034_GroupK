@@ -1,10 +1,10 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
-<?php require_once('check_log_in_status.php');
+<?php require_once('../check_log_in_status.php');
 $page_title = "Student Account";
-require_once('../../private/shared/pages_header.php');
+require_once('../../../private/shared/pages_header.php');
 if ($not_log_in) {
-    redirect_to(url_for('/pages/myaccount.php'));
+    redirect_to(url_for('/pages/my_account/index.php'));
 }else {
     $data = get_data($db, $user_email, "student", "email_address");
     $student_orders = get_order_of_student($db, $user_id);
@@ -25,7 +25,7 @@ if ($not_log_in) {
         <div class="col-md-1"></div>
         <div class="col-md-4">
 
-            <img class="profile rounded-circle" src="../img/kien.jpg"><br><br>
+            <img class="profile rounded-circle" src="../../img/kien.jpg"><br><br>
            <h2><?php echo $data['first_name'] . " " . $data['last_name'];?> </h2>
 <!--            <div class="name"><small>Trung Kien Nguyen</small></div><br><br>-->
         </div>
@@ -145,15 +145,23 @@ if ($not_log_in) {
                             }
                             ?>
                             <?php }else {?>
-                            <p>You have not placed any order yet! <br>Click <a href="order.php">here</a> to make an order.</p>
+                            <p>You have not placed any order yet! <br>Click <a href="../order/index.php">here</a> to make an order.</p>
                             <?php }?>
 
                         </div>
                     </div>
                 </div>
 
-                <div name="my_account_tab" class="display_none">
+                <div name="my_account_tab" class="<?php if(isset($_SESSION['pw_message'])) {echo "display_block";}else {echo "display_none";}?>">
                     <div class="tab-content">
+                        <h4 class="text-danger">
+                            <strong>
+                                <?php if(isset($_SESSION['pw_message'])) {
+                                    echo $_SESSION['pw_message'];
+                                    unset($_SESSION['pw_message']);
+                                }?>
+                            </strong>
+                        </h4>
                         <form name="change_password_form" method="post" action="change_password.php" onsubmit="return validate('Change');">
                             <h1 class="text-center">Change Password</h1>
                             <label>Email Address:</label>
@@ -184,5 +192,5 @@ if ($not_log_in) {
 
 </div>
 </body>
-<?php require_once('../../private/shared/pages_footer.php');?>
+<?php require_once('../../../private/shared/pages_footer.php');?>
 

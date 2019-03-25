@@ -1,8 +1,8 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
-<?php require_once ('check_log_in_status.php');
+<?php require_once('../check_log_in_status.php');
 $page_title = "DinnersDirect-Sign up";
-require_once('../../private/shared/pages_header.php');
+require_once('../../../private/shared/pages_header.php');
 $list_of_school = get_all($db, 'school');
 ?>
 
@@ -13,12 +13,12 @@ $list_of_school = get_all($db, 'school');
     <div class="text-center">
         <?php if(!$not_log_in) {?>
             <br><h4>
-                You have already logged in. Go to your account <a href="myaccount.php">here.</a>
+                You have already logged in. Go to your account <a href="../my_account/index.php">here.</a>
         </h4><br></div>
         <?php }else {?>
     <br><h4>
         Let's set up your account. Already have one? Log in
-        <a href="login.php">here.</a>
+        <a href="../log_in/index.php">here.</a>
     </h4><br>
     <h3 class="text-danger">
         <strong>
@@ -208,6 +208,6 @@ $list_of_school = get_all($db, 'school');
 
 
 <?php unset($_SESSION['POST']);
-require_once('../../private/shared/pages_footer.php');?>
+require_once('../../../private/shared/pages_footer.php');?>
 
 

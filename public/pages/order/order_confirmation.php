@@ -1,8 +1,8 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
-<?php require_once ('check_log_in_status.php');
+<?php require_once('../check_log_in_status.php');
 if(!isset($_SESSION['customer_basket']) || $not_log_in){
-    redirect_to(url_for('/pages/order.php'));
+    redirect_to(url_for('/pages/order/index.php'));
 }else {
     $shipping_fee = 1;
     $basket = $_SESSION['customer_basket'];
@@ -32,7 +32,7 @@ if(!isset($_SESSION['customer_basket']) || $not_log_in){
         error_500('There is an internal problem');
     }
     $page_title = "Order Confirmation";
-    require_once('../../private/shared/pages_header.php');
+    require_once('../../../private/shared/pages_header.php');
     ?>
     <br><br>
     <div class="container">
@@ -40,7 +40,7 @@ if(!isset($_SESSION['customer_basket']) || $not_log_in){
             <h1>Confirmation</h1>
             <h4>Thank you for ordering.</h4>
             <h4>Your order will be delivered on <u><?php echo $delivery_date;?></u>.</h4><br>
-            <img alt="confirmation"  src="../img/confirmation.jpg" id="confirmation">
+            <img alt="confirmation" src="../../img/confirmation.jpg" id="confirmation">
         </div>
     </div>
     <br><br><br>
@@ -52,4 +52,4 @@ if(!isset($_SESSION['customer_basket']) || $not_log_in){
     unset($_SESSION['ordering_id_field']);
     unset($_SESSION['ordering_user_id']);
 }?>
-<?php require_once('../../private/shared/pages_footer.php');?>
+<?php require_once('../../../private/shared/pages_footer.php');?>

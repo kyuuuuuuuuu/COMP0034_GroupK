@@ -1,13 +1,13 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
-<?php require_once ('check_log_in_status.php');
+<?php require_once('../check_log_in_status.php');
 $page_title = "Order Summary";
-require_once('../../private/shared/pages_header.php');
+require_once('../../../private/shared/pages_header.php');
 $show_summary = false;
 if ($not_log_in) {
-    redirect_to(url_for("/pages/login.php"));
+    redirect_to(url_for("/pages/log_in/index.php"));
 }elseif (!isset($_SESSION['customer_basket'])) {
-    redirect_to(url_for("/pages/order.php"));
+    redirect_to(url_for("/pages/order/index.php"));
 }else {
     $show_summary = true;
 }
@@ -44,7 +44,7 @@ if (!isset($_SESSION["ordering_user_id"])) {
     </div>
 <?php
 if ($acc_type == "parent") {
-    require ('get_children_info.php');?>
+    require('../get_children_info.php');?>
     <div class="text-center">
         <form method="post">
             <br><label for="choose_children">Choose the child that you are ordering for.</label>
@@ -124,7 +124,7 @@ if (isset($_SESSION["allowed_to_order"])) {
                     Shipping: £1.00<br><br>
                     <b>Order Total: </b>£<label id="orderTotal"><?php echo number_format($_SESSION['grand_total'] + 1 , 2, '.', ' ') ;?></label>
                     <br><br>
-                    <a href="order.php"><button class="button1 rounded">Back</button></a>
+                    <a href="index.php"><button class="button1 rounded">Back</button></a>
                     <a href="order_confirmation.php"><button class="button1 rounded">Place Order</button></a>
                 </div>
             </div>
@@ -135,4 +135,4 @@ if (isset($_SESSION["allowed_to_order"])) {
     <?php }else {?>
         <br><h5 class="text-center"> <?= get_person_name($db, $_SESSION["ordering_user_email"], 'student', 'email_address')?> is <strong>not verified</strong>, therefore, not allowed to place the order. Contact the school admin for verification.</h5>
     <?php } }
-require_once('../../private/shared/pages_footer.php');?>
+require_once('../../../private/shared/pages_footer.php');?>

@@ -13,7 +13,7 @@ if (isset($_POST['hide_menu'])) {
 }
 ?>
 
-<?php require_once('staff_header.php');
+<?php require_once('../staff_header.php');
 
 $data = get_all($db, 'list_of_menus');
 if(isset($_SESSION['message'])) {
@@ -22,7 +22,7 @@ if(isset($_SESSION['message'])) {
 }?>
     <div class="container">
         <div>
-            <a class="action" href="<?php echo url_for('/staff/menu_new.php'); ?>">Add new menu</a>
+            <a class="action" href="<?php echo url_for('/staff/menu/menu_new.php'); ?>">Add new menu</a>
         </div>
         <div class="col-md-12 text-center">
             <table class="table table-responsive">
@@ -39,7 +39,7 @@ if(isset($_SESSION['message'])) {
                         <td><?php echo $menu['menu_id'];?></td>
                         <td><?php echo $menu['menu_name'];?></td>
                         <td><?php echo $menu['menu_description'];?></td>
-                        <td><a class="action" href="<?php echo url_for('/staff/menu_edit.php?id=' . test_input($menu['menu_id'])); ?>">Edit</td>
+                        <td><a class="action" href="<?php echo url_for('/staff/menu/menu_edit.php?id=' . test_input($menu['menu_id'])); ?>">Edit</td>
                         <?php if ($menu['visibility'] == 1) {?>
                             <td>Visible</td>
                             <td>
@@ -62,4 +62,4 @@ if(isset($_SESSION['message'])) {
         </div>
 
     </div>
-<?php require_once('staff_footer.php'); }
+<?php require_once('../staff_footer.php'); }

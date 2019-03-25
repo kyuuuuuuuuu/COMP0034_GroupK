@@ -3,7 +3,8 @@
 <?php
 if (!isset($_SESSION["staff_credential"])) {
     redirect_to(url_for('/staff/index.php'));
-}else {require_once('staff_header.php');
+}else {
+    require_once('../staff_header.php');
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         $new_item_name = NULL;
@@ -76,7 +77,7 @@ if (!isset($_SESSION["staff_credential"])) {
             $query = "INSERT INTO item (item_image, item_name, item_price, item_description) " .
                 "VALUES ('$new_item_image', '$new_item_name', '$new_item_price', '$new_item_desc')";
             submit_query($db,$query);
-            redirect_to(url_for('/staff/items.php'));
+            redirect_to(url_for('/staff/item/index.php'));
         }else {
             $message .= "New item is not added";
         }
@@ -116,4 +117,4 @@ if (!isset($_SESSION["staff_credential"])) {
 
 
     </div>
-    <?php require_once('staff_footer.php'); }?>
+    <?php require_once('../staff_footer.php'); }?>

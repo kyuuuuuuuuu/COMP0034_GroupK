@@ -3,8 +3,7 @@
 <?php if (!isset($_SESSION["staff_credential"])) {
     redirect_to(url_for('/staff/index.php'));
 }else {
-
-require_once('staff_header.php');
+    require_once('../staff_header.php');
 
 $data = get_all($db, 'item');
  ?>
@@ -16,8 +15,8 @@ $data = get_all($db, 'item');
         }?>
     </h5>
     <div>
-        <a class="action" href="<?php echo url_for('/staff/items_new.php'); ?>">Add new item</a>
-        <a class="action" href="<?php echo url_for('/staff/menu.php'); ?>">Alter menu item</a>
+        <a class="action" href="<?php echo url_for('/staff//item/items_new.php'); ?>">Add new item</a>
+        <a class="action" href="<?php echo url_for('/staff/menu/index.php'); ?>">Alter menu item</a>
     </div>
     <table class="table table-responsive">
         <tr>
@@ -36,11 +35,11 @@ $data = get_all($db, 'item');
                 <td><?php echo $item['item_price'];?></td>
                 <td><?php echo $item['item_image'];?></td>
                 <td><?php echo $item['item_description'];?></td>
-                <td><a class="action" href="<?php echo url_for('/staff/items_edit.php?item_id=' . test_input($item['item_id'])); ?>">Edit</a></td>
-                <td><a class="action" href="<?php echo url_for('/staff/items_delete.php?item_id=' . test_input($item['item_id'])); ?>">Delete</a></td>
+                <td><a class="action" href="<?php echo url_for('/staff/item/items_edit.php?item_id=' . test_input($item['item_id'])); ?>">Edit</a></td>
+                <td><a class="action" href="<?php echo url_for('/staff/item/items_delete.php?item_id=' . test_input($item['item_id'])); ?>">Delete</a></td>
             </tr>
         <?php }?>
 
     </table>
 </div>
-<?php require_once('staff_footer.php'); }
+<?php require_once('../staff_footer.php'); }

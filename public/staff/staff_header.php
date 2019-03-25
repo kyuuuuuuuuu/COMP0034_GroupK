@@ -17,11 +17,11 @@
 
     <!-- Logo image attached to Nav Bar -->
     <a href="<?php echo url_for('/pages/index.php'); ?>" class="a">
-        <img src="../../public/img/logo.jpg" alt="DinnersDirect Logo" height="100" />
+        <img src="<?php echo url_for('/img/logo.jpg'); ?>" alt="DinnersDirect Logo" height="100" />
     </a>
-    <a href="<?php echo url_for('/staff/items.php'); ?>">Items</a>
-    <a href="<?php echo url_for('/staff/menu.php'); ?>">Menu</a>
-    <a href="<?php echo url_for('/staff/school.php'); ?>">School</a>
+    <a href="<?php echo url_for('/staff/item/index.php'); ?>">Items</a>
+    <a href="<?php echo url_for('/staff/menu/index.php'); ?>">Menu</a>
+    <a href="<?php echo url_for('/staff/school/index.php'); ?>">School</a>
     <a href="<?php echo url_for('/staff/staff_log_out.php'); ?>">Log out</a>
 </div>
 

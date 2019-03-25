@@ -4,7 +4,7 @@
 <?php if (!isset($_SESSION["staff_credential"])) {
     redirect_to(url_for('/staff/index.php'));
 }else {
-    require_once('staff_header.php');
+    require_once('../staff_header.php');
     if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
         $message = "";
         $edited = false;
@@ -54,7 +54,7 @@
         }else {
             $_SESSION["message"] = "There is no change saved!";
         }
-        redirect_to(url_for('/staff/school.php'));
+        redirect_to(url_for('/staff/school/index.php'));
 
     }
 
@@ -98,4 +98,5 @@
 
 
 
-<?php }require_once('staff_footer.php');}?>
+<?php }
+    require_once('../staff_footer.php');}?>

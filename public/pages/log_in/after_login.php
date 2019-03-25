@@ -13,7 +13,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!check_email($db,$login_email)) {
         $_SESSION['error'] = "Email does not exist";
-        redirect_to(url_for('/pages/login.php')); //wrong email redirect back to log in
+        redirect_to(url_for('/pages/log_in/index.php')); //wrong email redirect back to log in
     }elseif (check_email_admin($db,$login_email)) {
         $table_name = "administrator";
         $id_field = "admin_id";
@@ -35,13 +35,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             setcookie("user_email", $login_email);
             setcookie("user_name", get_person_name($db, $login_email, $table_name, "email_address"));
             if (isset($_SESSION['customer_basket'])) {
-                redirect_to(url_for('/pages/order_summary.php')); //if ordering redirect to order summary
+                redirect_to(url_for('/pages/order/order_summary.php')); //if ordering redirect to order summary
             }else {
                 to_myAccount($table_name); //redirect to correct my account page
             }
         }else {
             $_SESSION['error'] = "Your Password is wrong";
-            redirect_to(url_for('/pages/login.php')); // wrong password redirect to sign in
+            redirect_to(url_for('/pages/log_in/index.php')); // wrong password redirect to sign in
         }
     }
 

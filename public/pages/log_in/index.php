@@ -1,11 +1,11 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
-<?php require_once('check_log_in_status.php');
+<?php require_once('../check_log_in_status.php');
 if (!$not_log_in) {
     to_myAccount($acc_type);
 }
 $page_title = "DinnersDirect-Log in";
-require_once('../../private/shared/pages_header.php');?>
+require_once('../../../private/shared/pages_header.php');?>
 
     <div class="card-header text-center">
         <h1>Welcome to DinnersDirect</h1>
@@ -23,7 +23,7 @@ require_once('../../private/shared/pages_header.php');?>
             <div class="text-center">
                 <br><h4>
                     Not a member? Sign up
-                    <a href="signup.php">here.</a><br>
+                    <a href="../sign_up/index.php">here.</a><br>
                 </h4>
                 <h5 class="text-danger">
                     <strong>
@@ -75,4 +75,4 @@ require_once('../../private/shared/pages_header.php');?>
     </div>
 
 
-<?php require_once('../../private/shared/pages_footer.php');?>
+<?php require_once('../../../private/shared/pages_footer.php');?>

@@ -1,13 +1,12 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
-<?php require_once('../../private/shared/pages_header.php');
+<?php
 if (isset($_SESSION['credential'])) {
     $user_email = $_SESSION['credential'];
-    $acc_type = $_SESSION['$acc_type'];
+    $acc_type = $_SESSION['acc_type'];
     $data = get_data($db,$user_email, $acc_type,"email_address");
 }else {
-//    $data = array("email_address"=>"default@email.com", "first_name"=>"default_fn", "last_name"=>"default_ln");
-    redirect_to(url_for('/pages/myaccount.php'));
+    redirect_to(url_for('/pages/my_account/index.php'));
 }
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -43,16 +42,38 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $new_pw = test_input($_POST["new_password"]);
     };
 
+    if(empty($_POST["new_password2"])) {
+        $new_pw2_empty = "You new password is required<br>";
+        $error_message = $error_message . $new_pw2_empty;
+        $error = true;
+    } else{
+        $new_pw2 = test_input($_POST["new_password2"]);
+    };
+
+    if($new_pw2 != $new_pw && !empty($new_pw)) {
+        $mismatch_error = "Your confirm password need to be the same as you new password";
+        $error_message = $error_message . $new_pw2_empty;
+        $error = true;
+    }
+
+    if($_POST["old_password"] == $new_pw && !empty($new_pw)) {
+        $self_plagiarism = "Your new password need to be different to your old one!";
+        $error_message = $error_message . $self_plagiarism;
+        $error = true;
+    }
+
     if ($error) {
-        $_SESSION['message'] = $error_message;
+        $_SESSION['pw_message'] = $error_message;
         to_myAccount($acc_type);
     }else {
         $new_pw_hash = password_hash($new_pw, PASSWORD_BCRYPT);
         $query = "UPDATE $acc_type SET password = '$new_pw_hash' WHERE email_address = '$user_email'";
         echo $query;
-        submit_query($db, $query);
+        if (submit_query($db, $query)) {
+            to_myAccount($acc_type);
+        }else {
+            error_500("Internal Server Error!!!");
+        }
     }
 }
 ?>
-
-<?php require_once('../../private/shared/pages_footer.php');?>

@@ -3,7 +3,8 @@
 
 <?php if (!isset($_SESSION["staff_credential"])) {
     redirect_to(url_for('/staff/index.php'));
-}else {require_once('staff_header.php');
+}else {
+    require_once('../staff_header.php');
 $list_of_school = get_all($db, 'school');?>
 
 <div class="container">
@@ -14,7 +15,7 @@ $list_of_school = get_all($db, 'school');?>
         }?>
     </h5>
     <div>
-        <a class="action" href="<?php echo url_for('/staff/school_new.php'); ?>">Add new school</a>
+        <a class="action" href="<?php echo url_for('/staff/school/school_new.php'); ?>">Add new school</a>
     </div>
     <table class="table table-responsive">
         <tr>
@@ -30,10 +31,10 @@ $list_of_school = get_all($db, 'school');?>
                 <td><?php echo $school['school_name'];?></td>
                 <td><?php echo $school['school_address'];?></td>
                 <td><?php echo $school['school_password'];?></td>
-                <td><a class="action" href="<?php echo url_for('/staff/school_edit.php?school_id=' . test_input($school['school_id'])); ?>">Edit</a></td>
+                <td><a class="action" href="<?php echo url_for('/staff/school/school_edit.php?school_id=' . test_input($school['school_id'])); ?>">Edit</a></td>
             </tr>
         <?php }?>
 
     </table>
 </div>
-<?php require_once('staff_footer.php');}
+<?php require_once('../staff_footer.php');}

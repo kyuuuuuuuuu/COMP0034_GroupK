@@ -4,21 +4,21 @@
     if (!isset($_SESSION["staff_credential"])) {
     redirect_to(url_for('/staff/index.php'));
 }else {
-        require_once('staff_header.php');
+        require_once('../staff_header.php');
         if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["password_staff"])) {
             if (check_staff_credential ($db, $_SESSION["staff_credential"], $_POST["password_staff"])) {
                 $item_id = $_GET["item_id"];
                 $delete_query = "DELETE FROM item WHERE item_id = '$item_id'";
                 if (submit_query($db, $delete_query)) {
                     $_SESSION['message'] = "Successfully delete item with ID: " . $_GET["item_id"];
-                    redirect_to(url_for('/staff/items.php'));
+                    redirect_to(url_for('/staff/item/index.php'));
                 }else {
                     error_500("Delete Query fails!!!");
                 }
 
             }else {
                 $_SESSION['message'] = "Wrong password.";
-                redirect_to(url_for('/staff/items.php'));
+                redirect_to(url_for('/staff/item/index.php'));
             }
         }
 
@@ -74,8 +74,8 @@
                 You have to remove it from the menu first!
                 </h3><br>
                 <h4 class="text-danger">You are deleting item with ID:<u><?= $_GET["item_id"]?></u></h4>
-            <a class="action" href="<?php echo url_for('/staff/items.php'); ?>">Go back to item list!</a>
+            <a class="action" href="<?php echo url_for('/staff/item/index.php'); ?>">Go back to item list!</a>
         </div>
     <?php } }
-        require_once('staff_footer.php');
+        require_once('../staff_footer.php');
     }?>

@@ -1,8 +1,8 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
-<?php require_once ('check_log_in_status.php');
+<?php require_once('../check_log_in_status.php');
 $page_title = "DinnersDirect-Order";
-require_once('../../private/shared/pages_header.php');
+require_once('../../../private/shared/pages_header.php');
 if ($not_log_in) {
     $welcome_message = "Welcome to our order page";
 }else {
@@ -37,9 +37,9 @@ if ($not_log_in) {
         <div id="step1" class="row">
             <div class="col-md-3">
                 <?php if ($not_log_in) {?>
-                <br><p>Before placing an order, Please log in <a href="login.php">here.</a></p>
+                <br><p>Before placing an order, Please log in <a href="../log_in/index.php">here.</a></p>
                 <?php }elseif ($acc_type == "parent") {
-                    require ("get_children_info.php"); ?>
+                    require("../get_children_info.php"); ?>
                     <form method="get"><br>
                         <label for="choose_children">Choose the child that you are ordering for.</label>
                         <select name="choose_children" id="choose_children">
@@ -130,4 +130,4 @@ if ($not_log_in) {
         </div>
 
     </div>
-<?php require_once('../../private/shared/pages_footer.php');?>
+<?php require_once('../../../private/shared/pages_footer.php');?>

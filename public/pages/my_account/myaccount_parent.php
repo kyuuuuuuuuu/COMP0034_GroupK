@@ -1,11 +1,11 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
-<?php require_once ('check_log_in_status.php');
+<?php require_once('../check_log_in_status.php');
 $page_title = "Parent Account";
-require_once('../../private/shared/pages_header.php');
+require_once('../../../private/shared/pages_header.php');
 
 if ($not_log_in) {
-    redirect_to(url_for('/pages/myaccount.php'));
+    redirect_to(url_for('/pages/my_account/index.php'));
 }
 
 
@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["new_children_email"]))
 }
 
 
-require ("get_children_info.php");
+require("../get_children_info.php");
 ?>
 
 
@@ -64,7 +64,7 @@ require ("get_children_info.php");
         <div class="col-md-1"></div>
         <div class="col-md-4">
 
-            <img class="profile rounded-circle" src="../img/kien.jpg"><br><br>
+            <img class="profile rounded-circle" src="../../img/kien.jpg"><br><br>
             <h2><?php echo $data['first_name'] . " " . $data['last_name'];?></h2>
             <!--            <div class="name"><small>Trung Kien Nguyen</small></div><br><br>-->
         </div>
@@ -155,7 +155,7 @@ require ("get_children_info.php");
                                 </select>
                                 <button class="btn-light btn-outline-dark rounded" type="submit">Choose</button>
                             </form>
-                            <p id="chosen_children">
+                            <div id="chosen_children">
                                 <?php if(isset($children_info)) {?><br>
                                 Your are viewing orders of <b><?php echo get_person_name($db, $chosen_child_id, 'student', 'student_id');?></b>
                                 <?php if ($student_orders) {?>
@@ -191,16 +191,24 @@ require ("get_children_info.php");
                             }
                             ?>
                             <?php }else {?>
-                                <p>There is no order yet! <br>Click <a href="order.php">here</a> to make an order.</p>
+                                <p>There is no order yet! <br>Click <a href="../order/index.php">here</a> to make an order.</p>
                             <?php }?>
                             <?php }?>
-                            </p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div name="my_account_tab" class="display_none">
+                <div name="my_account_tab" class="<?php if(isset($_SESSION['pw_message'])) {echo "display_block";}else {echo "display_none";}?>">
                     <div class="tab-content">
+                        <h4 class="text-danger">
+                            <strong>
+                                <?php if(isset($_SESSION['pw_message'])) {
+                                    echo $_SESSION['pw_message'];
+                                    unset($_SESSION['pw_message']);
+                                }?>
+                            </strong>
+                        </h4>
                         <form name="change_password_form" method="post" action="change_password.php" onsubmit="return validate('Change');">
                             <h1 class="text-center">Change Password</h1>
                             <label>Email Address:</label>
@@ -252,47 +260,5 @@ require ("get_children_info.php");
 </div>
 </body>
 
-
-
-<!---->
-<!--<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">-->
-<!--<div class="container-fluid">-->
-<!--    <div class="row navbar">-->
-<!--        <div class="col-md-9 card-header text-center">-->
-<!--            <h1>Welcome to My Account</h1>-->
-<!--        </div>-->
-<!--        <div class="col-md-3">-->
-<!--           <ul class="navbar-nav ml-auto align-content-center">-->
-<!--                <li class="nav-item dropdown no-arrow">-->
-<!--                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Trung Kien Nguyen</span>-->
-<!--                        <img class="img-profile rounded-circle" src="img/kien.jpg" style="width:100px;height:100px;">-->
-<!--                    </a>-->
-<!--                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">-->
-<!--                        <a class="dropdown-item" href="#">-->
-<!--                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>-->
-<!--                            Profile-->
-<!--                        </a>-->
-<!--                        <a class="dropdown-item" href="#">-->
-<!--                            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>-->
-<!--                            Settings-->
-<!--                        </a>-->
-<!--                        <a class="dropdown-item" href="#">-->
-<!--                            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>-->
-<!--                            Activity Log-->
-<!--                        </a>-->
-<!--                        <div class="dropdown-divider"></div>-->
-<!--                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">-->
-<!--                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>-->
-<!--                            Logout-->
-<!--                        </a>-->
-<!--                    </div>-->
-<!--                </li>-->
-<!---->
-<!--            </ul>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-<!--</nav>-->
-<?php require_once('../../private/shared/pages_footer.php');?>
+<?php require_once('../../../private/shared/pages_footer.php');?>
 

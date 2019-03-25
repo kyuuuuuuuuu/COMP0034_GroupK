@@ -2,7 +2,8 @@
 
 <?php if (!isset($_SESSION["staff_credential"])) {
     redirect_to(url_for('/staff/index.php'));
-}else {require_once('staff_header.php');
+}else {
+    require_once('../staff_header.php');
 $total_number_of_items = 9;
 $all_items_sql = get_all($db, 'item');
 $all_items = array();
@@ -44,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["menu_name"])) {
                 }
             }
         }
-        redirect_to(url_for('/staff/menu.php'));
+        redirect_to(url_for('/staff/menu/index.php'));
 
     }
 
@@ -108,4 +109,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["menu_name"])) {
 </div>
 
 
-<?php require_once('staff_footer.php');}?>
+<?php require_once('../staff_footer.php');}?>

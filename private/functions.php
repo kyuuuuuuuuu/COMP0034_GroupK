@@ -87,13 +87,13 @@ function to_myAccount ($accType) {
     //redirect user to the corresponding myAccount page.
     switch ($accType) {
         case "administrator":
-            redirect_to(url_for('/pages/myaccount_teacher.php'));
+            redirect_to(url_for('/pages/my_account/myaccount_teacher.php'));
             break;
         case "student":
-            redirect_to(url_for('/pages/myaccount_student.php'));
+            redirect_to(url_for('/pages/my_account/myaccount_student.php'));
             break;
         case "parent":
-            redirect_to(url_for('/pages/myaccount_parent.php'));
+            redirect_to(url_for('/pages/my_account/myaccount_parent.php'));
             break;
         default:
             break;

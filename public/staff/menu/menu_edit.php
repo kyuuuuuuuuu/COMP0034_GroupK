@@ -3,7 +3,8 @@
 <?php
 if (!isset($_SESSION["staff_credential"])) {
     redirect_to(url_for('/staff/index.php'));
-}else {require_once('staff_header.php');
+}else {
+    require_once('../staff_header.php');
 $menu_id = test_input($_GET['id'] ?? '1');
 $menu_info = get_data($db, $menu_id, 'list_of_menus', 'menu_id');
 $menu_data = get_menu($db, $menu_id);
@@ -97,4 +98,4 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 </div>
 
 
-<?php require_once('staff_footer.php');}?>
+<?php require_once('../staff_footer.php');}?>

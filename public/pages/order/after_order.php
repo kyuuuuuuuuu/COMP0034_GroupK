@@ -1,11 +1,6 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
 <?php
-if (isset($_SESSION['credential'])) {
-    $user_email = $_SESSION['credential'];
-    $acc_type = $_SESSION['acc_type'];
-    $data = get_data($db, $user_email, $acc_type,"email_address");
-}
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($_POST['basket_length'])) {
         $basket = [];
@@ -19,8 +14,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['grand_total'] = $_POST['grand_total'];
         $_SESSION['delivery_date'] = $_POST['delivery_date'];
     }
+}else {
+    error_404("Page not found!");
 }
 
 ?>
-
-<?php require_once('../../private/shared/pages_footer.php');?>

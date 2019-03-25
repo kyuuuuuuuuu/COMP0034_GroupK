@@ -4,7 +4,7 @@
 if (!isset($_SESSION["staff_credential"])) {
     redirect_to(url_for('/staff/index.php'));
 }else {
-    require_once('staff_header.php');
+    require_once('../staff_header.php');
 
 $item_id = $_GET['item_id'] ?? '1';
 $item_data = get_data($db, $item_id, 'item', 'item_id');
@@ -77,7 +77,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($new_item_name != NULL || $new_item_price != NULL || $new_item_desc != NULL || $uploadOk) {
         $_SESSION['message'] = "Edit item successfully!";
-        redirect_to(url_for('/staff/'));
+        redirect_to(url_for('/staff/index.php'));
     }else {
         $message .=  "There is no change was made!!!";
     }
@@ -139,4 +139,4 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 </div>
 
 
-<?php require_once('staff_footer.php'); }?>
+<?php require_once('../staff_footer.php'); }?>
