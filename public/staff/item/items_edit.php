@@ -18,20 +18,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if(isset($_POST['item_name']) && $_POST['item_name'] != $item_data['item_name']) {
         $new_item_name = $_POST['item_name'];
-//        echo $new_item_name;
         $query = "UPDATE item SET item_name = '$new_item_name' WHERE item_id = '$item_id'";
 
         submit_query($db,$query);
     }
     if(isset($_POST['item_price']) && $_POST['item_price'] != $item_data['item_price']) {
         $new_item_price = $_POST['item_price'];
-//        echo $new_item_price;
         $query = "UPDATE item SET item_price = '$new_item_price' WHERE item_id = '$item_id'";
         submit_query($db,$query);
     }
     if(isset($_POST['item_description']) && $_POST['item_description'] != $item_data['item_description']) {
         $new_item_desc = $_POST['item_description'];
-//        echo $new_item_desc;
         $query = "UPDATE item SET item_description = '$new_item_desc' WHERE item_id = '$item_id'";
         submit_query($db,$query);
     }
@@ -65,9 +62,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             if (move_uploaded_file($_FILES["item_image"]["tmp_name"], $target_file)) {
                 echo "The file ". basename( $_FILES["item_image"]["name"]). " has been uploaded.";
-                echo $target_file;
                 $query = "UPDATE item SET item_image = '$saved_src' WHERE item_id = '$item_id'";
-                submit_query($db,$query);
+                if (submit_query($db,$query)) {
+                    $uploadOk = true;
+                }else {
+                    $uploadOk = false;
+                }
             } else {
                 echo "Sorry, there was an error uploading your file.";
             }
@@ -77,7 +77,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($new_item_name != NULL || $new_item_price != NULL || $new_item_desc != NULL || $uploadOk) {
         $_SESSION['message'] = "Edit item successfully!";
-        redirect_to(url_for('/staff/index.php'));
+        redirect_to(url_for('/staff/item/index.php'));
     }else {
         $message .=  "There is no change was made!!!";
     }
