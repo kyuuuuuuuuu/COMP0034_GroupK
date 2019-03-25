@@ -64,7 +64,7 @@ require("../get_children_info.php");
         <div class="col-md-1"></div>
         <div class="col-md-4">
 
-            <img class="profile rounded-circle" src="../../img/kien.jpg"><br><br>
+            <img class="profile rounded-circle" src="../../img/default_profile_pic.png"><br><br>
             <h2><?php echo $data['first_name'] . " " . $data['last_name'];?></h2>
             <!--            <div class="name"><small>Trung Kien Nguyen</small></div><br><br>-->
         </div>
@@ -128,7 +128,8 @@ require("../get_children_info.php");
                                 Name: <?php echo $children_p[$i]['first_name'] . " " . $children_p[$i]['last_name'];?><br>
                                 Admin: <?php echo $admin_p[$i]['first_name'] . " " . $admin_p[$i]['last_name'];?><br>
                                 School: <?php echo $school_p[$i]['school_name'];?><br>
-                                Address: <?php echo $school_p[$i]['school_address'];?><br><br>
+                                Address: <?php echo $school_p[$i]['school_address'];?><br>
+                                Verification status: <?php if($children_p[$i]['status'] == 1) {echo "Verified";}elseif ($children_p[$i]['status'] == 0) {echo "Not verified";}?><br><br>
                             <?php } ?>
                         </p>
                     </div>

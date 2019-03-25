@@ -25,7 +25,7 @@ if ($not_log_in) {
         <div class="col-md-1"></div>
         <div class="col-md-4">
 
-            <img class="profile rounded-circle" src="../../img/kien.jpg"><br><br>
+            <img class="profile rounded-circle" src="../../img/default_profile_pic.png"><br><br>
            <h2><?php echo $data['first_name'] . " " . $data['last_name'];?> </h2>
 <!--            <div class="name"><small>Trung Kien Nguyen</small></div><br><br>-->
         </div>

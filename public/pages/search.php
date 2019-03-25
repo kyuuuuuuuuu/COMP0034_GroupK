@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         </div>
     </form>
 
-    <div id="search_result"></div>
+    <div id="search_result" class="text-center"></div>
 </div>
 
 

@@ -10,7 +10,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $query .= "OR item.item_description LIKE '%" . $key_word . "%' ";
     $query .= "ORDER BY item.item_name LIMIT 10";
 
-    if ($result = mysqli_query($db, $query)) { ?>
+    if ($result = mysqli_query($db, $query)) {
+        if (mysqli_num_rows($result) > 0) {?>
         <table class="table table-striped">
         <thead>
         <tr>
@@ -34,7 +35,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         </tbody>
         </table>
     <?php }else { ?>
-        <p>There is no result that match your search</p>
-    <?php }
+        <br><h5>There is no result that match your search</h5>
+    <?php }}
 }
 ?>
