@@ -28,7 +28,8 @@ $data = get_all($db, 'item');
             <th class='font-weight-bolder'>Edit</th>
             <th class='font-weight-bolder'>Delete</th>
         </tr>
-        <?php while($item = mysqli_fetch_assoc($data)) {?>
+        <?php while($item = mysqli_fetch_assoc($data)) {
+            if (!empty($item['item_id'])) {?>
             <tr>
                 <td><?php echo $item['item_id'];?></td>
                 <td><?php echo $item['item_name'];?></td>
@@ -38,7 +39,7 @@ $data = get_all($db, 'item');
                 <td><a class="action" href="<?php echo url_for('/staff/item/items_edit.php?item_id=' . test_input($item['item_id'])); ?>">Edit</a></td>
                 <td><a class="action" href="<?php echo url_for('/staff/item/items_delete.php?item_id=' . test_input($item['item_id'])); ?>">Delete</a></td>
             </tr>
-        <?php }?>
+        <?php } }?>
 
     </table>
 </div>
