@@ -40,7 +40,7 @@ if (!isset($_SESSION["staff_credential"])) {
             echo "<br>";
             $uploadOk = true;
             $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/public/img/menu_image/";
-            $saved_src = "../img/menu_image/" . basename($_FILES["item_image"]["name"]);
+            $saved_src = "../../img/menu_image/" . basename($_FILES["item_image"]["name"]);
             echo $target_dir;
             $target_file = $target_dir . basename($_FILES["item_image"]["name"]);
             $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
