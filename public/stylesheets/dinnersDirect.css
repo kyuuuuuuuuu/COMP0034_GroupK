@@ -26,18 +26,6 @@ header{
     border-top-right-radius: calc(0.25rem - 1px);
 }
 
-/*ul{*/
-    /*list-style-type: none;*/
-    /*margin: 0;*/
-    /*padding: 0;*/
-    /*overflow: hidden;*/
-    /*background-color: #333333;*/
-/*}*/
-
-/*li {*/
-    /*align: center;*/
-/*}*/
-
 li a {
     display: block;
     color: white;
@@ -46,10 +34,10 @@ li a {
     font-size:20px;
 }
 
-/* Slideshow container */
+/* Slideshow container in index.php
+This makes the slideshow to be responsive*/
 @media (max-width: 880px) {
     .slideshow-container {
-        /*max-width: 860px;*/
         max-width: 90vw;
         position: relative;
         margin: auto;
@@ -152,8 +140,6 @@ li a {
 
 
 /*Style under order/index.php*/
-
-
 #step1, #step2, #step3, .col-md-3 {
     text-align: center;
 }
@@ -162,6 +148,7 @@ li a {
     color: darkred;
 }
 
+/*Fix height of the item captions in order/index.php for responsive */
 .item_caption {
     height: 50px;
     font-size: 20px;
@@ -171,6 +158,8 @@ li a {
     width: 100%;
 }
 
+/*Style of the items images and data-tip/tooltip in order.php
+Makes responsive*/
 @media (max-width: 768px) {
     .orderOutline1, .orderOutline2, .orderOutline3 {
         width: 60vw;
@@ -248,10 +237,6 @@ li a {
     width:100%;
 }
 
-#orderHeading {
-
-}
-
 
 #basket_img {
     height: 25px;
@@ -282,7 +267,6 @@ li a {
 }
 
 .orderbtn {
-    /*width: 40px;*/
     width: 95%;
     min-width: 80px;
     max-width: 150px;
@@ -292,6 +276,7 @@ li a {
     border-color: #6c757d;
 }
 
+/*.button1 and .button2 frequently used for button css*/
 .button1 {
     padding: 0.5rem 1rem;
     font-size: 1.25rem;
@@ -301,7 +286,6 @@ li a {
     border-color: #9A9BB3 !important;
     color: black !important;
 }
-
 .button2 {
     font-weight: 400;
     color: #212529;
@@ -330,16 +314,12 @@ li a {
     margin-right:10%;
 }
 
-/*#margin_three {*/
-    /*margin-left: 3%;*/
-    /*margin-right:3%;*/
-/*}*/
-
 #confirmation {
     max-width: 200px;
     height:auto;
 }
 
+/*Button css for sign_up/index.php*/
 #signup_btn1 {
     background-color: lightsteelblue ;
     border: 1px solid grey;
@@ -355,6 +335,7 @@ li a {
     border: 1px solid grey;
 }
 
+/*Footer css*/
 .copyright {
     display:block;
     text-align:center;
@@ -362,21 +343,11 @@ li a {
 }
 
 .myfooter {
-    /*position: absolute;*/
     background-color: #f8f9fa;
     font-size: 16px;
     padding:10px;
-    /*bottom:0;*/
     width:100%;
 }
-
-/*this is wrong*/
-/*@media (max-height: 613px) {*/
-    /*.myfooter{*/
-        /*position: absolute;*/
-        /*bottom:0;*/
-    /*}*/
-/*}*/
 
 body{
     min-height: 100%;
@@ -398,31 +369,23 @@ body{
     background-color: #C4DDF6 !important;
 }
 
-.myaccount-logout {
-    background-color: #5588BC !important;
-    color:white;
-}
-
+/*Change font to Helvetica*/
 h1, h5, .container, .container-fluid, label {
     font-family: Helvetica !important;
 }
 
-
-
+/*Used in order.php for date input*/
 #select_date {
     font-size:20px;
 }
 
+/*Profile photo in My Account page*/
 .profile {
     width:200px ;
     height:200px ;
 }
 
-/*.center {*/
-    /*margin-right: 0 auto !important;*/
-    /*margin-left: 0 auto !important;*/
-/*}*/
-
+/*Search in search.php*/
 .searchitem {
     width:50%;
     height: calc(2.25rem + 2px);
@@ -438,6 +401,7 @@ h1, h5, .container, .container-fluid, label {
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+/*data-tip/tooltip for menu set buttons*/
 [data-tip] {
     position:relative;
 
@@ -447,18 +411,9 @@ h1, h5, .container, .container-fluid, label {
     /* hides the tooltip when not hovered */
     display:none;
     content:'';
-
     border-width: 8px;
     border-style: solid;
-    /*border-color: transparent darkblue transparent transparent ;*/
-
-    /*border-left: 5px solid transparent;*/
-    /*border-right: 5px solid transparent;*/
-    /*border-bottom: 5px solid darkblue;*/
     position:absolute;
-    /*top:20%;*/
-    /*!*left:95%;*!*/
-    /*right:0%;*/
     z-index:8;
     font-size:0;
     line-height:0;
@@ -469,22 +424,10 @@ h1, h5, .container, .container-fluid, label {
     display:none;
     content:attr(data-tip);
     position:absolute;
-    /*top:0%;*/
-    /*left:100%;*/
-    /*right:0px;*/
-    /*top:35px;*/
-    /*left:250px;*/
     padding:10px;
     background: lightcyan;
     border: darkblue solid 2px;
-    /*border-color: darkblue;*/
-    /*border-style: solid;*/
-    /*z-index:9;*/
     font-size: 15px;
-    /*height:18px;*/
-    /*line-height:18px;*/
-    /*-webkit-border-radius: 3px;*/
-    /*-moz-border-radius: 3px;*/
     border-radius: 5px;
     width: 300px ;
     height:auto;
@@ -495,25 +438,3 @@ h1, h5, .container, .container-fluid, label {
 [data-tip]:hover:after {
     display:block;
 }
-/*h1, h2, h3, h4, h5, h6, p, table, button, nav, input, label {*/
-    /*font-family: Palatino !important;*/
-/*}*/
-
-/*p{*/
-    /*font-family: Georgia;*/
-/*}*/
-
-/*.input-group-addon {*/
-    /*padding: .375rem .75rem;*/
-    /*margin-bottom: 0;*/
-    /*font-size: 1rem;*/
-    /*font-weight: 400;*/
-    /*line-height: 1.5;*/
-    /*color: #495057;*/
-    /*text-align: center;*/
-    /*background-color: #e9ecef;*/
-    /*border: 1px solid #ced4da;*/
-/*}*/
-
-/*!*.input-group-addon{color:#3c763d;background-color:#dff0d8;border-color:#3c763d}*!*/
-/*.glyphicon-calendar:before{content:"\e109"}*/
