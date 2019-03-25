@@ -8,7 +8,6 @@ if ($not_log_in) {
     redirect_to(url_for('/pages/my_account/index.php'));
 }
 
-
 $chosen_child_id = "";
 if ($acc_type == "parent" && $_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["choose_children"])) {
     $chosen_child_id = test_input($_GET["choose_children"]);
@@ -46,18 +45,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["new_children_email"]))
         }
     }
 }
-
-
 require("../get_children_info.php");
 ?>
-
-
 
 <header class="card-header text-center">
     <h1>Welcome to your Parent account!</h1>
 </header>
 
-<body>
 <div class="container">
     <br><br>
     <div class="row">
@@ -86,7 +80,6 @@ require("../get_children_info.php");
 <div class="container">
     <div class="row">
         <div class="col-lg-4">
-
             <div class="nav list-group text-center">
                 <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(0)">Profile</button>
                 <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(1)">View Orders</button>
@@ -94,7 +87,6 @@ require("../get_children_info.php");
                 <button class="nav-link list-group-item myaccount-nav" onclick="show_selected_tab(3)">Add Children</button>
                 <br><br>
             </div>
-
         </div>
         <hr class="sidebar-divider d-none d-md-block">
         <div class="col-lg-8">
@@ -158,43 +150,43 @@ require("../get_children_info.php");
                             </form>
                             <div id="chosen_children">
                                 <?php if(isset($children_info)) {?><br>
-                                Your are viewing orders of <b><?php echo get_person_name($db, $chosen_child_id, 'student', 'student_id');?></b>
-                                <?php if ($student_orders) {?>
-                            <table class="table table-striped">
-                                <thead>
-                                <tr>
-                                    <th scope="col">Order ID</th>
-                                    <th scope="col">Delivery Date</th>
-                                    <th scope="col">Total Price</th>
-                                    <th scope="col">View</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php for ($i = 0; $i < count($student_orders); $i++) {?>
+                                    Your are viewing orders of <b><?php echo get_person_name($db, $chosen_child_id, 'student', 'student_id');?></b>
+                                    <?php if ($student_orders) {?>
+                                        <table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">Order ID</th>
+                                                <th scope="col">Delivery Date</th>
+                                                <th scope="col">Total Price</th>
+                                                <th scope="col">View</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <?php for ($i = 0; $i < count($student_orders); $i++) {?>
 
-                                    <tr>
-                                        <th scope="row"><?php echo $student_orders[$i]['order_id'];?></th>
-                                        <td><?php echo $student_orders[$i]['delivery_date'];?></td>
-                                        <td><?php echo $student_orders[$i]['total_price'];?></td>
-                                        <td><button class="btn btn-block button1" data-toggle="modal" data-target="#Modal<?php echo $i;?>">View</button></td>
-                                    </tr>
+                                                <tr>
+                                                    <th scope="row"><?php echo $student_orders[$i]['order_id'];?></th>
+                                                    <td><?php echo $student_orders[$i]['delivery_date'];?></td>
+                                                    <td><?php echo $student_orders[$i]['total_price'];?></td>
+                                                    <td><button class="btn btn-block button1" data-toggle="modal" data-target="#Modal<?php echo $i;?>">View</button></td>
+                                                </tr>
 
+                                            <?php }?>
+                                            </tbody>
+                                        </table>
+
+                                        <?php for ($k = 0; $k < count($student_orders); $k++) {
+                                            $modal_id = $k;
+                                            $this_order_id = $student_orders[$k]['order_id'];
+                                            $this_delivery_date = $student_orders[$k]['delivery_date'];
+                                            $this_total_price = $student_orders[$k]['total_price'];
+                                            include("modal_view_item.php");
+                                        }
+                                        ?>
+                                    <?php }else {?>
+                                        <p>There is no order yet! <br>Click <a href="../order/index.php">here</a> to make an order.</p>
+                                    <?php }?>
                                 <?php }?>
-                                </tbody>
-                            </table>
-
-                            <?php for ($k = 0; $k < count($student_orders); $k++) {
-                                $modal_id = $k;
-                                $this_order_id = $student_orders[$k]['order_id'];
-                                $this_delivery_date = $student_orders[$k]['delivery_date'];
-                                $this_total_price = $student_orders[$k]['total_price'];
-                                include("modal_view_item.php");
-                            }
-                            ?>
-                            <?php }else {?>
-                                <p>There is no order yet! <br>Click <a href="../order/index.php">here</a> to make an order.</p>
-                            <?php }?>
-                            <?php }?>
                             </div>
                         </div>
                     </div>
@@ -247,19 +239,12 @@ require("../get_children_info.php");
                     </div>
                 </div>
 
-
-
-
-
-
-
             </div>
         </div>
     </div>
 
-
 </div>
-</body>
+
 
 <?php require_once('../../../private/shared/pages_footer.php');?>
 

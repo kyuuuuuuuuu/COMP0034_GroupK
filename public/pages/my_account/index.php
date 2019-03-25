@@ -12,16 +12,16 @@ if (!$not_log_in) {
     <h1>Welcome to My Account</h1>
 
 </div class="container">
-    <div class="text-center">
-        <br><h4>
-            If you have an account, Log in
-            <a href="../log_in/index.php">here.</a>
-        </h4>
-        <h4>
-            Not a member? Sign up
-            <a href="../sign_up/index.php">here.</a><br>
-        </h4>
-    </div>
+<div class="text-center">
+    <br><h4>
+        If you have an account, Log in
+        <a href="../log_in/index.php">here.</a>
+    </h4>
+    <h4>
+        Not a member? Sign up
+        <a href="../sign_up/index.php">here.</a><br>
+    </h4>
+</div>
 <div>
 
 </div>

@@ -3,16 +3,18 @@
 <?php require_once('../check_log_in_status.php');
 $page_title = "DinnersDirect-Order";
 require_once('../../../private/shared/pages_header.php');
-if ($not_log_in) {
+if ($not_log_in) { //if user is not log in, show normal welcome message
     $welcome_message = "Welcome to our order page";
-}else {
+}else { //if user is logged in, show welcome message with full name
     $welcome_message = "Welcome " . $data['first_name'] . " " . $data['last_name'] ."<br>Place your order";
-    if ($acc_type == "administrator") {
+
+    if ($acc_type == "administrator") { //if the user is admin, set ordering target to himself and auto grant the right to order
         $_SESSION["ordering_user_id"] = $user_id;
         $_SESSION["ordering_id_field"] = $id_field;
         $_SESSION["ordering_user_email"] = $user_email;
         $_SESSION["allowed_to_order"] = true;
-    }elseif ($acc_type == "student") {
+
+    }elseif ($acc_type == "student") { //if the user is student, set ordering target to himself and check if the user is verified
         $_SESSION["ordering_user_id"] = $user_id;
         $_SESSION["ordering_id_field"] = $id_field;
         $_SESSION["ordering_user_email"] = $user_email;
@@ -20,6 +22,8 @@ if ($not_log_in) {
     }
 
     $chosen_child_id = "";
+    //If the user is parent, will not be check here first, this conditional loop is to check the children information as set the selected children as ordering target.
+    //The submit method used here is GET as the parent might want to bookmark the children they regularly order for!
     if ($acc_type == "parent" && $_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["choose_children"])) {
         $chosen_child_id = test_input($_GET["choose_children"]);
         $children_info = get_data($db, $chosen_child_id,'student', 'student_id');
@@ -37,19 +41,19 @@ if ($not_log_in) {
         <div id="step1" class="row">
             <div class="col-md-3">
                 <?php if ($not_log_in) {?>
-                <br><p>Before placing an order, Please log in <a href="../log_in/index.php">here.</a></p>
-                <?php }elseif ($acc_type == "parent") {
+                    <br><p>Before placing an order, Please log in <a href="../log_in/index.php">here.</a></p>
+                <?php }elseif ($acc_type == "parent") { //if the user is parent, show the message, depend on the ordering target is set or not.
                     require("../get_children_info.php"); ?>
                     <form method="get"><br>
                         <label for="choose_children">Choose the child that you are ordering for.</label>
                         <select name="choose_children" id="choose_children">
                             <?php for ($i = 0; $i < $number_of_children; $i++) {?>
-                            <option value="<?php echo $children_p[$i]['student_id'];?>"
-                                <?php if ($children_p[$i]['student_id'] == $chosen_child_id) {?>
-                                    selected="selected"
-                                <?php }?>>
-                                <?php echo $children_p[$i]['first_name'] . " " . $children_p[$i]['last_name'] . " at " . $school_p[$i]['school_name']; ?>
-                            </option>
+                                <option value="<?php echo $children_p[$i]['student_id'];?>"
+                                    <?php if ($children_p[$i]['student_id'] == $chosen_child_id) {?>
+                                        selected="selected"
+                                    <?php }?>>
+                                    <?php echo $children_p[$i]['first_name'] . " " . $children_p[$i]['last_name'] . " at " . $school_p[$i]['school_name']; ?>
+                                </option>
                             <?php }?>
                         </select>
                         <button class="btn-light btn-outline-dark rounded" type="submit">Choose</button>
@@ -67,10 +71,12 @@ if ($not_log_in) {
                             <?php }?>
                         <?php }?>
                     </p>
-                <?php }elseif (!$_SESSION["allowed_to_order"]) {?>
+
+                <?php }elseif (!$_SESSION["allowed_to_order"]) { //This is for user that is a student, check if he is allowed to order, show the message accordingly
+                    ?>
                     <br><p>Your account is <strong>not verified</strong>, you won't be able to place your order.</p>
                 <?php }else {?>
-                <br><p>Your order will be delivered to <?php echo find_school_address($db, $user_email);?></p>
+                    <br><p>Your order will be delivered to <?php echo find_school_address($db, $user_email);?></p>
                 <?php }?>
             </div>
             <div class="col-md-6 text-center">
@@ -101,10 +107,12 @@ if ($not_log_in) {
                     <?php }?><br><br>
                 </div>
                 <div id="menu_set_la" class="col-md-9"> <!--This div is where the menu get printed by AJAX -->
+<!--                    require the menu file as the page should load a default menu.-->
+<!--                    there is a cookie after the user select the menu for the first time-->
+<!--                    If the selected menu by the user get hide by the staff later on, automatically show another menu.-->
                     <?php require('menu_for_order.php');?>
                 </div>
             </div>
-
 
             <br><br><hr><br>
 
@@ -115,7 +123,6 @@ if ($not_log_in) {
                         <p id="delivery_date_message"></p>
                     </div>
                     <div class="col-md-8">
-
                         <p id="shopping_basket"></p><br>
                         <p id="grand_total"></p>
                     </div>

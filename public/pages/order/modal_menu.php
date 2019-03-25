@@ -22,8 +22,6 @@
                         ?>
                     </select>
 
-                    <!-- <h4>Quantity: <input type="number" name="quantity" id="quantity_<?php echo $modal_id;?>" min="1" max="5" required></h4>-->
-                    <!-- <button type="button" class="btn-secondary rounded" onclick="quantityValidation(<?php echo $modal_id;?>)" data-dismiss="modal">Add</button>-->
                     <button type="button" class="btn-secondary rounded" onclick="addProduct(<?php echo $modal_id;?>)" data-dismiss="modal">Add</button>
                 </div>
             </form>

@@ -2,13 +2,11 @@
 $result = get_parent ($db, $user_email, 'email_address');
 
 if (count($result) === 1) {
-//    echo "count is 1<br>";
     $number_of_children = 1;
 }elseif (count($result) > 1) {
-//    echo "more than 1<br>" . count($result) . "<br>";
     $number_of_children = count($result);
-}else {
-    echo "empty result";
+}else { //this will only run if the user credential get changed by unknown and unexpected 3rd party.
+    error_500("Can find parent data");
 }
 $admin_p = [];
 $school_p = [];

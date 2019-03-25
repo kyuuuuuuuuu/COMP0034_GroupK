@@ -27,14 +27,15 @@ today = yyyy + '-' + mm + '-' + dd;
 var maxDate = yyyy + '-' + mm1 + '-' + dd;
 
 var selected_date = document.getElementById("select_date");
-if (selected_date) {
+if (selected_date) { //check if the select_date form is presented.
     selected_date.setAttribute("min", today);
     selected_date.setAttribute("max", maxDate);
 }
 
-var basket = [];
+var basket = []; //Create a basket to be accessible by different functions
 var GrandTotal;
 
+//Add the product to a basket base on the data in the modal.
 function addProduct(modalId) {
     let image_src = document.getElementsByName("item_image")[modalId].src;
     let name = document.getElementsByName("item")[modalId].getAttribute("value");
@@ -54,9 +55,9 @@ function addProduct(modalId) {
     newItem.item_quantity = quantity;
     newItem.item_price = price;
 
-    if (basket === undefined || basket.length === 0) {
+    if (basket === undefined || basket.length === 0) { //if basket is empty, just add item in
         basket.push(newItem);
-    }else {
+    }else { //basket is not empty, check if the item exists or not
         let new_or_not = false;
         for (let i = 0; i < basket.length; i++) {
             if (basket[i].item_name === newItem.item_name) {
@@ -71,12 +72,14 @@ function addProduct(modalId) {
             basket.push(newItem);
         }
     }
-    render_basket();
+    render_basket(); // call a function to create a basket base on basket object
 
 }
 
+//Take the basket object, create a basket table with it
 function render_basket(){
-    add_proceed_button();
+    add_proceed_button(); //show the proceed button before rendering the basket
+
     let basket_table = '';
     let shopping_basket = document.getElementById('shopping_basket');
     shopping_basket.innerHTML = '';
@@ -101,7 +104,9 @@ function render_basket(){
         basket_table += "<td>" + basket[i].item_quantity + "</td>";
         basket_table += "<td>" + basket[i].item_price + "</td>";
         basket_table += "<td>" + total.toFixed(2) + "</td>";
-        basket_table += "<td><button type='submit' class='btn btn-secondary orderbtn'  onClick='deductQuantity(\"" + basket[i].item_name + "\", this);'/>Deduct Quantity</button> &nbsp<button type='submit' class='btn btn-secondary orderbtn' onClick='addQuantity(\"" + basket[i].item_name + "\", this);'/>Add Quantity</button> &nbsp<button type='submit' class='btn btn-secondary orderbtn' onClick='deleteItem(\"" + basket[i].item_name + "\", this);'/>Delete Item</button></td>";
+        basket_table += "<td><button type='submit' class='btn btn-secondary orderbtn'  onClick='deductQuantity(\"" + basket[i].item_name + "\", this);'/>Deduct Quantity</button>" +
+            " &nbsp<button type='submit' class='btn btn-secondary orderbtn' onClick='addQuantity(\"" + basket[i].item_name + "\", this);'/>Add Quantity</button>" +
+            " &nbsp<button type='submit' class='btn btn-secondary orderbtn' onClick='deleteItem(\"" + basket[i].item_name + "\", this);'/>Delete Item</button></td>";
         basket_table += "</tr>";
         name_session[i] = basket[i].item_name;
         GrandTotal += parseFloat(basket[i].item_price) * parseInt(basket[i].item_quantity);
@@ -111,7 +116,7 @@ function render_basket(){
 
     show_delivery_date();
     basket_table += "</table>";
-    if (basket.length === 0) {
+    if (basket.length === 0) { //if there is nothing in the basket, hide everything
         hide_proceed_button();
         basket_table = "";
         document.getElementById('grand_total').innerHTML = "";
@@ -180,6 +185,8 @@ function show_delivery_date() {
     document.getElementById('delivery_date_message').innerHTML = "<p>Your order will be delivered on " + selected_date.value + "</p>";
 }
 
+
+//Send the basket object to after_order.php to be checked and saved in a $_SESSION variable.
 function post_data_xhr() {
     let ajax = new XMLHttpRequest();
     ajax.open("POST", "after_order.php", true);
@@ -209,12 +216,10 @@ function post_data_xhr() {
 }
 
 function date_selection(admin_id) {
-    let check = false;
     let date_selected = document.getElementById('choose_date').value;
     if (!Date.parse(date_selected)) {
         alert("You need to select a date.");
     }else {
-        check = true;
         let ajax = new XMLHttpRequest();
         ajax.open("POST", "get_orders.php", true);
         ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -229,8 +234,7 @@ function date_selection(admin_id) {
             if (ajax.readyState === 4 && ajax.status === 200) {
                 let list_of_orders = JSON.parse(ajax.responseText);
                 if(list_of_orders[0]) {
-                    let summary_table = create_summary_table (list_of_orders);
-                    document.getElementById('list_of_orders').innerHTML = summary_table;
+                    document.getElementById('list_of_orders').innerHTML = create_summary_table (list_of_orders);
                 }else {
                     let message = "There is no student that order to delivery for ";
                     message += "<u>" + date_selected + "</u>.";
@@ -268,6 +272,7 @@ function create_summary_table (list_of_orders) {
     return summary_table;
 }
 
+//Get a menu from a php file and show it on the order pages
 function generate_menu(menu_id) {
     let ajax = new XMLHttpRequest();
     ajax.open("POST", "menu_for_order.php", true);

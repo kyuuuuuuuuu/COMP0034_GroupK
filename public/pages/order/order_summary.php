@@ -3,16 +3,17 @@
 <?php require_once('../check_log_in_status.php');
 $page_title = "Order Summary";
 require_once('../../../private/shared/pages_header.php');
-$show_summary = false;
-if ($not_log_in) {
+$show_summary = false; //Allow to show the order summary or not.
+if ($not_log_in) { //if not log in the user need to log in or sign up >> redirect to log in
     redirect_to(url_for("/pages/log_in/index.php"));
-}elseif (!isset($_SESSION['customer_basket'])) {
+}elseif (!isset($_SESSION['customer_basket'])) { //if there is no basket means user try to access this by URL, either bookmark or type directly >> redirect back to order page
     redirect_to(url_for("/pages/order/index.php"));
-}else {
+}else { //user is logged in and have a basket, grant them the right to see summary.
     $show_summary = true;
 }
 
 $chosen_child_id = "";
+//If the user is parent, will not be check here first, this conditional loop is to check the children information as set the selected children as ordering target.
 if ($acc_type == "parent" && $_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["choose_children"])) {
     $chosen_child_id = test_input($_POST["choose_children"]);
     $children_info = get_data($db, $chosen_child_id,'student', 'student_id');
@@ -23,7 +24,7 @@ if ($acc_type == "parent" && $_SERVER["REQUEST_METHOD"] == "POST" && isset($_POS
     $show_summary = true;
 }
 
-if (!isset($_SESSION["ordering_user_id"])) {
+if (!isset($_SESSION["ordering_user_id"])) { //no ordering target is set means. User didn't log in before placing order but just logged in here. There for set ordering target again
     if ($acc_type != "parent") { // you are student or admin
         $_SESSION["ordering_user_id"] = $user_id;
         $_SESSION["ordering_id_field"] = $_SESSION["id_field"];
@@ -43,7 +44,7 @@ if (!isset($_SESSION["ordering_user_id"])) {
         <h1>Order Summary</h1>
     </div>
 <?php
-if ($acc_type == "parent") {
+if ($acc_type == "parent") { //if the user is parent, show the for to select the children.
     require('../get_children_info.php');?>
     <div class="text-center">
         <form method="post">
@@ -65,8 +66,8 @@ if ($acc_type == "parent") {
     <?php
 
 }
-if (isset($_SESSION["allowed_to_order"])) {
-    if ($_SESSION["allowed_to_order"] && $show_summary) {
+if (isset($_SESSION["allowed_to_order"])) { //The allowed to order isset mean the user have gone through all the check loop above
+    if ($_SESSION["allowed_to_order"] && $show_summary) { //both of this need to be true in order for user to see the summary (user need to log in, have a basket, have the ordering target set and verified)
         $address = find_school_address($db, $_SESSION["ordering_user_email"])
         ?>
 

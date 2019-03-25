@@ -26,13 +26,15 @@
 </head>
 <body>
 <div class="main_body">
-<!--<h4>DinnersDirect</h4>-->
+<!--Navigation bar start-->
     <div class="navbar navbar-light bg-light">
         <!-- Logo image attached to Nav Bar -->
         <a href="<?php echo url_for('/pages/index.php'); ?>" class="a">
             <img src="<?php echo url_for('/img/logo.jpg'); ?>" alt="DinnersDirect Logo" height="100" />
         </a>
         <a href="<?php echo url_for('/pages/order/index.php'); ?>">ORDER</a>
+
+<!--        Change the navigation bar dynamically base on user log in status-->
         <?php if($not_log_in) { ?>
             <a href="<?php echo url_for('/pages/log_in/index.php'); ?>">LOGIN</a>
             <a href="<?php echo url_for('/pages/sign_up/index.php'); ?>">SIGN UP</a>
@@ -40,8 +42,11 @@
             <a href="<?php echo url_for('/pages/my_account/index.php'); ?>">MY ACCOUNT</a>
             <a href="<?php echo url_for('/pages/log_out.php'); ?>">LOG OUT</a>
         <?php }?>
+
+<!--        Search form that will redirect to search.php for result-->
         <form class="form-inline my-2 my-lg-0" method="get" action="<?php echo url_for('/pages/search.php'); ?>">
             <input class="form-control mr-sm-2" type="search" placeholder="Search for food..." aria-label="Search" name="key_word">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
+<!--    Navigation bar end-->

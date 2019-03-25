@@ -1,6 +1,6 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
-<?php
+<?php //target of JS function call "post_data_xhr()"
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($_POST['basket_length'])) {
         $basket = [];

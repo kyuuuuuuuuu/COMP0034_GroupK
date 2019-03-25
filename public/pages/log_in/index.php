@@ -12,7 +12,7 @@ require_once('../../../private/shared/pages_header.php');?>
     </div>
 
     <div class="container">
-        <?php if (isset($_COOKIE["user_email"])) {?>
+        <?php if (isset($_COOKIE["user_email"])) {?> <!-- If there is a cookie show welcome back form-->
         <div name="log_in" class="display_block text-center"><br>
             <h3>Welcome back, <?= $_COOKIE["user_name"]?></h3>
             <h5>Let sign in now</h5><br>

@@ -1,21 +1,4 @@
-function show_selected_tab (index) {
-    let all_tabs = document.getElementsByName("my_account_tab");
-
-    hide_and_show(index, all_tabs);
-}
-
-function select_form(index) {
-    let forms = document.getElementsByName("registerForm");
-
-    hide_and_show(index, forms);
-}
-
-function show_log_in(index) {
-    let log_in = document.getElementsByName("log_in");
-
-    hide_and_show(index,log_in);
-}
-
+// Hide and show a group of element by names
 function hide_and_show(index, html_element) {
     for (let i = 0; i < html_element.length; i++) {
         if (i === index) {
@@ -25,14 +8,27 @@ function hide_and_show(index, html_element) {
         }
     }
 }
+function show_selected_tab (index) {
+    let all_tabs = document.getElementsByName("my_account_tab");
 
-function redirect_to (url) {
-    window.location.href = url;
+    hide_and_show(index, all_tabs);
+}
+function select_form(index) {
+    let forms = document.getElementsByName("registerForm");
+
+    hide_and_show(index, forms);
+}
+function show_log_in(index) {
+    let log_in = document.getElementsByName("log_in");
+
+    hide_and_show(index,log_in);
 }
 
-function validate(type) {
-    let acc_type = type;
-    let verification = true;
+//One function that used to validate all form in the web application
+function validate(form_code) {
+    let verification = true; //Variable that initially is true, if there is at least 1 error, set to false.
+
+    //Function return function check if the input is a string
     function string(message) {
         return function(value) {
             if (typeof value !== "string") {
@@ -41,6 +37,7 @@ function validate(type) {
         };
     }
 
+    //Function return function check if the input is entered or not
     function required(message) {
         return function(value) {
             if (!value) {
@@ -49,6 +46,7 @@ function validate(type) {
         };
     }
 
+    //Function return function check if the password is strong enough ("At least 6 characters, 1 upper case, 1 lower case, 1 number")
     function pwStrength(message) {
         return function(value) {
             let regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
@@ -58,6 +56,7 @@ function validate(type) {
         }
     }
 
+    //Function return function check if the input only contains letters and space
     function lettersSpace (message) {
         return function(value) {
             let regex = /^[a-zA-Z\s]*$/;
@@ -67,6 +66,7 @@ function validate(type) {
         }
     }
 
+    //Function return function check if the input is a correct phone format
     function phoneUK (message) {
         return function (value) {
             let regex = /((\+44(\s\(0\)\s|\s0\s|\s)?)|0)7\d{3}(\s)?\d{6}/g;
@@ -78,6 +78,7 @@ function validate(type) {
         }
     }
 
+    //Function return function check if the input is a correct email format
     function emailFormat (message) {
         return function (value) {
             let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/; //This regression expression is from "https://www.w3resource.com/javascript/form/email-validation.php"
@@ -89,6 +90,7 @@ function validate(type) {
         }
     }
 
+    //Function return function check if the input is a 15 characters length
     function referenceCodeLength (message) {
         return function (value) {
             let regex = /[a-zA-Z0-9]{15}/;
@@ -118,7 +120,7 @@ function validate(type) {
     let exist_schema_field = [];
 
     for (let f = 0; f < schema_fields.length; f++) { //Go through all of schema key
-        let field_id = schema_fields[f] + acc_type;
+        let field_id = schema_fields[f] + form_code;
         let DOM = document.getElementById(field_id);
         if (DOM) {  //Check if there is and element with that ID exists.
             fields.push(field_id);
@@ -150,11 +152,11 @@ function validate(type) {
         }
     }
 
-    let two_password_fields = ["password" + acc_type, "password2" + acc_type];
+    let two_password_fields = ["password" + form_code, "password2" + form_code];
 
     if (containsAll(two_password_fields,fields)) {
-        if (values["password" + acc_type] !== "" && values["password2" + acc_type] !== "" && values["password2" + acc_type] !== values["password" + acc_type]) {
-            let error_field = "password2" + acc_type + "_error";
+        if (values["password" + form_code] !== "" && values["password2" + form_code] !== "" && values["password2" + form_code] !== values["password" + form_code]) {
+            let error_field = "password2" + form_code + "_error";
             document.getElementById(error_field).innerHTML = "Password confirmation need to be exactly same as Password";
             verification = false;
         }
@@ -167,7 +169,7 @@ function validate(type) {
 //Get from stack overflow to check if the haystack array include all values of needles array.
 // scr="https://stackoverflow.com/questions/9204283/how-to-check-whether-multiple-values-exist-within-an-javascript-array#comment46388832_9204298"
 function containsAll(needles, haystack){
-    for(var i = 0 , len = needles.length; i < len; i++){
+    for(let i = 0 , len = needles.length; i < len; i++){
         if($.inArray(needles[i], haystack) == -1) return false;
     }
     return true;

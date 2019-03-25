@@ -12,7 +12,7 @@ $item_list = get_order_item ($db, $this_order_id);
             </div>
             <div class="modal-body">
                 <p>Will be delivered on: <u><?php echo $this_delivery_date;?></u>
-                <br>
+                    <br>
                 </p>
                 <table class='table table-striped text-center'>
                     <tr>
@@ -20,13 +20,13 @@ $item_list = get_order_item ($db, $this_order_id);
                         <td class='font-weight-bolder'>Quantity</td>
                         <td class='font-weight-bolder'>Item Price (£)</td>
                     </tr>
-                <?php for ($j = 0; $j < count($item_list); $j++) {?>
-                    <tr>
-                        <td><?php echo $item_list[$j]['item_name'];?></td>
-                        <td><?php echo $item_list[$j]['quantity'];?></td>
-                        <td><?php echo $item_list[$j]['item_price'];?></td>
-                    </tr>
-                <?php }?>
+                    <?php for ($j = 0; $j < count($item_list); $j++) {?>
+                        <tr>
+                            <td><?php echo $item_list[$j]['item_name'];?></td>
+                            <td><?php echo $item_list[$j]['quantity'];?></td>
+                            <td><?php echo $item_list[$j]['item_price'];?></td>
+                        </tr>
+                    <?php }?>
                 </table>
 
                 <p>

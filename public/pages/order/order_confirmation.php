@@ -1,7 +1,7 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . "/COMP0034_GroupK/private/initialize.php"); ?>
 
 <?php require_once('../check_log_in_status.php');
-if(!isset($_SESSION['customer_basket']) || $not_log_in){
+if(!isset($_SESSION['customer_basket']) || $not_log_in){ //prevent user from accessing via URL without placing an order
     redirect_to(url_for('/pages/order/index.php'));
 }else {
     $shipping_fee = 1;
@@ -23,13 +23,13 @@ if(!isset($_SESSION['customer_basket']) || $not_log_in){
                     ."VALUES ('$order_id', '$item_id', '$item_quantity')";
                 submit_query($db, $query);
             }else {
-                error_500('There is an internal problem');
+                error_500('There is an internal problem with SQL');
             }
         }
 
 
     }else {
-        error_500('There is an internal problem');
+        error_500('There is an internal problem with SQL');
     }
     $page_title = "Order Confirmation";
     require_once('../../../private/shared/pages_header.php');
@@ -46,7 +46,7 @@ if(!isset($_SESSION['customer_basket']) || $not_log_in){
     <br><br><br>
 
 
-<?php
+<?php // unset all session, prevent user to keep refreshing and add more and more order to database.
     unset($_SESSION['customer_basket']);
     unset($_SESSION['grand_total']);
     unset($_SESSION['ordering_id_field']);

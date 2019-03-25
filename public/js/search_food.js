@@ -1,20 +1,22 @@
 //Wait until the whole page is loaded before this is executed
+//This is to make sure the initial search value is searched automatically
 $(function () {
     search_food();
 });
 
+//execute every time  users type anything in the search form
 function search_on_input() {
     let key_word = document.getElementById("key_word").value;
-    let return_result = "";
+
     if (key_word.length > 0) {
-        return_result = "You are searching for " + key_word;
-        document.getElementById("search_result").innerHTML = return_result;
+        document.getElementById("search_result").innerHTML = "You are searching for " + key_word;
     }else {
         document.getElementById("search_result").innerHTML = "";
     }
     search_food();
 }
 
+//Use AJAX to search for result
 function search_food() {
     let key_word = document.getElementById("key_word").value;
     if (key_word.length > 0) {

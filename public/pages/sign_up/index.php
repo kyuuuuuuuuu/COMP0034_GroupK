@@ -38,6 +38,8 @@ $list_of_school = get_all($db, 'school');
 
 
 <!--Sign up form-->
+<!--All 3 forms is loaded at the start the make user switch between the form easily with get refreshed-->
+<!--Each form will have different structure and input to validate.-->
     <div class="col-lg-12 align-content-lg-center signup-form">
 <!--        Student register form-->
         <form class="display_none" name="registerForm" method="post" action="after_signup.php" onsubmit="return validate('Student');">
