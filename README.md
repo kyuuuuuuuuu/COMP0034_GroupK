@@ -24,5 +24,5 @@ Apart from 1 file call "password.php", all of the code are written by us.
 
 Kind regard,
 
-Trung Kien, Yeo Jin and Koon Yew.
+Trung Kien.
 
