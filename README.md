@@ -11,7 +11,7 @@ Both of the 2 files can be found in the directory: "/COMP0034_GroupK/private/sql
 'dinnersdirect_schema.sql' contains the code to create our database and create the username and password as we are using in credential.php.
 While sample_data.sql contains the code to create the menu, items, school information, sample users for testing our function.
 
-The starting URL show be "Your local server"/COMP0034_GroupK/public/pages/
+The starting URL should be "Your local server"/COMP0034_GroupK/public/pages/
 
 All of the password for sample users are "Default123" by default.
 
